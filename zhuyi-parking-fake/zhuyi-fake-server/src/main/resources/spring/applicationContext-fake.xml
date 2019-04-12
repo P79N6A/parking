@@ -1,0 +1,26 @@
+﻿<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+    http://www.springframework.org/schema/aop
+    http://www.springframework.org/schema/aop/spring-aop.xsd"
+       default-autowire="byName">
+
+    <bean id="logAspectBean" class="com.scapegoat.infrastructure.logger.aspect.LogAspect">
+        <property name="from" value="client"/>
+        <property name="local" value="zhuyi-sms-server"/>
+    </bean>
+    <!--异常切面实现类-->
+    <bean id="exceptionHandleAspectBean" class="com.scapegoat.infrastructure.exception.aspect.ExceptionHandleAspect"/>
+    <aop:config>
+        <!--对controller切面-->
+        <aop:pointcut id="pc-controller"
+                      expression="execution(* com.zhuyitech.parking.service.impl.*.*(..))"/>
+        <aop:aspect id="logAspect" ref="logAspectBean" order="0">
+            <aop:around pointcut-ref="pc-controller" method="log"/>
+        </aop:aspect>
+        <aop:aspect id="exceptionHandleAspect" ref="exceptionHandleAspectBean" order="1">
+            <aop:around pointcut-ref="pc-controller" method="handleException"/>
+        </aop:aspect>
+    </aop:config>
+</beans>
