@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zoeeasy.cloud.inspect.mapper.ParkSignRecordMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.zoeeasy.cloud.inspect.domain.ParkSignRecordEntity">
+        <id column="id" property="id"/>
+        <result property="tenantId" column="tenantId"/>
+        <result property="parkingId" column="parkingId"/>
+        <result property="userId" column="userId"/>
+        <result property="userName" column="userName"/>
+        <result property="signType" column="signType"/>
+        <result property="signDate" column="signDate"/>
+        <result column="creatorUserId" property="creatorUserId"/>
+        <result column="creationTime" property="creationTime"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,
+        tenantId,
+        parkingId,
+        userId,
+        userName,
+        signType,
+        signDate,
+        creatorUserId, creationTime
+    </sql>
+
+</mapper>

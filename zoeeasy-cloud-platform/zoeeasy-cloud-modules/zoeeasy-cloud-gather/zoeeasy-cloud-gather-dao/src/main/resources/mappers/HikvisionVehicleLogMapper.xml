@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zoeeasy.cloud.gather.mapper.HikvisionVehicleLogMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.zoeeasy.cloud.gather.domain.HikvisionVehicleLogEntity">
+        <id column="id" property="id"/>
+        <result property="ip" column="ip"/>
+        <result property="url" column="url"/>
+        <result property="messageType" column="messageType"/>
+        <result property="requestTime" column="requestTime"/>
+        <result property="parameter" column="parameter"/>
+        <result property="responseTime" column="responseTime"/>
+        <result property="result" column="result"/>
+        <result property="status" column="status"/>
+        <result property="logType" column="logType"/>
+        <result property="startTime" column="startTime"/>
+        <result property="endTime" column="endTime"/>
+        <result column="creatorUserId" property="creatorUserId"/>
+        <result column="creationTime" property="creationTime"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,
+        ip,
+        url,
+        messageType,
+        requestTime,
+        parameter,
+        responseTime,
+        result,
+        status,
+        logType,
+        startTime,
+        endTime,
+        creatorUserId,
+        creationTime
+    </sql>
+    <!-- 查询上次同步最大时间 -->
+    <select id="selectLastSyncEndTime" resultType="java.util.Date">
+        select max(endTime)
+        from gat_hikvision_vehicle_log
+        where status = '0' and logType= '1'
+    </select>
+    <!-- 查询上次最大校对时间 -->
+    <select id="selectLastCollateTime" resultType="java.util.Date">
+        select max(endTime)
+        from gat_hikvision_vehicle_log
+        where status = '0' and logType= '2'
+    </select>
+</mapper>

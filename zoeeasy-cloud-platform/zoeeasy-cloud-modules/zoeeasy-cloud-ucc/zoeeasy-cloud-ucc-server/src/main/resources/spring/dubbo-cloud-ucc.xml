@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://code.alibabatech.com/schema/dubbo
+        http://code.alibabatech.com/schema/dubbo/dubbo.xsd
+        ">
+
+    <dubbo:service interface="com.zoeeasy.cloud.ucc.account.AccountService" version="${dubbo.service.version}"
+                   timeout="180000"
+                   ref="accountService" registry="fundamentalRegistry"/>
+    <dubbo:service interface="com.zoeeasy.cloud.ucc.tenant.TenantService" version="${dubbo.service.version}"
+                   timeout="180000000"
+                   ref="tenantService" registry="fundamentalRegistry"/>
+    <dubbo:service interface="com.zoeeasy.cloud.ucc.menu.MenuService" version="${dubbo.service.version}"
+                   timeout="180000"
+                   ref="menuService" registry="fundamentalRegistry"/>
+    <dubbo:service interface="com.zoeeasy.cloud.ucc.permission.PermissionService"
+                   ref="permissionService" timeout="180000" registry="fundamentalRegistry"
+                   version="${dubbo.service.version}"/>
+    <dubbo:service interface="com.zoeeasy.cloud.ucc.user.UserService"
+                   ref="userService" timeout="180000" registry="fundamentalRegistry"
+                   version="${dubbo.service.version}"/>
+    <dubbo:service interface="com.zoeeasy.cloud.ucc.organization.OrganizationService"
+                   ref="organizationService" timeout="180000" registry="fundamentalRegistry"
+                   version="${dubbo.service.version}"/>
+    <dubbo:service interface="com.zoeeasy.cloud.ucc.role.RoleService"
+                   ref="roleService" timeout="180000" registry="fundamentalRegistry"
+                   version="${dubbo.service.version}"/>
+    <dubbo:service interface="com.zoeeasy.cloud.ucc.navigation.NavigationService"
+                   ref="navigationService" timeout="180000" registry="fundamentalRegistry"
+                   version="${dubbo.service.version}"/>
+
+    <dubbo:service interface="com.zoeeasy.cloud.ucc.platform.PlatformUccService"
+                   ref="platformUccService" timeout="180000" registry="fundamentalRegistry"
+                   version="${dubbo.service.version}"/>
+    <dubbo:service interface="com.zoeeasy.cloud.ucc.user.UserLoginLogService"
+                   ref="userLoginLogService" timeout="180000" registry="fundamentalRegistry"
+                   version="${dubbo.service.version}"/>
+
+    <dubbo:reference id="idService"
+                     interface="com.zoeeasy.cloud.tool.vesta.intf.IdService" version="${dubbo.service.version}"
+                     check="false" timeout="180000" retries="0" registry="fundamentalRegistry"/>
+</beans>

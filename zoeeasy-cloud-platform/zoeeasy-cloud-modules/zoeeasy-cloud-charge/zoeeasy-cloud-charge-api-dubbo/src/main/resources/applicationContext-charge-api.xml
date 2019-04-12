@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://code.alibabatech.com/schema/dubbo
+        http://code.alibabatech.com/schema/dubbo/dubbo.xsd
+        ">
+    <!--appoint-->
+    <dubbo:reference id="appointRuleService"
+                     interface="com.zoeeasy.cloud.charge.appointrule.AppointRuleService"
+                     check="false" timeout="60000" retries="0" registry="fundamentalRegistry" version="${dubbo.service.version}"/>
+    <dubbo:reference id="parkingAppointRuleService"
+                     interface="com.zoeeasy.cloud.charge.appointrule.ParkingAppointRuleService"
+                     check="false" timeout="60000" retries="0" registry="fundamentalRegistry" version="${dubbo.service.version}"/>
+
+    <!--chg-->
+    <dubbo:reference id="calculateAmountService"
+                     interface="com.zoeeasy.cloud.charge.chg.CalculateAmountService"
+                     check="false" timeout="60000" retries="0" registry="fundamentalRegistry" version="${dubbo.service.version}"/>
+    <dubbo:reference id="chargeRuleService"
+                     interface="com.zoeeasy.cloud.charge.chg.ChargeRuleService"
+                     check="false" timeout="60000" retries="0" registry="fundamentalRegistry" version="${dubbo.service.version}"/>
+    <dubbo:reference id="chargeRuleTimeService"
+                     interface="com.zoeeasy.cloud.charge.chg.ChargeRuleTimeService"
+                     check="false" timeout="60000" retries="0" registry="fundamentalRegistry" version="${dubbo.service.version}"/>
+
+    <!--holiday-->
+    <dubbo:reference id="holidayCalendarService"
+                     interface="com.zoeeasy.cloud.charge.holiday.HolidayCalendarService"
+                     check="false" timeout="60000" retries="0" registry="fundamentalRegistry" version="${dubbo.service.version}"/>
+    <dubbo:reference id="holidayScheduleService"
+                     interface="com.zoeeasy.cloud.charge.holiday.HolidayScheduleService"
+                     check="false" timeout="60000" retries="0" registry="fundamentalRegistry" version="${dubbo.service.version}"/>
+
+    <!--park-->
+    <dubbo:reference id="parkChargeRuleService" version="${dubbo.service.version}"
+                     interface="com.zoeeasy.cloud.charge.park.ParkChargeRuleService"
+                     check="false"
+                     timeout="30000" retries="0" registry="fundamentalRegistry"/>
+
+    <!--platform-->
+    <dubbo:reference id="platformChargeService" version="${dubbo.service.version}"
+                     interface="com.zoeeasy.cloud.charge.platform.PlatformChargeService"
+                     check="false"
+                     timeout="30000" retries="0" registry="fundamentalRegistry"/>
+</beans>

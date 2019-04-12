@@ -1,0 +1,37 @@
+﻿1、jekins
+192.168.0.242:8122
+sunlei/123456
+2、接口
+    192.168.0.243/12306/swagger-ui.html
+
+3、mysql
+192.168.0.243:33791
+root/ZyKj@123456
+
+4、redis 
+192.168.0.243:6379
+123456
+5、rabbitmq
+192.168.0.245:15672
+root/123456
+
+ln -s /usr/local/node-v8.11.4/bin/npm /usr/local/bin/ 
+ln -s /usr/local/node-v8.11.4/bin/node /usr/local/bin/
+6、管理
+192.168.0.243:12366
+
+
+192.168.0.246:23791
+root 
+wf\]'/1qaz
+
+
+
+
+
+
+
+
+
+
+

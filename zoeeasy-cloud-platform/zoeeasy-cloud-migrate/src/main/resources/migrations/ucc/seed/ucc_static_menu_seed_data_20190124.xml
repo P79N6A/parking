@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet author="walkman" id="ucc_static_menu_seed_data_20190124">
+        <insert tableName="ucc_menu">
+            <column name="id" value="81"/>
+            <column name="parentId" value="8"/>
+            <column name="pathCode" value="00001.00005.00011"/>
+            <column name="level" value="12.11"/>
+            <column name="sort" value="0"/>
+            <column name="code" value="Administration.Operation.User"/>
+            <column name="name" value="人员配置"/>
+            <column name="url" value="administration/operation/user"/>
+            <column name="icon" value="user"/>
+            <column name="component" value="Operation_User"/>
+            <column name="tenancyHostSide" value="2"/>
+            <column name="shown" value="1"/>
+            <column name="staticMenu" value="1"/>
+            <column name="status" value="1"/>
+            <column name="type" value="1"/>
+            <column name="permission" value=""/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <insert tableName="ucc_menu">
+            <column name="id" value="82"/>
+            <column name="parentId" value="81"/>
+            <column name="pathCode" value="00001.00005.00011.00001"/>
+            <column name="level" value="12.11.1"/>
+            <column name="sort" value="0"/>
+            <column name="code" value="Administration.Operation.User.Collector"/>
+            <column name="name" value="配置收费员"/>
+            <column name="url" value="administration/operation/user/collector"/>
+            <column name="icon" value="collector"/>
+            <column name="component" value="User_Collector"/>
+            <column name="tenancyHostSide" value="2"/>
+            <column name="shown" value="1"/>
+            <column name="staticMenu" value="1"/>
+            <column name="status" value="1"/>
+            <column name="type" value="1"/>
+            <column name="permission" value=""/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <insert tableName="ucc_menu">
+            <column name="id" value="83"/>
+            <column name="parentId" value="81"/>
+            <column name="pathCode" value="00001.00005.00011.00002"/>
+            <column name="level" value="12.11.2"/>
+            <column name="sort" value="0"/>
+            <column name="code" value="Administration.Operation.User.Inspector"/>
+            <column name="name" value="配置巡检员"/>
+            <column name="url" value="administration/operation/user/inspector"/>
+            <column name="icon" value="inspector"/>
+            <column name="component" value="User_Inspector"/>
+            <column name="tenancyHostSide" value="2"/>
+            <column name="shown" value="1"/>
+            <column name="staticMenu" value="1"/>
+            <column name="status" value="1"/>
+            <column name="type" value="1"/>
+            <column name="permission" value=""/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <insert tableName="ucc_menu">
+            <column name="id" value="84"/>
+            <column name="parentId" value="66"/>
+            <column name="pathCode" value="00001.00006.00001.00004"/>
+            <column name="level" value="13.1.4"/>
+            <column name="sort" value="0"/>
+            <column name="code" value="Administration.Device.Manager.Pos"/>
+            <column name="name" value="POS机"/>
+            <column name="url" value="administration/device/manager/pos"/>
+            <column name="icon" value="pos"/>
+            <column name="component" value="Manager_Pos"/>
+            <column name="tenancyHostSide" value="2"/>
+            <column name="shown" value="1"/>
+            <column name="staticMenu" value="1"/>
+            <column name="status" value="1"/>
+            <column name="type" value="1"/>
+            <column name="permission" value=""/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

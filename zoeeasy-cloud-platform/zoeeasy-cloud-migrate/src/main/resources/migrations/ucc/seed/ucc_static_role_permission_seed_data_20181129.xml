@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet id="ucc_static_role_permission_seed_data_20181129" author="walkman">
+        <comment>系统静态角色-权限初始化数据</comment>
+        <insert tableName="ucc_role_permission">
+            <column name="roleId" value="1"/>
+            <column name="permissionId" value="216"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="ucc_role_permission">
+            <column name="roleId" value="1"/>
+            <column name="permissionId" value="217"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet author="kane" id="ucc_static_menu_seed_data_20190308">
+        <sql>
+            UPDATE ucc_menu SET sort=1 WHERE code='Administration';
+            UPDATE ucc_menu SET sort=1 WHERE code='Administration.Dashboard';
+            UPDATE ucc_menu SET sort=1 WHERE code='Administration.User.Organization';
+            UPDATE ucc_menu SET sort=1 WHERE code='Administration.Dictionary';
+            UPDATE ucc_menu SET sort=1 WHERE code='Administration.Parking.Manager';
+            UPDATE ucc_menu SET sort=1 WHERE code='Administration.Basic.Area';
+            UPDATE ucc_menu SET sort=1 WHERE code='Administration.Operation.Business';
+            UPDATE ucc_menu SET sort=1 WHERE code='Administration.Operation.Business.Passing';
+            UPDATE ucc_menu SET sort=1 WHERE code='Administration.Operation.Charge.Holiday';
+            UPDATE ucc_menu SET sort=1 WHERE code='Administration.Operation.Schedule.Setting';
+            UPDATE ucc_menu SET sort=1 WHERE code='Administration.Operation.Inspect.Roadway';
+            UPDATE ucc_menu SET sort=1 WHERE code='Administration.Operation.Appoint.Rule';
+            UPDATE ucc_menu SET sort=1 WHERE code='Administration.Operation.Vehicle.PacketRule';
+            UPDATE ucc_menu SET sort=1 WHERE code='Administration.Operation.Financial.Rule';
+            UPDATE ucc_menu SET sort=1 WHERE code='Administration.Operation.Invoice.Apply';
+            UPDATE ucc_menu SET sort=1 WHERE code='Administration.Operation.Report.Parking';
+            UPDATE ucc_menu SET sort=1 WHERE code='Administration.Device.Manager';
+            UPDATE ucc_menu SET sort=1 WHERE code='Administration.Device.Manager.Magnetic';
+            UPDATE ucc_menu SET sort=1 WHERE code='Administration.Device.Setting.Parking';
+            UPDATE ucc_menu SET sort=1 WHERE code='Administration.Device.Operation.ManagerStatus';
+            UPDATE ucc_menu SET sort=1 WHERE code='Administration.Operation.User.Collector';
+            UPDATE ucc_menu SET sort=1 WHERE code='Administration.Home';
+            UPDATE ucc_menu SET sort=1 WHERE code='Administration.Index';
+            UPDATE ucc_menu SET sort=2 WHERE code='Administration.Tenant';
+            UPDATE ucc_menu SET sort=2 WHERE code='Administration.User.Employees';
+            UPDATE ucc_menu SET sort=2 WHERE code='Administration.Setting';
+            UPDATE ucc_menu SET sort=2 WHERE code='Administration.Parking.Approve';
+            UPDATE ucc_menu SET sort=2 WHERE code='Administration.Basic.ParkingInfo';
+            UPDATE ucc_menu SET sort=2 WHERE code='Administration.Operation.Business.Parking';
+            UPDATE ucc_menu SET sort=2 WHERE code='Administration.Operation.Charge';
+            UPDATE ucc_menu SET sort=2 WHERE code='Administration.Operation.Charge.Rule';
+            UPDATE ucc_menu SET sort=2 WHERE code='Administration.Operation.Schedule.Manual';
+            UPDATE ucc_menu SET sort=2 WHERE code='Administration.Operation.Inspect.SignIn';
+            UPDATE ucc_menu SET sort=2 WHERE code='Administration.Operation.Appoint.Order';
+            UPDATE ucc_menu SET sort=2 WHERE code='Administration.Operation.Vehicle.PacketManager';
+            UPDATE ucc_menu SET sort=2 WHERE code='Administration.Operation.Financial.Order';
+            UPDATE ucc_menu SET sort=2 WHERE code='Administration.Operation.Invoice.History';
+            UPDATE ucc_menu SET sort=2 WHERE code='Administration.Operation.Report.Operating';
+            UPDATE ucc_menu SET sort=2 WHERE code='Administration.Device.Manager.Detector';
+            UPDATE ucc_menu SET sort=2 WHERE code='Administration.Device.Setting';
+            UPDATE ucc_menu SET sort=2 WHERE code='Administration.Device.Setting.ParkingLot';
+            UPDATE ucc_menu SET sort=2 WHERE code='Administration.Device.Operation.DetectorStatus';
+            UPDATE ucc_menu SET sort=2 WHERE code='Administration.Operation.User.Inspector';
+            UPDATE ucc_menu SET sort=3 WHERE code='Administration.Parking';
+            UPDATE ucc_menu SET sort=3 WHERE code='Administration.User.Role';
+            UPDATE ucc_menu SET sort=3 WHERE code='Administration.AuditLog';
+            UPDATE ucc_menu SET sort=3 WHERE code='Administration.Basic.ParkingRegion';
+            UPDATE ucc_menu SET sort=3 WHERE code='Administration.Operation.Business.Record';
+            UPDATE ucc_menu SET sort=3 WHERE code='Administration.Operation.Charge.Roadway';
+            UPDATE ucc_menu SET sort=3 WHERE code='Administration.Operation.Schedule';
+            UPDATE ucc_menu SET sort=3 WHERE code='Administration.Operation.Schedule.History';
+            UPDATE ucc_menu SET sort=3 WHERE code='Administration.Operation.Inspect.Record';
+            UPDATE ucc_menu SET sort=3 WHERE code='Administration.Operation.Vehicle.PacketCancel';
+            UPDATE ucc_menu SET sort=3 WHERE code='Administration.Device.Manager.Camera';
+            UPDATE ucc_menu SET sort=3 WHERE code='Administration.Device.Setting.Gate';
+            UPDATE ucc_menu SET sort=3 WHERE code='Administration.Device.Operation.DetectRecord';
+            UPDATE ucc_menu SET sort=3 WHERE code='Administration.Device.Operation.ManagerException';
+            UPDATE ucc_menu SET sort=4 WHERE code='Administration.Basic';
+            UPDATE ucc_menu SET sort=4 WHERE code='Administration.User.Permission';
+            UPDATE ucc_menu SET sort=4 WHERE code='Administration.LoginLog';
+            UPDATE ucc_menu SET sort=4 WHERE code='Administration.Basic.ParkingGarage';
+            UPDATE ucc_menu SET sort=4 WHERE code='Administration.Operation.Inspect';
+            UPDATE ucc_menu SET sort=4 WHERE code='Administration.Operation.Inspect.Switch';
+            UPDATE ucc_menu SET sort=4 WHERE code='Administration.Operation.Vehicle.Fixed';
+            UPDATE ucc_menu SET sort=4 WHERE code='Administration.Device.Operation';
+            UPDATE ucc_menu SET sort=4 WHERE code='Administration.Device.Operation.DetectorException';
+            UPDATE ucc_menu SET sort=4 WHERE code='Administration.Device.Manager.Pos';
+            UPDATE ucc_menu SET sort=5 WHERE code='Administration.Operation';
+            UPDATE ucc_menu SET sort=5 WHERE code='Administration.User.Menu';
+            UPDATE ucc_menu SET sort=5 WHERE code='Administration.Basic.ParkingGateInfo';
+            UPDATE ucc_menu SET sort=5 WHERE code='Administration.Operation.Appoint';
+            UPDATE ucc_menu SET sort=5 WHERE code='Administration.Operation.Vehicle.BlackList';
+            UPDATE ucc_menu SET sort=5 WHERE code='Administration.Device.Operation.CameraRecord';
+            UPDATE ucc_menu SET sort=6 WHERE code='Administration.Device';
+            UPDATE ucc_menu SET sort=6 WHERE code='Administration.Basic.ParkingLaneInfo';
+            UPDATE ucc_menu SET sort=6 WHERE code='Administration.Operation.Order';
+            UPDATE ucc_menu SET sort=6 WHERE code='Administration.Operation.Vehicle.WhiteList';
+            UPDATE ucc_menu SET sort=7 WHERE code='Administration.User';
+            UPDATE ucc_menu SET sort=7 WHERE code='Administration.Basic.ParkingLotInfo';
+            UPDATE ucc_menu SET sort=7 WHERE code='Administration.Operation.Vehicle';
+            UPDATE ucc_menu SET sort=7 WHERE code='Administration.Operation.Vehicle.VisitList';
+            UPDATE ucc_menu SET sort=8 WHERE code='Administration.System';
+            UPDATE ucc_menu SET sort=8 WHERE code='Administration.Operation.Financial';
+            UPDATE ucc_menu SET sort=9 WHERE code='Administration.Operation.Invoice';
+            UPDATE ucc_menu SET sort=10 WHERE code='Administration.Operation.Report';
+            UPDATE ucc_menu SET sort=11 WHERE code='Administration.Operation.User';
+        </sql>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet id="pms_parking_picture_add_column_20190322" author="songchao">
+        <preConditions onFail="MARK_RAN">
+            <tableExists tableName="pms_parking_picture"/>
+        </preConditions>
+        <addColumn tableName="pms_parking_picture">
+            <column name="pictureType" type="tinyint(2)" afterColumn="url" remarks="图片类型 1默认图片 2楼层导航图片" defaultValue="1"/>
+            <column name="businessId" type="bigint(20)" afterColumn="pictureType" remarks="业务id" />
+            <column name="deleterUserId" type="bigint(20)" remarks="删除者" afterColumn="creationTime"/>
+            <column name="deletionTime" type="DATETIME" remarks="删除时间" afterColumn="deleterUserId"/>
+            <column name="deleted" type="tinyint(1)" remarks="删除标记" afterColumn="deletionTime" defaultValue="0"/>
+        </addColumn>
+
+    </changeSet>
+</databaseChangeLog>

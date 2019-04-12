@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet author="walkman" id="ucc_static_permission_seed_data_20181219">
+        <comment>系统静态权限初始化数据</comment>
+        <insert tableName="ucc_permission">
+            <column name="id" value="218"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="20"/>
+            <column name="menuId" value="20"/>
+            <column name="code" value="pages:admin:parking:apply:view"/>
+            <column name="name" value="查看"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="1"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <insert tableName="ucc_permission">
+            <column name="id" value="219"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="27"/>
+            <column name="menuId" value="22"/>
+            <column name="code" value="pages:admin:basic:parkinginfo:submit"/>
+            <column name="name" value="提交申请"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="2"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <insert tableName="ucc_permission">
+            <column name="id" value="220"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="27"/>
+            <column name="menuId" value="22"/>
+            <column name="code" value="pages:admin:basic:parkinginfo:revoke"/>
+            <column name="name" value="撤销申请"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="2"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <insert tableName="ucc_permission">
+            <column name="id" value="221"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="27"/>
+            <column name="menuId" value="22"/>
+            <column name="code" value="pages:admin:basic:parkinginfo:appointrule"/>
+            <column name="name" value="维护预约规则"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="2"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <insert tableName="ucc_permission">
+            <column name="id" value="222"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="27"/>
+            <column name="menuId" value="22"/>
+            <column name="code" value="pages:admin:basic:parkinginfo:appointrule:view"/>
+            <column name="name" value="查看预约规则"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="2"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <insert tableName="ucc_permission">
+            <column name="id" value="223"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="27"/>
+            <column name="menuId" value="22"/>
+            <column name="code" value="pages:admin:basic:parkinginfo:appointrule:create"/>
+            <column name="name" value="添加预约规则"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="2"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <insert tableName="ucc_permission">
+            <column name="id" value="224"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="27"/>
+            <column name="menuId" value="22"/>
+            <column name="code" value="pages:admin:basic:parkinginfo:appointrule:edit"/>
+            <column name="name" value="编辑预约规则"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="2"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <insert tableName="ucc_permission">
+            <column name="id" value="225"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="27"/>
+            <column name="menuId" value="22"/>
+            <column name="code" value="pages:admin:basic:parkinginfo:appointrule:delete"/>
+            <column name="name" value="删除预约规则"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="2"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <insert tableName="ucc_permission">
+            <column name="id" value="226"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="27"/>
+            <column name="menuId" value="22"/>
+            <column name="code" value="pages:admin:basic:parkinginfo:chargerule"/>
+            <column name="name" value="维护收费规则"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="2"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <insert tableName="ucc_permission">
+            <column name="id" value="227"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="27"/>
+            <column name="menuId" value="22"/>
+            <column name="code" value="pages:admin:basic:parkinginfo:chargerule:view"/>
+            <column name="name" value="维护收费规则"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="2"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <insert tableName="ucc_permission">
+            <column name="id" value="228"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="27"/>
+            <column name="menuId" value="22"/>
+            <column name="code" value="pages:admin:basic:parkinginfo:chargerule:create"/>
+            <column name="name" value="添加收费规则"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="2"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <insert tableName="ucc_permission">
+            <column name="id" value="229"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="27"/>
+            <column name="menuId" value="22"/>
+            <column name="code" value="pages:admin:basic:parkinginfo:chargerule:edit"/>
+            <column name="name" value="编辑收费规则"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="2"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <insert tableName="ucc_permission">
+            <column name="id" value="230"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="27"/>
+            <column name="menuId" value="22"/>
+            <column name="code" value="pages:admin:basic:parkinginfo:chargerule:delete"/>
+            <column name="name" value="删除收费规则"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="2"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

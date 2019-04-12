@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet id="pms_parking_detail_info_create_table" author="sc">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="pms_parking_detail_info"/>
+            </not>
+        </preConditions>
+        <createTable tableName="pms_parking_detail_info" remarks="停车场详细信息表">
+            <column autoIncrement="true" name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_parking_detail_info"/>
+            </column>
+            <column name="tenantId" type="bigint(20)" remarks="租户ID"/>
+            <column name="parkingId" type="bigint(20)" remarks="停车场ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="provinceCode" type="varchar(64)" remarks="省编码" defaultValue=""/>
+            <column name="cityCode" type="varchar(64)" remarks="市编码" defaultValue=""/>
+            <column name="countyCode" type="varchar(64)" remarks="区县编码" defaultValue=""/>
+            <column name="address" type="varchar(2000)" remarks="地址" defaultValue=""/>
+            <column name="zipCode" type="varchar(64)" remarks="邮编" defaultValue=""/>
+            <column name="managerUnit" type="varchar(2000)" remarks="管理单位" defaultValue=""/>
+            <column name="ownerName" type="varchar(2000)" remarks="管理人单位" defaultValue=""/>
+            <column name="operatorUnit" type="varchar(2000)" remarks="运营人单位" defaultValue=""/>
+            <column name="chargerUnit" type="varchar(2000)" remarks="收费单位" defaultValue=""/>
+            <column name="contactName" type="varchar(256)" remarks="联系人" defaultValue=""/>
+            <column name="contactTel" type="varchar(64)" remarks="联系电话" defaultValue=""/>
+            <column name="contactPhone" type="varchar(64)" remarks="联系手机" defaultValue=""/>
+            <column name="contactEmail" type="varchar(64)" remarks="联系人邮箱" defaultValue=""/>
+            <column name="contactQQ" type="varchar(64)" remarks="联系人QQ" defaultValue=""/>
+            <column name="contactWeixin" type="varchar(64)" remarks="联系人微信" defaultValue=""/>
+            <column name="contactAlipay" type="varchar(64)" remarks="联系人支付宝" defaultValue=""/>
+            <column name="creatorUserId" type="bigint" remarks="创建者"/>
+            <column name="creationTime" type="DATETIME" remarks="创建时间"/>
+            <column name="lastModifierUserId" type="bigint" remarks="更新者"/>
+            <column name="lastModificationTime" type="DATETIME" remarks="更新时间"/>
+            <column name="deleterUserId" type="bigint" remarks="删除者"/>
+            <column name="deletionTime" type="DATETIME" remarks="删除时间"/>
+            <column name="deleted" type="tinyint(1)" remarks="删除标记" defaultValue="0"/>
+            <column name="version" type="bigint(20)" remarks="版本号" defaultValue="1"/>
+        </createTable>
+        <createIndex tableName="pms_parking_detail_info" indexName="idx_tenant_parking">
+            <column name="tenantId"/>
+            <column name="parkingId"/>
+        </createIndex>
+    </changeSet>
+</databaseChangeLog>

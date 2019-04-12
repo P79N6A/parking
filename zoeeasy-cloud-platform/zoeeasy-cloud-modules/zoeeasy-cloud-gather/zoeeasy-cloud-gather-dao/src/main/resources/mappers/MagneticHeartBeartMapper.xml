@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zoeeasy.cloud.gather.mapper.MagneticHeartBeatMapper">
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.zoeeasy.cloud.gather.domain.MagneticHeartBeatEntity">
+        <id column="id" property="id"/>
+        <result column="tenantId" property="tenantId"/>
+        <result column="parkingId" property="parkingId"/>
+        <result column="parkingLotId" property="parkingLotId"/>
+        <result column="detectorId" property="detectorId"/>
+        <result column="provider" property="provider"/>
+        <result column="serialNumber" property="serialNumber"/>
+        <result column="commandCode" property="commandCode"/>
+        <result column="beatTime" property="beatTime"/>
+        <result column="errorCode" property="errorCode"/>
+        <result column="occupyStatus" property="occupyStatus"/>
+        <result column="battery" property="battery"/>
+        <result column="creatorUserId" property="creatorUserId"/>
+        <result column="creationTime" property="creationTime"/>
+    </resultMap>
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        t.id,
+        t.tenantId,
+        t.parkingId,
+        t.parkingLotId,
+        t.detectorId,
+        t.provider,
+        t.serialNumber,
+        t.commandCode,
+        t.beatTime,
+        t.errorCode,
+        t.occupyStatus,
+        t.battery,
+        t.creatorUserId,
+        t.creationTime
+    </sql>
+
+    <select id="getMagneticHeartBeatList" resultMap="BaseResultMap">
+        select
+        id,
+        tenantId,
+        parkingId,
+        parkingLotId,
+        detectorId,
+        provider,
+        serialNumber,
+        commandCode,
+        beatTime,
+        errorCode,
+        occupyStatus,
+        battery
+        from gat_magnetic_heart_beat
+        where 1=1
+        <if test="detectorId != null ">
+            and detectorId = #{detectorId}
+        </if>
+        <if test="provider != null ">
+            and provider = #{provider}
+        </if>
+        ORDER BY beatTime DESC LIMIT 1
+    </select>
+
+    <insert id="addMagneticHeartBeat" parameterType="com.zoeeasy.cloud.gather.domain.MagneticHeartBeatEntity">
+        INSERT INTO gat_magnetic_heart_beat
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="parkingId != null">
+                parkingId,
+            </if>
+            <if test="tenantId != null">
+                tenantId,
+            </if>
+            <if test="parkingLotId != null">
+                parkingLotId,
+            </if>
+            <if test="detectorId != null">
+                detectorId,
+            </if>
+            <if test="provider != null">
+                provider,
+            </if>
+            <if test="serialNumber != null">
+                serialNumber,
+            </if>
+            <if test="commandCode != null">
+                commandCode,
+            </if>
+            <if test="beatTime != null">
+                beatTime,
+            </if>
+            <if test="errorCode != null">
+                errorCode,
+            </if>
+            <if test="occupyStatus != null">
+                occupyStatus,
+            </if>
+            <if test="battery != null">
+                battery,
+            </if>
+            <if test="creationTime != null">
+                creationTime,
+            </if>
+        </trim>
+        <trim prefix="VALUES (" suffix=")" suffixOverrides=",">
+            <if test="parkingId != null">
+                #{parkingId},
+            </if>
+            <if test="tenantId != null">
+                #{tenantId},
+            </if>
+            <if test="parkingLotId != null">
+                #{parkingLotId},
+            </if>
+            <if test="detectorId != null">
+                #{detectorId},
+            </if>
+            <if test="provider != null">
+                #{provider},
+            </if>
+            <if test="serialNumber != null">
+                #{serialNumber},
+            </if>
+            <if test="commandCode != null">
+                #{commandCode},
+            </if>
+            <if test="beatTime != null">
+                #{beatTime},
+            </if>
+            <if test="errorCode != null">
+                #{errorCode},
+            </if>
+            <if test="occupyStatus != null">
+                #{occupyStatus},
+            </if>
+            <if test="battery != null">
+                #{battery},
+            </if>
+            <if test="creationTime != null">
+                #{creationTime},
+            </if>
+        </trim>
+    </insert>
+</mapper>

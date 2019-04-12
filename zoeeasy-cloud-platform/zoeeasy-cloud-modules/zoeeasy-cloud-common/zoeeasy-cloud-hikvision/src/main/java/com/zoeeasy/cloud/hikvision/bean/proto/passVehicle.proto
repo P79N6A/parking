@@ -1,0 +1,20 @@
+syntax = "proto2";
+option java_package = "com\zoeeasy\cloud\hikvision\bean\proto";
+option java_outer_classname = "PassVehicleMsg";
+
+message PassVehicle {
+    required string uuid = 1; //过车记录
+    required string parkCode = 2; //停车场编号
+    optional string gateCode = 3; //出入口编号
+    optional string laneNo = 4; //车道编号
+    required string plateNo = 5; //车牌号码
+    optional int32 plateColor = 6; //车牌颜色
+    optional int32 plateType = 7; //车牌类型
+    required string passTime = 8; //通过时间 yyyy-MM-dd HH:mm:ss
+    required int32 carType = 9; //车辆类型
+    optional int32 parkType = 10; //停车类型，0-固定车，1-临时车
+    required int32 direct = 11; //过车方向
+    required string berthCode = 12; //泊位编号
+}
+
+

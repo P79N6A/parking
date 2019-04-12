@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://code.alibabatech.com/schema/dubbo
+        http://code.alibabatech.com/schema/dubbo/dubbo.xsd
+        ">
+
+    <dubbo:reference id="idService"
+                     interface="com.zoeeasy.cloud.tool.vesta.intf.IdService" version="${dubbo.service.version}"
+                     check="false" timeout="3000" retries="0" registry="fundamentalRegistry"/>
+    <!--amp-->
+    <dubbo:reference id="amapService"
+                     interface="com.zoeeasy.cloud.tool.amap.AmapService"
+                     check="false" timeout="60000" retries="0" registry="fundamentalRegistry"
+                     version="${dubbo.service.version}"/>
+    <!--oss-->
+    <dubbo:reference id="ossService"
+                     interface="com.zoeeasy.cloud.tool.oss.OssService"
+                     check="false" timeout="60000" retries="0" registry="fundamentalRegistry"
+                     version="${dubbo.service.version}"/>
+    <!--region-->
+    <dubbo:reference id="regionService"
+                     interface="com.zoeeasy.cloud.tool.region.RegionService"
+                     check="false" timeout="60000" retries="0" registry="fundamentalRegistry"
+                     version="${dubbo.service.version}"/>
+
+    <dubbo:reference id="licensePrefixService"
+                     interface="com.zoeeasy.cloud.tool.license.LicensePrefixService"
+                     check="false" timeout="60000" retries="0" registry="fundamentalRegistry"
+                     version="${dubbo.service.version}"/>
+
+    <dubbo:reference id="miscService"
+                     interface="com.zoeeasy.cloud.tool.misc.MiscService"
+                     check="false" timeout="18000000" retries="0" registry="fundamentalRegistry"
+                     version="${dubbo.service.version}"/>
+
+</beans>

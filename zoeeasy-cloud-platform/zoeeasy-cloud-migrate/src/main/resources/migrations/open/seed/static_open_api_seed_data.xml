@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet author="walkman" id="static_open_api_seed_data">
+        <comment>系统默认客户端数据初始化</comment>
+        <insert tableName="open_api_client">
+            <column name="id" value="1"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="accessKey" value="71fe93d94b5e4fcba7d55183efca91f2"/>
+            <column name="accessSecrete" value="25a4991e45e64d43b7f90ac528747957"/>
+            <column name="scope" value="all"/>
+            <column name="remarks" value="任意停车云平台"/>
+            <column name="beginTime" value="now()"/>
+            <column name="endTime" value="2049-12-31 23:59:59"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="open_api_client">
+            <column name="id" value="2"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="accessKey" value="35d20098bb964470a75c64a62e0a541f"/>
+            <column name="accessSecrete" value="4f795221443343e6a05026e83608d07b"/>
+            <column name="scope" value="inspect"/>
+            <column name="remarks" value="任意停车巡检APP平台"/>
+            <column name="beginTime" value="now()"/>
+            <column name="endTime" value="2049-12-31 23:59:59"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

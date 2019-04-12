@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet id="pms_parking_appoint_info_table_update_column_20181218" author="sc">
+        <renameColumn columnDataType="varchar(2000)" newColumnName="appointmentRule" oldColumnName="appointmentRule"
+                      remarks="预约规则的简短描述" tableName="pms_parking_appoint_info"/>
+
+    </changeSet>
+</databaseChangeLog>

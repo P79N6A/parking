@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://code.alibabatech.com/schema/dubbo
+        http://code.alibabatech.com/schema/dubbo/dubbo.xsd
+        ">
+    <!--record-->
+    <dubbo:reference id="inspectRecordService"
+                     interface="com.zoeeasy.cloud.inspect.record.InspectRecordService"
+                     check="false" timeout="60000" retries="0" registry="fundamentalRegistry"
+                     version="${dubbo.service.version}"/>
+
+    <!--park-->
+    <dubbo:reference id="inspectParkService"
+                     interface="com.zoeeasy.cloud.inspect.park.InspectParkService"
+                     check="false" timeout="60000" retries="0" registry="fundamentalRegistry"
+                     version="${dubbo.service.version}"/>
+
+
+    <!--platform-->
+    <dubbo:reference id="platformInspectService"
+                     interface="com.zoeeasy.cloud.inspect.platform.PlatformInspectService"
+                     check="false" timeout="60000" retries="0" registry="fundamentalRegistry"
+                     version="${dubbo.service.version}"/>
+</beans>

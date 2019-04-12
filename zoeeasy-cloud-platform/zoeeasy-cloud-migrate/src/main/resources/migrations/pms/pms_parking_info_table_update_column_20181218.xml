@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet id="pms_parking_info_table_update_column_20181218" author="sc">
+        <renameColumn columnDataType="varchar(64)" newColumnName="aliParkId" oldColumnName="aliParkId"
+                      remarks="支付宝平台停车场ID" tableName="pms_parking_info"/>
+        <renameColumn columnDataType="varchar(64)" newColumnName="hikParkId" oldColumnName="hikParkId"
+                      remarks="海康平台停车场ID" tableName="pms_parking_info"/>
+        <renameColumn columnDataType="varchar(64)" newColumnName="code" oldColumnName="code"
+                      remarks="编号" tableName="pms_parking_info"/>
+        <renameColumn columnDataType="decimal(9,6)" newColumnName="latitude" oldColumnName="latitude"
+                      remarks="纬度latitude" tableName="pms_parking_info"/>
+        <renameColumn columnDataType="decimal(9,6)" newColumnName="longitude" oldColumnName="longitude"
+                      remarks="经度longitude" tableName="pms_parking_info"/>
+
+        <addDefaultValue tableName="pms_parking_info" columnName="aliParkId" defaultValue=""/>
+        <addDefaultValue tableName="pms_parking_info" columnName="hikParkId" defaultValue=""/>
+        <addDefaultValue tableName="pms_parking_info" columnName="code" defaultValue=""/>
+        <addDefaultValue tableName="pms_parking_info" columnName="latitude" defaultValue="0"/>
+        <addDefaultValue tableName="pms_parking_info" columnName="longitude" defaultValue="0"/>
+
+    </changeSet>
+</databaseChangeLog>

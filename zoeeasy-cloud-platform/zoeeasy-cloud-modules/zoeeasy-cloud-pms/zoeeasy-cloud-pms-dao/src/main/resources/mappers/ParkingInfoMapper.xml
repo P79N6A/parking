@@ -1,0 +1,481 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zoeeasy.cloud.pms.mapper.ParkingInfoMapper">
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.zoeeasy.cloud.pms.domain.ParkingInfoEntity">
+        <id column="id" property="id"/>
+        <result column="tenantId" property="tenantId"/>
+        <result column="areaId" property="areaId"/>
+        <result column="pathCode" property="pathCode"/>
+        <result column="aliParkId" property="aliParkId"/>
+        <result column="hikParkId" property="hikParkId"/>
+        <result column="code" property="code"/>
+        <result column="localCode" property="localCode"/>
+        <result column="dockId" property="dockId"/>
+        <result column="name" property="name"/>
+        <result column="fullName" property="fullName"/>
+        <result column="status" property="status"/>
+        <result column="platformSupport" property="platformSupport"/>
+        <result column="level" property="level"/>
+        <result column="chargeFee" property="chargeFee"/>
+        <result column="freeTime" property="freeTime"/>
+        <result column="supportAppointment" property="supportAppointment"/>
+        <result column="outTime" property="outTime"/>
+        <result column="type" property="type"/>
+        <result column="lotType" property="lotType"/>
+        <result column="logo" property="logo"/>
+        <result column="openStartTime" property="openStartTime"/>
+        <result column="openEndTime" property="openEndTime"/>
+        <result column="chargeMode" property="chargeMode"/>
+        <result column="payMode" property="payMode"/>
+        <result column="payType" property="payType"/>
+        <result column="latitude" property="latitude"/>
+        <result column="longitude" property="longitude"/>
+        <result column="provinceCode" property="provinceCode"/>
+        <result column="cityCode" property="cityCode"/>
+        <result column="countyCode" property="countyCode"/>
+        <result column="address" property="address"/>
+        <result column="lotTotal" property="lotTotal"/>
+        <result column="lotFixed" property="lotFixed"/>
+        <result column="description" property="description"/>
+        <result column="auditStatus" property="auditStatus"/>
+        <result column="auditUserId" property="auditUserId"/>
+        <result column="auditUserName" property="auditUserName"/>
+        <result column="auditTime" property="auditTime"/>
+        <result column="runStatus" property="runStatus"/>
+        <result column="creatorUserId" property="creatorUserId"/>
+        <result column="creationTime" property="creationTime"/>
+        <result column="lastModifierUserId" property="lastModifierUserId"/>
+        <result column="lastModificationTime" property="lastModificationTime"/>
+        <result column="deleterUserId" property="deleterUserId"/>
+        <result column="deletionTime" property="deletionTime"/>
+        <result column="deleted" property="deleted"/>
+        <result column="version" property="version"/>
+    </resultMap>
+    <resultMap id="AroundResultMap" type="com.zoeeasy.cloud.pms.domain.ParkingInfoAroundEntity">
+        <id column="id" property="id"/>
+        <result column="tenantId" property="tenantId"/>
+        <result column="name" property="name"/>
+        <result column="fullName" property="fullName"/>
+        <result column="status" property="status"/>
+        <result column="platformSupport" property="platformSupport"/>
+        <result column="level" property="level"/>
+        <result column="chargeFee" property="chargeFee"/>
+        <result column="freeTime" property="freeTime"/>
+        <result column="supportAppointment" property="supportAppointment"/>
+        <result column="outTime" property="outTime"/>
+        <result column="type" property="type"/>
+        <result column="lotType" property="lotType"/>
+        <result column="openStartTime" property="openStartTime"/>
+        <result column="openEndTime" property="openEndTime"/>
+        <result column="chargeMode" property="chargeMode"/>
+        <result column="payMode" property="payMode"/>
+        <result column="payType" property="payType"/>
+        <result column="latitude" property="latitude"/>
+        <result column="longitude" property="longitude"/>
+        <result column="address" property="address"/>
+        <result column="lotTotal" property="lotTotal"/>
+        <result column="lotFixed" property="lotFixed"/>
+    </resultMap>
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,
+        tenantId,
+        areaId,
+        pathCode,
+        aliParkId,
+        hikParkId,
+        code,
+        localCode,
+        dockId,
+        name,
+        fullName,
+        status,
+        platformSupport,
+        level,
+        chargeFee,
+        freeTime,
+        supportAppointment,
+        outTime,
+        type,
+        lotType,
+        logo,
+        openStartTime,
+        openEndTime,
+        chargeMode,
+        payMode,
+        payType,
+        latitude,
+        longitude,
+        provinceCode, cityCode, countyCode, address,
+        lotTotal,
+        lotFixed,
+        description,
+        auditStatus,
+        auditUserId,
+        auditUserName,
+        auditTime,
+        runStatus,
+        creatorUserId,
+        creationTime,
+        lastModifierUserId,
+        lastModificationTime,
+        deleterUserId,
+        deletionTime,
+        deleted,
+        version
+    </sql>
+    <!-- 通用查询结果列 -->
+    <sql id="Around_Column_List">
+        id,
+        tenantId,
+        name,
+        fullName,
+        status,
+        platformSupport,
+        level,
+        chargeFee,
+        freeTime,
+        supportAppointment,
+        outTime,
+        type,
+        lotType,
+        openStartTime,
+        openEndTime,
+        chargeMode,
+        payMode,
+        payType,
+        latitude,
+        longitude,
+        address,
+        lotTotal,
+        lotFixed
+    </sql>
+
+    <!--通过海康停车场id获取停车场-->
+    <select id="findByHikParkId" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from pms_parking_info
+        <where>
+            deleted= '0' and hikParkId=#{hikParkId}
+        </where>
+    </select>
+
+    <select id="findByParkingId" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from pms_parking_info
+        <where>
+            deleted= '0' and id=#{parkingId}
+        </where>
+    </select>
+
+    <select id="findByLocalCode" resultType="com.zoeeasy.cloud.pms.domain.ParkingInfoEntity">
+        select
+        <include refid="Base_Column_List"/>
+        from pms_parking_info
+        <where>
+            deleted= '0' and localCode=#{localCode}
+        </where>
+    </select>
+
+    <select id="findByCode" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from pms_parking_info
+        <where>
+            deleted= '0' and code=#{code}
+        </where>
+    </select>
+
+    <!-- 无租户列表查询  -->
+    <select id="selectListTenantLess" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM pms_parking_info
+        <where>
+            deleted = '0' ${ew.sqlSegment}
+        </where>
+    </select>
+
+    <!-- 无租户列表查询  -->
+    <select id="selectAroundListTenantLess" resultMap="AroundResultMap">
+        SELECT
+        <include refid="Around_Column_List"/>
+        FROM pms_parking_info
+        <where>
+            deleted = '0' ${ew.sqlSegment}
+        </where>
+    </select>
+
+    <select id="selectPageListTenantLess" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from pms_parking_info
+        <where>
+            deleted = '0' ${ew.sqlSegment}
+        </where>
+    </select>
+
+    <update id="updateParkInfoNonTenant" parameterType="com.zoeeasy.cloud.pms.domain.ParkingInfoEntity">
+        UPDATE pms_parking_info
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="areaId != null">
+                areaId=#{areaId},
+            </if>
+            <if test="pathCode != null">
+                pathCode=#{pathCode},
+            </if>
+            <if test="aliParkId != null">
+                aliParkId=#{aliParkId},
+            </if>
+            <if test="hikParkId != null">
+                hikParkId=#{hikParkId},
+            </if>
+            <if test="code != null">
+                code=#{code},
+            </if>
+            <if test="name != null">
+                name=#{name},
+            </if>
+            <if test="fullName != null">
+                fullName=#{fullName},
+            </if>
+            <if test="status != null">
+                status=#{status},
+            </if>
+            <if test="platformSupport != null">
+                platformSupport=#{platformSupport},
+            </if>
+            <if test="level != null">
+                level=#{level},
+            </if>
+            <if test="chargeFee != null">
+                chargeFee=#{chargeFee},
+            </if>
+            <if test="supportAppointment != null">
+                supportAppointment=#{supportAppointment},
+            </if>
+            <if test="outTime != null">
+                outTime=#{outTime},
+            </if>
+            <if test="type != null">
+                type=#{type},
+            </if>
+            <if test="lotType != null">
+                lotType=#{lotType},
+            </if>
+            <if test="logo != null">
+                logo=#{logo},
+            </if>
+            <if test="openStartTime != null">
+                openStartTime=#{openStartTime},
+            </if>
+            <if test="openEndTime != null">
+                openEndTime=#{openEndTime},
+            </if>
+            <if test="chargeMode != null">
+                chargeMode=#{chargeMode},
+            </if>
+            <if test="payMode != null">
+                payMode=#{payMode},
+            </if>
+            <if test="payType != null">
+                payType=#{payType},
+            </if>
+            <if test="latitude != null">
+                latitude=#{latitude},
+            </if>
+            <if test="longitude != null">
+                longitude=#{longitude},
+            </if>
+            <if test="provinceCode != null">
+                provinceCode=#{provinceCode},
+            </if>
+            <if test="cityCode != null">
+                cityCode=#{cityCode},
+            </if>
+            <if test="countyCode != null">
+                countyCode=#{countyCode},
+            </if>
+            <if test="address != null">
+                address=#{address},
+            </if>
+            <if test="lotTotal != null">
+                lotTotal=#{lotTotal},
+            </if>
+            <if test="lotFixed != null">
+                lotFixed=#{lotFixed},
+            </if>
+            <if test="description != null">
+                description=#{description},
+            </if>
+            <if test="auditStatus != null">
+                auditStatus=#{auditStatus},
+            </if>
+            <if test="auditUserId != null">
+                auditUserId=#{auditUserId},
+            </if>
+            <if test="auditUserName != null">
+                auditUserName=#{auditUserName},
+            </if>
+            <if test="auditTime != null">
+                auditTime=#{auditTime},
+            </if>
+            <if test="runStatus != null">
+                runStatus=#{runStatus},
+            </if>
+            <if test="freeTime != null">
+                freeTime=#{freeTime},
+            </if>
+            <if test="address != null">
+                address=#{address},
+            </if>
+            <if test="lastModifierUserId != null">
+                lastModifierUserId=#{lastModifierUserId},
+            </if>
+            <if test="lastModificationTime != null">
+                lastModificationTime=#{lastModificationTime}
+            </if>
+        </trim>
+        <where>
+            id=#{id} AND deleted = '0'
+        </where>
+    </update>
+
+    <update id="updateParkingInfo">
+        UPDATE pms_parking_info
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="entity.areaId != null">
+                areaId=#{entity.areaId},
+            </if>
+            <if test="entity.pathCode != null">
+                pathCode=#{entity.pathCode},
+            </if>
+            <if test="entity.aliParkId != null">
+                aliParkId=#{entity.aliParkId},
+            </if>
+            <if test="entity.hikParkId != null">
+                hikParkId=#{entity.hikParkId},
+            </if>
+            <if test="entity.code != null">
+                code=#{entity.code},
+            </if>
+            <if test="entity.localCode != null">
+                localCode = #{entity.localCode}
+            </if>
+            <if test="entity.dockId != null">
+                dockId = #{entity.dockId}
+            </if>
+            <if test="entity.name != null">
+                name=#{entity.name},
+            </if>
+            <if test="entity.fullName != null">
+                fullName=#{entity.fullName},
+            </if>
+            <if test="entity.status != null">
+                status=#{entity.status},
+            </if>
+            <if test="entity.platformSupport != null">
+                platformSupport=#{entity.platformSupport},
+            </if>
+            <if test="entity.level != null">
+                level=#{entity.level},
+            </if>
+            <if test="entity.chargeFee != null">
+                chargeFee=#{entity.chargeFee},
+            </if>
+            <if test="entity.supportAppointment != null">
+                supportAppointment=#{entity.supportAppointment},
+            </if>
+            <if test="entity.outTime != null">
+                outTime=#{entity.outTime},
+            </if>
+            <if test="entity.type != null">
+                type=#{entity.type},
+            </if>
+            <if test="entity.lotType != null">
+                lotType=#{entity.lotType},
+            </if>
+            <if test="entity.logo != null">
+                logo=#{entity.logo},
+            </if>
+            <if test="entity.openStartTime != null">
+                openStartTime=#{entity.openStartTime},
+            </if>
+            <if test="entity.openEndTime != null">
+                openEndTime=#{entity.openEndTime},
+            </if>
+            <if test="entity.chargeMode != null">
+                chargeMode=#{entity.chargeMode},
+            </if>
+            <if test="entity.payMode != null">
+                payMode=#{entity.payMode},
+            </if>
+            <if test="entity.payType != null">
+                payType=#{entity.payType},
+            </if>
+            <if test="entity.latitude != null">
+                latitude=#{entity.latitude},
+            </if>
+            <if test="entity.longitude != null">
+                longitude=#{entity.longitude},
+            </if>
+            <if test="entity.provinceCode != null">
+                provinceCode=#{entity.provinceCode},
+            </if>
+            <if test="entity.cityCode != null">
+                cityCode=#{entity.cityCode},
+            </if>
+            <if test="entity.countyCode != null">
+                countyCode=#{entity.countyCode},
+            </if>
+            <if test="entity.address != null">
+                address=#{entity.address},
+            </if>
+            <if test="entity.lotTotal != null">
+                lotTotal=#{entity.lotTotal},
+            </if>
+            <if test="entity.lotFixed != null">
+                lotFixed=#{entity.lotFixed},
+            </if>
+            <if test="entity.description != null">
+                description=#{entity.description},
+            </if>
+            <if test="entity.auditStatus != null">
+                auditStatus=#{entity.auditStatus},
+            </if>
+            <if test="entity.auditUserId != null">
+                auditUserId=#{entity.auditUserId},
+            </if>
+            <if test="entity.auditUserName != null">
+                auditUserName=#{entity.auditUserName},
+            </if>
+            <if test="entity.auditTime != null">
+                auditTime=#{entity.auditTime},
+            </if>
+            <if test="entity.runStatus != null">
+                runStatus=#{entity.runStatus},
+            </if>
+            <if test="entity.lastModifierUserId != null">
+                lastModifierUserId=#{entity.lastModifierUserId},
+            </if>
+            <if test="entity.lastModificationTime != null">
+                lastModificationTime=#{entity.lastModificationTime}
+            </if>
+        </trim>
+        <where>
+            deleted = '0' ${ew.sqlSegment}
+        </where>
+    </update>
+
+    <update id="updateParkingAuditStatus">
+        update pms_parking_info
+        set auditStatus=null
+        <where>
+            id=#{parkingId} AND deleted = '0'
+        </where>
+    </update>
+
+</mapper>

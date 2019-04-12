@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://code.alibabatech.com/schema/dubbo
+        http://code.alibabatech.com/schema/dubbo/dubbo.xsd
+        ">
+    <!--alipay-->
+    <dubbo:reference id="aliPayService"
+                     interface="com.zoeeasy.cloud.pay.alipay.service.AliPayService"
+                     check="false" timeout="60000" retries="0" registry="fundamentalRegistry" version="${dubbo.service.version}"/>
+
+    <!--trade-->
+    <dubbo:reference id="alipayMessageLogService"
+                     interface="com.zoeeasy.cloud.pay.trade.AlipayMessageLogService"
+                     check="false" timeout="60000" retries="0" registry="fundamentalRegistry" version="${dubbo.service.version}"/>
+    <dubbo:reference id="payService"
+                     interface="com.zoeeasy.cloud.pay.trade.PayService"
+                     check="false" timeout="60000" retries="0" registry="fundamentalRegistry" version="${dubbo.service.version}"/>
+    <dubbo:reference id="tradePaymentManagerService"
+                     interface="com.zoeeasy.cloud.pay.trade.TradePaymentManagerService"
+                     check="false" timeout="60000" retries="0" registry="fundamentalRegistry" version="${dubbo.service.version}"/>
+    <dubbo:reference id="tradePaymentQueryService"
+                     interface="com.zoeeasy.cloud.pay.trade.TradePaymentQueryService"
+                     check="false" timeout="60000" retries="0" registry="fundamentalRegistry" version="${dubbo.service.version}"/>
+    <dubbo:reference id="weChatMessageLogService"
+                     interface="com.zoeeasy.cloud.pay.trade.WeChatMessageLogService"
+                     check="false" timeout="60000" retries="0" registry="fundamentalRegistry" version="${dubbo.service.version}"/>
+    <dubbo:reference id="parameterConfigService"
+                     interface="com.zoeeasy.cloud.pay.parameter.ParameterConfigService"
+                     check="false" timeout="60000" retries="0" registry="fundamentalRegistry"
+                     version="${dubbo.service.version}"/>
+
+    <!--wechat-->
+    <dubbo:reference id="weChatPayService"
+                     interface="com.zoeeasy.cloud.pay.wechat.service.WeChatPayService"
+                     check="false" timeout="60000" retries="0" registry="fundamentalRegistry" version="${dubbo.service.version}"/>
+</beans>

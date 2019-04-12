@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zoeeasy.cloud.pms.mapper.AreaMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.zoeeasy.cloud.pms.domain.AreaEntity">
+        <id column="id" property="id"/>
+        <result column="tenantId" property="tenantId"/>
+        <result column="code" property="code"/>
+        <result column="localCode" property="localCode"/>
+        <result column="name" property="name"/>
+        <result column="pathCode" property="pathCode"/>
+        <result column="parentId" property="parentId"/>
+        <result column="level" property="level"/>
+        <result column="order" property="order"/>
+        <result column="creatorUserId" property="creatorUserId"/>
+        <result column="creationTime" property="creationTime"/>
+        <result column="lastModifierUserId" property="lastModifierUserId"/>
+        <result column="lastModificationTime" property="lastModificationTime"/>
+        <result column="deleterUserId" property="deleterUserId"/>
+        <result column="deletionTime" property="deletionTime"/>
+        <result column="deleted" property="deleted"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, tenantId, code, localCode, name, pathCode, parentId, level, `order`,
+        creatorUserId, creationTime, lastModifierUserId, lastModificationTime, deleterUserId, deletionTime, deleted
+    </sql>
+
+    <select id="findAreaByCodeNonTenant" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from pms_area
+        <where>
+            code=#{code} and deleted=0
+            and tenantId is NULL
+        </where>
+    </select>
+
+    <select id="findAreaByIdNonTenant" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from pms_area
+        <where>
+            id=#{id} and deleted=0
+        </where>
+    </select>
+
+    <select id="findArea" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from pms_area
+        <where>
+            deleted = '0' ${ew.sqlSegment}
+        </where>
+    </select>
+
+</mapper>

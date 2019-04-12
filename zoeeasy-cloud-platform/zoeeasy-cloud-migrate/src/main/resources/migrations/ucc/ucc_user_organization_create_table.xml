@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet id="ucc_user_organization_create_table" author="walkman">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="ucc_user_organization"/>
+            </not>
+        </preConditions>
+        <createTable tableName="ucc_user_organization" remarks="用户组织表">
+            <column autoIncrement="true" name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_user_organization"/>
+            </column>
+            <column name="tenantId" type="bigint" remarks="租户ID"/>
+            <column name="userId" type="bigint" remarks="角色ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="organizationId" type="bigint" remarks="组织ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creatorUserId" type="bigint" remarks="创建者"/>
+            <column name="creationTime" type="DATETIME" remarks="创建时间"/>
+        </createTable>
+        <createIndex tableName="ucc_user_organization" indexName="idx_tenantId">
+            <column name="tenantId"/>
+        </createIndex>
+        <createIndex tableName="ucc_user_organization" indexName="idx_userId">
+            <column name="userId"/>
+        </createIndex>
+        <createIndex tableName="ucc_user_organization" indexName="idx_organizationId">
+            <column name="organizationId"/>
+        </createIndex>
+    </changeSet>
+</databaseChangeLog>

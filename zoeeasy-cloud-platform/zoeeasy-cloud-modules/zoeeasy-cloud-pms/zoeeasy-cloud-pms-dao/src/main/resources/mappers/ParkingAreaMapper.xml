@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zoeeasy.cloud.pms.mapper.ParkingAreaMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.zoeeasy.cloud.pms.domain.ParkingAreaEntity">
+        <id column="id" property="id"/>
+        <result column="tenantId" property="tenantId"/>
+        <result column="parkingId" property="parkingId"/>
+        <result column="garageId" property="garageId"/>
+        <result column="floorId" property="floorId"/>
+        <result column="code" property="code"/>
+        <result column="localCode" property="localCode"/>
+        <result column="name" property="name"/>
+        <result column="lotTotal" property="lotTotal"/>
+        <result column="lotFixed" property="lotFixed"/>
+        <result column="lotAvailable" property="lotAvailable"/>
+        <result column="remark" property="remark"/>
+        <result column="creatorUserId" property="creatorUserId"/>
+        <result column="creationTime" property="creationTime"/>
+        <result column="lastModifierUserId" property="lastModifierUserId"/>
+        <result column="lastModificationTime" property="lastModificationTime"/>
+        <result column="deleterUserId" property="deleterUserId"/>
+        <result column="deletionTime" property="deletionTime"/>
+        <result column="deleted" property="deleted"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, tenantId, parkingId, garageId, floorId, code, localCode, name, lotTotal, lotFixed, lotAvailable, remark,
+        creatorUserId, creationTime, lastModifierUserId, lastModificationTime, deleterUserId, deletionTime, deleted
+    </sql>
+
+    <select id="selectLotTotalByParkingId" resultType="java.lang.Integer">
+        select sum(lotTotal)
+        from pms_parking_area
+        where parkingId = #{parkingId}
+          and deleted = 0
+    </select>
+
+    <select id="selectLotFixedTotalByParkingId" resultType="java.lang.Integer">
+        select sum(lotFixed)
+        from pms_parking_area
+        where parkingId = #{parkingId}
+          and deleted = 0
+    </select>
+
+    <update id="deleteParkingAreaNonTenant">
+        update pms_parking_area
+        set deleted=1
+        <where>
+            parkingId=#{parkingId}
+        </where>
+    </update>
+
+    <select id="selectParkingAreaNonTenant" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from pms_parking_area
+        <where>
+            deleted = '0' ${ew.sqlSegment}
+        </where>
+    </select>
+
+    <select id="selectLotTotalByParkingIdNonTenant" resultType="java.lang.Integer">
+        select sum(lotTotal)
+        from pms_parking_area
+        where parkingId = #{parkingId}
+          and deleted = 0
+    </select>
+
+    <select id="selectLotFixedTotalByParkingIdNonTenant" resultType="java.lang.Integer">
+        select sum(lotFixed)
+        from pms_parking_area
+        where parkingId = #{parkingId}
+          and deleted = 0
+    </select>
+
+    <update id="updateParkingAreaNonTenant" parameterType="com.zoeeasy.cloud.pms.domain.ParkingAreaEntity">
+        UPDATE pms_parking_area
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="tenantId != null">
+                tenantId = #{tenantId},
+            </if>
+            <if test="parkingId != null">
+                parkingId = #{parkingId},
+            </if>
+            <if test="garageId != null">
+                garageId = #{garageId},
+            </if>
+            <if test="code != null">
+                code = #{code},
+            </if>
+            <if test="localCode != null">
+                localCode = #{localCode},
+            </if>
+            <if test="name != null">
+                name = #{name},
+            </if>
+            <if test="lotTotal != null">
+                lotTotal = #{lotTotal},
+            </if>
+            <if test="lotFixed != null">
+                lotFixed = #{lotFixed},
+            </if>
+            <if test="lotAvailable != null">
+                lotAvailable = #{lotAvailable},
+            </if>
+            <if test="remark != null">
+                remark = #{remark},
+            </if>
+            <if test="lastModifierUserId != null">
+                lastModifierUserId = #{lastModifierUserId},
+            </if>
+            <if test="lastModificationTime != null">
+                lastModificationTime = #{lastModificationTime}
+            </if>
+        </trim>
+        <where>
+            id=#{id}
+        </where>
+    </update>
+
+    <select id="getParkingAreaInfo" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from pms_parking_area
+        where id = #{id}
+        and deleted = 0
+    </select>
+
+</mapper>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zoeeasy.cloud.inspect.mapper.ParkCollectorMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.zoeeasy.cloud.inspect.domain.ParkCollectorEntity">
+        <id column="id" property="id"/>
+        <result property="tenantId" column="tenantId"/>
+        <result property="parkingId" column="parkingId"/>
+        <result property="userId" column="userId"/>
+        <result column="creatorUserId" property="creatorUserId"/>
+        <result column="creationTime" property="creationTime"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,
+        tenantId,
+        parkingId,
+        userId,
+        creatorUserId, creationTime
+    </sql>
+    <select id="findByParking" resultType="com.zoeeasy.cloud.inspect.domain.ParkCollectorEntity">
+        select
+        <include refid="Base_Column_List"/>
+        from spe_park_collector
+        <where>
+            parkingId = #{parkingId} and tenantId = #{tenantId}
+        </where>
+    </select>
+
+</mapper>

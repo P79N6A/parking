@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet id="inv_invoice_apply_detail_create_table" author="walkman">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="inv_invoice_apply_detail"/>
+            </not>
+        </preConditions>
+        <createTable tableName="inv_invoice_apply_detail" remarks="发票申请详情表">
+            <column autoIncrement="true" name="id" type="bigint" remarks="主键">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_invoice_apply"/>
+            </column>
+            <column name="tenantId" type="bigint(20)" remarks="租户ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="applyNo" type="VARCHAR(64)" remarks="申请订单号">
+                <constraints nullable="false"/>
+            </column>
+            <column name="orderNo" type="VARCHAR(64)" remarks="停车停车订单号">
+                <constraints nullable="false"/>
+            </column>
+            <column name="parkingId" type="bigint(20)" remarks="平台停车场ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="plateNumber" type="VARCHAR(20)" defaultValue="" remarks="车牌号"/>
+            <column name="plateColor" type="tinyint(4)" defaultValue="0" remarks="车牌颜色"/>
+            <column name="carStyle" type="tinyint(4)" defaultValue="0" remarks="车辆类型"/>
+            <column name="startTime" type="DATETIME" remarks="停车开始时间"/>
+            <column name="endTime" type="DATETIME" defaultValue="2049-12-31 23:59:59" remarks="停车结束时间"/>
+            <column name="parkingLength" type="bigint(20)" defaultValue="0" remarks="停车时长(秒)"/>
+            <column name="invoiceAmount" type="int(11) unsigned" defaultValue="0" remarks="开票金额(分)"/>
+            <column name="creatorUserId" type="bigint" remarks="创建者"/>
+            <column name="creationTime" type="DATETIME" remarks="创建时间"/>
+            <column name="lastModifierUserId" type="bigint" remarks="更新者"/>
+            <column name="lastModificationTime" type="DATETIME" remarks="更新时间"/>
+            <column name="deleterUserId" type="bigint" remarks="删除者"/>
+            <column name="deletionTime" type="DATETIME" remarks="删除时间"/>
+            <column name="deleted" type="tinyint(1)" remarks="删除标记" defaultValue="0"/>
+        </createTable>
+        <createIndex tableName="inv_invoice_apply_detail" indexName="idx_applyNo">
+            <column name="applyNo"/>
+        </createIndex>
+        <createIndex tableName="inv_invoice_apply_detail" indexName="idx_tenant_orderNo">
+            <column name="orderNo"/>
+            <column name="tenantId"/>
+        </createIndex>
+    </changeSet>
+</databaseChangeLog>

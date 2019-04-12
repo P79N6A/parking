@@ -1,0 +1,18 @@
+1、请求参数继承自加签请求参数
+     SignedRequestDto
+     SignedSessionEntityDto
+     SignedSessionRequestDto
+     SignedPagedRequestDto
+     SignedSessionPagedRequestDto
+
+2、RestConsroller注解
+     @ApiVersion(1)
+     @ApiSigned
+ 
+3、RequestBody
+
+4、数据库设计tinyint(4),tinyint(1)
+
+5、
+   <column name="lastModifierUserId" type="bigint" remarks="更新者"/>
+   <column name="lastModificationTime" type="DATETIME" remarks="更新时间"/>

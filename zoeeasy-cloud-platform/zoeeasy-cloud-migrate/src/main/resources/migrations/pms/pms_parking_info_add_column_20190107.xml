@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet id="pms_parking_info_add_column_20190107" author="ShenLiang">
+        <preConditions onFail="MARK_RAN">
+            <tableExists tableName="pms_parking_info"/>
+        </preConditions>
+        <addColumn tableName="pms_parking_info">
+            <column name="provinceCode" type="varchar(64)" afterColumn="longitude" remarks="省编码" defaultValue=""/>
+            <column name="cityCode" type="varchar(64)" afterColumn="provinceCode" remarks="市编码" defaultValue=""/>
+            <column name="countyCode" type="varchar(64)" afterColumn="cityCode" remarks="区县编码" defaultValue=""/>
+            <column name="address" type="varchar(2000)" afterColumn="countyCode" remarks="地址" defaultValue=""/>
+        </addColumn>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet author="walkman" id="not_notification_template_create_table">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="not_notification_template"/>
+            </not>
+        </preConditions>
+        <createTable tableName="not_notification_template" remarks="通知消息模板">
+            <column autoIncrement="true" name="id" type="bigint" remarks="ID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_not_notification_template"/>
+            </column>
+            <column name="tenantId" type="bigint(20)" remarks="租户ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="templateId" type="VARCHAR(64)" remarks="模板编号">
+                <constraints nullable="false"/>
+            </column>
+            <column name="templateName" type="VARCHAR(255)" remarks="模板名称"/>
+            <column name="type" type="tinyint(4)" remarks="模板类型"/>
+            <column name="content" type="VARCHAR(2000)" remarks="模板内容"/>
+            <column name="status" type="tinyint(4)" remarks="状态"/>
+            <column name="description" type="VARCHAR(255)" remarks="说明"/>
+            <column name="creatorUserId" type="bigint" remarks="创建者"/>
+            <column name="creationTime" type="DATETIME" remarks="创建时间"/>
+            <column name="lastModifierUserId" type="bigint" remarks="更新者"/>
+            <column name="lastModificationTime" type="DATETIME" remarks="更新时间"/>
+            <column name="deleterUserId" type="bigint" remarks="删除者"/>
+            <column name="deletionTime" type="DATETIME" remarks="删除时间"/>
+            <column name="deleted" type="tinyint(1)" remarks="删除标记" defaultValue="0"/>
+        </createTable>
+        <rollback>drop table not_notification_template</rollback>
+    </changeSet>
+</databaseChangeLog>

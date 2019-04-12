@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet author="walkman" id="sys_param_item_data">
+        <comment>系统默认参数数据配置初始化数据</comment>
+
+        <insert tableName="sys_param_item">
+            <column name="id" value="1"/>
+            <column name="paramCode" value="invoice.saleInfo"/>
+            <column name="paramKey" value="identity"/>
+            <column name="paramLabel" value="诺诺网认证身份"/>
+            <column name="paramValue" value=""/>
+            <column name="sort" value="0"/>
+            <column name="status" value="1"/>
+            <column name="required" value="1"/>
+            <column name="remark" value="诺诺网认证身份"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="sys_param_item">
+            <column name="id" value="2"/>
+            <column name="paramCode" value="invoice.saleInfo"/>
+            <column name="paramKey" value="saleName"/>
+            <column name="paramLabel" value="销方单位名称"/>
+            <column name="paramValue" value=""/>
+            <column name="sort" value="1"/>
+            <column name="status" value="1"/>
+            <column name="required" value="1"/>
+            <column name="remark" value="销方单位名称"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="sys_param_item">
+            <column name="id" value="3"/>
+            <column name="paramCode" value="invoice.saleInfo"/>
+            <column name="paramKey" value="saleTaxNum"/>
+            <column name="paramLabel" value="税号"/>
+            <column name="paramValue" value=""/>
+            <column name="sort" value="2"/>
+            <column name="status" value="1"/>
+            <column name="required" value="1"/>
+            <column name="remark" value="税号"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="sys_param_item">
+            <column name="id" value="4"/>
+            <column name="paramCode" value="invoice.saleInfo"/>
+            <column name="paramKey" value="saleAccount"/>
+            <column name="paramLabel" value="开户行及账号"/>
+            <column name="paramValue" value=""/>
+            <column name="sort" value="3"/>
+            <column name="status" value="1"/>
+            <column name="required" value="0"/>
+            <column name="remark" value="开户行及账号"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="sys_param_item">
+            <column name="id" value="5"/>
+            <column name="paramCode" value="invoice.saleInfo"/>
+            <column name="paramKey" value="salePhone"/>
+            <column name="paramLabel" value="联系电话"/>
+            <column name="paramValue" value=""/>
+            <column name="sort" value="4"/>
+            <column name="status" value="1"/>
+            <column name="required" value="1"/>
+            <column name="remark" value="联系电话"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="sys_param_item">
+            <column name="id" value="6"/>
+            <column name="paramCode" value="invoice.saleInfo"/>
+            <column name="paramKey" value="saleAddress"/>
+            <column name="paramLabel" value="联系地址"/>
+            <column name="paramValue" value=""/>
+            <column name="sort" value="5"/>
+            <column name="status" value="1"/>
+            <column name="required" value="1"/>
+            <column name="remark" value="联系地址"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="sys_param_item">
+            <column name="id" value="7"/>
+            <column name="paramCode" value="invoice.saleInfo"/>
+            <column name="paramKey" value="serviceName"/>
+            <column name="paramLabel" value="服务名称"/>
+            <column name="paramValue" value=""/>
+            <column name="sort" value="6"/>
+            <column name="status" value="1"/>
+            <column name="required" value="1"/>
+            <column name="remark" value="服务名称"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="sys_param_item">
+            <column name="id" value="8"/>
+            <column name="paramCode" value="invoice.saleInfo"/>
+            <column name="paramKey" value="taxRate"/>
+            <column name="paramLabel" value="税率"/>
+            <column name="paramValue" value=""/>
+            <column name="sort" value="7"/>
+            <column name="status" value="1"/>
+            <column name="required" value="1"/>
+            <column name="remark" value="税率"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="sys_param_item">
+            <column name="id" value="9"/>
+            <column name="paramCode" value="invoice.saleInfo"/>
+            <column name="paramKey" value="payee"/>
+            <column name="paramLabel" value="收款人"/>
+            <column name="paramValue" value=""/>
+            <column name="sort" value="8"/>
+            <column name="status" value="1"/>
+            <column name="required" value="0"/>
+            <column name="remark" value="收款人"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="sys_param_item">
+            <column name="id" value="10"/>
+            <column name="paramCode" value="invoice.saleInfo"/>
+            <column name="paramKey" value="checker"/>
+            <column name="paramLabel" value="复核人"/>
+            <column name="paramValue" value=""/>
+            <column name="sort" value="9"/>
+            <column name="status" value="1"/>
+            <column name="required" value="0"/>
+            <column name="remark" value="复核人"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="sys_param_item">
+            <column name="id" value="11"/>
+            <column name="paramCode" value="invoice.saleInfo"/>
+            <column name="paramKey" value="clerkId"/>
+            <column name="paramLabel" value="开票人"/>
+            <column name="paramValue" value=""/>
+            <column name="sort" value="10"/>
+            <column name="status" value="1"/>
+            <column name="required" value="0"/>
+            <column name="remark" value="开票员 id（诺诺系统中的 id）"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="sys_param_item">
+            <column name="id" value="12"/>
+            <column name="paramCode" value="invoice.postage"/>
+            <column name="paramKey" value="exemptionPostage"/>
+            <column name="paramLabel" value="免邮金额"/>
+            <column name="paramValue" value=""/>
+            <column name="sort" value="0"/>
+            <column name="status" value="1"/>
+            <column name="required" value="1"/>
+            <column name="remark" value="免邮金额"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="sys_param_item">
+            <column name="id" value="13"/>
+            <column name="paramCode" value="invoice.postage"/>
+            <column name="paramKey" value="postageAmount"/>
+            <column name="paramLabel" value="金额不足邮费"/>
+            <column name="paramValue" value=""/>
+            <column name="sort" value="1"/>
+            <column name="status" value="1"/>
+            <column name="required" value="1"/>
+            <column name="remark" value="金额不足邮费"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="sys_param_item">
+            <column name="id" value="14"/>
+            <column name="paramCode" value="pay.alipay"/>
+            <column name="paramKey" value="appId"/>
+            <column name="paramLabel" value="APPID"/>
+            <column name="paramValue" value=""/>
+            <column name="sort" value="1"/>
+            <column name="status" value="1"/>
+            <column name="required" value="1"/>
+            <column name="remark" value="APPID"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="sys_param_item">
+            <column name="id" value="15"/>
+            <column name="paramCode" value="pay.alipay"/>
+            <column name="paramKey" value="appPrivateKey"/>
+            <column name="paramLabel" value="商户私钥"/>
+            <column name="paramValue" value=""/>
+            <column name="sort" value="1"/>
+            <column name="status" value="1"/>
+            <column name="required" value="1"/>
+            <column name="remark" value="商户私钥"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="sys_param_item">
+            <column name="id" value="16"/>
+            <column name="paramCode" value="pay.alipay"/>
+            <column name="paramKey" value="alipayPublicKey"/>
+            <column name="paramLabel" value="支付宝公钥"/>
+            <column name="paramValue" value=""/>
+            <column name="sort" value="1"/>
+            <column name="status" value="1"/>
+            <column name="required" value="1"/>
+            <column name="remark" value="支付宝公钥"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="sys_param_item">
+            <column name="id" value="17"/>
+            <column name="paramCode" value="pay.wechat"/>
+            <column name="paramKey" value="wechatPayMchId"/>
+            <column name="paramLabel" value="商户号"/>
+            <column name="paramValue" value=""/>
+            <column name="sort" value="1"/>
+            <column name="status" value="1"/>
+            <column name="required" value="1"/>
+            <column name="remark" value="商户号"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="sys_param_item">
+            <column name="id" value="18"/>
+            <column name="paramCode" value="pay.wechat"/>
+            <column name="paramKey" value="wechatPayAppId"/>
+            <column name="paramLabel" value="应用ID"/>
+            <column name="paramValue" value=""/>
+            <column name="sort" value="1"/>
+            <column name="status" value="1"/>
+            <column name="required" value="1"/>
+            <column name="remark" value="应用ID"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="sys_param_item">
+            <column name="id" value="19"/>
+            <column name="paramCode" value="pay.wechat"/>
+            <column name="paramKey" value="wechatPaySignKey"/>
+            <column name="paramLabel" value="微信签名的key"/>
+            <column name="paramValue" value=""/>
+            <column name="sort" value="1"/>
+            <column name="status" value="1"/>
+            <column name="required" value="1"/>
+            <column name="remark" value="微信签名的key"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="sys_param_item">
+            <column name="id" value="20"/>
+            <column name="paramCode" value="pay.wechat"/>
+            <column name="paramKey" value="wechatJsapiAppId"/>
+            <column name="paramLabel" value="公众账号appId"/>
+            <column name="paramValue" value=""/>
+            <column name="sort" value="1"/>
+            <column name="status" value="1"/>
+            <column name="required" value="1"/>
+            <column name="remark" value="公众账号appId"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="sys_param_item">
+            <column name="id" value="21"/>
+            <column name="paramCode" value="pay.wechat"/>
+            <column name="paramKey" value="wechatJsapiMchId"/>
+            <column name="paramLabel" value="公众号商户号"/>
+            <column name="paramValue" value=""/>
+            <column name="sort" value="1"/>
+            <column name="status" value="1"/>
+            <column name="required" value="1"/>
+            <column name="remark" value="公众号商户号"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="sys_param_item">
+            <column name="id" value="22"/>
+            <column name="paramCode" value="pay.wechat"/>
+            <column name="paramKey" value="wechatJsapiSignKey"/>
+            <column name="paramLabel" value="微信公众号签名的key"/>
+            <column name="paramValue" value=""/>
+            <column name="sort" value="1"/>
+            <column name="status" value="1"/>
+            <column name="required" value="1"/>
+            <column name="remark" value="微信公众号签名的key"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="sys_param_item">
+            <column name="id" value="23"/>
+            <column name="paramCode" value="pay.wechat"/>
+            <column name="paramKey" value="wechatPayAppSecret"/>
+            <column name="paramLabel" value="微信应用程序APPSECRET"/>
+            <column name="paramValue" value=""/>
+            <column name="sort" value="1"/>
+            <column name="status" value="1"/>
+            <column name="required" value="1"/>
+            <column name="remark" value="微信应用程序APPSECRET"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

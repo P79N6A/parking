@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.zoeeasy</groupId>
+    <artifactId>zoeeasy-cloud-platform</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <name>Zoeeasy Cloud Platform :: Zoeeasy Cloud Platform Parent</name>
+    <description>任意停车云平台</description>
+    <modules>
+        <module>zoeeasy-cloud-modules</module>
+        <module>zoeeasy-cloud-migrate</module>
+        <module>zoeeasy-cloud-web</module>
+    </modules>
+    <distributionManagement>
+        <repository>
+            <id>nexus-releases</id>
+            <name>Nexus Releases Repository</name>
+            <url>http://192.168.0.248:8051/repository/maven-releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>nexus-snapshots</id>
+            <name>Nexus Snapshots Repository</name>
+            <url>http://192.168.0.248:8051/repository/maven-snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+        <spring.versioen>4.3.6.RELEASE</spring.versioen>
+        <maven_compiler_plugin.version>3.6.2</maven_compiler_plugin.version>
+        <maven_jar_plugin_version>2.3.2</maven_jar_plugin_version>
+        <maven_install_plugin_version>2.5.2</maven_install_plugin_version>
+        <maven_deploy_plugin_version>2.7</maven_deploy_plugin_version>
+        <maven-surefire-plugin_version>2.20</maven-surefire-plugin_version>
+        <maven-source-plugin.version>3.0.1</maven-source-plugin.version>
+        <maven-resources-plugin.version>3.0.2</maven-resources-plugin.version>
+        <sonar-maven-plugin.version>3.5.0.1254</sonar-maven-plugin.version>
+        <sonar.host.url>http://192.168.0.242:9000</sonar.host.url>
+    </properties>
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-jar-plugin</artifactId>
+                    <version>${maven_jar_plugin_version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-install-plugin</artifactId>
+                    <version>${maven_install_plugin_version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-deploy-plugin</artifactId>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>${maven_compiler_plugin.version}</version>
+                    <configuration>
+                        <source>${java.version}</source>
+                        <target>${java.version}</target>
+                        <encoding>utf-8</encoding>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.sonarsource.scanner.maven</groupId>
+                    <artifactId>sonar-maven-plugin</artifactId>
+                    <version>${sonar-maven-plugin.version}</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+        <plugins>
+            <plugin>
+                <groupId>org.sonarsource.scanner.maven</groupId>
+                <artifactId>sonar-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+</project>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet id="pds_magnetic_error_report_update_column_20181218" author="lhj">
+        <renameColumn columnDataType="tinyint(4)" newColumnName="processReason" oldColumnName="processReason"
+                      remarks="误报原因，0-地磁误报进车（进车时），1-地磁误报出车（出车时），2-连续上报" tableName="pds_magnetic_error_report"/>
+    </changeSet>
+</databaseChangeLog>

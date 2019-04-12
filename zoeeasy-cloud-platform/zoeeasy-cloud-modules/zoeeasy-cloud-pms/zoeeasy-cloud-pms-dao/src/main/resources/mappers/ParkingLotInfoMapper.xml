@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zoeeasy.cloud.pms.mapper.ParkingLotInfoMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.zoeeasy.cloud.pms.domain.ParkingLotInfoEntity">
+        <id column="id" property="id"/>
+        <result column="tenantId" property="tenantId"/>
+        <result column="parkingId" property="parkingId"/>
+        <result column="garageId" property="garageId"/>
+        <result column="parkingAreaId" property="parkingAreaId"/>
+        <result column="floorId" property="floorId"/>
+        <result column="hikParkingLotId" property="hikParkingLotId"/>
+        <result column="hikBerthNumber" property="hikBerthNumber"/>
+        <result column="aliParkingLotId" property="aliParkingLotId"/>
+        <result column="code" property="code"/>
+        <result column="localCode" property="localCode"/>
+        <result column="number" property="number"/>
+        <result column="name" property="name"/>
+        <result column="status" property="status"/>
+        <result column="description" property="description"/>
+        <result column="creatorUserId" property="creatorUserId"/>
+        <result column="creationTime" property="creationTime"/>
+        <result column="lastModifierUserId" property="lastModifierUserId"/>
+        <result column="lastModificationTime" property="lastModificationTime"/>
+        <result column="deleterUserId" property="deleterUserId"/>
+        <result column="deletionTime" property="deletionTime"/>
+        <result column="deleted" property="deleted"/>
+        <result column="version" property="version"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,
+        tenantId,
+        parkingId,
+        garageId,
+        parkingAreaId,
+        floorId,
+        hikParkingLotId,
+        hikBerthNumber,
+        aliParkingLotId,
+        code,
+        localCode,
+        number,
+        name,
+        status,
+        description,
+        creatorUserId,
+        creationTime,
+        lastModifierUserId,
+        lastModificationTime,
+        deleterUserId,
+        deletionTime,
+        deleted
+    </sql>
+    <select id="findForPassVehicle" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from pms_parking_lot_info
+        <where>
+            deleted = '0' ${ew.sqlSegment}
+        </where>
+    </select>
+    <select id="findByParkingId" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from pms_parking_lot_info
+        <where>
+            deleted = '0' ${ew.sqlSegment}
+        </where>
+    </select>
+
+    <select id="findByCode" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from pms_parking_lot_info
+        <where>
+            deleted= '0' and code=#{code}
+        </where>
+    </select>
+
+    <select id="findByParkingIdAndLotNumber" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from pms_parking_lot_info
+        <where>
+            parkingId = #{parkingId}
+            <if test="number != null">
+                and number = #{number}
+            </if>
+        </where>
+    </select>
+
+    <select id="findCodeByParkingId" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from pms_parking_lot_info
+        <where>
+            parkingId = #{parkingId} and deleted= '0'
+        </where>
+    </select>
+
+    <update id="deleteParkingLotInfoNonTenant">
+        update pms_parking_lot_info
+        set deleted=1
+        <where>
+            parkingId=#{parkingId}
+        </where>
+    </update>
+
+    <update id="updateParkingLotInfoNonTenant" parameterType="com.zoeeasy.cloud.pms.domain.ParkingLotInfoEntity">
+        UPDATE pms_parking_lot_info
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="tenantId != null">
+                tenantId = #{tenantId},
+            </if>
+            <if test="parkingId != null">
+                parkingId = #{parkingId},
+            </if>
+            <if test="garageId != null">
+                garageId = #{garageId},
+            </if>
+            <if test="parkingAreaId != null">
+                parkingAreaId = #{parkingAreaId},
+            </if>
+            <if test="hikParkingLotId != null">
+                hikParkingLotId = #{hikParkingLotId},
+            </if>
+            <if test="hikBerthNumber != null">
+                hikBerthNumber = #{hikBerthNumber},
+            </if>
+            <if test="aliParkingLotId != null">
+                aliParkingLotId = #{aliParkingLotId},
+            </if>
+            <if test="code != null">
+                code = #{code},
+            </if>
+            <if test="localCode != null">
+                localCode = #{localCode},
+            </if>
+            <if test="number != null">
+                number = #{number},
+            </if>
+            <if test="name != null">
+                name = #{name},
+            </if>
+            <if test="status != null">
+                status = #{status},
+            </if>
+            <if test="description != null">
+                description = #{description},
+            </if>
+            <if test="lastModifierUserId != null">
+                lastModifierUserId = #{lastModifierUserId},
+            </if>
+            <if test="lastModificationTime != null">
+                lastModificationTime = #{lastModificationTime}
+            </if>
+        </trim>
+        <where>
+            id=#{id}
+        </where>
+    </update>
+</mapper>

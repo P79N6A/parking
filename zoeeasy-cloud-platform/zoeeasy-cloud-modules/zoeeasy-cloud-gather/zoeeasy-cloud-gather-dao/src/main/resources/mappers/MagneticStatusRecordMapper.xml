@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zoeeasy.cloud.gather.mapper.MagneticStatusRecordMapper">
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.zoeeasy.cloud.gather.domain.MagneticStatusRecordEntity">
+        <id column="id" property="id"/>
+        <result column="tenantId" property="tenantId"/>
+        <result column="parkingId" property="parkingId"/>
+        <result column="parkingLotId" property="parkingLotId"/>
+        <result column="detectorId" property="detectorId"/>
+        <result column="provider" property="provider"/>
+        <result column="serialNumber" property="serialNumber"/>
+        <result column="changeTime" property="changeTime"/>
+        <result column="changeType" property="changeType"/>
+        <result column="rssi" property="rssi"/>
+        <result column="passTime" property="passTime"/>
+        <result column="sequence" property="sequence"/>
+        <result column="battery" property="battery"/>
+        <result column="occupyStatus" property="occupyStatus"/>
+        <result column="creatorUserId" property="creatorUserId"/>
+        <result column="creationTime" property="creationTime"/>
+    </resultMap>
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,
+        tenantId,
+        parkingId,
+        parkingLotId,
+        detectorId,
+        provider,
+        serialNumber,
+        changeTime,
+        changeType,
+        rssi,
+        passTime,
+        sequence,
+        battery,
+        occupyStatus,
+        creatorUserId,
+        creationTime
+    </sql>
+    <insert id="addMagneticStatusRecord" parameterType="com.zoeeasy.cloud.gather.domain.MagneticStatusRecordEntity">
+        INSERT INTO gat_magnetic_status_record
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="parkingId != null">
+                parkingId,
+            </if>
+            <if test="tenantId != null">
+                tenantId,
+            </if>
+            <if test="parkingLotId != null">
+                parkingLotId,
+            </if>
+            <if test="detectorId != null">
+                detectorId,
+            </if>
+            <if test="provider != null">
+                provider,
+            </if>
+            <if test="serialNumber != null">
+                serialNumber,
+            </if>
+            <if test="changeTime != null">
+                changeTime,
+            </if>
+            <if test="changeType != null">
+                changeType,
+            </if>
+            <if test="rssi != null">
+                rssi,
+            </if>
+            <if test="passTime != null">
+                passTime,
+            </if>
+            <if test="sequence != null">
+                sequence,
+            </if>
+            <if test="battery != null">
+                battery,
+            </if>
+            <if test="occupyStatus != null">
+                occupyStatus,
+            </if>
+            <if test="creatorUserId != null">
+                creatorUserId,
+            </if>
+            <if test="creationTime != null">
+                creationTime,
+            </if>
+        </trim>
+        <trim prefix="VALUES (" suffix=")" suffixOverrides=",">
+            <if test="parkingId != null">
+                #{parkingId},
+            </if>
+            <if test="tenantId != null">
+                #{tenantId},
+            </if>
+            <if test="parkingLotId != null">
+                #{parkingLotId},
+            </if>
+            <if test="detectorId != null">
+                #{detectorId},
+            </if>
+            <if test="provider != null">
+                #{provider},
+            </if>
+            <if test="serialNumber != null">
+                #{serialNumber},
+            </if>
+            <if test="changeTime != null">
+                #{changeTime},
+            </if>
+            <if test="changeType != null">
+                #{changeType},
+            </if>
+            <if test="rssi != null">
+                #{rssi},
+            </if>
+            <if test="passTime != null">
+                #{passTime},
+            </if>
+            <if test="sequence != null">
+                #{sequence},
+            </if>
+            <if test="battery != null">
+                #{battery},
+            </if>
+            <if test="occupyStatus != null">
+                #{occupyStatus},
+            </if>
+            <if test="creatorUserId != null">
+                #{creatorUserId},
+            </if>
+            <if test="creationTime != null">
+                #{creationTime},
+            </if>
+        </trim>
+    </insert>
+</mapper>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zoeeasy.cloud.pms.mapper.ParkingFloorMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.zoeeasy.cloud.pms.domain.ParkingFloorEntity">
+        <id column="id" property="id"/>
+        <result column="tenantId" property="tenantId"/>
+        <result column="parkingId" property="parkingId"/>
+        <result column="garageId" property="garageId"/>
+        <result column="floorCode" property="floorCode"/>
+        <result column="floorName" property="floorName"/>
+        <result column="lotCount" property="lotCount"/>
+        <result column="lotFixed" property="lotFixed"/>
+        <result column="lotAvailable" property="lotAvailable"/>
+        <result column="remark" property="remark"/>
+        <result column="creatorUserId" property="creatorUserId"/>
+        <result column="creationTime" property="creationTime"/>
+        <result column="lastModifierUserId" property="lastModifierUserId"/>
+        <result column="lastModificationTime" property="lastModificationTime"/>
+        <result column="deleterUserId" property="deleterUserId"/>
+        <result column="deletionTime" property="deletionTime"/>
+        <result column="deleted" property="deleted"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, tenantId, parkingId, garageId, floorCode, floorName, lotCount, lotFixed, lotAvailable,remark,
+        creatorUserId, creationTime, lastModifierUserId, lastModificationTime, deleterUserId, deletionTime, deleted
+    </sql>
+
+    <select id="findLotCountByParkingId" resultType="java.lang.Integer">
+        select sum(lotCount)
+        from pms_parking_floor
+        where parkingId = #{parkingId}
+          and deleted = 0
+    </select>
+
+    <select id="findLotFixedTotalByParkingId" resultType="java.lang.Integer">
+        select sum(lotFixed)
+        from pms_parking_floor
+        where parkingId = #{parkingId}
+          and deleted = 0
+    </select>
+
+    <select id="getparkingFloor" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from pms_parking_floor
+        where id = #{id}
+        and deleted = 0
+    </select>
+
+</mapper>

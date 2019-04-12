@@ -1,0 +1,300 @@
+zoeeasy-cloud-modules
+
+1、系统
+
+zoeeasy-cloud-sys
+
+sourcefile:
+
+zoeeasy-cloud-modules/zoeeasy-cloud-sys/zoeeasy-cloud-sys-server/target/*.jar
+
+removePrefix:
+
+zoeeasy-cloud-modules/zoeeasy-cloud-sys/zoeeasy-cloud-sys-server/target/
+
+/parking/cloud/zoeeasy-cloud-sys-server
+
+#!/bin/bash
+cd  /parking/cloud/zoeeasy-cloud-sys-server
+export JAVA_HOME=/usr/local/jdk1.8.0_144
+echo   ${JAVA_HOME}
+nohup sh ./stop.sh 
+
+
+2、用户
+zoeeasy-cloud-ucc
+
+sourcefile:
+
+zoeeasy-cloud-modules/zoeeasy-cloud-ucc/zoeeasy-cloud-ucc-server/target/*.jar
+
+zoeeasy-cloud-modules/zoeeasy-cloud-ucc/zoeeasy-cloud-ucc-server
+
+removePrefix:
+zoeeasy-cloud-modules/zoeeasy-cloud-ucc/zoeeasy-cloud-ucc-server/target/
+
+remoteDirectory
+/parking/cloud/zoeeasy-cloud-ucc-server
+
+#!/bin/bash
+cd  /parking/cloud/zoeeasy-cloud-ucc-server
+export JAVA_HOME=/usr/local/jdk1.8.0_144
+echo   ${JAVA_HOME}
+nohup sh ./stop.sh 
+
+3、  消息队列  
+zoeeasy-cloud-message 
+
+sourcefile:
+zoeeasy-cloud-modules/zoeeasy-cloud-message/zoeeasy-cloud-message-server/target/*.jar
+
+removePrefix:
+
+zoeeasy-cloud-modules/zoeeasy-cloud-message/zoeeasy-cloud-message-server/target/
+
+/parking/cloud/zoeeasy-cloud-message-server
+
+#!/bin/bash
+cd  /parking/cloud/zoeeasy-cloud-message-server
+export JAVA_HOME=/usr/local/jdk1.8.0_144
+echo   ${JAVA_HOME}
+nohup sh ./stop.sh
+
+4、 停车场  
+zoeeasy-cloud-pms 
+
+sourcefile:
+zoeeasy-cloud-modules/zoeeasy-cloud-pms/zoeeasy-cloud-pms-server/target/*.jar
+
+removePrefix:
+
+zoeeasy-cloud-modules/zoeeasy-cloud-pms/zoeeasy-cloud-pms-server/target/
+
+/parking/cloud/zoeeasy-cloud-pms-server
+
+#!/bin/bash
+cd  /parking/cloud/zoeeasy-cloud-pms-server
+export JAVA_HOME=/usr/local/jdk1.8.0_144
+echo   ${JAVA_HOME}
+nohup sh ./stop.sh 
+
+5、  设备     
+zoeeasy-cloud-pds  
+
+sourcefile:
+zoeeasy-cloud-modules/zoeeasy-cloud-pds/zoeeasy-cloud-pds-server/target/*.jar
+
+removePrefix:
+
+zoeeasy-cloud-modules/zoeeasy-cloud-pds/zoeeasy-cloud-pds-server/target/
+
+/parking/cloud/zoeeasy-cloud-pds-server
+
+#!/bin/bash
+cd  /parking/cloud/zoeeasy-cloud-pds-server
+export JAVA_HOME=/usr/local/jdk1.8.0_144
+echo   ${JAVA_HOME}
+nohup sh ./stop.sh
+
+6、收费
+zoeeasy-cloud-charge 
+
+sourcefile:
+
+zoeeasy-cloud-modules/zoeeasy-cloud-charge/zoeeasy-cloud-charge-server/target/*.jar
+
+removePrefix:
+
+zoeeasy-cloud-modules/zoeeasy-cloud-charge/zoeeasy-cloud-charge-server/target/
+
+/parking/cloud/zoeeasy-cloud-charge-server
+
+#!/bin/bash
+cd  /parking/cloud/zoeeasy-cloud-charge-server
+export JAVA_HOME=/usr/local/jdk1.8.0_144
+echo   ${JAVA_HOME}
+nohup sh ./stop.sh 
+
+
+7、  数据采集
+zoeeasy-cloud-gather 
+
+sourcefile:
+zoeeasy-cloud-modules/zoeeasy-cloud-gather/zoeeasy-cloud-gather-server/target/*.jar
+
+removePrefix:
+
+zoeeasy-cloud-modules/zoeeasy-cloud-gather/zoeeasy-cloud-gather-server/target/
+
+/parking/cloud/zoeeasy-cloud-gather-server
+
+#!/bin/bash
+cd  /parking/cloud/zoeeasy-cloud-gather-server
+export JAVA_HOME=/usr/local/jdk1.8.0_144
+echo   ${JAVA_HOME}
+nohup sh ./stop.sh
+
+8、  巡检
+zoeeasy-cloud-inspect
+
+sourcefile:
+zoeeasy-cloud-modules/zoeeasy-cloud-inspect/zoeeasy-cloud-inspect-server/target/*.jar
+
+removePrefix:
+
+zoeeasy-cloud-modules/zoeeasy-cloud-inspect/zoeeasy-cloud-inspect-server/target/
+
+/parking/cloud/zoeeasy-cloud-inspect-server
+
+#!/bin/bash
+cd  /parking/cloud/zoeeasy-cloud-inspect-server
+export JAVA_HOME=/usr/local/jdk1.8.0_144
+echo   ${JAVA_HOME}
+nohup sh ./stop.sh
+
+9、订单
+zoeeasy-cloud-order  
+
+sourcefile:
+zoeeasy-cloud-modules/zoeeasy-cloud-order/zoeeasy-cloud-order-server/target/*.jar
+
+removePrefix:
+
+zoeeasy-cloud-modules/zoeeasy-cloud-order/zoeeasy-cloud-order-server/target/
+
+/parking/cloud/zoeeasy-cloud-order-server
+
+#!/bin/bash
+cd  /parking/cloud/zoeeasy-cloud-order-server
+export JAVA_HOME=/usr/local/jdk1.8.0_144
+echo   ${JAVA_HOME}
+nohup sh ./stop.sh
+
+
+10、  支付
+zoeeasy-cloud-pay 
+
+sourcefile:
+zoeeasy-cloud-modules/zoeeasy-cloud-pay/zoeeasy-cloud-pay-server/target/*.jar
+
+removePrefix:
+
+zoeeasy-cloud-modules/zoeeasy-cloud-pay/zoeeasy-cloud-pay-server/target/
+
+/parking/cloud/zoeeasy-cloud-pay-server
+
+#!/bin/bash
+cd  /parking/cloud/zoeeasy-cloud-pay-server
+export JAVA_HOME=/usr/local/jdk1.8.0_144
+echo   ${JAVA_HOME}
+nohup sh ./stop.sh 
+
+11、财务
+zoeeasy-cloud-fina  
+
+sourcefile:
+zoeeasy-cloud-modules/zoeeasy-cloud-fina/zoeeasy-cloud-fina-server/target/*.jar
+
+removePrefix:
+
+zoeeasy-cloud-modules/zoeeasy-cloud-fina/zoeeasy-cloud-fina-server/target/
+
+/parking/cloud/zoeeasy-cloud-fina-server
+
+#!/bin/bash
+cd  /parking/cloud/zoeeasy-cloud-fina-server
+export JAVA_HOME=/usr/local/jdk1.8.0_144
+echo   ${JAVA_HOME}
+nohup sh ./stop.sh 
+
+
+12、 通知
+zoeeasy-cloud-notify 
+
+sourcefile:
+zoeeasy-cloud-modules/zoeeasy-cloud-notify/zoeeasy-cloud-notify-server/target/*.jar
+
+removePrefix:
+
+zoeeasy-cloud-modules/zoeeasy-cloud-notify/zoeeasy-cloud-notify-server/target/
+
+/parking/cloud/zoeeasy-cloud-notify-server
+
+#!/bin/bash
+cd  /parking/cloud/zoeeasy-cloud-notify-server
+export JAVA_HOME=/usr/local/jdk1.8.0_144
+echo   ${JAVA_HOME}
+nohup sh ./stop.sh
+
+13、  集成
+zoeeasy-cloud-integration
+
+sourcefile:
+zoeeasy-cloud-modules/zoeeasy-cloud-integration/zoeeasy-cloud-integration-server/target/*.jar
+
+removePrefix:
+
+zoeeasy-cloud-modules/zoeeasy-cloud-integration/zoeeasy-cloud-integration-server/target/
+
+/parking/cloud/zoeeasy-cloud-integration-server
+
+#!/bin/bash
+cd  /parking/cloud/zoeeasy-cloud-integration-server
+export JAVA_HOME=/usr/local/jdk1.8.0_144
+echo   ${JAVA_HOME}
+nohup sh ./stop.sh
+
+
+14、  作业任务
+zoeeasy-cloud-job 
+
+sourcefile:
+zoeeasy-cloud-modules/zoeeasy-cloud-job/zoeeasy-cloud-job-server/target/*.jar
+
+removePrefix:
+
+zoeeasy-cloud-modules/zoeeasy-cloud-job/zoeeasy-cloud-job-server/target/
+
+/parking/cloud/zoeeasy-cloud-job-server
+
+#!/bin/bash
+cd  /parking/cloud/zoeeasy-cloud-job-server
+export JAVA_HOME=/usr/local/jdk1.8.0_144
+echo   ${JAVA_HOME}
+nohup sh ./stop.sh
+
+15、巡检WEB
+zoeeasy-cloud-web-inspect 
+
+sourcefile:
+zoeeasy-cloud-web/zoeeasy-cloud-web-inspect/zoeeasy-cloud-web-inspect/target/*.jar
+
+removePrefix:
+
+zoeeasy-cloud-web/zoeeasy-cloud-web-inspect/zoeeasy-cloud-web-inspect/target/
+
+/parking/cloud/zoeeasy-cloud-web-inspect
+
+#!/bin/bash
+cd  /parking/cloud/zoeeasy-cloud-web-inspect
+export JAVA_HOME=/usr/local/jdk1.8.0_144
+echo   ${JAVA_HOME}
+nohup sh ./stop.sh
+
+16、平台WEB
+zoeeasy-cloud-web-platform
+
+sourcefile:
+zoeeasy-cloud-web/zoeeasy-cloud-web-platform/zoeeasy-cloud-web-platform/target/*.jar
+
+removePrefix:
+
+zoeeasy-cloud-web/zoeeasy-cloud-web-platform/zoeeasy-cloud-web-platform/target/
+
+/parking/cloud/zoeeasy-cloud-web-platform
+
+#!/bin/bash
+cd  /parking/cloud/zoeeasy-cloud-web-platform
+export JAVA_HOME=/usr/local/jdk1.8.0_144
+echo   ${JAVA_HOME}
+nohup sh ./stop.sh

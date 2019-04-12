@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet id="pms_dock_info_create_table" author="walkman">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="pms_dock_info"/>
+            </not>
+        </preConditions>
+        <createTable tableName="pms_dock_info" remarks="场库停车场对接信息">
+            <column autoIncrement="true" name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_dock_info"/>
+            </column>
+            <column name="tenantId" type="bigint(20)" remarks="租户ID"/>
+            <column name="platformCode" type="varchar(32)" remarks="对接终端/平台编号">
+                <constraints nullable="false"/>
+            </column>
+            <column name="platformName" type="varchar(200)" remarks="对接终端/平台名称">
+                <constraints nullable="false"/>
+            </column>
+            <column name="platformType" type="tinyint(4) unsigned" defaultValue="0" remarks="对接平台类型"/>
+            <column name="terminateCode" type="varchar(32)" remarks="对接终端/平台编号"/>
+            <column name="terminateName" type="varchar(200)" remarks="对接终端/平台名称"/>
+            <column name="terminateVersion" type="varchar(20)" remarks="对接终端/平台版本号"/>
+            <column name="userName" type="varchar(32)" remarks="用户名"/>
+            <column name="password" type="varchar(128)" remarks="登录密码"/>
+            <column name="accesskey" type="varchar(32)" remarks="访问凭证"/>
+            <column name="accessSecrete" type="varchar(128)" remarks="安全秘钥"/>
+            <column name="token" type="varchar(512)" remarks="token值"/>
+            <column name="startTime" type="datetime" remarks="token有效开始时间"/>
+            <column name="endTime" type="datetime" remarks="token有效截止时间"/>
+            <column name="lastHeartBeatTime" type="datetime" remarks="最后心跳时间"/>
+            <column name="netZoneType" type="tinyint(4) unsigned" defaultValue="1" remarks="请求接入的网域类型，1-公网，2-专网"/>
+            <column name="platformIp" type="varchar(32)" defaultValue="127.0.0.1" remarks="对接终端/平台的IP"/>
+            <column name="platformPort" type="int(11)" defaultValue="11186" remarks="对接终端/平台的端口"/>
+            <column name="protocolVersion" type="varchar(16)" remarks="终端接入的通讯协议版本号"/>
+            <column name="placeOrderUrl" type="varchar(400)" remarks="对接终端/平台注册的账单下发请求URL"/>
+            <column name="notifyOrderUrl" type=" varchar(400)" remarks="对接终端/平台注册的账单支付通知URL"/>
+            <column name="heartBeatUrl" type="varchar(400)" remarks="对接终端/平台注册的心跳状态请求接口URL"/>
+            <column name="heartBeatInterval" type="int(11)" remarks="心跳时间间隔：单位秒"/>
+            <column name="creatorUserId" type="bigint" remarks="创建者"/>
+            <column name="creationTime" type="datetime" remarks="创建时间"/>
+            <column name="lastModifierUserId" type="bigint" remarks="更新者"/>
+            <column name="lastModificationTime" type="datetime" remarks="更新时间"/>
+            <column name="deleterUserId" type="bigint" remarks="删除者"/>
+            <column name="deletionTime" type="datetime" remarks="删除时间"/>
+            <column name="deleted" type="tinyint(1)" remarks="删除标记" defaultValue="0"/>
+            <column name="version" type="bigint(20)" remarks="版本号" defaultValue="1"/>
+        </createTable>
+        <createIndex tableName="pms_dock_info" indexName="idx_parking">
+            <column name="tenantId"/>
+        </createIndex>
+        <createIndex tableName="pms_dock_info" indexName="idx_code">
+            <column name="platformCode"/>
+        </createIndex>
+    </changeSet>
+</databaseChangeLog>

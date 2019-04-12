@@ -1,0 +1,18 @@
+﻿/etc/sysconfig/network
+/etc/sysconfig/network-scripts/ifcfg-eth0 
+/etc/sysconfig/network
+/etc/resolv.conf
+
+cys1qaz\]'/
+wf\]'/1qaz
+
+122.225.203.71/255.255.255.224  
+122.225.203.79/255.255.255.224
+122.225.203.84/255.255.255.224
+
+AppKey 0fbb9a2ab3d4b9a4ef4e3b87
+Master Secret ?  45603a23d94373b9fc71c904 
+
+
+
+

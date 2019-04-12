@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet id="spe_inspect_record_create_table" author="walkman">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="spe_inspect_record"/>
+            </not>
+        </preConditions>
+        <createTable tableName="spe_inspect_record" remarks="巡检记录表">
+            <column autoIncrement="true" name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_spe_inspect_record"/>
+            </column>
+            <column name="tenantId" type="bigint(20) unsigned" remarks="租户ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="recordId" type="bigint(20) unsigned" remarks="停车记录ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="recordNo" type="varchar(64)" remarks="停车记录流水号">
+                <constraints nullable="false"/>
+            </column>
+            <column name="parkingId" type="bigint(20) unsigned" remarks="停车场ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="parkingLotId" type="bigint(20)" remarks="泊位ID"/>
+            <column name="cardNumber" type="VARCHAR(32)" remarks="停车卡号"/>
+            <column name="codeNumber" type="VARCHAR(32)" remarks="停车码"/>
+            <column name="plateNumber" type="varchar(20)" remarks="车牌号"/>
+            <column name="plateColor" type="tinyint(4) unsigned" remarks="车牌颜色"/>
+            <column name="carType" type="tinyint(4) unsigned" remarks="车辆类型"/>
+            <column name="parkingType" type="tinyint(4) unsigned" remarks="停车类型"/>
+            <column name="startTime" type="datetime" remarks="停车开始时间"/>
+            <column name="endTime" type="datetime" remarks="停车结束时间"/>
+            <column name="status" type="tinyint(4)" defaultValue="0" remarks="状态"/>
+            <column name="inspectUserId" type="bigint(20) unsigned" remarks="巡检员收费员ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="inspectTime" type="datetime" remarks="巡查时间"/>
+            <column name="inspectReason" type="varchar(20)"
+                    remarks="异常原因，1 -剩余车位数不正确，2 -车牌号码不匹配 3 车牌颜色不匹配 4 泊位不匹配 5 车型不匹配 6 入场时间不匹配"/>
+            <column name="inspectResult" type="smallint(6)" remarks="巡查结果，1 已处理 2 未处理"/>
+            <column name="description" type="varchar(2000)" remarks="描述信息"/>
+            <column name="creatorUserId" type="bigint" remarks="创建者"/>
+            <column name="creationTime" type="DATETIME" remarks="创建时间"/>
+        </createTable>
+        <createIndex tableName="spe_inspect_record" indexName="idx_inspect_tenantId">
+            <column name="tenantId"/>
+        </createIndex>
+        <createIndex tableName="spe_inspect_record" indexName="idx_inspect_recordId">
+            <column name="tenantId"/>
+            <column name="recordId"/>
+        </createIndex>
+        <createIndex tableName="spe_inspect_record" indexName="idx_inspect_parkingId">
+            <column name="tenantId"/>
+            <column name="parkingId"/>
+        </createIndex>
+        <createIndex tableName="spe_inspect_record" indexName="idx_inspect_userId">
+            <column name="tenantId"/>
+            <column name="inspectUserId"/>
+        </createIndex>
+        <createIndex tableName="spe_inspect_record" indexName="idx_inspect_plateNumber">
+            <column name="plateNumber"/>
+        </createIndex>
+    </changeSet>
+</databaseChangeLog>

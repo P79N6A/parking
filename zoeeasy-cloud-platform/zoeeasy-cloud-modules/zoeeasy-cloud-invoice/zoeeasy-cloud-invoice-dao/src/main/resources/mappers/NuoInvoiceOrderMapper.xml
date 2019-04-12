@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zoeeasy.cloud.invoice.mapper.NuoInvoiceOrderMapper">
+
+    <resultMap id="BaseResultMap" type="com.zoeeasy.cloud.invoice.domain.NuoInvoiceOrderEntity">
+        <result property="id" column="id"/>
+        <result property="orderNo" column="orderNo"/>
+        <result property="fpqqlsh" column="fpqqlsh"/>
+        <result property="invoiceDate" column="invoiceDate"/>
+        <result property="invoiceId" column="invoiceId"/>
+        <result property="identity" column="identity"/>
+        <result property="buyerName" column="buyerName"/>
+        <result property="taxNum" column="taxNum"/>
+        <result property="phone" column="phone"/>
+        <result property="address" column="address"/>
+        <result property="account" column="account"/>
+        <result property="telephone" column="telephone"/>
+        <result property="saleTaxNum" column="saleTaxNum"/>
+        <result property="saleAccount" column="saleAccount"/>
+        <result property="salePhone" column="salePhone"/>
+        <result property="saleAddress" column="saleAddress"/>
+        <result property="kpType" column="kpType"/>
+        <result property="message" column="message"/>
+        <result property="payee" column="payee"/>
+        <result property="checker" column="checker"/>
+        <result property="clerk" column="clerk"/>
+        <result property="redFpdm" column="redFpdm"/>
+        <result property="redFphm" column="redFphm"/>
+        <result property="tsfs" column="tsfs"/>
+        <result property="email" column="email"/>
+        <result property="qdbz" column="qdbz"/>
+        <result property="qdxmmc" column="qdxmmc"/>
+        <result property="dkbz" column="dkbz"/>
+        <result property="deptId" column="deptId"/>
+        <result property="clerkId" column="clerkId"/>
+        <result property="invoiceLine" column="invoiceLine"/>
+        <result property="cpybz" column="cpybz"/>
+        <result property="status" column="status"/>
+        <result property="pdfUrl" column="pdfUrl"/>
+        <result property="jpgUrl" column="jpgUrl"/>
+        <result property="kprq" column="kprq"/>
+        <result property="fpdm" column="fpdm"/>
+        <result property="fphm" column="fphm"/>
+        <result property="jym" column="jym"/>
+        <result property="bhsje" column="bhsje"/>
+        <result property="hjse" column="hjse"/>
+        <result property="result" column="result"/>
+        <result property="resultMessage" column="resultMessage"/>
+        <result property="creatorUserId" column="creatorUserId"/>
+        <result property="creationTime" column="creationTime"/>
+        <result property="lastModifierUserId" column="lastModifierUserId"/>
+        <result property="lastModificationTime" column="lastModificationTime"/>
+        <result property="deleterUserId" column="deleterUserId"/>
+        <result property="deletionTime" column="deletionTime"/>
+        <result property="deleted" column="deleted"/>
+    </resultMap>
+
+    <!--通用结果查询列-->
+    <sql id="Base_Column_List">
+                id,
+            orderNo,
+            fpqqlsh,
+            invoiceDate,
+            invoiceId,
+            identity,
+            buyerName,
+            taxNum,
+            phone,
+            address,
+            account,
+            telephone,
+            saleTaxNum,
+            saleAccount,
+            salePhone,
+            saleAddress,
+            kpType,
+            message,
+            payee,
+            checker,
+            clerk,
+            redFpdm,
+            redFphm,
+            tsfs,
+            email,
+            qdbz,
+            qdxmmc,
+            dkbz,
+            deptId,
+            clerkId,
+            invoiceLine,
+            cpybz,
+            status,
+            pdfUrl,
+            jpgUrl,
+            kprq,
+            fpdm,
+            fphm,
+            jym,
+            bhsje,
+            hjse,
+            result,
+            resultMessage,
+            creatorUserId,
+            creationTime,
+            lastModifierUserId,
+            lastModificationTime,
+            deleterUserId,
+            deletionTime,
+            deleted
+        </sql>
+
+
+</mapper>

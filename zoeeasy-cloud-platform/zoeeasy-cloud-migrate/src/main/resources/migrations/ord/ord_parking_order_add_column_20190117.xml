@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet id="ord_parking_order_add_column_20190117" author="walkman">
+        <preConditions onFail="MARK_RAN">
+            <tableExists tableName="ord_parking_order"/>
+        </preConditions>
+        <comment>
+            停车订单表添加订单类型、订单源、结束状态、结束时间、结束方式,预缴补缴、开票信息等业务字段
+        </comment>
+        <addColumn tableName="ord_parking_order">
+            <column name="chargeType" type="tinyint(4)" defaultValue="0" afterColumn="chargeMode"
+                    remarks="收费类型 1:用户线上支付 2: 巡检POS收费 3:巡检现金收费 ４: 岗亭收费 5:岗亭现金收费"/>
+            <column name="orderType" type="tinyint(4)" afterColumn="status" defaultValue="1"
+                    remarks="停车订单类型　1　正常订单,2　切换车位订单，3　车位被占订单；4　点灯举报订单；5　物业举报订单　6补缴订单； 7 追缴订单　8:临时停车订单"/>
+            <column name="orderSource" type="tinyint(4)" afterColumn="orderType" defaultValue="0"
+                    remarks="停车订单来源"/>
+            <column name="parentOrderNo" type="VARCHAR(64)" afterColumn="orderSource" defaultValue=""
+                    remarks="父订单号"/>
+            <column name="childOrder" type="tinyint(1)" afterColumn="parentOrderNo" defaultValue="0"
+                    remarks="是否子订单"/>
+            <column name="prepayable" type="tinyint(1)" afterColumn="childOrder" defaultValue="0"
+                    remarks="是否允许预缴"/>
+            <column name="prepaidAmount" type="int(11) unsigned" afterColumn="actualPayAmount" defaultValue="0"
+                    remarks="预付金额"/>
+            <column name="surplusAmount" type="int(11) unsigned" afterColumn="prepaidAmount" defaultValue="0"
+                    remarks="剩余金额"/>
+            <column name="unpaidAmount" type="int(11) unsigned" afterColumn="surplusAmount" defaultValue="0"
+                    remarks="未付金额"/>
+            <column name="terminateType" type="tinyint(4)" afterColumn="remark" defaultValue="0"
+                    remarks="停车订单结束类型 0:正常结束　1:巡检人员结束　2:用户结束 3:系统处理结束"/>
+            <column name="terminateTime" type="DATETIME" afterColumn="terminateType" defaultValue="2049-12-31 23:59:59"
+                    remarks="停车订单结束时间"/>
+            <column name="terminateUserId" type="bigint" afterColumn="terminateTime" remarks="结束停车用户ID"/>
+            <column name="terminateUserName" type="VARCHAR(64)" afterColumn="terminateUserId" remarks="结束停车用户姓名"/>
+            <column name="invoiceStatus" type="tinyint(4)" afterColumn="terminateUserName" defaultValue="0"
+                    remarks="开票状态 0 不可开票 1 未开票"/>
+            <column name="invoiceApplyNo" type="VARCHAR(64)" afterColumn="invoiceStatus" defaultValue=""
+                    remarks="发票申请订单号"/>
+            <column name="tccStatus" type="tinyint(4)" afterColumn="invoiceApplyNo" defaultValue="0"
+                    remarks="TCC事物状态标志"/>
+        </addColumn>
+    </changeSet>
+</databaseChangeLog>

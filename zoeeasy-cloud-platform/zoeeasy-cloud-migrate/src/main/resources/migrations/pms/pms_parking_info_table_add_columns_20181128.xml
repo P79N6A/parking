@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet id="pms_parking_info_table_add_columns_20181128" author="sc">
+        <preConditions onFail="MARK_RAN">
+            <tableExists tableName="pms_parking_info"/>
+        </preConditions>
+        <addColumn tableName="pms_parking_info">
+            <column name="auditStatus" type="tinyint(4)" afterColumn="description" remarks="审核状态 1待审核2通过3未通过"/>
+            <column name="auditUserId" type="bigint(20)" afterColumn="auditStatus" remarks="审核人员Id"/>
+            <column name="auditUserName" type="varchar(128)" afterColumn="auditUserId" remarks="审核人员名称"/>
+            <column name="auditTime" type="DATETIME" afterColumn="auditUserName" remarks="审核时间"/>
+        </addColumn>
+    </changeSet>
+</databaseChangeLog>

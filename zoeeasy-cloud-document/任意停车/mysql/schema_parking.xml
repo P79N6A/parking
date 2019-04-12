@@ -1,0 +1,129 @@
+<?xml version="1.0"?>
+<!DOCTYPE mycat:schema SYSTEM "schema.dtd">
+<mycat:schema 
+    xmlns:mycat="http://io.mycat/">
+    <!-- 定义MyCat的逻辑库 -->
+    <schema name="sms" checkSQLschema="false" sqlMaxLimit="100" dataNode="smsNode">
+        <!-- 全局表 -->
+        <table name="DATABASECHANGELOG" primaryKey="ID" type="global" dataNode="dnSms250" />
+        <table name="DATABASECHANGELOGLOCK" primaryKey="ID" type="global" dataNode="dnSms250" />
+        <table name="sms_client" primaryKey="id" dataNode="dnSms250" />
+        <table name="sms_content" primaryKey="id" dataNode="dnSms250" />
+        <table name="sms_template" primaryKey="id" dataNode="dnSms250" />
+        <table name="sms_verifycode" primaryKey="id" dataNode="dnSms250" />
+    </schema>
+    <schema name="parking" checkSQLschema="false" sqlMaxLimit="100">
+        <!-- 全局表 -->
+        <table name="DATABASECHANGELOG" primaryKey="ID" type="global" dataNode="dnPark250" />
+        <table name="DATABASECHANGELOGLOCK" primaryKey="ID" type="global" dataNode="dnPark250" />
+        <table name="up_region" primaryKey="id" autoIncrement="true" dataNode="dnPark250" />
+        <table name="up_icon" primaryKey="id" autoIncrement="true" dataNode="dnPark250" />
+        <table name="up_license_organization" primaryKey="id" autoIncrement="true" dataNode="dnPark250" />
+        <table name="up_license_prefix" primaryKey="id" autoIncrement="true" dataNode="dnPark250" />
+        <table name="up_holiday_schedule" primaryKey="id" autoIncrement="true" dataNode="dnPark250" />
+        <table name="up_work_calendar" primaryKey="id" autoIncrement="true" dataNode="dnPark250" />
+        <table name="up_car_brand" primaryKey="id" autoIncrement="true" dataNode="dnPark250" />
+        <!-- 分片表 -->
+        <table name="oauth_access_token" primaryKey="id" autoIncrement="true" dataNode="dnPark250" />
+        <table name="oauth_access_token" primaryKey="id" autoIncrement="true" dataNode="dnPark250" />
+        <table name="oauth_client_detail" primaryKey="id" autoIncrement="true" dataNode="dnPark250" />
+        <table name="oauth_code" primaryKey="id" autoIncrement="true" dataNode="dnPark250" />
+        <table name="up_alipay_access_token" primaryKey="id" autoIncrement="true" dataNode="dnPark250" />
+        <table name="up_alipay_bill" primaryKey="id" autoIncrement="true" dataNode="dnPark250" />
+        <table name="up_alipay_message_log" primaryKey="id" autoIncrement="true" dataNode="dnPark250" />
+        <table name="up_alipay_order" primaryKey="id" autoIncrement="true" dataNode="dnPark250" />
+        <table name="up_weixin_access_token" primaryKey="id" autoIncrement="true" dataNode="dnPark250" />
+        <table name="up_weixin_message_log" primaryKey="id" autoIncrement="true" dataNode="dnPark250" />
+        <table name="up_weixin_pay_bill" primaryKey="id" autoIncrement="true" dataNode="dnPark250" />
+        <table name="up_weixin_pay_order" primaryKey="id" autoIncrement="true" dataNode="dnPark250" />
+        <table name="up_weixin_refund_order" primaryKey="id" autoIncrement="true" dataNode="dnPark250" />
+        <table name="up_appointment_rule" primaryKey="id" autoIncrement="true" dataNode="dnPark250" />
+        <table name="up_charge_rule" primaryKey="id" autoIncrement="true" dataNode="dnPark250" />
+        <table name="up_charge_rule_time" primaryKey="id" autoIncrement="true" dataNode="dnPark250" />
+        <table name="up_hikvision_message_log" primaryKey="id" autoIncrement="true" dataNode="dnPark250" />
+        <table name="up_hikvision_vehicle_record" primaryKey="id" autoIncrement="true" dataNode="dnPark250" />
+        <table name="up_weather_info" primaryKey="id" autoIncrement="true" dataNode="dnPark250" />
+        <table name="up_oil_price" primaryKey="id" autoIncrement="true" dataNode="dnPark250" />
+        <table name="up_traffic_restriction" primaryKey="id" autoIncrement="true" dataNode="dnPark250" rule="mod-long">
+            <childTable name="up_traffic_restriction_info" joinKey="user_id" parentKey="id" primaryKey="id" />
+        </table>
+        <table name="up_vehicle_record" primaryKey="id" autoIncrement="true" dataNode="dnPark250" />
+        <table name="up_vehicle_violation" primaryKey="id" autoIncrement="true" dataNode="dnPark250" />
+        <table name="up_message" primaryKey="id" autoIncrement="true" dataNode="dnPark250" />
+        <table name="up_message_log" primaryKey="id" autoIncrement="true" dataNode="dnPark250" />
+        <table name="up_operation_log" primaryKey="id" autoIncrement="true" dataNode="dnPark250" />
+        <table name="up_parking_appointment" primaryKey="id" autoIncrement="true" dataNode="dnPark250" />
+        <table name="up_parking_appointment_rule" primaryKey="id" autoIncrement="true" dataNode="dnPark250" />
+        <table name="up_parking_charge_rule" primaryKey="id" autoIncrement="true" dataNode="dnPark250" />
+        <table name="up_parking_info" primaryKey="id" autoIncrement="true" dataNode="dnPark250" rule="mod-long">
+            <childTable name="tab_orders" joinKey="parkingId" parentKey="id"/>
+            <childTable name="up_parking_lot_info" primaryKey="id" joinKey="parkingId" />
+            <childTable name="up_parking_vehicle_record" primaryKey="id" joinKey="parkingId" />
+            <childTable name="up_parking_image" primaryKey="id" joinKey="parkingId" />
+        </table>
+        <table name="up_parking_vehicle_history" autoIncrement="true" primaryKey="id" dataNode="dnPark250" />
+        <table name="up_passing_vehicle_record" autoIncrement="true" primaryKey="id" dataNode="dnPark250" />
+        <table name="up_passing_vehicle_exception_record" autoIncrement="true" primaryKey="id" dataNode="dnPark250" />
+        <table name="up_parking_record" primaryKey="id" autoIncrement="true" dataNode="dnPark250" />
+        <table name="up_schedule_job" dataNode="dnPark250" autoIncrement="true" primaryKey="id" rule="mod-long">
+            <childTable name="up_job_execute_log" joinKey="jobId" primaryKey="id" parentKey="jobId"/>
+        </table>
+        <table name="up_trade_payment_order" primaryKey="id" autoIncrement="true" dataNode="dnPark250" />
+        <table name="up_trade_payment_record" primaryKey="id" autoIncrement="true" dataNode="dnPark250" />
+        <table name="up_visit_log" primaryKey="id" autoIncrement="true" dataNode="dnPark250" />
+        <table name="up_organization" primaryKey="id" autoIncrement="true" dataNode="dnPark250" />
+        <table name="up_menu" primaryKey="id" autoIncrement="true" dataNode="dnPark250" />
+        <table name="up_permission" primaryKey="id" autoIncrement="true" dataNode="dnPark250" />
+        <table name="up_role" primaryKey="id" autoIncrement="true" dataNode="dnPark250" />
+        <table name="up_role_permission" primaryKey="id" autoIncrement="true" dataNode="dnPark250" />
+        <table name="up_user" primaryKey="id" autoIncrement="true" dataNode="dnPark250" rule="mod-long">
+            <childTable name="up_user_info" joinKey="userId" primaryKey="id" parentKey="id"/>
+            <childTable name="up_user_appointment" joinKey="userId" primaryKey="id" parentKey="id"/>
+            <childTable name="up_user_asset" joinKey="userId" primaryKey="id" parentKey="id"/>
+            <childTable name="up_user_asset_log" joinKey="userId" primaryKey="id" parentKey="id"/>
+            <childTable name="up_user_auth_apply" joinKey="userId" primaryKey="id" parentKey="id"/>
+            <childTable name="up_user_car_info" joinKey="userId" primaryKey="id" parentKey="id"/>
+            <childTable name="up_user_car_auth" joinKey="userId" primaryKey="id" parentKey="id"/>
+            <childTable name="up_user_driver_license" joinKey="userId" primaryKey="id" parentKey="id"/>
+            <childTable name="up_user_level_log" joinKey="userId" primaryKey="id" parentKey="id"/>
+            <childTable name="up_user_parking_record" joinKey="userId" primaryKey="id" parentKey="id"/>
+            <childTable name="up_user_password_log" joinKey="userId" primaryKey="id" parentKey="id"/>
+            <childTable name="up_user_pay_order" joinKey="userId" primaryKey="id" parentKey="id"/>
+            <childTable name="up_user_point_log" joinKey="userId" primaryKey="id" parentKey="id"/>
+            <childTable name="up_user_recharge" joinKey="userId" primaryKey="id" parentKey="id"/>
+            <childTable name="up_user_role" joinKey="userId" primaryKey="id" parentKey="id"/>
+            <childTable name="up_user_organization" joinKey="userId" primaryKey="id" parentKey="id"/>
+        </table>
+    </schema>
+    <!-- 定义MyCat的数据节点 -->
+    <!-- 
+    <dataNode name="parkNode" dataHost="dtHost" database="parking" /><dataNode name="smsNode" dataHost="dtHost" database="sms" /> 
+    -->
+    <!--数据节点dn250，对应的主机0.250,对应是数据库parking -->
+    <dataNode name="dnPark250" dataHost="dtHostPark250" database="parking" />
+    <!-- 定义数据主机dtHost，连接到MySQL读写分离集群 ,schema中的每一个dataHost中的host属性值必须唯一-->
+    <!-- dataHost实际上配置就是后台的数据库集群，一个datahost代表一个数据库集群 -->
+    <!-- balance="1"，全部的readHost与stand by writeHost参与select语句的负载均衡-->
+    <!-- writeType="0"，所有写操作发送到配置的第一个writeHost，这里就是我们的hostmaster，第一个挂了切到还生存的第二个writeHost-->
+    <dataNode name="dnSms250" dataHost="dtHostSms250" database="sms" />
+    <!-- 主机dtHostPark250-->
+    <dataHost name="dtHostPark250" maxCon="1000" minCon="10" balance="1" writeType="0" dbType="mysql" dbDriver="native" switchType="2" slaveThreshold="100">
+        <!--心跳检测 -->
+        <heartbeat>select user()</heartbeat>
+        <!--配置后台数据库的IP地址和端口号，还有账号密码 -->
+        <writeHost host="hostMaster" url="192.168.0.250:3306" user="root" password="Cys1qaz@wsx"/>
+        <!-- 
+        <readHost host="hostSlave" url="192.168.0.250:33306" user="root" password="cys1qaz2wsx" /></writeHost>  
+        -->
+    </dataHost>
+    <!-- 主机dtHostPark250-->
+    <dataHost name="dtHostSms250" maxCon="1000" minCon="10" balance="1" writeType="0" dbType="mysql" dbDriver="native" switchType="2" slaveThreshold="100">
+        <!--心跳检测 -->
+        <heartbeat>select user()</heartbeat>
+        <!--配置后台数据库的IP地址和端口号，还有账号密码 -->
+        <writeHost host="hostMaster" url="192.168.0.250:3306" user="root" password="Cys1qaz@wsx"/>
+        <!-- 
+        <readHost host="hostSlave" url="192.168.0.250:33306" user="root" password="cys1qaz2wsx" /></writeHost>  
+        -->
+    </dataHost>
+</mycat:schema>

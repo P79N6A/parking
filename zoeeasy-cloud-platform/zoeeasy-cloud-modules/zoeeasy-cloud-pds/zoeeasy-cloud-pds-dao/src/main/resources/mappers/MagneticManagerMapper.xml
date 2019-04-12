@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zoeeasy.cloud.pds.mapper.MagneticManagerMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.zoeeasy.cloud.pds.domain.MagneticManagerEntity">
+        <id column="id" property="id"/>
+        <result column="tenantId" property="tenantId"/>
+        <result column="parkingId" property="parkingId"/>
+        <result column="parkingAreaId" property="parkingAreaId"/>
+        <result column="code" property="code"/>
+        <result column="provider" property="provider"/>
+        <result column="serialNumber" property="serialNumber"/>
+        <result column="ipAddress" property="ipAddress"/>
+        <result column="port" property="port"/>
+        <result column="simNo" property="simNo"/>
+        <result column="registered" property="registered"/>
+        <result column="lastHeartbeatTime" property="lastHeartbeatTime"/>
+        <result column="heartBeatInterval" property="heartBeatInterval"/>
+        <result column="installPosition" property="installPosition"/>
+        <result column="longitude" property="longitude"/>
+        <result column="latitude" property="latitude"/>
+        <result column="versionNumber" property="versionNumber"/>
+        <result column="installationTime" property="installationTime"/>
+        <result column="creatorUserId" property="creatorUserId"/>
+        <result column="creationTime" property="creationTime"/>
+        <result column="lastModifierUserId" property="lastModifierUserId"/>
+        <result column="lastModificationTime" property="lastModificationTime"/>
+        <result column="deleterUserId" property="deleterUserId"/>
+        <result column="deletionTime" property="deletionTime"/>
+        <result column="deleted" property="deleted"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, tenantId, parkingId, parkingAreaId, code, provider, serialNumber, ipAddress, port, simNo, registered, lastHeartbeatTime, heartBeatInterval, installPosition, longitude, latitude, versionNumber
+        , installationTime, creatorUserId, creationTime, lastModifierUserId, lastModificationTime, deleterUserId, deletionTime, deleted
+    </sql>
+
+    <select id="selectMagneticManagerPage" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from pds_magnetic_manager
+        where deleted=0
+        <if test="parkingIds != null and parkingIds.size() > 0">
+            and parkingId in
+            <foreach collection="parkingIds" item="item_id" separator="," open="(" close=")">
+                #{item_id}
+            </foreach>
+        </if>
+    </select>
+</mapper>

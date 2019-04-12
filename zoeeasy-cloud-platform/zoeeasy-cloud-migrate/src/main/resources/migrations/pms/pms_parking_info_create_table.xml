@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet id="pms_parking_info_create_table" author="sc">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="pms_parking_info"/>
+            </not>
+        </preConditions>
+        <createTable tableName="pms_parking_info" remarks="停车场信息表">
+            <column autoIncrement="true" name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_parking_info"/>
+            </column>
+            <column name="tenantId" type="bigint(20)" remarks="租户ID"/>
+            <column name="areaId" type="bigint(20)" remarks="区域ID"/>
+            <column name="pathCode" type="varchar(255)" remarks="区域路径"/>
+            <column name="aliParkId" type="varchar(255)" remarks="支付宝平台停车场ID" defaultValue=""/>
+            <column name="hikParkId" type="varchar(255)" remarks="海康平台停车场ID" defaultValue=""/>
+            <column name="code" type="varchar(255)" remarks="编号" defaultValue=""/>
+            <column name="name" type="varchar(255)" remarks="简称" defaultValue=""/>
+            <column name="fullName" type="varchar(2000)" remarks="全称" defaultValue=""/>
+            <column name="status" type="tinyint(4)" remarks="在线状态,0-下线,1-在线" defaultValue="0"/>
+            <column name="platformSupport" type="tinyint(1)" remarks="是否平台接入 0:否 1 是" defaultValue="0"/>
+            <column name="level" type="tinyint(3)" remarks="停车场等级，0-其它，1-一级停车场，2-二级停车场，3-三级停车场" defaultValue="0">
+                <constraints nullable="false"/>
+            </column>
+            <column name="chargeFee" type="tinyint(1)" remarks="是否收费 0:不收费 1 收费" defaultValue="0"/>
+            <column name="supportAppointment" type="tinyint(1)" remarks="是否支持预约" defaultValue="0"/>
+            <column name="outTime" type="smallint(11)" remarks="用户支付未离场的超时时间(以分钟为单位)" defaultValue="0"/>
+            <column name="type" type="varchar(32)" remarks="停车场类型((1为地面，2为地下，3为路边)（多个类型，中间用,隔开)" defaultValue=""/>
+            <column name="lotType" type="varchar(32)" remarks="停车场类型，1为小区停车场、2为商圈停车场、3为路面停车场、4为园区停车场、5为写字楼停车场、6为私人停车场"
+                    defaultValue=""/>
+            <column name="logo" type="varchar(2000)" remarks="LOGO" defaultValue=""/>
+            <column name="openStartTime" type="varchar(255)" remarks="开始营业时间，格式HH:mm:ss" defaultValue=""/>
+            <column name="openEndTime" type="varchar(255)" remarks="结束营业时间，格式HH:mm:ss" defaultValue=""/>
+            <column name="chargeMode" type="tinyint(4)" remarks="缴费模式 1: 离场后缴费 2: 缴费后离场" defaultValue="2"/>
+            <column name="payMode" type="varchar(64)" remarks="收费方式（1为停车卡缴费，2为物料缴费，3为中央缴费机）" defaultValue=""/>
+            <column name="payType" type="varchar(64)" remarks="支付方式（1为支付宝在线缴费，2为支付宝代扣缴费，3当面付)，如支持多种方式以'',''进行间隔"
+                    defaultValue=""/>
+            <column name="latitude" type="double" remarks="纬度latitude" defaultValue="0"/>
+            <column name="longitude" type="double" remarks="经度longitude" defaultValue="0"/>
+            <column name="lotTotal" type="smallint(6)" remarks="车位总数">
+                <constraints nullable="false"/>
+            </column>
+            <column name="lotFixed" type="smallint(6)" remarks="固定车总数">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="text" remarks="描述信息"/>
+            <column name="creatorUserId" type="bigint" remarks="创建者"/>
+            <column name="creationTime" type="DATETIME" remarks="创建时间"/>
+            <column name="lastModifierUserId" type="bigint" remarks="更新者"/>
+            <column name="lastModificationTime" type="DATETIME" remarks="更新时间"/>
+            <column name="deleterUserId" type="bigint" remarks="删除者"/>
+            <column name="deletionTime" type="DATETIME" remarks="删除时间"/>
+            <column name="deleted" type="tinyint(1)" remarks="删除标记" defaultValue="0"/>
+            <column name="version" type="bigint(20)" remarks="版本号" defaultValue="1"/>
+        </createTable>
+        <createIndex tableName="pms_parking_info" indexName="idx_code">
+            <column name="code"/>
+        </createIndex>
+        <createIndex tableName="pms_parking_info" indexName="idx_aliParkId">
+            <column name="aliParkId"/>
+        </createIndex>
+        <createIndex tableName="pms_parking_info" indexName="idx_hikParkId">
+            <column name="hikParkId"/>
+        </createIndex>
+        <createIndex tableName="pms_parking_info" indexName="idx_latitude_longitude">
+            <column name="latitude"/>
+            <column name="longitude"/>
+        </createIndex>
+        <createIndex tableName="pms_parking_info" indexName="idx_deleted">
+            <column name="deleted"/>
+        </createIndex>
+        <createIndex tableName="pms_parking_info" indexName="inx_name">
+            <column name="name"/>
+        </createIndex>
+        <createIndex tableName="pms_parking_info" indexName="idx_latitude">
+            <column name="latitude"/>
+        </createIndex>
+        <createIndex tableName="pms_parking_info" indexName="idx_longitude">
+            <column name="longitude"/>
+        </createIndex>
+    </changeSet>
+</databaseChangeLog>

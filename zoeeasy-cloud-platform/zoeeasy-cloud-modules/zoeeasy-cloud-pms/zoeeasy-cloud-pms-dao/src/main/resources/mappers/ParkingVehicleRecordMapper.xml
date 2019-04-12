@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.zoeeasy.cloud.pms.mapper.ParkingVehicleRecordMapper">
+    <resultMap id="BaseResultMap" type="com.zoeeasy.cloud.pms.domain.ParkingVehicleRecordEntity">
+        <!-- 树形基础模块 -->
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <result property="tenantId" column="tenantId"/>
+        <result column="parkingId" property="parkingId"/>
+        <result column="parkingName" property="parkingName"/>
+        <result column="parkingCode" property="parkingCode"/>
+        <result column="parkingLotId" property="parkingLotId"/>
+        <result column="parkingLotCode" property="parkingLotCode"/>
+        <result column="parkingLotNumber" property="parkingLotNumber"/>
+        <result column="intoRecordNo" property="intoRecordNo"/>
+        <result column="cardNumber" property="cardNumber"/>
+        <result column="codeNumber" property="codeNumber"/>
+        <result column="plateNumber" property="plateNumber"/>
+        <result column="plateColor" property="plateColor"/>
+        <result column="carType" property="carType"/>
+        <result column="startTime" property="startTime"/>
+        <result column="creatorUserId" property="creatorUserId" jdbcType="BIGINT"/>
+        <result column="creationTime" property="creationTime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,
+        tenantId,
+        parkingId,
+        parkingName,
+        parkingCode,
+        parkingLotId,
+        parkingLotCode,
+        parkingLotNumber,
+        intoRecordNo,
+        plateNumber,
+        plateColor,
+        carType,
+        startTime,
+        creatorUserId,
+        creationTime
+    </sql>
+    <delete id="deleteByLotId">
+        delete from pms_parking_vehicle_record
+        <where>
+            ${ew.sqlSegment}
+        </where>
+    </delete>
+    <delete id="deletedById">
+        delete from pms_parking_vehicle_record
+        <where>
+            id = #{id}
+            <if test="parkingId != null">
+                and parkingId = #{parkingId}
+            </if>
+        </where>
+    </delete>
+
+
+    <!--找到车辆的最后一次在场记录-->
+    <select id="findLastParkingRecord" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from pms_parking_vehicle_record
+        <where>
+            ${ew.sqlSegment}
+        </where>
+    </select>
+    <insert id="save" parameterType="com.zoeeasy.cloud.pms.domain.ParkingVehicleRecordEntity">
+        insert into pms_parking_vehicle_record
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="tenantId != null">
+                tenantId,
+            </if>
+            <if test="parkingId != null">
+                parkingId,
+            </if>
+            <if test="parkingName != null">
+                parkingName,
+            </if>
+            <if test="parkingCode != null">
+                parkingCode,
+            </if>
+            <if test="parkingLotId != null">
+                parkingLotId,
+            </if>
+            <if test="parkingLotCode != null">
+                parkingLotCode,
+            </if>
+            <if test="parkingLotNumber != null">
+                parkingLotNumber,
+            </if>
+            <if test="intoRecordNo != null">
+                intoRecordNo,
+            </if>
+            <if test="cardNumber != null">
+                cardNumber,
+            </if>
+            <if test="codeNumber != null">
+                codeNumber,
+            </if>
+            <if test="plateNumber != null">
+                plateNumber,
+            </if>
+            <if test="plateColor != null">
+                plateColor,
+            </if>
+            <if test="carType != null">
+                carType,
+            </if>
+            <if test="startTime != null">
+                startTime,
+            </if>
+            <if test="creatorUserId != null">
+                creatorUserId,
+            </if>
+            <if test="creationTime != null">
+                creationTime,
+            </if>
+        </trim>
+        <trim prefix="VALUES (" suffix=")" suffixOverrides=",">
+            <if test="tenantId != null">
+                #{tenantId},
+            </if>
+            <if test="parkingId != null">
+                #{parkingId},
+            </if>
+            <if test="parkingName != null">
+                #{parkingName},
+            </if>
+            <if test="parkingCode != null">
+                #{parkingCode},
+            </if>
+            <if test="parkingLotId != null">
+                #{parkingLotId},
+            </if>
+            <if test="parkingLotCode != null">
+                #{parkingLotCode},
+            </if>
+            <if test="parkingLotNumber != null">
+                #{parkingLotNumber},
+            </if>
+            <if test="intoRecordNo != null">
+                #{intoRecordNo},
+            </if>
+            <if test="cardNumber != null">
+                #{cardNumber},
+            </if>
+            <if test="codeNumber != null">
+                #{codeNumber},
+            </if>
+            <if test="plateNumber != null">
+                #{plateNumber},
+            </if>
+            <if test="plateColor != null">
+                #{plateColor},
+            </if>
+            <if test="carType != null">
+                #{carType},
+            </if>
+            <if test="startTime != null">
+                #{startTime},
+            </if>
+            <if test="creatorUserId != null">
+                #{creatorUserId},
+            </if>
+            <if test="creationTime != null">
+                #{creationTime},
+            </if>
+        </trim>
+
+    </insert>
+    <select id="findByIntoRecordNo" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from pms_parking_vehicle_record
+        <where>
+            intoRecordNo = #{intoRecordNo}
+        </where>
+    </select>
+
+    <select id="findByParkingIdAndParkingLotId" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from pms_parking_vehicle_record
+        <where>
+            parkingId = #{parkingId}
+            <if test="parkingLotId != null">
+                and parkingLotId = #{parkingLotId}
+            </if>
+            order by startTime
+        </where>
+    </select>
+
+    <update id="updateParkVehicle" parameterType="com.zoeeasy.cloud.pms.domain.ParkingVehicleRecordEntity">
+        UPDATE pms_parking_vehicle_record
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="parkingName != null">
+                parkingName = #{parkingName},
+            </if>
+            <if test="parkingCode != null">
+                parkingCode = #{parkingCode},
+            </if>
+            <if test="parkingLotId != null">
+                parkingLotId= #{parkingLotId},
+            </if>
+            <if test="parkingLotCode != null">
+                parkingLotCode = #{parkingLotCode},
+            </if>
+            <if test="parkingLotNumber != null">
+                parkingLotNumber = #{parkingLotNumber},
+            </if>
+            <if test="cardNumber != null">
+                cardNumber= #{cardNumber},
+            </if>
+            <if test="codeNumber != null">
+                codeNumber= #{codeNumber},
+            </if>
+            <if test="plateNumber != null">
+                plateNumber= #{plateNumber},
+            </if>
+            <if test="plateColor != null">
+                plateColor= #{plateColor},
+            </if>
+            <if test="carType != null">
+                carType= #{carType},
+            </if>
+            <if test="startTime != null">
+                startTime= #{startTime},
+            </if>
+        </trim>
+        <where>
+            id = #{id}
+            <if test="parkingId != null">
+                and parkingId = #{parkingId}
+            </if>
+        </where>
+    </update>
+
+    <select id="queryPlateNumber" resultMap="BaseResultMap">
+        SELECT
+        parkingId,
+        plateNumber
+        FROM
+        pms_parking_vehicle_record
+        WHERE
+        plateNumber like '%${plateNumber}%'
+    </select>
+    <select id="queryPlateNumberOrParkingLotCode"
+            parameterType="com.zoeeasy.cloud.pms.domain.ParkingVehicleRecordEntity" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM
+        pms_parking_vehicle_record
+        WHERE
+        1=1
+        <if test="plateNumber != null">
+            and plateNumber like '%${plateNumber}%'
+        </if>
+        <!--<if test="parkingLotCode != null">-->
+            <!--and parkingLotCode like '%${parkingLotCode}%'-->
+        <!--</if>-->
+        <if test="parkingLotNumber != null">
+           and  parkingLotNumber like '%${parkingLotNumber}%'
+        </if>
+    </select>
+    <select id="getPlateNumber"
+            parameterType="com.zoeeasy.cloud.pms.domain.ParkingVehicleRecordEntity" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM
+        pms_parking_vehicle_record
+        WHERE
+        1=1
+        <if test="plateNumber != null">
+            and  plateNumber = #{plateNumber}
+        </if>
+    </select>
+
+    <update id="updateParkVehicleRecord" parameterType="com.zoeeasy.cloud.pms.domain.ParkingVehicleRecordEntity">
+        UPDATE pms_parking_vehicle_record
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="parkingLotId != null">
+                parkingLotId= #{parkingLotId},
+            </if>
+            <if test="parkingLotCode != null">
+                parkingLotCode = #{parkingLotCode},
+            </if>
+            <if test="parkingLotNumber != null">
+                parkingLotNumber = #{parkingLotNumber},
+            </if>
+        </trim>
+        <where>
+            intoRecordNo = #{intoRecordNo}
+        </where>
+    </update>
+</mapper>

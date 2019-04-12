@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet author="walkman" id="ucc_static_menu_seed_data_20190325">
+        <comment>系统内置菜单初始化数据　楼层菜单</comment>
+        <insert tableName="ucc_menu">
+            <column name="id" value="87"/>
+            <column name="parentId" value="7"/>
+            <column name="pathCode" value="00001.00004.00007"/>
+            <column name="level" value="11.7"/>
+            <column name="sort" value="7"/>
+            <column name="code" value="Administration.Basic.BuildingFloor"/>
+            <column name="name" value="楼层管理"/>
+            <column name="url" value="administration/basic/floor"/>
+            <column name="icon" value="parkingFloor"/>
+            <column name="component" value="Basic_BuildingFloor"/>
+            <column name="tenancyHostSide" value="2"/>
+            <column name="shown" value="1"/>
+            <column name="staticMenu" value="1"/>
+            <column name="status" value="1"/>
+            <column name="type" value="1"/>
+            <column name="permission" value=""/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

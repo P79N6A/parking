@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet author="zwq" id="ord_parking_appointment_order_table_modify_columns_20181218">
+        <preConditions onFail="MARK_RAN">
+            <tableExists tableName="ord_parking_appointment_order"/>
+        </preConditions>
+        <renameColumn columnDataType="varchar(400)" newColumnName="parkingName" oldColumnName="parkingName"
+                      remarks="停车场名称" tableName="ord_parking_appointment_order"/>
+        <addDefaultValue tableName="ord_parking_appointment_order" columnName="parkingName" defaultValue=""/>
+        <renameColumn columnDataType="varchar(64)" newColumnName="parkingLotNumber" oldColumnName="parkingLotCode"
+                      remarks="车位编号" tableName="ord_parking_appointment_order"/>
+        <renameColumn columnDataType="varchar(400)" newColumnName="remark" oldColumnName="remark"
+                      remarks="备注" tableName="ord_parking_appointment_order"/>
+        <addDefaultValue tableName="ord_parking_appointment_order" columnName="remark" defaultValue=""/>
+        <renameColumn columnDataType="smallint(6)" newColumnName="scheduleLength" oldColumnName="scheduleLength"
+                      remarks="预计停车时长(分钟)" tableName="ord_parking_appointment_order"/>
+        <renameColumn columnDataType="smallint(6)" newColumnName="payLimit" oldColumnName="payLimit"
+                      remarks="支付时限(分钟)" tableName="ord_parking_appointment_order"/>
+
+    </changeSet>
+</databaseChangeLog>

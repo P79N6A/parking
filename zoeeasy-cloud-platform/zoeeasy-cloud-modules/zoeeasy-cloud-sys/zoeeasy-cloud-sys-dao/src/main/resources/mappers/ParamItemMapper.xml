@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zoeeasy.cloud.sys.mapper.ParamItemMapper">
+
+    <resultMap id="BaseResultMap" type="com.zoeeasy.cloud.sys.domain.ParamItemEntity">
+        <result property="id" column="id"/>
+        <result property="tenantId" column="tenantId"/>
+        <result property="paramCode" column="paramCode"/>
+        <result property="paramKey" column="paramKey"/>
+        <result property="paramLabel" column="paramLabel"/>
+        <result property="paramValue" column="paramValue"/>
+        <result property="sort" column="sort"/>
+        <result property="status" column="status"/>
+        <result property="required" column="required"/>
+        <result property="remark" column="remark"/>
+        <result property="creatorUserId" column="creatorUserId"/>
+        <result property="creationTime" column="creationTime"/>
+        <result property="lastModifierUserId" column="lastModifierUserId"/>
+        <result property="lastModificationTime" column="lastModificationTime"/>
+        <result property="deleterUserId" column="deleterUserId"/>
+        <result property="deletionTime" column="deletionTime"/>
+        <result property="deleted" column="deleted"/>
+    </resultMap>
+
+    <!--通用结果查询列-->
+    <sql id="Base_Column_List">
+                id,
+            tenantId,
+            paramCode,
+            paramKey,
+            paramLabel,
+            paramValue,
+            sort,
+            status,
+            required,
+            remark,
+            creatorUserId,
+            creationTime,
+            lastModifierUserId,
+            lastModificationTime,
+            deleterUserId,
+            deletionTime,
+            deleted
+        </sql>
+    <select id="findByParamCode" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from sys_param_item
+        <where>
+            deleted = '0' and tenantId is null and paramCode = #{paramCode}
+        </where>
+    </select>
+    <select id="findById" resultType="com.zoeeasy.cloud.sys.domain.ParamItemEntity">
+        select
+        <include refid="Base_Column_List"/>
+        from sys_param_item
+        <where>
+            id = #{id} and deleted = '0'
+        </where>
+    </select>
+    <select id="findByEntityWrapper" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from sys_param_item
+        <where>
+            deleted = '0' and tenantId is null ${ew.sqlSegment}
+        </where>
+    </select>
+
+
+</mapper>

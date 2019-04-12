@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet id="msg_message_add_columns_20181229" author="walkman">
+        <preConditions onFail="MARK_RAN">
+            <tableExists tableName="msg_message"/>
+        </preConditions>
+        <addColumn tableName="msg_message">
+            <column name="sendResult" type="VARCHAR(2000)"
+                    afterColumn="sendStatus" remarks="发送结果" defaultValue=""/>
+        </addColumn>
+    </changeSet>
+</databaseChangeLog>

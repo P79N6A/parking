@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet id="ucc_role_table_add_columns_20181126" author="walkman">
+        <preConditions onFail="MARK_RAN">
+            <tableExists tableName="ucc_role"/>
+        </preConditions>
+        <addColumn tableName="ucc_role">
+            <column name="adminRole" type="tinyint(1)"
+                    afterColumn="defaultRole" remarks="是否管理员角色" defaultValue="0"/>
+        </addColumn>
+    </changeSet>
+</databaseChangeLog>

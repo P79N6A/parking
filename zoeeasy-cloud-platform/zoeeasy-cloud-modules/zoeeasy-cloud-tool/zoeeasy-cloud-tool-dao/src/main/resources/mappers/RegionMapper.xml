@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zoeeasy.cloud.tool.mapper.RegionMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.zoeeasy.cloud.tool.domain.RegionEntity">
+        <id column="id" property="id"/>
+        <result column="code" property="code"/>
+        <result column="name" property="name"/>
+        <result column="fullName" property="fullName"/>
+        <result column="pinyinName" property="pinyinName"/>
+        <result column="nameEn" property="nameEn"/>
+        <result column="shortNameEn" property="shortNameEn"/>
+        <result column="level" property="level"/>
+        <result column="order" property="order"/>
+        <result column="type" property="type"/>
+        <result column="zipCode" property="zipCode"/>
+        <result column="areaCode" property="areaCode"/>
+        <result column="parentCode" property="parentCode"/>
+        <result property="status" column="status"/>
+        <result column="creatorUserId" property="creatorUserId"/>
+        <result column="creationTime" property="creationTime"/>
+        <result column="lastModifierUserId" property="lastModifierUserId"/>
+        <result column="lastModificationTime" property="lastModificationTime"/>
+        <result column="deleterUserId" property="deleterUserId"/>
+        <result column="deletionTime" property="deletionTime"/>
+        <result column="deleted" property="deleted"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+            id, code, name, fullName, pinyinName, nameEn, shortNameEn,level,type, areaCode, zipCode,parentCode,status,
+            creatorUserId, creationTime, lastModifierUserId, lastModificationTime, deleterUserId, deletionTime, deleted
+    </sql>
+
+    <select id="getRegion" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM regionEntity
+        <where>
+            ${ew.sqlSegment} and deleted = '0'
+        </where>
+    </select>
+
+</mapper>

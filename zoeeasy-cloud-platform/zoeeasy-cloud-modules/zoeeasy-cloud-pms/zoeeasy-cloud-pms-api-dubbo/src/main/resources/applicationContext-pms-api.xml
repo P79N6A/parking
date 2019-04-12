@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://code.alibabatech.com/schema/dubbo
+        http://code.alibabatech.com/schema/dubbo/dubbo.xsd
+        ">
+    <dubbo:reference id="areaService"
+                     interface="com.zoeeasy.cloud.pms.area.AreaService"
+                     check="false" timeout="60000" retries="0" registry="fundamentalRegistry"
+                     version="${dubbo.service.version}"/>
+    <dubbo:reference id="parkingGarageService"
+                     interface="com.zoeeasy.cloud.pms.garage.ParkingGarageService"
+                     check="false" timeout="60000" retries="0" registry="fundamentalRegistry"
+                     version="${dubbo.service.version}"/>
+    <dubbo:reference id="parkingGateInfoService"
+                     interface="com.zoeeasy.cloud.pms.gate.ParkingGateInfoService"
+                     check="false" timeout="60000" retries="0" registry="fundamentalRegistry"
+                     version="${dubbo.service.version}"/>
+    <dubbo:reference id="parkingLaneInfoService"
+                     interface="com.zoeeasy.cloud.pms.lane.ParkingLaneInfoService"
+                     check="false" timeout="60000" retries="0" registry="fundamentalRegistry"
+                     version="${dubbo.service.version}"/>
+    <dubbo:reference id="parkingInfoService"
+                     interface="com.zoeeasy.cloud.pms.park.ParkingInfoService"
+                     check="false" timeout="60000" retries="0" registry="fundamentalRegistry"
+                     version="${dubbo.service.version}"/>
+    <dubbo:reference id="platformParkingInfoService"
+                     interface="com.zoeeasy.cloud.pms.platform.PlatformParkingInfoService"
+                     check="false" timeout="60000" retries="0" registry="fundamentalRegistry"
+                     version="${dubbo.service.version}"/>
+    <dubbo:reference id="parkingLotInfoService"
+                     interface="com.zoeeasy.cloud.pms.park.ParkingLotInfoService"
+                     check="false" timeout="60000" retries="0" registry="fundamentalRegistry"
+                     version="${dubbo.service.version}"/>
+    <dubbo:reference id="parkingLotStatusService"
+                     interface="com.zoeeasy.cloud.pms.park.ParkingLotStatusService"
+                     check="false" timeout="60000" retries="0" registry="fundamentalRegistry"
+                     version="${dubbo.service.version}"/>
+    <dubbo:reference id="parkingRecordService"
+                     interface="com.zoeeasy.cloud.pms.park.ParkingRecordService"
+                     check="false" timeout="60000" retries="0" registry="fundamentalRegistry"
+                     version="${dubbo.service.version}"/>
+    <dubbo:reference id="parkingVehicleRecordService"
+                     interface="com.zoeeasy.cloud.pms.park.ParkingVehicleRecordService"
+                     check="false" timeout="60000" retries="0" registry="fundamentalRegistry"
+                     version="${dubbo.service.version}"/>
+    <dubbo:reference id="parkingAreaService"
+                     interface="com.zoeeasy.cloud.pms.parkingarea.ParkingAreaService"
+                     check="false" timeout="60000" retries="0" registry="fundamentalRegistry"
+                     version="${dubbo.service.version}"/>
+    <dubbo:reference id="passingVehicleRecordService"
+                     interface="com.zoeeasy.cloud.pms.passing.PassingVehicleRecordService"
+                     check="false" timeout="60000" retries="0" registry="fundamentalRegistry"
+                     version="${dubbo.service.version}"/>
+    <dubbo:reference id="parkingImageService"
+                     interface="com.zoeeasy.cloud.pms.image.ParkingImageService"
+                     check="false" timeout="60000" retries="0" registry="fundamentalRegistry"
+                     version="${dubbo.service.version}"/>
+    <dubbo:reference id="specialVehicleService"
+                     interface="com.zoeeasy.cloud.pms.specialvehicle.SpecialVehicleService"
+                     check="false" timeout="60000" retries="0" registry="fundamentalRegistry"
+                     version="${dubbo.service.version}"/>
+    <dubbo:reference id="blackListService"
+                     interface="com.zoeeasy.cloud.pms.specialvehicle.BlackListService"
+                     check="false" timeout="60000" retries="0" registry="fundamentalRegistry"
+                     version="${dubbo.service.version}"/>
+    <dubbo:reference id="visitVehicleService"
+                     interface="com.zoeeasy.cloud.pms.specialvehicle.VisitVehicleService"
+                     check="false" timeout="60000" retries="0" registry="fundamentalRegistry"
+                     version="${dubbo.service.version}"/>
+    <dubbo:reference id="whiteListService"
+                     interface="com.zoeeasy.cloud.pms.specialvehicle.WhiteListService"
+                     check="false" timeout="60000" retries="0" registry="fundamentalRegistry"
+                     version="${dubbo.service.version}"/>
+    <dubbo:reference id="packetApproveService"
+                     interface="com.zoeeasy.cloud.pms.specialvehicle.PacketApproveService"
+                     check="false" timeout="60000" retries="0" registry="fundamentalRegistry"
+                     version="${dubbo.service.version}"/>
+    <dubbo:reference id="packetRuleService"
+                     interface="com.zoeeasy.cloud.pms.specialvehicle.PacketRuleService"
+                     check="false" timeout="60000" retries="0" registry="fundamentalRegistry"
+                     version="${dubbo.service.version}"/>
+    <dubbo:reference id="packetVehicleService"
+                     interface="com.zoeeasy.cloud.pms.specialvehicle.PacketVehicleService"
+                     check="false" timeout="60000" retries="0" registry="fundamentalRegistry"
+                     version="${dubbo.service.version}"/>
+    <dubbo:reference id="fixedVehicleService"
+                     interface="com.zoeeasy.cloud.pms.specialvehicle.FixedVehicleService"
+                     check="false" timeout="60000" retries="0" registry="fundamentalRegistry"
+                     version="${dubbo.service.version}"/>
+    <dubbo:reference id="platformProcessService"
+                     interface="com.zoeeasy.cloud.pms.platform.PlatformProcessService"
+                     check="false" timeout="60000" retries="0" registry="fundamentalRegistry"
+                     version="${dubbo.service.version}"/>
+    <dubbo:reference id="parkingChargeInfoService"
+                     interface="com.zoeeasy.cloud.pms.charge.ParkingChargeInfoService"
+                     check="false" timeout="60000" retries="0" registry="fundamentalRegistry"
+                     version="${dubbo.service.version}"/>
+    <dubbo:reference id="parkingAppointmentInfoService"
+                     interface="com.zoeeasy.cloud.pms.appoint.ParkingAppointmentInfoService"
+                     check="false" timeout="60000" retries="0" registry="fundamentalRegistry"
+                     version="${dubbo.service.version}"/>
+    <dubbo:reference id="managementParkingInfoService"
+                     interface="com.zoeeasy.cloud.pms.park.ManagementParkingInfoService"
+                     check="false" timeout="60000" retries="0" registry="fundamentalRegistry"
+                     version="${dubbo.service.version}"/>
+    <dubbo:reference id="parkingApplyInfoService"
+                     interface="com.zoeeasy.cloud.pms.park.ParkingApplyInfoService"
+                     check="false" timeout="60000" retries="0" registry="fundamentalRegistry"
+                     version="${dubbo.service.version}"/>
+    <dubbo:reference id="garageService"
+                     interface="com.zoeeasy.cloud.pms.garage.GarageService"
+                     check="false" timeout="60000" retries="0" registry="fundamentalRegistry"
+                     version="${dubbo.service.version}"/>
+    <dubbo:reference id="gateInfoService"
+                     interface="com.zoeeasy.cloud.pms.gate.GateInfoService"
+                     check="false" timeout="60000" retries="0" registry="fundamentalRegistry"
+                     version="${dubbo.service.version}"/>
+    <dubbo:reference id="laneInfoService"
+                     interface="com.zoeeasy.cloud.pms.lane.LaneInfoService"
+                     check="false" timeout="60000" retries="0" registry="fundamentalRegistry"
+                     version="${dubbo.service.version}"/>
+    <dubbo:reference id="cloudParkingAreaService"
+                     interface="com.zoeeasy.cloud.pms.parkingarea.CloudParkingAreaService"
+                     check="false" timeout="60000" retries="0" registry="fundamentalRegistry"
+                     version="${dubbo.service.version}"/>
+    <dubbo:reference id="cloudParkingInfoService"
+                     interface="com.zoeeasy.cloud.pms.park.CloudParkingInfoService"
+                     check="false" timeout="60000" retries="0" registry="fundamentalRegistry"
+                     version="${dubbo.service.version}"/>
+    <dubbo:reference id="cloudParkingLotInfoService"
+                     interface="com.zoeeasy.cloud.pms.park.CloudParkingLotInfoService"
+                     check="false" timeout="60000" retries="0" registry="fundamentalRegistry"
+                     version="${dubbo.service.version}"/>
+    <dubbo:reference id="dockInfoService"
+                     interface="com.zoeeasy.cloud.pms.dock.DockInfoService"
+                     check="false" timeout="60000" retries="0" registry="fundamentalRegistry"
+                     version="${dubbo.service.version}"/>
+    <dubbo:reference id="parkingQrcodeService"
+                     interface="com.zoeeasy.cloud.pms.park.ParkingQrcodeService"
+                     check="false" timeout="60000" retries="0" registry="fundamentalRegistry"
+                     version="${dubbo.service.version}"/>
+    <dubbo:reference id="parkingFloorService"
+                     interface="com.zoeeasy.cloud.pms.floor.ParkingFloorService"
+                     check="false" timeout="60000" retries="0" registry="fundamentalRegistry"
+                     version="${dubbo.service.version}"/>
+</beans>

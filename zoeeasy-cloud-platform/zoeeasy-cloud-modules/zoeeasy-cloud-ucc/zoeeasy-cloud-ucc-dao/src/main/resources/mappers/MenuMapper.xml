@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.zoeeasy.cloud.ucc.mapper.MenuMapper">
+    <resultMap id="BaseResultMap" type="com.zoeeasy.cloud.ucc.domain.MenuEntity">
+        <!-- 树形基础模块 -->
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <result column="tenantId" property="tenantId" jdbcType="BIGINT"/>
+        <result column="code" property="code" jdbcType="VARCHAR"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+        <result column="type" property="type" jdbcType="VARCHAR"/>
+        <result column="url" property="url" jdbcType="VARCHAR"/>
+        <result column="component" property="component" jdbcType="VARCHAR"/>
+        <result column="icon" property="icon" jdbcType="VARCHAR"/>
+        <result column="level" property="level" jdbcType="VARCHAR"/>
+        <result column="sort" property="sort" jdbcType="SMALLINT"/>
+        <result column="parentId" property="parentId" jdbcType="BIGINT"/>
+        <result column="pathCode" property="pathCode" jdbcType="VARCHAR"/>
+        <result column="staticMenu" property="staticMenu" jdbcType="TINYINT"/>
+        <result column="shown" property="shown" jdbcType="TINYINT"/>
+        <result column="permission" property="permission" jdbcType="VARCHAR"/>
+        <result column="status" property="status" jdbcType="TINYINT"/>
+        <result column="tenancyHostSide" property="tenancyHostSide" jdbcType="TINYINT"/>
+        <result column="remarks" property="remarks" jdbcType="VARCHAR"/>
+        <result column="creatorUserId" property="creatorUserId" jdbcType="BIGINT"/>
+        <result column="creationTime" property="creationTime" jdbcType="TIMESTAMP"/>
+        <result column="lastModifierUserId" property="lastModifierUserId" jdbcType="BIGINT"/>
+        <result column="lastModificationTime" property="lastModificationTime" jdbcType="TIMESTAMP"/>
+        <result column="deleterUserId" property="deleterUserId" jdbcType="BIGINT"/>
+        <result column="deletionTime" property="deletionTime" jdbcType="TIMESTAMP"/>
+        <result column="deleted" property="deleted" jdbcType="TINYINT"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        t.id,
+        t.tenantId,
+        t.code,
+        t.name,
+        t.type,
+        t.url,
+        t.component,
+        t.icon,
+        t.level,
+        t.sort,
+        t.parentId,
+        t.pathCode,
+        t.staticMenu,
+        t.shown,
+        t.permission,
+        t.status,
+        t.tenancyHostSide,
+        t.remarks,
+        t.creatorUserId,
+        t.creationTime,
+        t.lastModifierUserId,
+        t.lastModificationTime,
+        t.deleterUserId,
+        t.deletionTime,
+        t.deleted
+    </sql>
+
+    <!-- 获取所有静态菜单 -->
+    <select id="getAllStaticMenu" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM ucc_menu t
+        WHERE t.type=1 AND t.staticMenu= 1 AND t.deleted=0
+        ORDER BY pathCode
+    </select>
+
+    <!-- 获取所有宿主端静态菜单 -->
+    <select id="getAllHostSideStaticMenu" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM ucc_menu t
+        WHERE t.type=1 AND t.staticMenu= 1 AND (t.tenancyHostSide = 1 OR t.tenancyHostSide=4) AND t.deleted=0
+        ORDER BY pathCode
+    </select>
+
+    <!-- 获取所有租户端静态菜单 -->
+    <select id="getAllTenancySideStaticMenu" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM ucc_menu t
+        WHERE t.type=1 AND t.staticMenu= 1 AND (t.tenancyHostSide = 2 OR t.tenancyHostSide=4) AND t.deleted=0
+        ORDER BY pathCode
+    </select>
+
+</mapper>

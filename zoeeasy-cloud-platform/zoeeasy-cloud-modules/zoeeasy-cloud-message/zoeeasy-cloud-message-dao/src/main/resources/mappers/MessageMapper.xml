@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zoeeasy.cloud.message.mapper.MessageMapper">
+
+    <resultMap id="BaseResultMap" type="com.zoeeasy.cloud.message.domain.MessageEntity">
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <result column="messageId" property="messageId"/>
+        <result column="traceId" property="traceId"/>
+        <result column="sender" property="sender"/>
+        <result column="exchangeTopic" property="exchangeTopic"/>
+        <result column="routingKey" property="routingKey"/>
+        <result column="consumerQueue" property="consumerQueue"/>
+        <result column="payload" property="payload"/>
+        <result column="messageType" property="messageType"/>
+        <result column="sendTimes" property="sendTimes"/>
+        <result column="sendStatus" property="sendStatus"/>
+        <result column="alreadyDead" property="alreadyDead"/>
+        <result column="creatorUserId" property="creatorUserId" jdbcType="BIGINT"/>
+        <result column="creationTime" property="creationTime" jdbcType="TIMESTAMP"/>
+        <result column="lastModifierUserId" property="lastModifierUserId"/>
+        <result column="lastModificationTime" property="lastModificationTime"/>
+        <result column="deleterUserId" property="deleterUserId"/>
+        <result column="deleted" property="deleted"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,
+        messageId,
+        traceId,
+        sender,
+        exchangeTopic,
+        routingKey,
+        consumerQueue,
+        payload,
+        messageType,
+        sendTime,
+        sendStatus,
+        alreadyDead,
+        creatorUserId,
+        creationTime,
+        lastModifierUserId,
+        lastModificationTime,
+        deleterUserId,
+        deleted
+    </sql>
+    <insert id="saveMessage" parameterType="com.zoeeasy.cloud.message.domain.MessageEntity">
+        INSERT INTO msg_message
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="messageId != null">
+                messageId,
+            </if>
+            <if test="traceId != null">
+                traceId,
+            </if>
+            <if test="sender != null">
+                sender,
+            </if>
+            <if test="exchangeTopic != null">
+                exchangeTopic,
+            </if>
+            <if test="routingKey != null">
+                routingKey,
+            </if>
+            <if test="consumerQueue != null">
+                consumerQueue,
+            </if>
+            <if test="payload != null">
+                payload,
+            </if>
+            <if test="messageType != null">
+                messageType,
+            </if>
+            <if test="sendTimes != null">
+                sendTimes,
+            </if>
+            <if test="sendStatus != null">
+                sendStatus,
+            </if>
+            <if test="alreadyDead != null">
+                alreadyDead,
+            </if>
+            <if test="creatorUserId != null">
+                creatorUserId,
+            </if>
+            <if test="creationTime != null">
+                creationTime,
+            </if>
+        </trim>
+        <trim prefix="VALUES (" suffix=")" suffixOverrides=",">
+            <if test="messageId != null">
+                #{messageId},
+            </if>
+            <if test="traceId != null">
+                #{traceId},
+            </if>
+            <if test="sender != null">
+                #{sender},
+            </if>
+            <if test="exchangeTopic != null">
+                #{exchangeTopic},
+            </if>
+            <if test="routingKey != null">
+                #{routingKey},
+            </if>
+            <if test="consumerQueue != null">
+                #{consumerQueue},
+            </if>
+            <if test="payload != null">
+                #{payload},
+            </if>
+            <if test="messageType != null">
+                #{messageType},
+            </if>
+            <if test="sendTimes != null">
+                #{sendTimes},
+            </if>
+            <if test="sendStatus != null">
+                #{sendStatus},
+            </if>
+            <if test="alreadyDead != null">
+                #{alreadyDead},
+            </if>
+            <if test="creatorUserId != null">
+                #{creatorUserId},
+            </if>
+            <if test="creationTime != null">
+                #{creationTime},
+            </if>
+        </trim>
+    </insert>
+</mapper>

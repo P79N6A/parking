@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <!--notify-->
+    <include file="src/main/resources/migrations/notify/not_notification_create_table.xml"
+             relativeToChangelogFile="false"/>
+    <include file="src/main/resources/migrations/notify/not_notification_template_create_table.xml"
+             relativeToChangelogFile="false"/>
+    <include file="src/main/resources/migrations/notify/not_push_device_create_table.xml"
+             relativeToChangelogFile="false"/>
+    <include file="src/main/resources/migrations/notify/not_push_tag_create_table.xml" relativeToChangelogFile="false"/>
+    <include file="src/main/resources/migrations/notify/not_user_push_tag_create_table.xml"
+             relativeToChangelogFile="false"/>
+    <include file="src/main/resources/migrations/notify/not_notification_modify_columns_20181218.xml"
+             relativeToChangelogFile="false"/>
+</databaseChangeLog>

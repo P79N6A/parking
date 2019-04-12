@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zoeeasy.cloud.pms.mapper.ParkingCurrentInfoMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.zoeeasy.cloud.pms.domain.ParkingCurrentInfoEntity">
+        <id column="id" property="id"/>
+        <result property="tenantId" column="tenantId"/>
+        <result property="parkingId" column="parkingId"/>
+        <result property="operationState" column="operationState"/>
+        <result property="lotAvailable" column="lotAvailable"/>
+        <result property="lotAppointmentAvailable" column="lotAppointmentAvailable"/>
+        <result property="lotBagAvailable" column="lotBagAvailable"/>
+        <result column="creatorUserId" property="creatorUserId"/>
+        <result column="creationTime" property="creationTime"/>
+        <result column="lastModifierUserId" property="lastModifierUserId"/>
+        <result column="lastModificationTime" property="lastModificationTime"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, tenantId, parkingId, operationState, lotAvailable, lotAppointmentAvailable, lotBagAvailable,
+        creatorUserId, creationTime, lastModifierUserId, lastModificationTime
+    </sql>
+    <select id="selectByParkingId" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from pms_parking_current_info
+        <where>
+            parkingId = #{parkingId}
+        </where>
+    </select>
+    <select id="findById" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from pms_parking_current_info
+        <where>
+            id = #{id}
+        </where>
+    </select>
+    <update id="updateCurrentInfoById" parameterType="com.zoeeasy.cloud.pms.domain.ParkingCurrentInfoEntity">
+        UPDATE pms_parking_current_info
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="tenantId != null">
+                tenantId = #{tenantId},
+            </if>
+            <if test="parkingId != null">
+                parkingId = #{parkingId},
+            </if>
+            <if test="operationState != null">
+                operationState = #{operationState},
+            </if>
+            <if test="lotAvailable != null">
+                lotAvailable = #{lotAvailable},
+            </if>
+            <if test="lotAppointmentAvailable != null">
+                lotAppointmentAvailable = #{lotAppointmentAvailable},
+            </if>
+            <if test="lotBagAvailable != null">
+                lotBagAvailable = #{lotBagAvailable},
+            </if>
+            <if test="lastModifierUserId != null">
+                lastModifierUserId = #{lastModifierUserId},
+            </if>
+            <if test="lastModificationTime != null">
+                lastModificationTime = #{lastModificationTime}
+            </if>
+        </trim>
+        <where>
+            id = #{id}
+        </where>
+    </update>
+
+    <update id="updateParkingLotAvailable" parameterType="com.zoeeasy.cloud.pms.domain.ParkingCurrentInfoEntity">
+        UPDATE pms_parking_current_info
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="tenantId != null">
+                tenantId = #{tenantId},
+            </if>
+            <if test="parkingId != null">
+                parkingId = #{parkingId},
+            </if>
+            <if test="operationState != null">
+                operationState = #{operationState},
+            </if>
+            <if test="lotAvailable != null">
+                lotAvailable = #{lotAvailable},
+            </if>
+            <if test="lotAppointmentAvailable != null">
+                lotAppointmentAvailable = #{lotAppointmentAvailable},
+            </if>
+            <if test="lotBagAvailable != null">
+                lotBagAvailable = #{lotBagAvailable},
+            </if>
+            <if test="lastModifierUserId != null">
+                lastModifierUserId = #{lastModifierUserId},
+            </if>
+            <if test="lastModificationTime != null">
+                lastModificationTime = #{lastModificationTime}
+            </if>
+        </trim>
+        <where>
+            parkingId = #{parkingId}
+        </where>
+    </update>
+
+    <select id="selectParkCount" resultType="java.lang.Integer">
+        SELECT
+        COUNT(1)
+        FROM pms_parking_current_info
+        <where>
+            ${ew.sqlSegment}
+        </where>
+    </select>
+
+    <insert id="insertParkingCurrentInfoNonTenant"
+            parameterType="com.zoeeasy.cloud.pms.domain.ParkingCurrentInfoEntity">
+        INSERT INTO pms_parking_current_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="parkingId != null">
+                parkingId,
+            </if>
+            <if test="operationState != null">
+                operationState,
+            </if>
+            <if test="lotAvailable != null">
+                lotAvailable,
+            </if>
+            <if test="lotAppointmentAvailable != null">
+                lotAppointmentAvailable,
+            </if>
+            <if test="lotBagAvailable != null">
+                lotBagAvailable,
+            </if>
+            <if test="creatorUserId != null">
+                creatorUserId,
+            </if>
+            <if test="creationTime != null">
+                creationTime,
+            </if>
+        </trim>
+        <trim prefix="VALUES (" suffix=")" suffixOverrides=",">
+            <if test="parkingId != null">
+                #{parkingId},
+            </if>
+            <if test="operationState != null">
+                #{operationState},
+            </if>
+            <if test="lotAvailable != null">
+                #{lotAvailable},
+            </if>
+            <if test="lotAppointmentAvailable != null">
+                #{lotAppointmentAvailable},
+            </if>
+            <if test="lotBagAvailable != null">
+                #{lotBagAvailable},
+            </if>
+            <if test="creatorUserId != null">
+                #{creatorUserId},
+            </if>
+            <if test="creationTime != null">
+                #{creationTime},
+            </if>
+        </trim>
+    </insert>
+
+    <delete id="deleteParkingCurrentInfoNonTenant">
+        delete from pms_parking_current_info
+        <where>
+            parkingId=#{parkingId}
+        </where>
+    </delete>
+
+    <select id="selectParkList" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM pms_parking_current_info
+        <where>
+            ${ew.sqlSegment}
+        </where>
+    </select>
+
+</mapper>

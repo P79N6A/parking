@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet author="walkman" id="ucc_static_role_permission_seed_data">
+        <comment>系统静态角色-权限初始化数据</comment>
+        <!--  宿主管理员角色权限 -->
+        <insert tableName="ucc_role_permission">
+            <column name="roleId" value="1"/>
+            <column name="permissionId" value="1"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="ucc_role_permission">
+            <column name="roleId" value="1"/>
+            <column name="permissionId" value="2"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="ucc_role_permission">
+            <column name="roleId" value="1"/>
+            <column name="permissionId" value="3"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="ucc_role_permission">
+            <column name="roleId" value="1"/>
+            <column name="permissionId" value="4"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="ucc_role_permission">
+            <column name="roleId" value="1"/>
+            <column name="permissionId" value="5"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="ucc_role_permission">
+            <column name="roleId" value="1"/>
+            <column name="permissionId" value="6"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="ucc_role_permission">
+            <column name="roleId" value="1"/>
+            <column name="permissionId" value="7"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="ucc_role_permission">
+            <column name="roleId" value="1"/>
+            <column name="permissionId" value="8"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="ucc_role_permission">
+            <column name="roleId" value="1"/>
+            <column name="permissionId" value="9"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="ucc_role_permission">
+            <column name="roleId" value="1"/>
+            <column name="permissionId" value="10"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="ucc_role_permission">
+            <column name="roleId" value="1"/>
+            <column name="permissionId" value="11"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="ucc_role_permission">
+            <column name="roleId" value="1"/>
+            <column name="permissionId" value="12"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="ucc_role_permission">
+            <column name="roleId" value="1"/>
+            <column name="permissionId" value="13"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="ucc_role_permission">
+            <column name="roleId" value="1"/>
+            <column name="permissionId" value="14"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="ucc_role_permission">
+            <column name="roleId" value="1"/>
+            <column name="permissionId" value="15"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="ucc_role_permission">
+            <column name="roleId" value="1"/>
+            <column name="permissionId" value="16"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="ucc_role_permission">
+            <column name="roleId" value="1"/>
+            <column name="permissionId" value="17"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="ucc_role_permission">
+            <column name="roleId" value="1"/>
+            <column name="permissionId" value="18"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="ucc_role_permission">
+            <column name="roleId" value="1"/>
+            <column name="permissionId" value="19"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="ucc_role_permission">
+            <column name="roleId" value="1"/>
+            <column name="permissionId" value="20"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="ucc_role_permission">
+            <column name="roleId" value="1"/>
+            <column name="permissionId" value="21"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="ucc_role_permission">
+            <column name="roleId" value="1"/>
+            <column name="permissionId" value="101"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="ucc_role_permission">
+            <column name="roleId" value="1"/>
+            <column name="permissionId" value="102"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="ucc_role_permission">
+            <column name="roleId" value="1"/>
+            <column name="permissionId" value="103"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="ucc_role_permission">
+            <column name="roleId" value="1"/>
+            <column name="permissionId" value="104"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="ucc_role_permission">
+            <column name="roleId" value="1"/>
+            <column name="permissionId" value="105"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="ucc_role_permission">
+            <column name="roleId" value="1"/>
+            <column name="permissionId" value="106"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="ucc_role_permission">
+            <column name="roleId" value="1"/>
+            <column name="permissionId" value="107"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="ucc_role_permission">
+            <column name="roleId" value="1"/>
+            <column name="permissionId" value="108"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="ucc_role_permission">
+            <column name="roleId" value="1"/>
+            <column name="permissionId" value="109"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="ucc_role_permission">
+            <column name="roleId" value="1"/>
+            <column name="permissionId" value="110"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="ucc_role_permission">
+            <column name="roleId" value="1"/>
+            <column name="permissionId" value="111"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="ucc_role_permission">
+            <column name="roleId" value="1"/>
+            <column name="permissionId" value="112"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="ucc_role_permission">
+            <column name="roleId" value="1"/>
+            <column name="permissionId" value="113"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="ucc_role_permission">
+            <column name="roleId" value="1"/>
+            <column name="permissionId" value="114"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="ucc_role_permission">
+            <column name="roleId" value="1"/>
+            <column name="permissionId" value="115"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="ucc_role_permission">
+            <column name="roleId" value="1"/>
+            <column name="permissionId" value="116"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="ucc_role_permission">
+            <column name="roleId" value="1"/>
+            <column name="permissionId" value="117"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="ucc_role_permission">
+            <column name="roleId" value="1"/>
+            <column name="permissionId" value="118"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="ucc_role_permission">
+            <column name="roleId" value="1"/>
+            <column name="permissionId" value="119"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="ucc_role_permission">
+            <column name="roleId" value="1"/>
+            <column name="permissionId" value="120"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="ucc_role_permission">
+            <column name="roleId" value="1"/>
+            <column name="permissionId" value="121"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="ucc_role_permission">
+            <column name="roleId" value="1"/>
+            <column name="permissionId" value="122"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="ucc_role_permission">
+            <column name="roleId" value="1"/>
+            <column name="permissionId" value="123"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="ucc_role_permission">
+            <column name="roleId" value="1"/>
+            <column name="permissionId" value="124"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="ucc_role_permission">
+            <column name="roleId" value="1"/>
+            <column name="permissionId" value="125"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="ucc_role_permission">
+            <column name="roleId" value="1"/>
+            <column name="permissionId" value="126"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="ucc_role_permission">
+            <column name="roleId" value="1"/>
+            <column name="permissionId" value="127"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="ucc_role_permission">
+            <column name="roleId" value="1"/>
+            <column name="permissionId" value="128"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="ucc_role_permission">
+            <column name="roleId" value="1"/>
+            <column name="permissionId" value="129"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

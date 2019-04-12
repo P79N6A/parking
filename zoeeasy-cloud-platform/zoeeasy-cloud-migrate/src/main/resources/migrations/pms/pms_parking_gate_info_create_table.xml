@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet id="pms_parking_gate_info_create_table" author="sc">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="pms_parking_gate_info"/>
+            </not>
+        </preConditions>
+        <createTable tableName="pms_parking_gate_info" remarks="停车场出入口信息">
+            <column autoIncrement="true" name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_parking_gate_info"/>
+            </column>
+            <column name="tenantId" type="bigint(20)" remarks="租户ID">
+            </column>
+            <column name="parkingId" type="bigint(20)" remarks="停车场ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="garageId" type="bigint(20)" remarks="车库ID"/>
+            <column name="code" type="varchar(32)" remarks="出入口编号">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" type="varchar(32)" remarks="出入口名称">
+            </column>
+            <column name="direction" type="tinyint(4)" remarks="出入口方向：，1-入口，2-出口 3 出入口" defaultValue="3">
+                <constraints nullable="false"/>
+            </column>
+            <column name="laneCount" type="tinyint(4)" remarks="车道数量" defaultValue="0"/>
+            <column name="longitude" type="decimal(9,6)" remarks="出入口经度"/>
+            <column name="latitude" type="decimal(9,6)" remarks="出入口纬度"/>
+            <column name="remarks" type="varchar(2000)" remarks="备注"/>
+            <column name="creatorUserId" type="bigint" remarks="创建者"/>
+            <column name="creationTime" type="DATETIME" remarks="创建时间"/>
+            <column name="lastModifierUserId" type="bigint" remarks="更新者"/>
+            <column name="lastModificationTime" type="DATETIME" remarks="更新时间"/>
+            <column name="deleterUserId" type="bigint" remarks="删除者"/>
+            <column name="deletionTime" type="DATETIME" remarks="删除时间"/>
+            <column name="deleted" type="tinyint(1)" remarks="删除标记" defaultValue="0"/>
+            <column name="version" type="bigint(20)" remarks="版本号" defaultValue="1"/>
+        </createTable>
+        <createIndex tableName="pms_parking_gate_info" indexName="idx_tenant_parking">
+            <column name="tenantId"/>
+            <column name="parkingId"/>
+        </createIndex>
+        <createIndex tableName="pms_parking_gate_info" indexName="inx_code">
+            <column name="code"/>
+        </createIndex>
+    </changeSet>
+</databaseChangeLog>

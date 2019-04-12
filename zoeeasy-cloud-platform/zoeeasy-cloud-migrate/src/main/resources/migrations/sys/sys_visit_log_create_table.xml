@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet author="walkman" id="sys_visit_log_create_table">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="sys_visit_log"/>
+            </not>
+        </preConditions>
+        <createTable tableName="sys_visit_log" remarks="用户登录日志表">
+            <column autoIncrement="true" name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_visit_log"/>
+            </column>
+            <column name="tenantId" type="bigint(20)" remarks="租户ID"/>
+            <column name="userId" type="bigint" remarks="用户ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="account" type="VARCHAR(128)" remarks="登录名">
+                <constraints nullable="false"/>
+            </column>
+            <column name="clientId" type="VARCHAR(255)" remarks="客户端ID"/>
+            <column name="clientIp" type="VARCHAR(255)" remarks="客户端IP"/>
+            <column name="clientOSVersion" type="VARCHAR(255)" remarks="客户端系统版本"/>
+            <column name="clientOSArch" type="VARCHAR(255)" remarks="客户端操作系统位数"/>
+            <column name="clientOSName" type="VARCHAR(255)" remarks="客户端系统名称"/>
+            <column name="clientAgent" type="VARCHAR(2000)" remarks="浏览器基本信息"/>
+            <column name="requestUrl" type="VARCHAR(2000)" remarks="客户端发出请求时的完整URL"/>
+            <column name="requestUri" type="VARCHAR(2000)" remarks="请求行中的资源名部分"/>
+            <column name="requestVerb" type="VARCHAR(255)" remarks="客户机请求方式"/>
+            <column name="localAddress" type="VARCHAR(255)" remarks="WEB服务器的IP地址"/>
+            <column name="localName" type="VARCHAR(255)" remarks="WEB服务器的主机名"/>
+            <column name="sessionId" type="VARCHAR(255)" remarks="当前会话请求的sessionId"/>
+            <column name="accessToken" type="VARCHAR(1000)" remarks="访问令牌"/>
+            <column name="refreshToken" type="VARCHAR(1000)" remarks="访问令牌"/>
+            <column name="creatorUserId" type="bigint" remarks="创建者"/>
+            <column name="creationTime" type="DATETIME" remarks="创建时间"/>
+        </createTable>
+        <rollback>drop table up_visit_log</rollback>
+    </changeSet>
+</databaseChangeLog>

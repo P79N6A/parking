@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet author="walkman" id="sys_param_type_data">
+        <comment>系统默认参数类型配置初始化数据</comment>
+
+        <insert tableName="sys_param_type">
+            <column name="id" value="1"/>
+            <column name="paramCode" value="invoice"/>
+            <column name="paramName" value="发票参数"/>
+            <column name="parentCode" value=""/>
+            <column name="sort" value="0"/>
+            <column name="staticParam" value="1"/>
+            <column name="tenancyHostSide" value="4"/>
+            <column name="status" value="1"/>
+            <column name="remark" value="发票参数"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="sys_param_type">
+            <column name="id" value="2"/>
+            <column name="paramCode" value="invoice.saleInfo"/>
+            <column name="paramName" value="销方信息"/>
+            <column name="parentCode" value="invoice"/>
+            <column name="sort" value="0"/>
+            <column name="staticParam" value="1"/>
+            <column name="tenancyHostSide" value="4"/>
+            <column name="status" value="1"/>
+            <column name="remark" value="销方信息"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="sys_param_type">
+            <column name="id" value="3"/>
+            <column name="paramCode" value="invoice.postage"/>
+            <column name="paramName" value="纸质发票邮费配置"/>
+            <column name="parentCode" value="invoice"/>
+            <column name="sort" value="1"/>
+            <column name="staticParam" value="1"/>
+            <column name="tenancyHostSide" value="4"/>
+            <column name="status" value="1"/>
+            <column name="remark" value="纸质发票邮费配置"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="sys_param_type">
+            <column name="id" value="4"/>
+            <column name="paramCode" value="pay"/>
+            <column name="paramName" value="支付参数"/>
+            <column name="parentCode" value=""/>
+            <column name="sort" value="0"/>
+            <column name="staticParam" value="1"/>
+            <column name="tenancyHostSide" value="4"/>
+            <column name="status" value="1"/>
+            <column name="remark" value="支付参数"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="sys_param_type">
+            <column name="id" value="5"/>
+            <column name="paramCode" value="pay.alipay"/>
+            <column name="paramName" value="支付宝参数"/>
+            <column name="parentCode" value="pay"/>
+            <column name="sort" value="0"/>
+            <column name="staticParam" value="1"/>
+            <column name="tenancyHostSide" value="4"/>
+            <column name="status" value="1"/>
+            <column name="remark" value="支付宝参数"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="sys_param_type">
+            <column name="id" value="6"/>
+            <column name="paramCode" value="pay.wechat"/>
+            <column name="paramName" value="微信参数"/>
+            <column name="parentCode" value="pay"/>
+            <column name="sort" value="1"/>
+            <column name="staticParam" value="1"/>
+            <column name="tenancyHostSide" value="4"/>
+            <column name="status" value="1"/>
+            <column name="remark" value="微信参数"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

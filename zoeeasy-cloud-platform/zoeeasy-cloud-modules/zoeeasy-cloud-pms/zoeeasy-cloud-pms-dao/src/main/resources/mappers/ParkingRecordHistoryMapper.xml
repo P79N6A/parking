@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.zoeeasy.cloud.pms.mapper.ParkingRecordHistoryMapper">
+    <resultMap id="BaseResultMap" type="com.zoeeasy.cloud.pms.domain.ParkingRecordHistoryEntity">
+        <!-- 树形基础模块 -->
+        <id column="id" property="id"/>
+        <result column="tenantId " property="tenantId"/>
+        <result column="recordId" property="recordId"/>
+        <result column="recordNo" property="recordNo"/>
+        <result column="thirdParkingRecordId" property="thirdParkingRecordId"/>
+        <result column="aliParkingRecordId" property="aliParkingRecordId"/>
+        <result column="parkingId" property="parkingId"/>
+        <result column="parkingName" property="parkingName"/>
+        <result column="parkingCode" property="parkingCode"/>
+        <result column="parkingLotId" property="parkingLotId"/>
+        <result column="parkingLotCode" property="parkingLotCode"/>
+        <result column="parkingLotNumber" property="parkingLotNumber"/>
+        <result column="intoRecordNo" property="intoRecordNo"/>
+        <result column="outRecordNo" property="outRecordNo"/>
+        <result column="cardNumber" property="cardNumber"/>
+        <result column="codeNumber" property="codeNumber"/>
+        <result column="plateNumber" property="plateNumber"/>
+        <result column="plateColor" property="plateColor"/>
+        <result column="carType" property="carType"/>
+        <result column="parkingType" property="parkingType"/>
+        <result column="startTime" property="startTime"/>
+        <result column="endTime" property="endTime"/>
+        <result column="periodLength" property="periodLength"/>
+        <result column="status" property="status"/>
+        <result column="appointed" property="appointed"/>
+        <result column="appointOrderNo" property="appointOrderNo"/>
+        <result column="appointRuleId" property="appointRuleId"/>
+        <result column="chargeId" property="chargeId"/>
+        <result column="payableAmount" property="payableAmount"/>
+        <result column="creatorUserId" property="creatorUserId" jdbcType="BIGINT"/>
+        <result column="creationTime" property="creationTime" jdbcType="TIMESTAMP"/>
+        <result column="lastModifierUserId" property="lastModifierUserId" jdbcType="BIGINT"/>
+        <result column="lastModificationTime" property="lastModificationTime" jdbcType="TIMESTAMP"/>
+        <result column="deleterUserId" property="deleterUserId" jdbcType="BIGINT"/>
+        <result column="deletionTime" property="deletionTime" jdbcType="TIMESTAMP"/>
+        <result column="deleted" property="deleted" jdbcType="TINYINT"/>
+        <result column="version" property="version" jdbcType="TINYINT"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,
+        tenantId,
+        recordId,
+        recordNo,
+        thirdParkingRecordId,
+        aliParkingRecordId,
+        parkingId,
+        parkingName,
+        parkingCode,
+        parkingLotId,
+        parkingLotCode,
+        parkingLotNumber,
+        intoRecordNo
+        outRecordNo
+        cardNumber,
+        codeNumber,
+        plateNumber,
+        plateColor,
+        carType,
+        parkingType,
+        startTime,
+        endTime,
+        periodLength,
+        status,
+        appointed,
+        appointOrderNo,
+        appointRuleId,
+        chargeId,
+        payableAmount,
+        creatorUserId,
+        creationTime,
+        lastModifierUserId,
+        lastModificationTime,
+        deleterUserId,
+        deletionTime,
+        deleted,
+        version
+    </sql>
+
+    <insert id="save" parameterType="com.zoeeasy.cloud.pms.domain.ParkingRecordHistoryEntity">
+        INSERT INTO pms_parking_record_history
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="tenantId != null">
+                tenantId,
+            </if>
+            <if test="recordId != null">
+                recordId,
+            </if>
+            <if test="recordNo != null">
+                recordNo,
+            </if>
+            <if test="thirdParkingRecordId != null">
+                thirdParkingRecordId,
+            </if>
+            <if test="aliParkingRecordId != null">
+                aliParkingRecordId,
+            </if>
+            <if test="parkingId != null">
+                parkingId,
+            </if>
+            <if test="parkingName != null">
+                parkingName,
+            </if>
+            <if test="parkingCode != null">
+                parkingCode,
+            </if>
+            <if test="parkingLotId != null">
+                parkingLotId,
+            </if>
+            <if test="parkingLotCode != null">
+                parkingLotCode,
+            </if>
+            <if test="parkingLotNumber != null">
+                parkingLotNumber,
+            </if>
+            <if test="intoRecordNo != null">
+                intoRecordNo,
+            </if>
+            <if test="outRecordNo != null">
+                outRecordNo,
+            </if>
+            <if test="cardNumber != null">
+                cardNumber,
+            </if>
+            <if test="codeNumber != null">
+                codeNumber,
+            </if>
+            <if test="plateNumber != null">
+                plateNumber,
+            </if>
+            <if test="plateColor != null">
+                plateColor,
+            </if>
+            <if test="carType != null">
+                carType,
+            </if>
+            <if test="parkingType != null">
+                parkingType,
+            </if>
+            <if test="startTime != null">
+                startTime,
+            </if>
+            <if test="endTime != null">
+                endTime,
+            </if>
+            <if test="periodLength != null">
+                periodLength,
+            </if>
+            <if test="status != null">
+                status,
+            </if>
+            <if test="appointed != null">
+                appointed,
+            </if>
+            <if test="appointOrderNo != null">
+                appointOrderNo,
+            </if>
+            <if test="appointRuleId != null">
+                appointRuleId,
+            </if>
+            <if test="chargeId != null">
+                chargeId,
+            </if>
+            <if test="payableAmount != null">
+                payableAmount,
+            </if>
+            <if test="creatorUserId != null">
+                creatorUserId,
+            </if>
+            <if test="creationTime != null">
+                creationTime,
+            </if>
+        </trim>
+        <trim prefix="VALUES (" suffix=")" suffixOverrides=",">
+            <if test="tenantId != null">
+                #{tenantId},
+            </if>
+            <if test="recordId != null">
+                #{recordId},
+            </if>
+            <if test="recordNo != null">
+                #{recordNo},
+            </if>
+            <if test="thirdParkingRecordId != null">
+                #{thirdParkingRecordId},
+            </if>
+            <if test="aliParkingRecordId != null">
+                #{aliParkingRecordId},
+            </if>
+            <if test="parkingId != null">
+                #{parkingId},
+            </if>
+            <if test="parkingName != null">
+                #{parkingName},
+            </if>
+            <if test="parkingCode != null">
+                #{parkingCode},
+            </if>
+            <if test="parkingLotId != null">
+                #{parkingLotId},
+            </if>
+            <if test="parkingLotCode != null">
+                #{parkingLotCode},
+            </if>
+            <if test="parkingLotNumber != null">
+                #{parkingLotNumber},
+            </if>
+            <if test="intoRecordNo != null">
+                #{intoRecordNo},
+            </if>
+            <if test="outRecordNo != null">
+                #{outRecordNo},
+            </if>
+            <if test="cardNumber != null">
+                #{cardNumber},
+            </if>
+            <if test="codeNumber != null">
+                #{codeNumber},
+            </if>
+            <if test="plateNumber != null">
+                #{plateNumber},
+            </if>
+            <if test="plateColor != null">
+                #{plateColor},
+            </if>
+            <if test="carType != null">
+                #{carType},
+            </if>
+            <if test="parkingType != null">
+                #{parkingType},
+            </if>
+            <if test="startTime != null">
+                #{startTime},
+            </if>
+            <if test="endTime != null">
+                #{endTime},
+            </if>
+            <if test="periodLength != null">
+                #{periodLength},
+            </if>
+            <if test="status != null">
+                #{status},
+            </if>
+            <if test="appointed != null">
+                #{appointed},
+            </if>
+            <if test="appointOrderNo != null">
+                #{appointOrderNo},
+            </if>
+            <if test="appointRuleId != null">
+                #{appointRuleId},
+            </if>
+            <if test="chargeId != null">
+                #{chargeId},
+            </if>
+            <if test="payableAmount != null">
+                #{payableAmount},
+            </if>
+            <if test="creatorUserId != null">
+                #{creatorUserId},
+            </if>
+            <if test="creationTime != null">
+                #{creationTime},
+            </if>
+        </trim>
+    </insert>
+
+</mapper>

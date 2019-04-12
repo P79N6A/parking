@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet id="pms_parking_record_image_create_table" author="walkman">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="pms_parking_record_image"/>
+            </not>
+        </preConditions>
+        <createTable tableName="pms_parking_record_image" remarks="停车照片表">
+            <column autoIncrement="true" name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_pms_parking_record_image"/>
+            </column>
+            <column name="tenantId" type="bigint(20) unsigned" remarks="租户ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="parkingId" type="bigint(20)" remarks="停车场ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="bizId" type="bigint(20) unsigned" remarks="停车记录ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="bizNo" type="varchar(32)" remarks="过车/停车记录流水号">
+                <constraints nullable="false"/>
+            </column>
+            <column name="bizType" type="tinyint(4)" remarks="业务类型  1.过车 2.停车">
+                <constraints nullable="false"/>
+            </column>
+            <column name="uuid" type="varchar(64)" remarks="图片唯一ID"/>
+            <column name="url" type="varchar(2000)" remarks="图片URL"/>
+            <column name="type" type="varchar(20)" remarks="图片文件类型"/>
+            <column name="creatorUserId" type="bigint" remarks="创建者"/>
+            <column name="creationTime" type="DATETIME" remarks="创建时间"/>
+        </createTable>
+        <createIndex tableName="pms_parking_record_image" indexName="pms_parking_image_tenantId">
+            <column name="tenantId"/>
+            <column name="bizNo"/>
+            <column name="bizType"/>
+        </createIndex>
+        <createIndex tableName="pms_parking_record_image" indexName="pms_parking_image_bizId">
+            <column name="tenantId"/>
+            <column name="bizId"/>
+            <column name="bizType"/>
+        </createIndex>
+    </changeSet>
+</databaseChangeLog>

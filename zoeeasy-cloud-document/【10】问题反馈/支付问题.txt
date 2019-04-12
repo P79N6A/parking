@@ -1,0 +1,46 @@
+1、支付问题
+   账单支付成功后,user_pay_order表paystatus,succeedPayTime未更新
+
+
+2、支付通知处理异常,
+     充值异常修复后,trade_payment_record,trade_payment_order数据未更新
+
+证书编号 1005 7120 1205 0040 84
+
+
+sourcefiles:
+
+zhuyi-cloud-modules/zhuyi-cloud-info/zhuyi-cloud-info-server/target/*.jar
+
+removePrefix:
+zhuyi-cloud-modules/zhuyi-cloud-info/zhuyi-cloud-info-server/target/
+
+remoteDirectory
+/parking/zhuyi-cloud-info-server
+
+execute
+
+#!/bin/bash
+cd  /parking/zhuyi-cloud-info-server
+export JAVA_HOME=/usr/local/jdk1.8.0_144
+echo   ${JAVA_HOME}
+nohup sh ./stop.sh 
+
+
+
+{
+  "accessKey": "71fe93d94b5e4fcba7d55183efca91f2",
+  "nonce": "35d20098bb964470a75c64a62e0a541f",
+  "timestamp":1537257907000 ,
+  "signature": "F0A11CDF674AF5DDA97F95CC564202DE"
+}
+
+25a4991e45e64d43b7f90ac528747957
+
+accessKey=71fe93d94b5e4fcba7d55183efca91f2
+secreteKey=25a4991e45e64d43b7f90ac528747957
+&nonce=35d20098bb964470a75c64a62e0a541f&timestamp=1537257907000&
+
+
+
+

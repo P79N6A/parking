@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet author="walkman" id="sys_audit_log_create_table">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="sys_audit_log"/>
+            </not>
+        </preConditions>
+        <createTable tableName="sys_audit_log" remarks="操作日志表">
+            <column autoIncrement="true" name="id" type="bigint(20)" remarks="日志主键">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_audit_log"/>
+            </column>
+            <column name="tenantId" type="bigint(20)" remarks="租户ID"/>
+            <column name="userId" type="bigint(20)" remarks="用户ID"/>
+            <column name="account" type="VARCHAR(128)" remarks="登录名"/>
+            <column name="title" type="VARCHAR(255)" remarks="日志标题" defaultValue=""/>
+            <column name="type" type="tinyint(4)" remarks="业务类型（0其它 1新增 2修改 3删除）" defaultValue="0"/>
+            <column name="logType" type="tinyint(4)" remarks="操作方式" defaultValue="0"/>
+            <column name="operatorType" type="tinyint(4)" remarks="操作类别（0其它 1后台用户 2手机端用户" defaultValue="0"/>
+            <column name="remoteAddress" type="VARCHAR(255)" remarks="操作IP地址" defaultValue=""/>
+            <column name="userAgent" type="VARCHAR(255)" remarks="用户代理" defaultValue=""/>
+            <column name="requestUrl" type="VARCHAR(255)" remarks="请求URI" defaultValue=""/>
+            <column name="method" type="VARCHAR(255)" remarks="方法名称" defaultValue=""/>
+            <column name="status" type="tinyint(4)" remarks="操作状态（１正常 0异常）" defaultValue="0"/>
+            <column name="params" type="VARCHAR(1000)" remarks="请求参数" defaultValue=""/>
+            <column name="content" type="VARCHAR(1000)" remarks="日志内容" defaultValue=""/>
+            <column name="exception" type="VARCHAR(1000)" remarks="异常信息" defaultValue=""/>
+            <column name="creatorUserId" type="bigint" remarks="创建者"/>
+            <column name="creationTime" type="DATETIME" remarks="创建时间"/>
+        </createTable>
+        <rollback>drop table sys_audit_log</rollback>
+    </changeSet>
+</databaseChangeLog>

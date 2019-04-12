@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet id="pms_special_vehicle_create_table.xml" author="zm">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="pms_special_vehicle"/>
+            </not>
+        </preConditions>
+        <createTable tableName="pms_special_vehicle" remarks="特殊车辆表">
+            <column autoIncrement="true" name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_special_vehicle"/>
+            </column>
+            <column name="tenantId" type="bigint(20) unsigned" remarks="租户ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="parkingId" type="bigint(20)" remarks="停车场ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="parkingLotId" type="bigint(20)" remarks="泊位ID"/>
+            <column name="parkingLotNumber" type="varchar(20)" remarks="泊位编号"/>
+            <column name="specialType" type="tinyint(4)" remarks="特殊车辆类型(1 : 白名单 2 黑名单 3 固定车 4 访客车)" defaultValue="1"/>
+            <column name="fixedType" type="tinyint(4)" remarks="固定车类型 1 业主车, 2 内部车"/>
+            <column name="visitType" type="tinyint(4)" remarks="访客车类型 1 固定车访客车"/>
+            <column name="plateNumber" type="varchar(10)" remarks="车牌编号">
+                <constraints nullable="false"/>
+            </column>
+            <column name="plateColor" type="tinyint(4) unsigned" remarks="车牌颜色">
+                <constraints nullable="false"/>
+            </column>
+            <column name="plateType" type="char(2)" remarks="车牌类型"/>
+            <column name="carType" type="tinyint(4) unsigned" remarks="车辆类型"/>
+            <column name="carColor" type="tinyint(4) unsigned" remarks="车辆颜色"/>
+            <column name="ownerName" type="varchar(32)" remarks="车主姓名"/>
+            <column name="ownerPhone" type="varchar(32)" remarks="车主手机"/>
+            <column name="ownerAddress" type="varchar(32)" remarks="车主地址"/>
+            <column name="beginTime" type="date" remarks="开始日期"/>
+            <column name="endTime" type="date" remarks="结束日期"/>
+            <column name="status" type="tinyint(4)" remarks="生效状态(1 : 未生效 2 已生效 3 已失效)" defaultValue="1"/>
+            <column name="remark" type="varchar(2000)" remarks="备注"/>
+            <column name="creatorUserId" type="bigint" remarks="创建者"/>
+            <column name="creationTime" type="DATETIME" remarks="创建时间"/>
+            <column name="lastModifierUserId" type="bigint" remarks="更新者"/>
+            <column name="lastModificationTime" type="DATETIME" remarks="更新时间"/>
+            <column name="deleterUserId" type="bigint" remarks="删除者"/>
+            <column name="deletionTime" type="DATETIME" remarks="删除时间"/>
+            <column name="deleted" type="tinyint(1)" remarks="删除标记" defaultValue="0"/>
+        </createTable>
+        <createIndex tableName="pms_special_vehicle" indexName="idx_special_plate">
+            <column name="specialType"/>
+            <column name="plateNumber"/>
+            <column name="plateColor"/>
+        </createIndex>
+        <createIndex tableName="pms_special_vehicle" indexName="idx_special_tenantId">
+            <column name="tenantId"/>
+            <column name="parkingId"/>
+        </createIndex>
+        <createIndex tableName="pms_special_vehicle" indexName="idx_vehicle_deleted">
+            <column name="deleted"/>
+        </createIndex>
+    </changeSet>
+</databaseChangeLog>

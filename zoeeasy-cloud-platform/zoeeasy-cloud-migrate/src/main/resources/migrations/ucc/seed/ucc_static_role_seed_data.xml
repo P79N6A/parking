@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet author="walkman" id="ucc_static_role_seed_data">
+        <comment>系统静态角色初始化数据</comment>
+        <insert tableName="ucc_role">
+            <column name="id" value="1"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="code" value="HOST_ADMIN"/>
+            <column name="name" value="管理员"/>
+            <column name="staticRole" value="1"/>
+            <column name="defaultRole" value="0"/>
+            <column name="tenancyHostSide" value="1"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value="宿主管理员"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="lastModifierUserId" value="0"/>
+            <column name="lastModificationTime" value="now()"/>
+            <column name="deleterUserId" value="0"/>
+            <column name="deletionTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <insert tableName="ucc_role">
+            <column name="id" value="2"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="code" value="HOST_USER"/>
+            <column name="name" value="普通用户"/>
+            <column name="staticRole" value="1"/>
+            <column name="defaultRole" value="1"/>
+            <column name="tenancyHostSide" value="1"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value="宿主普通用户"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="lastModifierUserId" value="0"/>
+            <column name="lastModificationTime" value="now()"/>
+            <column name="deleterUserId" value="0"/>
+            <column name="deletionTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <insert tableName="ucc_role">
+            <column name="id" value="3"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="code" value="TENANT_ADMIN"/>
+            <column name="name" value="管理员"/>
+            <column name="staticRole" value="1"/>
+            <column name="defaultRole" value="0"/>
+            <column name="tenancyHostSide" value="2"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value="租户管理员"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="lastModifierUserId" value="0"/>
+            <column name="lastModificationTime" value="now()"/>
+            <column name="deleterUserId" value="0"/>
+            <column name="deletionTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <insert tableName="ucc_role">
+            <column name="id" value="4"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="code" value="TENANT_USER"/>
+            <column name="name" value="普通用户"/>
+            <column name="staticRole" value="1"/>
+            <column name="defaultRole" value="1"/>
+            <column name="tenancyHostSide" value="2"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value="租户普通用户"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="lastModifierUserId" value="0"/>
+            <column name="lastModificationTime" value="now()"/>
+            <column name="deleterUserId" value="0"/>
+            <column name="deletionTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

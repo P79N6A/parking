@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://code.alibabatech.com/schema/dubbo
+        http://code.alibabatech.com/schema/dubbo/dubbo.xsd
+        ">
+
+    <dubbo:protocol name="hessian" port="20888" server="jetty"/>
+
+    <dubbo:service interface="com.zoeeasy.cloud.tool.vesta.intf.IdService" version="${dubbo.service.version}"
+                   timeout="3000"
+                   ref="idService"/>
+    <dubbo:service interface="com.zoeeasy.cloud.tool.amap.AmapService" version="${dubbo.service.version}"
+                   timeout="3000"
+                   ref="amapService"/>
+    <dubbo:service interface="com.zoeeasy.cloud.tool.oss.OssService" version="${dubbo.service.version}"
+                   timeout="3000" protocol="hessian"
+                   ref="ossService"/>
+    <dubbo:service interface="com.zoeeasy.cloud.tool.region.RegionService" version="${dubbo.service.version}"
+                   timeout="3000"
+                   ref="regionService"/>
+    <dubbo:service interface="com.zoeeasy.cloud.tool.license.LicensePrefixService"
+                   ref="licensePrefixService" timeout="180000" registry="fundamentalRegistry"
+                   version="${dubbo.service.version}"/>
+    <dubbo:service interface="com.zoeeasy.cloud.tool.misc.MiscService"
+                   ref="miscService" timeout="18000000" registry="fundamentalRegistry"
+                   version="${dubbo.service.version}"/>
+
+    <bean id="idService" class="com.zoeeasy.cloud.tool.vesta.service.factory.IdServiceFactoryBean"
+          init-method="init">
+        <property name="providerType" value="PROPERTY"/>
+        <property name="genMethod" value="${vesta.genMethod}"/>
+        <property name="machineId" value="${vesta.machine}"/>
+    </bean>
+
+</beans>

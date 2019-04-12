@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet id="gat_magnetic_heart_beat_drop_index_and_update_column_20181218" author="lhj">
+        <renameColumn columnDataType="tinyint(4)" newColumnName="battery" oldColumnName="battery"
+                      remarks="电量  默认单位是%" tableName="gat_magnetic_heart_beat"/>
+        <dropIndex indexName="idx_heart_tenantId" tableName="gat_magnetic_heart_beat"/>
+        <dropIndex indexName="idx_heart_provider" tableName="gat_magnetic_heart_beat"/>
+    </changeSet>
+</databaseChangeLog>

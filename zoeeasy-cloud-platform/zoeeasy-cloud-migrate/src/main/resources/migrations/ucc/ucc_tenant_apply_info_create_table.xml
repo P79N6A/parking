@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet id="ucc_tenant_apply_info_create_table" author="walkman">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="ucc_tenant_apply_info"/>
+            </not>
+        </preConditions>
+        <createTable tableName="ucc_tenant_apply_info" remarks="租户申请表">
+            <column autoIncrement="true" name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_tenant_apply_info"/>
+            </column>
+            <column name="tenantId" type="bigint(20)" remarks="租户ID"/>
+            <column name="userId" type="bigint(20)" remarks="申请人ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="applyNo" type="varchar(32)" remarks="申请编号">
+                <constraints nullable="false"/>
+            </column>
+            <column name="applyTime" type="datetime" remarks="申请时间">
+                <constraints nullable="false"/>
+            </column>
+            <column name="status" type="tinyint(4)" remarks="状态：0 申请中；1 已经结束" defaultValue="0"/>
+            <column name="registrationNumber" type="varchar(18)" remarks="营业执照代码"/>
+            <column name="agencyCode" type="varchar(32)" remarks="营业执照或者机构代码"/>
+            <column name="agencyName" type="varchar(2000)" remarks="机构名称"/>
+            <column name="registerAddress" type="varchar(2000)" remarks="企业注册地"/>
+            <column name="representativeName" type="varchar(64)" remarks="法人代表姓名"/>
+            <column name="representativeIdNo" type="varchar(18)" remarks="法人身份证号"/>
+            <column name="manager" type="varchar(64)" remarks="负责人"/>
+            <column name="phoneNumber" type="varchar(32)" remarks="联系电话，可为手机号码、固定电话号码"/>
+            <column name="phoneConfirmed" type="tinyint(1) unsigned" defaultValue="0" remarks="手机号是否验证"/>
+            <column name="emailAddress" type="varchar(64)" remarks="电子邮箱地址"/>
+            <column name="emailAddressConfirmed" type="tinyint(1) unsigned" remarks="电子邮箱是否验证"/>
+            <column name="licensePhotoUrl" type="varchar(256)" remarks="营业执照或者机构代码图片路径"/>
+            <column name="provinceCode" type="varchar(32)" remarks="省代码"/>
+            <column name="cityCode" type="varchar(32)" remarks="市代码"/>
+            <column name="countryCode" type="varchar(32)" remarks="区县代码"/>
+            <column name="address" type="varchar(2000)" remarks="地址"/>
+            <column name="creatorUserId" type="bigint" remarks="创建者"/>
+            <column name="creationTime" type="DATETIME" remarks="创建时间"/>
+            <column name="lastModifierUserId" type="bigint" remarks="更新者"/>
+            <column name="lastModificationTime" type="DATETIME" remarks="更新时间"/>
+            <column name="deleterUserId" type="bigint" remarks="删除者"/>
+            <column name="deletionTime" type="DATETIME" remarks="删除时间"/>
+            <column name="deleted" type="tinyint(1)" remarks="删除标记" defaultValue="0"/>
+        </createTable>
+        <createIndex tableName="ucc_tenant_apply_info" indexName="idx_tenantId">
+            <column name="tenantId"/>
+        </createIndex>
+        <createIndex tableName="ucc_tenant_apply_info" indexName="idx_userId">
+            <column name="userId"/>
+        </createIndex>
+        <createIndex tableName="ucc_tenant_apply_info" indexName="idx_applyNo">
+            <column name="applyNo"/>
+        </createIndex>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zoeeasy.cloud.pds.mapper.MagneticErrorReportMapper">
+
+    <resultMap id="BaseResultMap" type="com.zoeeasy.cloud.pds.domain.MagneticErrorReportEntity">
+        <!-- 树形基础模块 -->
+        <id column="id" property="id"/>
+        <result column="tenantId" property="tenantId"/>
+        <result column="parkingId" property="parkingId"/>
+        <result column="detectorId" property="detectorId"/>
+        <result column="parkingLotId" property="parkingLotId"/>
+        <result column="terminalId" property="terminalId"/>
+        <result column="reportTime" property="reportTime"/>
+        <result column="provider" property="provider"/>
+        <result column="reportType" property="reportType"/>
+        <result column="inspectUserId" property="inspectUserId"/>
+        <result column="inspectUserName" property="inspectUserName"/>
+        <result column="processTime" property="processTime"/>
+        <result column="processReason" property="processReason"/>
+        <result column="serialNumber" property="serialNumber"/>
+        <result column="creatorUserId" property="creatorUserId"/>
+        <result column="creationTime" property="creationTime"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        t.id,
+        t.tenantId,
+        t.parkingId,
+        t.detectorId,
+        t.parkingLotId,
+        t.provider,
+        t.serialNumber,
+        t.terminalId,
+        t.reportTime,
+        t.reportType,
+        t.inspectUserId,
+        t.inspectUserName,
+        t.processtime,
+        t.processReason,
+        t.creatorUserId,
+        t.creationTime,
+    </sql>
+    <insert id="save" parameterType="com.zoeeasy.cloud.pds.domain.MagneticErrorReportEntity">
+        insert into pds_magnetic_error_report
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="tenantId != null">
+                tenantId,
+            </if>
+            <if test="parkingId != null">
+                parkingId,
+            </if>
+            <if test="detectorId != null">
+                detectorId,
+            </if>
+            <if test="parkingLotId != null">
+                parkingLotId,
+            </if>
+            <if test="provider != null">
+                provider,
+            </if>
+            <if test="serialNumber != null">
+                serialNumber,
+            </if>
+            <if test="terminalId != null">
+                terminalId,
+            </if>
+            <if test="reportTime != null ">
+                reportTime,
+            </if>
+            <if test="reportType != null">
+                reportType,
+            </if>
+            <if test="inspectUserId != null">
+                inspectUserId,
+            </if>
+            <if test="inspectUserName != null">
+                inspectUserName,
+            </if>
+            <if test="processTime != null">
+                processTime,
+            </if>
+            <if test="processReason != null ">
+                processReason,
+            </if>
+            <if test="creatorUserId != null">
+                creatorUserId,
+            </if>
+            <if test="creationTime != null">
+                creationTime,
+            </if>
+        </trim>
+        <trim prefix="VALUES (" suffix=")" suffixOverrides=",">
+            <if test="tenantId != null">
+                #{tenantId},
+            </if>
+            <if test="parkingId != null">
+                ${parkingId},
+            </if>
+            <if test="detectorId != null">
+                #{detectorId},
+            </if>
+            <if test="parkingLotId != null">
+                #{parkingLotId},
+            </if>
+            <if test="provider != null">
+                #{provider},
+            </if>
+            <if test="serialNumber != null">
+                #{serialNumber},
+            </if>
+            <if test="terminalId != null">
+                #{terminalId},
+            </if>
+            <if test="reportTime != null ">
+                #{reportTime},
+            </if>
+            <if test="reportType != null">
+                #{reportType},
+            </if>
+            <if test="inspectUserId != null">
+                #{inspectUserId},
+            </if>
+            <if test="inspectUserName != null">
+                #{inspectUserName},
+            </if>
+            <if test="processTime != null">
+                #{processTime},
+            </if>
+            <if test="processReason != null ">
+                #{processReason},
+            </if>
+            <if test="creatorUserId != null">
+                #{creatorUserId},
+            </if>
+            <if test="creationTime != null">
+                #{creationTime},
+            </if>
+        </trim>
+
+    </insert>
+</mapper>

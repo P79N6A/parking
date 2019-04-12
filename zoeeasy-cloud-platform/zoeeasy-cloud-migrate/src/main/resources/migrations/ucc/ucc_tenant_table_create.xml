@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet author="walkman" id="ucc_tenant_table_create">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="ucc_tenant"/>
+            </not>
+        </preConditions>
+        <createTable tableName="ucc_tenant" remarks="平台租户表">
+            <column autoIncrement="true" name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_tenant"/>
+            </column>
+            <column name="code" type="VARCHAR(32)" remarks="租户编号">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" type="VARCHAR(64)" remarks="租户名称">
+                <constraints nullable="false"/>
+            </column>
+            <column name="type" type="tinyint(4) unsigned" remarks="商户类型：1 企业； 2 其他组织">
+                <constraints nullable="false"/>
+            </column>
+            <column name="status" type="tinyint(4) unsigned" defaultValue="0"
+                    remarks="运营商状态：0 新增；1 待审核；2 审核不通过；3 上线；4 下线；5 已删除">
+                <constraints nullable="false"/>
+            </column>
+            <column name="adminUserId" type="bigint" remarks="超级管理员用户">
+                <constraints nullable="false"/>
+            </column>
+            <column name="domain" type="VARCHAR(2000)" remarks="域名"/>
+            <column name="logo" type="VARCHAR(2000)" remarks="logo图片地址"/>
+            <column name="url" type="VARCHAR(2000)" remarks="url"/>
+            <column name="description" type="VARCHAR(2000)" remarks="简介"/>
+            <column name="beginTime" type="DATETIME" remarks="租户生效时间"/>
+            <column name="endTime" type="DATETIME" remarks="租户到期时间"/>
+            <column name="creatorUserId" type="bigint" remarks="创建者"/>
+            <column name="creationTime" type="DATETIME" remarks="创建时间"/>
+            <column name="lastModifierUserId" type="bigint" remarks="更新者"/>
+            <column name="lastModificationTime" type="DATETIME" remarks="更新时间"/>
+            <column name="deleterUserId" type="bigint" remarks="删除者"/>
+            <column name="deletionTime" type="DATETIME" remarks="删除时间"/>
+            <column name="deleted" type="tinyint(1)" remarks="删除标记" defaultValue="0"/>
+        </createTable>
+        <createIndex tableName="ucc_tenant" indexName="idx_tenant_code">
+            <column name="code"/>
+        </createIndex>
+    </changeSet>
+</databaseChangeLog>

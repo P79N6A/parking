@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zoeeasy.cloud.ucc.mapper.UserLoginLogMapper">
+    <resultMap id="BaseResultMap" type="com.zoeeasy.cloud.ucc.domain.UserLoginLogEntity">
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <result property="tenantId" column="tenantId"/>
+        <result property="userId" column="userId"/>
+        <result property="channel" column="channel"/>
+        <result property="clientId" column="clientId"/>
+        <result property="clientIp" column="clientIp"/>
+        <result property="deviceInfo" column="deviceInfo"/>
+        <result property="browserInfo" column="browserInfo"/>
+        <result property="requestUrl" column="requestUrl"/>
+        <result property="requestUri" column="requestUri"/>
+        <result property="requestVerb" column="requestVerb"/>
+        <result property="localAddress" column="localAddress"/>
+        <result property="localName" column="localName"/>
+        <result property="sessionId" column="sessionId"/>
+        <result property="accessToken" column="accessToken"/>
+        <result property="refreshToken" column="refreshToken"/>
+        <result property="creatorUserId" column="creatorUserId"/>
+        <result property="creationTime" column="creationTime"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        id,
+        tenantId,
+        userId,
+        channel,
+        clientId,
+        clientIp,
+        deviceInfo,
+        browserInfo,
+        requestUrl,
+        requestUri,
+        requestVerb,
+        localAddress,
+        localName,
+        sessionId,
+        accessToken,
+        refreshToken,
+        creatorUserId,
+        creationTime
+    </sql>
+    <insert id="save" parameterType="com.zoeeasy.cloud.ucc.domain.UserLoginLogEntity">
+        insert into ucc_user_login_log
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="tenantId != null">
+                tenantId,
+            </if>
+            <if test="userId != null">
+                userId,
+            </if>
+            <if test="channel != null">
+                channel,
+            </if>
+            <if test="clientId != null">
+                clientId,
+            </if>
+            <if test="clientIp != null">
+                clientIp,
+            </if>
+            <if test="deviceInfo != null">
+                deviceInfo,
+            </if>
+            <if test="browserInfo != null">
+                browserInfo,
+            </if>
+            <if test="requestUrl != null">
+                requestUrl,
+            </if>
+            <if test="requestUri != null">
+                requestUri,
+            </if>
+            <if test="requestVerb != null">
+                requestVerb,
+            </if>
+            <if test="localAddress != null">
+                localAddress,
+            </if>
+            <if test="localName != null">
+                localName,
+            </if>
+            <if test="sessionId != null">
+                sessionId,
+            </if>
+            <if test="accessToken != null">
+                accessToken,
+            </if>
+            <if test="refreshToken != null">
+                refreshToken,
+            </if>
+            <if test="creatorUserId != null">
+                creatorUserId,
+            </if>
+            <if test="creationTime != null">
+                creationTime,
+            </if>
+        </trim>
+        <trim prefix="VALUES(" suffix=")" suffixOverrides=",">
+            <if test="tenantId != null">
+                #{tenantId},
+            </if>
+            <if test="userId != null">
+                #{userId},
+            </if>
+            <if test="channel != null">
+                #{channel},
+            </if>
+            <if test="clientId != null">
+                #{clientId},
+            </if>
+            <if test="clientIp != null">
+                #{clientIp},
+            </if>
+            <if test="deviceInfo != null">
+                #{deviceInfo},
+            </if>
+            <if test="browserInfo != null">
+                #{browserInfo},
+            </if>
+            <if test="requestUrl != null">
+                #{requestUrl},
+            </if>
+            <if test="requestUri != null">
+                #{requestUri},
+            </if>
+            <if test="requestVerb != null">
+                #{requestVerb},
+            </if>
+            <if test="localAddress != null">
+                #{localAddress},
+            </if>
+            <if test="localName != null">
+                #{localName},
+            </if>
+            <if test="sessionId != null">
+                #{sessionId},
+            </if>
+            <if test="accessToken != null">
+                #{accessToken},
+            </if>
+            <if test="refreshToken != null">
+                #{refreshToken},
+            </if>
+            <if test="creatorUserId != null">
+                #{creatorUserId},
+            </if>
+            <if test="creationTime != null">
+                #{creationTime},
+            </if>
+        </trim>
+    </insert>
+
+</mapper>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zoeeasy.cloud.ucc.mapper.RoleMapper">
+    <resultMap id="BaseResultMap" type="com.zoeeasy.cloud.ucc.domain.RoleEntity">
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <result column="tenantId" property="tenantId" jdbcType="BIGINT"/>
+        <result column="code" property="code" jdbcType="VARCHAR"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+        <result column="staticRole" property="staticRole" jdbcType="TINYINT"/>
+        <result column="defaultRole" property="defaultRole" jdbcType="TINYINT"/>
+        <result column="adminRole" property="adminRole" jdbcType="TINYINT"/>
+        <result column="tenancyHostSide" property="tenancyHostSide" jdbcType="TINYINT"/>
+        <result column="status" property="status" jdbcType="TINYINT"/>
+        <result column="remarks" property="remarks" jdbcType="VARCHAR"/>
+        <result column="creatorUserId" property="creatorUserId" jdbcType="BIGINT"/>
+        <result column="creationTime" property="creationTime" jdbcType="TIMESTAMP"/>
+        <result column="lastModifierUserId" property="lastModifierUserId" jdbcType="BIGINT"/>
+        <result column="lastModificationTime" property="lastModificationTime" jdbcType="TIMESTAMP"/>
+        <result column="deleterUserId" property="deleterUserId" jdbcType="BIGINT"/>
+        <result column="deletionTime" property="deletionTime" jdbcType="TIMESTAMP"/>
+        <result column="deleted" property="deleted" jdbcType="TINYINT"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        t.id,
+        t.tenantId,
+        t.code,
+        t.name,
+        t.staticRole,
+        t.defaultRole,
+        t.adminRole,
+        t.tenancyHostSide,
+        t.status,
+        t.remarks,
+        t.creatorUserId,
+        t.creationTime,
+        t.lastModifierUserId,
+        t.lastModificationTime,
+        t.deleterUserId,
+        t.deletionTime,
+        t.deleted
+    </sql>
+
+    <!-- 获取所有静态角色 -->
+    <select id="getAllStaticRole" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM ucc_role t
+        WHERE t.tenantId IS NULL AND t.staticRole= 1 AND t.deleted=0
+    </select>
+
+    <!-- 获取所有宿主端静态角色 -->
+    <select id="getAllHostSideStaticRole" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM ucc_role t
+        WHERE t.tenantId IS NULL t.staticRole= 1 AND (t.tenancyHostSide = 1 OR t.tenancyHostSide=4) AND t.deleted=0
+    </select>
+
+    <!-- 获取所有租户端静态角色 -->
+    <select id="getAllTenancySideStaticRole" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM ucc_role t
+        WHERE t.tenantId IS NULL AND t.staticRole= 1 AND (t.tenancyHostSide = 2 OR t.tenancyHostSide=4) AND t.deleted=0
+    </select>
+
+    <!--- 无租户的条件查询 -->
+    <select id="findRoleListTenancyLess" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM ucc_role t
+        <where>
+            ${ew.sqlSegment} AND t.deleted=0
+        </where>
+    </select>
+
+</mapper>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zoeeasy.cloud.pms.mapper.ParkingLotConfigMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.zoeeasy.cloud.pms.domain.ParkingLotConfigEntity">
+        <id column="id" property="id"/>
+        <result column="tenantId" property="tenantId"/>
+        <result column="parkingId" property="parkingId"/>
+        <result column="parkingLotId" property="parkingLotId"/>
+        <result column="cameraId" property="cameraId"/>
+        <result column="cameraNo" property="cameraNo"/>
+        <result column="cameraName" property="cameraName"/>
+        <result column="detectorId" property="detectorId"/>
+        <result column="dockingId" property="dockingId"/>
+        <result column="lockId" property="lockId"/>
+        <result column="creatorUserId" property="creatorUserId"/>
+        <result column="creationTime" property="creationTime"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, tenantId, parkingId, parkingLotId, cameraId, cameraNo, cameraName, detectorId, dockingId, lockId,
+        creatorUserId, creationTime
+    </sql>
+
+    <delete id="deleteParkingLotConfigNonTenant">
+        delete
+        from pms_parking_lot_config
+        <where>
+            parkingId=#{parkingId}
+        </where>
+    </delete>
+
+</mapper>

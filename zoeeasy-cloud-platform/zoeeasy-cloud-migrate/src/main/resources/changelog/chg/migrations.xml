@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <!--chg-->
+    <include file="src/main/resources/migrations/chg/chg_charge_rule_create_table.xml" relativeToChangelogFile="false"/>
+    <include file="src/main/resources/migrations/chg/chg_charge_rule_time_create_table.xml"
+             relativeToChangelogFile="false"/>
+    <include file="src/main/resources/migrations/chg/chg_holiday_calendar_create_table.xml"
+             relativeToChangelogFile="false"/>
+    <include file="src/main/resources/migrations/chg/chg_holiday_schedule_create_table.xml"
+             relativeToChangelogFile="false"/>
+    <include file="src/main/resources/migrations/chg/chg_parking_charge_rule_create_table.xml"
+             relativeToChangelogFile="false"/>
+    <include file="src/main/resources/migrations/chg/chg_parking_charge_rule_history_create_table.xml"
+             relativeToChangelogFile="false"/>
+    <include file="src/main/resources/migrations/chg/chg_appointment_rule_table.xml" relativeToChangelogFile="false"/>
+    <include file="src/main/resources/migrations/chg/chg_parking_appointment_rule_history_table.xml"
+             relativeToChangelogFile="false"/>
+    <include file="src/main/resources/migrations/chg/chg_parking_appointment_rule_table.xml"
+             relativeToChangelogFile="false"/>
+    <include file="src/main/resources/migrations/chg/chg_appointment_rule_table_modify_columns_20181218.xml"
+             relativeToChangelogFile="false"/>
+    <include file="src/main/resources/migrations/chg/chg_charge_rule_time_modify_columns_20181218.xml"
+             relativeToChangelogFile="false"/>
+</databaseChangeLog>

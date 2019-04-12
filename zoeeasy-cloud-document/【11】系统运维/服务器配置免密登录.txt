@@ -1,0 +1,28 @@
+wufu-server04:  192.168.0.242    cys1qaz\]'/
+
+wufu-server01:  192.168.0.245   wf\]'/1qaz
+
+wufu-server05:  192.168.0.243   cys1qaz\]'/
+
+ZyKj2018@[wsx]'/
+
+ssh-keygen
+ssh-copy-id   root@server
+
+vi ~/.ssh/config
+
+Port?23791
+
+
+ssh wufu-server01 "ps aux|grep zoeeasy-cloud-pay-server|grep -v grep|awk '{print $2}'"|awk '{print $2}'
+
+scp -P 23791 ~/.ssh/id_rsa.pub  root@host:/home/xxx/id_rsa.pub  
+
+scp -P 23791 ~/.ssh/authorized_keys  root@wufu-server01:~/.ssh/
+
+scp -P 16022 file user@host:/dir
+
+scp ~/.ssh/authorized_keys -p 23791  root@wufu-server05:~/.ssh/
+
+
+./deploy.sh /var/lib/jenkins/workspace/t-rocketmq-messaging_master-4T3N3U4TQZZLOFKMDFNQXTM6TNZSHDH7CBDAZISQKO4V6G6WMTMQ  deploy

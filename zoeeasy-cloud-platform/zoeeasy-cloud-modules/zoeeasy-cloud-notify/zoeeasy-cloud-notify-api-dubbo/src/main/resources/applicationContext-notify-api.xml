@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://code.alibabatech.com/schema/dubbo
+        http://code.alibabatech.com/schema/dubbo/dubbo.xsd
+        ">
+    <!--notify-->
+    <dubbo:reference id="notificationService"
+                     interface="com.zoeeasy.cloud.notify.notification.NotificationService"
+                     check="false" timeout="60000" retries="0" registry="fundamentalRegistry" version="${dubbo.service.version}"/>
+    <dubbo:reference id="pushDeviceService"
+                     interface="com.zoeeasy.cloud.notify.push.PushDeviceService"
+                     check="false" timeout="60000" retries="0" registry="fundamentalRegistry" version="${dubbo.service.version}"/>
+    <dubbo:reference id="pushNotificationService"
+                     interface="com.zoeeasy.cloud.notify.push.PushNotificationService"
+                     check="false" timeout="60000" retries="0" registry="fundamentalRegistry" version="${dubbo.service.version}"/>
+    <dubbo:reference id="platformNotifyService"
+                     interface="com.zoeeasy.cloud.notify.platform.PlatformNotifyService"
+                     check="false" timeout="60000" retries="0" registry="fundamentalRegistry"
+                     version="${dubbo.service.version}"/>
+
+</beans>

@@ -1,0 +1,399 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zoeeasy.cloud.pay.mapper.WeixinPayOrderMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.zoeeasy.cloud.pay.domain.WeixinPayOrderEntity">
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <result column="customerUserId" property="customerUserId" jdbcType="BIGINT"/>
+        <result column="outTradeNo" property="outTradeNo" jdbcType="VARCHAR"/>
+        <result column="transactionId" property="transactionId" jdbcType="VARCHAR"/>
+        <result column="prepayId" property="prepayId" jdbcType="VARCHAR"/>
+        <result column="qrCodeUrl" property="qrCodeUrl" jdbcType="VARCHAR"/>
+        <result column="shortQrCodeUrl" property="shortQrCodeUrl" jdbcType="VARCHAR"/>
+        <result column="tradeState" property="tradeState" jdbcType="INTEGER"/>
+        <result column="tradeStateDesc" property="tradeStateDesc" jdbcType="VARCHAR"/>
+        <result column="body" property="body" jdbcType="VARCHAR"/>
+        <result column="detail" property="detail"/>
+        <result column="attach" property="attach" jdbcType="VARCHAR"/>
+        <result column="tradeType" property="tradeType" jdbcType="VARCHAR"/>
+        <result column="limitPay" property="limitPay" jdbcType="VARCHAR"/>
+        <result column="sceneInfo" property="sceneInfo" jdbcType="VARCHAR"/>
+        <result column="deviceInfo" property="deviceInfo" jdbcType="VARCHAR"/>
+        <result column="feeType" property="feeType" jdbcType="VARCHAR"/>
+        <result column="totalFee" property="totalFee" jdbcType="DECIMAL"/>
+        <result column="cashFee" property="cashFee" jdbcType="DECIMAL"/>
+        <result column="cashFeeType" property="cashFeeType" jdbcType="VARCHAR"/>
+        <result column="couponFee" property="couponFee" jdbcType="INTEGER"/>
+        <result column="settlementTotalFee" property="settlementTotalFee" jdbcType="DECIMAL"/>
+        <result column="spbillCreateIp" property="spbillCreateIp" jdbcType="VARCHAR"/>
+        <result column="timeStart" property="timeStart" jdbcType="TIMESTAMP"/>
+        <result column="timeEnd" property="timeEnd" jdbcType="TIMESTAMP"/>
+        <result column="goodsTag" property="goodsTag" jdbcType="VARCHAR"/>
+        <result column="openid" property="openid" jdbcType="VARCHAR"/>
+        <result column="subscribed" property="subscribed" jdbcType="CHAR"/>
+        <result column="bankType" property="bankType" jdbcType="VARCHAR"/>
+        <result column="remark" property="remark" jdbcType="VARCHAR"/>
+        <result column="creatorUserId" property="creatorUserId" jdbcType="BIGINT"/>
+        <result column="creationTime" property="creationTime" jdbcType="TIMESTAMP"/>
+        <result column="lastModifierUserId" property="lastModifierUserId" jdbcType="BIGINT"/>
+        <result column="lastModificationTime" property="lastModificationTime" jdbcType="TIMESTAMP"/>
+        <result column="deleterUserId" property="deleterUserId" jdbcType="BIGINT"/>
+        <result column="deletionTime" property="deletionTime" jdbcType="TIMESTAMP"/>
+        <result column="deleted" property="deleted" jdbcType="CHAR"/>
+        <result column="version" property="version" jdbcType="BIGINT"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, customerUserId, outTradeNo, transactionId, prepayId,
+        qrCodeUrl,shortQrCodeUrl,
+        tradeState, tradeStateDesc, body, detail, attach, tradeType, limitPay, sceneInfo,
+        deviceInfo,feeType,totalFee,cashFee,cashFeeType,couponFee,settlementTotalFee,spbillCreateIp,timeStart,timeEnd,goodsTag,
+        openid,subscribed,bankType,remark,creatorUserId, creationTime, lastModifierUserId, lastModificationTime, deleterUserId,
+        deletionTime, deleted,version
+    </sql>
+
+    <insert id="add" parameterType="com.zoeeasy.cloud.pay.domain.AlipayOrderEntity">
+        INSERT INTO pay_wxpay_order
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="tenantId != null">
+                tenantId,
+            </if>
+            <if test="customerUserId != null">
+                customerUserId,
+            </if>
+            <if test="outTradeNo != null">
+                outTradeNo,
+            </if>
+            <if test="transactionId != null">
+                transactionId,
+            </if>
+            <if test="prepayId != null">
+                prepayId,
+            </if>
+            <if test="qrCodeUrl != null">
+                qrCodeUrl,
+            </if>
+            <if test="shortQrCodeUrl != null">
+                shortQrCodeUrl,
+            </if>
+            <if test="tradeState != null">
+                tradeState,
+            </if>
+            <if test="tradeStateDesc != null">
+                tradeStateDesc,
+            </if>
+            <if test="body != null">
+                body,
+            </if>
+            <if test="detail != null">
+                detail,
+            </if>
+            <if test="attach != null">
+                attach,
+            </if>
+            <if test="tradeType != null">
+                tradeType,
+            </if>
+            <if test="limitPay != null">
+                limitPay,
+            </if>
+            <if test="sceneInfo != null">
+                sceneInfo,
+            </if>
+            <if test="deviceInfo != null">
+                deviceInfo,
+            </if>
+            <if test="feeType != null">
+                feeType,
+            </if>
+            <if test="totalFee != null">
+                totalFee,
+            </if>
+            <if test="cashFee != null">
+                cashFee,
+            </if>
+            <if test="cashFeeType != null">
+                cashFeeType,
+            </if>
+            <if test="couponFee != null">
+                couponFee,
+            </if>
+            <if test="settlementTotalFee != null">
+                settlementTotalFee,
+            </if>
+            <if test="spbillCreateIp != null">
+                spbillCreateIp,
+            </if>
+            <if test="timeStart != null">
+                timeStart,
+            </if>
+            <if test="timeEnd != null">
+                timeEnd,
+            </if>
+            <if test="goodsTag != null">
+                goodsTag,
+            </if>
+            <if test="openid != null">
+                openid,
+            </if>
+            <if test="subscribed != null">
+                subscribed,
+            </if>
+            <if test="bankType != null">
+                bankType,
+            </if>
+            <if test="remark != null">
+                remark,
+            </if>
+            <if test="creatorUserId != null">
+                creatorUserId,
+            </if>
+            <if test="creationTime != null">
+                creationTime,
+            </if>
+            <if test="lastModifierUserId != null">
+                lastModifierUserId,
+            </if>
+            <if test="lastModificationTime != null">
+                lastModificationTime,
+            </if>
+            <if test="deleterUserId != null">
+                deleterUserId,
+            </if>
+            <if test="deletionTime != null">
+                deletionTime,
+            </if>
+            <if test="deleted != null">
+                deleted,
+            </if>
+            <if test="version != null">
+                version,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="tenantId != null">
+                #{tenantId},
+            </if>
+            <if test="customerUserId != null">
+                #{customerUserId},
+            </if>
+            <if test="outTradeNo != null">
+                #{outTradeNo},
+            </if>
+            <if test="transactionId != null">
+                #{transactionId},
+            </if>
+            <if test="prepayId != null">
+                #{prepayId},
+            </if>
+            <if test="qrCodeUrl != null">
+                #{qrCodeUrl},
+            </if>
+            <if test="shortQrCodeUrl != null">
+                #{shortQrCodeUrl},
+            </if>
+            <if test="tradeState != null">
+                #{tradeState},
+            </if>
+            <if test="tradeStateDesc != null">
+                #{tradeStateDesc},
+            </if>
+            <if test="body != null">
+                #{body},
+            </if>
+            <if test="detail != null">
+                #{detail},
+            </if>
+            <if test="attach != null">
+                #{attach},
+            </if>
+            <if test="tradeType != null">
+                #{tradeType},
+            </if>
+            <if test="limitPay != null">
+                #{limitPay},
+            </if>
+            <if test="sceneInfo != null">
+                #{sceneInfo},
+            </if>
+            <if test="deviceInfo != null">
+                #{deviceInfo},
+            </if>
+            <if test="feeType != null">
+                #{feeType},
+            </if>
+            <if test="totalFee != null">
+                #{totalFee},
+            </if>
+            <if test="cashFee != null">
+                #{cashFee},
+            </if>
+            <if test="cashFeeType != null">
+                #{cashFeeType},
+            </if>
+            <if test="couponFee != null">
+                #{couponFee},
+            </if>
+            <if test="settlementTotalFee != null">
+                #{settlementTotalFee},
+            </if>
+            <if test="spbillCreateIp != null">
+                #{spbillCreateIp},
+            </if>
+            <if test="timeStart != null">
+                #{timeStart},
+            </if>
+            <if test="timeEnd != null">
+                #{timeEnd},
+            </if>
+            <if test="goodsTag != null">
+                #{goodsTag},
+            </if>
+            <if test="openid != null">
+                #{openid},
+            </if>
+            <if test="subscribed != null">
+                #{subscribed},
+            </if>
+            <if test="bankType != null">
+                #{bankType},
+            </if>
+            <if test="remark != null">
+                #{remark},
+            </if>
+            <if test="creatorUserId != null">
+                #{creatorUserId},
+            </if>
+            <if test="creationTime != null">
+                #{creationTime},
+            </if>
+            <if test="lastModifierUserId != null">
+                #{lastModifierUserId},
+            </if>
+            <if test="lastModificationTime != null">
+                #{lastModificationTime},
+            </if>
+            <if test="deleterUserId != null">
+                #{deleterUserId},
+            </if>
+            <if test="deletionTime != null">
+                #{deletionTime},
+            </if>
+            <if test="deleted != null">
+                #{deleted},
+            </if>
+            <if test="version != null">
+                #{version},
+            </if>
+        </trim>
+    </insert>
+
+    <select id="get" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        from pay_wxpay_order
+        <where>
+            deleted = '0' ${ew.sqlSegment}
+        </where>
+    </select>
+
+    <update id="updateByOutOrderNo" parameterType="com.zoeeasy.cloud.pay.domain.WeixinPayOrderEntity">
+        UPDATE pay_wxpay_order
+        <set>
+            <if test="outTradeNo != null">
+                outTradeNo = #{outTradeNo},
+            </if>
+            <if test="transactionId != null">
+                transactionId = #{transactionId},
+            </if>
+            <if test="prepayId != null">
+                prepayId = #{prepayId},
+            </if>
+            <if test="qrCodeUrl != null">
+                qrCodeUrl = #{qrCodeUrl},
+            </if>
+            <if test="shortQrCodeUrl != null">
+                shortQrCodeUrl = #{shortQrCodeUrl},
+            </if>
+            <if test="tradeState != null">
+                tradeState = #{tradeState},
+            </if>
+            <if test="tradeStateDesc != null">
+                tradeStateDesc = #{tradeStateDesc},
+            </if>
+            <if test="body != null">
+                body = #{body},
+            </if>
+            <if test="detail != null">
+                detail = #{detail},
+            </if>
+            <if test="attach != null">
+                attach = #{attach},
+            </if>
+            <if test="tradeType != null">
+                tradeType = #{tradeType},
+            </if>
+            <if test="limitPay != null">
+                limitPay = #{limitPay},
+            </if>
+            <if test="sceneInfo != null">
+                sceneInfo = #{sceneInfo},
+            </if>
+            <if test="deviceInfo != null">
+                deviceInfo = #{deviceInfo},
+            </if>
+            <if test="feeType != null">
+                feeType = #{feeType},
+            </if>
+            <if test="totalFee != null">
+                totalFee = #{totalFee},
+            </if>
+            <if test="cashFee != null">
+                cashFee = #{cashFee},
+            </if>
+            <if test="cashFeeType != null">
+                cashFeeType = #{cashFeeType},
+            </if>
+            <if test="couponFee != null">
+                couponFee = #{couponFee},
+            </if>
+            <if test="settlementTotalFee != null">
+                settlementTotalFee = #{settlementTotalFee},
+            </if>
+            <if test="spbillCreateIp != null">
+                spbillCreateIp = #{spbillCreateIp},
+            </if>
+            <if test="timeStart != null">
+                timeStart = #{timeStart},
+            </if>
+            <if test="timeEnd != null">
+                timeEnd = #{timeEnd},
+            </if>
+            <if test="goodsTag != null">
+                goodsTag = #{goodsTag},
+            </if>
+            <if test="openid != null">
+                openid = #{openid},
+            </if>
+            <if test="subscribed != null">
+                subscribed = #{subscribed},
+            </if>
+            <if test="bankType != null">
+                bankType = #{bankType},
+            </if>
+            <if test="remark != null">
+                remark = #{remark},
+            </if>
+            <if test="lastModifierUserId != null">
+                lastModifierUserId = #{lastModifierUserId},
+            </if>
+            <if test="lastModificationTime != null">
+                lastModificationTime = #{lastModificationTime},
+            </if>
+        </set>
+        WHERE outTradeNo = #{outTradeNo}
+    </update>
+
+</mapper>

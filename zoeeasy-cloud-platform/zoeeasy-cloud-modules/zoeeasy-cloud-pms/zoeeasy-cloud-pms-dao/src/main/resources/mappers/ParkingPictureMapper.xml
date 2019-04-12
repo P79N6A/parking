@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zoeeasy.cloud.pms.mapper.ParkingPictureMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.zoeeasy.cloud.pms.domain.ParkingPictureEntity">
+        <id column="id" property="id"/>
+        <result column="tenantId" property="tenantId" />
+        <result column="parkingId" property="parkingId"/>
+        <result column="url" property="url"/>
+        <result column="pictureType" property="pictureType"/>
+        <result column="businessId" property="businessId"/>
+        <result column="remark" property="remark"/>
+        <result column="creatorUserId" property="creatorUserId"/>
+        <result column="creationTime" property="creationTime"/>
+        <result column="deleterUserId" property="deleterUserId"/>
+        <result column="deletionTime" property="deletionTime"/>
+        <result column="deleted" property="deleted"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, parkingId, url, pictureType, businessId, remark,
+        creatorUserId, creationTime, deleterUserId, deletionTime, deleted
+    </sql>
+
+    <select id="selectParkingPictureList" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM pms_parking_picture
+        <where>
+            ${ew.sqlSegment}
+        </where>
+    </select>
+
+    <insert id="insertParkingPictureNonTenant" parameterType="com.zoeeasy.cloud.pms.domain.ParkingPictureEntity">
+        INSERT INTO pms_parking_picture
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="parkingId != null">
+                parkingId,
+            </if>
+            <if test="url != null">
+                url,
+            </if>
+            <if test="pictureType != null">
+                pictureType,
+            </if>
+            <if test="remark != null">
+                remark,
+            </if>
+            <if test="creatorUserId != null">
+                creatorUserId,
+            </if>
+            <if test="creationTime != null">
+                creationTime,
+            </if>
+        </trim>
+        <trim prefix="VALUES (" suffix=")" suffixOverrides=",">
+            <if test="parkingId != null">
+                #{parkingId},
+            </if>
+            <if test="url != null">
+                #{url},
+            </if>
+            <if test="pictureType != null">
+                #{pictureType},
+            </if>
+            <if test="remark != null">
+                #{remark},
+            </if>
+            <if test="creatorUserId != null">
+                #{creatorUserId},
+            </if>
+            <if test="creationTime != null">
+                #{creationTime},
+            </if>
+        </trim>
+    </insert>
+
+    <delete id="deleteParkingPictureNonTenant">
+        delete from pms_parking_picture
+        <where>
+            parkingId=#{parkingId} and pictureType=1
+        </where>
+    </delete>
+
+</mapper>

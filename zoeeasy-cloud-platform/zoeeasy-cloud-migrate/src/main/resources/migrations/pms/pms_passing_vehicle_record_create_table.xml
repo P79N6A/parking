@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet id="pms_passing_vehicle_record_create_table" author="AkeemSupper">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="pms_passing_vehicle_record"/>
+            </not>
+        </preConditions>
+        <createTable tableName="pms_passing_vehicle_record" remarks="过车记录表">
+            <column autoIncrement="true" name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_pms_passing_vehicle_record"/>
+            </column>
+            <column name="tenantId" type="bigint(20) unsigned" remarks="租户ID"/>
+            <column name="parkingId" type="bigint(20) unsigned" remarks="停车场ID"/>
+            <column name="parkingCode" type="VARCHAR(64)" remarks="停车场编号"/>
+            <column name="parkingName" type="VARCHAR(400)" remarks="停车场名称"/>
+            <column name="garageId" type="bigint(20) unsigned" remarks="车库ID"/>
+            <column name="gateId" type="bigint(20) unsigned" remarks="出入口ID"/>
+            <column name="laneId" type="bigint(20) unsigned" remarks="车道ID"/>
+            <column name="parkingLotId" type="bigint" remarks="泊位ID"/>
+            <column name="parkingLotNumber" type="VARCHAR(200)" remarks="泊位编号"/>
+            <column name="passingNo" type="VARCHAR(64)" remarks="平台过车流水号">
+                <constraints nullable="false"/>
+            </column>
+            <column name="passingUuid" type="VARCHAR(64)" remarks="平台过车唯一编号"/>
+            <column name="thirdPassingId" type="VARCHAR(64)" defaultValue="" remarks="第三方平台过车ID"/>
+            <column name="aliPassingId" type="VARCHAR(64)" defaultValue="" remarks="阿里平台过车ID"/>
+            <column name="cardNumber" type="VARCHAR(64)" defaultValue="" remarks="停车卡号"/>
+            <column name="codeNumber" type="VARCHAR(64)" defaultValue="" remarks="停车码"/>
+            <column name="plateNumber" type="VARCHAR(20)" defaultValue="" remarks="车牌号"/>
+            <column name="plateNoExist" type="tinyint(1)" defaultValue="0" remarks="是否有无车牌 0 无车牌 1 有车牌"/>
+            <column name="plateColor" type="tinyint(4) unsigned" defaultValue="0" remarks="车牌颜色"/>
+            <column name="carType" type="tinyint(4) unsigned" defaultValue="0" remarks="车辆类型"/>
+            <column name="plateNumberConfidence" type="int(11)" defaultValue="0" remarks="车牌置信度"/>
+            <column name="passingType" type="tinyint(4) unsigned" defaultValue="0" remarks="过车类型  0 未知 1.入车 2.出车 "/>
+            <column name="confidence" type="tinyint(4) unsigned" defaultValue="0" remarks="过车置信度"/>
+            <column name="parkingType" type="tinyint(4) unsigned" defaultValue="0" remarks="停车类型"/>
+            <column name="passTime" type="DATETIME" remarks="过车时间"/>
+            <column name="entryTime" type="DATETIME" remarks="入车时间"/>
+            <column name="exitTime" type="DATETIME" remarks="出车时间"/>
+            <column name="dataSource" type="tinyint(4)" remarks="过车数据来源" defaultValue="0"/>
+            <column name="dataType" type="tinyint(4)" remarks="数据类型" defaultValue="0"/>
+            <column name="photoUploaded" type="tinyint(4) unsigned" remarks="过车图片是否上传" defaultValue="0"/>
+            <column name="photoCount" type="tinyint(4) unsigned" remarks="图片数量" defaultValue="0"/>
+            <column name="uploadedDate" type="DATETIME" remarks="图片上传时间"/>
+            <column name="abnormalType" type="tinyint(4) unsigned" defaultValue="0" remarks="异常过车类型：0 非异常；2 停车场存在"/>
+            <column name="abnormalReason" type="text" remarks="异常原因"/>
+            <column name="proofStatus" type="tinyint(1)" defaultValue="0" remarks="校对状态 0:未校对  1:已校对"/>
+            <column name="proofUserId" type="bigint(20)" remarks="校对用户"/>
+            <column name="proofDate" type="DATETIME" remarks="校对时间"/>
+            <column name="remark" type="VARCHAR(2000)" remarks="备注"/>
+            <column name="creatorUserId" type="bigint" remarks="创建者"/>
+            <column name="creationTime" type="DATETIME" remarks="创建时间"/>
+            <column name="lastModifierUserId" type="bigint" remarks="更新者"/>
+            <column name="lastModificationTime" type="DATETIME" remarks="更新时间"/>
+            <column name="deleterUserId" type="bigint" remarks="删除者"/>
+            <column name="deletionTime" type="DATETIME" remarks="删除时间"/>
+            <column name="deleted" type="tinyint(1)" remarks="删除标记" defaultValue="0"/>
+        </createTable>
+        <createIndex tableName="pms_passing_vehicle_record" indexName="idx_tenantId">
+            <column name="tenantId"/>
+        </createIndex>
+        <createIndex tableName="pms_passing_vehicle_record" indexName="idx_parkingId">
+            <column name="parkingId"/>
+        </createIndex>
+        <createIndex tableName="pms_passing_vehicle_record" indexName="idx_parkingLotId">
+            <column name="parkingLotId"/>
+        </createIndex>
+        <createIndex tableName="pms_passing_vehicle_record" indexName="idx_plateNumber">
+            <column name="plateNumber"/>
+        </createIndex>
+        <createIndex tableName="pms_passing_vehicle_record" indexName="idx_passingUuid">
+            <column name="passingUuid"/>
+        </createIndex>
+        <createIndex tableName="pms_passing_vehicle_record" indexName="idx_passingNo">
+            <column name="passingNo"/>
+        </createIndex>
+        <createIndex tableName="pms_passing_vehicle_record" indexName="idx_dataSource">
+            <column name="dataSource"/>
+        </createIndex>
+        <createIndex tableName="pms_passing_vehicle_record" indexName="idx_photoUploaded">
+            <column name="photoUploaded"/>
+        </createIndex>
+    </changeSet>
+</databaseChangeLog>

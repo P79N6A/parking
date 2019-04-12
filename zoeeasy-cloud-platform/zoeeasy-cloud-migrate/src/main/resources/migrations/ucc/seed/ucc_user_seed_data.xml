@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet author="walkman" id="ucc_user_seed_data">
+        <insert tableName="ucc_user">
+            <column name="id" value="1"/>
+            <column name="uuid" value="4f484823c0b346e287eeda716b13a2fa"/>
+            <column name="userName" value="administrator"/>
+            <column name="account" value="administrator"/>
+            <column name="password" value="d2eb314fbca3b8128c4a1d479040949d"/>
+            <column name="salt" value="5c945aa0c3b34b5cba7dadb439b49857"/>
+            <column name="realName" value="管理员"/>
+            <column name="nickName" value="管理员"/>
+            <column name="userType" value="1"/>
+            <column name="status" value="1"/>
+            <column name="registerChannel" value="1"/>
+            <column name="phoneNumber" value=""/>
+            <column name="phoneNumberConfirmed" value="0"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <insert tableName="ucc_user">
+            <column name="id" value="2"/>
+            <column name="uuid" value="21232f297a57a5a743894a0e4a801fc3"/>
+            <column name="userName" value="root"/>
+            <column name="account" value="root"/>
+            <column name="password" value="048f201eadbe32c742bf835fb56bd875"/>
+            <column name="salt" value="28d232ada687bcfd19eaa111feb85b0e"/>
+            <column name="realName" value="管理员"/>
+            <column name="nickName" value="管理员"/>
+            <column name="userType" value="1"/>
+            <column name="status" value="1"/>
+            <column name="registerChannel" value="1"/>
+            <column name="phoneNumber" value=""/>
+            <column name="phoneNumberConfirmed" value="0"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <!-- ucc_user_role -->
+        <insert tableName="ucc_user_role">
+            <column name="id" value="1"/>
+            <column name="userId" value="1"/>
+            <column name="roleId" value="1"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="ucc_user_role">
+            <column name="id" value="2"/>
+            <column name="userId" value="1"/>
+            <column name="roleId" value="2"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <!-- ucc_user_role -->
+        <insert tableName="ucc_user_role">
+            <column name="id" value="3"/>
+            <column name="userId" value="2"/>
+            <column name="roleId" value="1"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="ucc_user_role">
+            <column name="id" value="4"/>
+            <column name="userId" value="2"/>
+            <column name="roleId" value="2"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <!-- ucc_user_organization -->
+        <insert tableName="ucc_user_organization">
+            <column name="id" value="1"/>
+            <column name="userId" value="1"/>
+            <column name="organizationId" value="1"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="ucc_user_organization">
+            <column name="id" value="2"/>
+            <column name="userId" value="2"/>
+            <column name="organizationId" value="1"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet id="pms_parking_lot_info_create_table" author="sc">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="pms_parking_lot_info"/>
+            </not>
+        </preConditions>
+        <createTable tableName="pms_parking_lot_info" remarks="停车场泊位信息">
+            <column autoIncrement="true" name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_parking_lot_info"/>
+            </column>
+            <column name="tenantId" type="bigint(20)" remarks="租户ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="parkingId" type="bigint(20)" remarks="停车场ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="garageId" type="bigint(20)" remarks="车库ID"/>
+            <column name="parkingAreaId" type="bigint(20)" remarks="泊车区域ID"/>
+            <column name="hikParkingLotId" type="varchar(255)" remarks="海康平台泊位ID" defaultValue=""/>
+            <column name="hikBerthNumber" type="varchar(64)" remarks="海康平台泊位号(停车场唯一)"/>
+            <column name="aliParkingLotId" type="varchar(255)" remarks="支付宝平台泊位ID"/>
+            <column name="code" type="varchar(64)" remarks="编号(平台唯一)" defaultValue=""/>
+            <column name="number" type="varchar(64)" remarks="泊位编号：停车场内唯一" defaultValue=""/>
+            <column name="name" type="varchar(64)" remarks="简称" defaultValue=""/>
+            <column name="status" type="tinyint(4)" remarks="车位状态" defaultValue="0"/>
+            <column name="description" type="varchar(255)" remarks="描述"/>
+            <column name="creatorUserId" type="bigint" remarks="创建者"/>
+            <column name="creationTime" type="DATETIME" remarks="创建时间"/>
+            <column name="lastModifierUserId" type="bigint" remarks="更新者"/>
+            <column name="lastModificationTime" type="DATETIME" remarks="更新时间"/>
+            <column name="deleterUserId" type="bigint" remarks="删除者"/>
+            <column name="deletionTime" type="DATETIME" remarks="删除时间"/>
+            <column name="deleted" type="tinyint(1)" remarks="删除标记" defaultValue="0"/>
+            <column name="version" type="bigint(20)" remarks="版本号" defaultValue="1"/>
+        </createTable>
+        <createIndex tableName="pms_parking_lot_info" indexName="idx_tenant_parking">
+            <column name="tenantId"/>
+            <column name="parkingId"/>
+        </createIndex>
+        <createIndex tableName="pms_parking_lot_info" indexName="inx_code">
+            <column name="code"/>
+        </createIndex>
+    </changeSet>
+</databaseChangeLog>

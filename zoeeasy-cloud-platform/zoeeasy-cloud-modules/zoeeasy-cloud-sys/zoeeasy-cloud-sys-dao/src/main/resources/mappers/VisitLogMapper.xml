@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zoeeasy.cloud.sys.mapper.VisitLogMapper">
+
+    <resultMap id="BaseResultMap" type="com.zoeeasy.cloud.sys.domain.VisitLogEntity">
+        <result property="id" column="id"/>
+        <result property="tenantId" column="tenantId"/>
+        <result property="userId" column="userId"/>
+        <result property="account" column="account"/>
+        <result property="clientId" column="clientId"/>
+        <result property="clientIp" column="clientIp"/>
+        <result property="clientOSVersion" column="clientOSVersion"/>
+        <result property="clientOSArch" column="clientOSArch"/>
+        <result property="clientOSName" column="clientOSName"/>
+        <result property="clientAgent" column="clientAgent"/>
+        <result property="requestUrl" column="requestUrl"/>
+        <result property="requestUri" column="requestUri"/>
+        <result property="requestVerb" column="requestVerb"/>
+        <result property="localAddress" column="localAddress"/>
+        <result property="localName" column="localName"/>
+        <result property="sessionId" column="sessionId"/>
+        <result property="accessToken" column="accessToken"/>
+        <result property="refreshToken" column="refreshToken"/>
+        <result property="creatorUserId" column="creatorUserId"/>
+        <result property="creationTime" column="creationTime"/>
+    </resultMap>
+
+    <!--通用结果查询列-->
+    <sql id="Base_Column_List">
+                id,
+            tenantId,
+            userId,
+            account,
+            clientId,
+            clientIp,
+            clientOSVersion,
+            clientOSArch,
+            clientOSName,
+            clientAgent,
+            requestUrl,
+            requestUri,
+            requestVerb,
+            localAddress,
+            localName,
+            sessionId,
+            accessToken,
+            refreshToken,
+            creatorUserId,
+            creationTime
+        </sql>
+
+
+</mapper>

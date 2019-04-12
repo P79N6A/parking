@@ -1,0 +1,63 @@
+云平台接口调用说明
+1、获取accessKey和secretKey值
+
+2、生成签名signature
+     请求签名signature值是请求原参数以及secretKey通过MD5算法生成的，用来提高传输过程参数的防篡改
+
+signature 的生成有以下三个步骤
+(1)设所有发送或者接收到的数据为集合M，将集合M内非空参数值的参数按照参数名ASCII码从小到大排序（字典序），使用URL键值对的格式（即key1=value1&key2=value2…）拼接成字符串str1。
+特别注意以下重要规则：
+◆ 参数名ASCII码从小到大排序（字典序）；
+◆ 如果参数的值为空不参与签名；
+◆ 参数名区分大小写；
+◆ 部分接口字段可能不参与token生成,详见各个接口备注
+◆ 如果参数层次比较多只做一级排序,也即只有一级请求参数参与签名
+
+(2)在str1最后拼接上secretKey得到str2字符串，并对str2进行MD5运算，再将得到的字符串所有字符转换为大写，得到值为signature 。
+
+(3)将signature添加到请求对象上
+
+假设请求的原始参数如下:
+{
+  "accessKey": "152968d9af768bf084dad750f78d6866",
+  "nonce": "911091697599",
+  "time": "1513670052421",
+  "version": "1.0.0",
+  "client": {
+    "channel": "mcontact_md_ahlrj_api_android",
+    "imei": "1",
+    "version": "v3.9.8"
+  },
+  "test": null
+}
+
+secret为 152968d9af768bf084dad750f78d6866;
+
+step1：对参数按照key=value的格式，并按照参数名ASCII字典序排序如下：
+String str1=accessKey=152968d9af768bf084dad750f78d6866&client={"channel":"mcontact_md_ahlrj_api_android","imei":"1","version":"v3.9.8"}
+&nonce=911091697599&time=1513670052421&version=1.0.0
+
+step2:加上秘钥secretKey后的字符串
+
+String str2= = str1&secretKey=152968d9af768bf084dad750f78d6866;
+
+step3: 对str2进行 MD5 后转大写
+signature =  MD5(str2). toUpperCase()
+
+step4: 将signature参数和值拼接到POST请求对象上
+
+{
+  "accessKey": "152968d9af768bf084dad750f78d6866",
+  "nonce": "911091697599",
+  "time": "1513670052421",
+  "version": "1.0.0",
+  "client": {
+    "channel": "mcontact_md_ahlrj_api_android",
+    "imei": "1",
+    "version": "v3.9.8"
+  },
+  "test": null,
+   "signature":signature
+}
+
+step5: 发起请求

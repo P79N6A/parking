@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet id="chg_parking_appointment_rule_table" author="zwq">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="chg_parking_appointment_rule"/>
+            </not>
+        </preConditions>
+        <createTable tableName="chg_parking_appointment_rule" remarks="停车场预约规则表">
+            <column autoIncrement="true" name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_chg_charge_rule"/>
+            </column>
+            <column name="tenantId" type="bigint(20) unsigned" remarks="租户ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="parkingId" type="bigint(20)" remarks="停车场ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ruleId" type="bigint(20)" remarks="预定规则ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="onlineTime" type="date" remarks="上线时间"/>
+            <column name="offlineTime" type="date" remarks="下线时间"/>
+            <column name="creatorUserId" type="bigint" remarks="创建者"/>
+            <column name="creationTime" type="DATETIME" remarks="创建时间"/>
+            <column name="lastModifierUserId" type="bigint" remarks="更新者"/>
+            <column name="lastModificationTime" type="DATETIME" remarks="更新时间"/>
+        </createTable>
+        <createIndex tableName="chg_parking_appointment_rule" indexName="idx_parkingId">
+            <column name="parkingId"/>
+        </createIndex>
+        <createIndex tableName="chg_parking_appointment_rule" indexName="idx_ruleId">
+            <column name="ruleId"/>
+        </createIndex>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet id="pds_magnetic_manager_create_table" author="lhj">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="pds_magnetic_manager"/>
+            </not>
+        </preConditions>
+        <createTable tableName="pds_magnetic_manager" remarks="地磁管理器表">
+            <column autoIncrement="true" name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_magnetic_manager"/>
+            </column>
+            <column name="tenantId" type="bigint(20) unsigned" remarks="租户ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="parkingId" type="bigint(20) unsigned" remarks="停车场ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="parkingAreaId" type="bigint(20)" remarks="停车区域ID"/>
+            <column name="code" type="varchar(64)" remarks="地磁管理器编号(平台唯一)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="provider" type="smallint(6)" remarks="地磁管理器类型(厂商) 数据字典"/>
+            <column name="serialNumber" type="varchar(64)" remarks="设备序列号(厂家唯一)"/>
+            <column name="ipAddress" type="varchar(64)" remarks="ip地址"/>
+            <column name="port" type="int(11)" remarks="端口号"/>
+            <column name="simNo" type="varchar(32)" remarks="SIM卡号"/>
+            <column name="registered" type="tinyint(1)" defaultValue="0" remarks="是否已注册 0-未注册，1-已注册"/>
+            <column name="lastHeartbeatTime" type="DATETIME" remarks="最后心跳时间"/>
+            <column name="heartBeatInterval" type="smallint(6)" defaultValue="0" remarks="心跳间隔时间(秒)"/>
+            <column name="installPosition" type="varchar(256)" remarks="安装位置" defaultValue=" "/>
+            <column name="longitude" type="decimal(9,6)" remarks="经度"/>
+            <column name="latitude" type="decimal(9,6)" remarks="纬度"/>
+            <column name="versionNumber" type="varchar(64)" remarks="设备版本号"/>
+            <column name="installationTime" type="DATETIME" remarks="安装时间"/>
+            <column name="creatorUserId" type="bigint(20)" remarks="创建者"/>
+            <column name="creationTime" type="DATETIME" remarks="创建时间"/>
+            <column name="lastModifierUserId" type="bigint(20)" remarks="更新者"/>
+            <column name="lastModificationTime" type="DATETIME" remarks="更新时间"/>
+            <column name="deleterUserId" type="bigint(20)" remarks="删除者"/>
+            <column name="deletionTime" type="DATETIME" remarks="删除时间"/>
+            <column name="deleted" type="tinyint(1)" remarks="删除标记" defaultValue="0"/>
+        </createTable>
+        <createIndex tableName="pds_magnetic_manager" indexName="idx_manager_tenantId">
+            <column name="tenantId"/>
+            <column name="parkingId"/>
+        </createIndex>
+        <createIndex tableName="pds_magnetic_manager" indexName="idx_manager_code">
+            <column name="code"/>
+        </createIndex>
+        <createIndex tableName="pds_magnetic_manager" indexName="idx_manager_provider">
+            <column name="provider"/>
+            <column name="serialNumber"/>
+        </createIndex>
+    </changeSet>
+</databaseChangeLog>

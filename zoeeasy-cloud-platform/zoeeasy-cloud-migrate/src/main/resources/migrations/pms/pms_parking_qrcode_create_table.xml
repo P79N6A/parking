@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet id="pms_parking_qrcode_create_table" author="zwq">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="pms_parking_qrcode"/>
+            </not>
+        </preConditions>
+        <createTable tableName="pms_parking_qrcode" remarks="停车场二维码表">
+            <column autoIncrement="true" name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_parking_qrcode"/>
+            </column>
+            <column name="tenantId" type="bigint(20)" remarks="租户ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="parkingId" type="bigint(20)" remarks="停车场ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="noncestr" type="varchar(400)" remarks="随机字符串-二维码内容">
+                <constraints nullable="false"/>
+            </column>
+            <column name="codeUrl" type="varchar(400)" remarks="二维码图片存放路径"/>
+            <column name="creatorUserId" type="bigint" remarks="创建者"/>
+            <column name="creationTime" type="DATETIME" remarks="创建时间"/>
+        </createTable>
+        <createIndex tableName="pms_parking_qrcode" indexName="idx_noncestr">
+            <column name="noncestr"/>
+        </createIndex>
+    </changeSet>
+</databaseChangeLog>

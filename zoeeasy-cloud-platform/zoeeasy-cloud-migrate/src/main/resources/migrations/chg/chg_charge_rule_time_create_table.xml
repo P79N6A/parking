@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet id="chg_charge_rule_time_create_table" author="AkeemSuper">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="chg_charge_rule_time"/>
+            </not>
+        </preConditions>
+        <createTable tableName="chg_charge_rule_time" remarks="收费规则时间分段表">
+            <column autoIncrement="true" name="id" type="bigint(20)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_chg_charge_rule_time"/>
+            </column>
+            <column name="tenantId" type="bigint(20) unsigned" remarks="租户ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ruleId" type="bigint(20)" remarks="收费规则ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="timePart" type="int(11)" remarks="时间段(单位：分钟)"/>
+            <column name="price" type="int(11)" remarks="时间段的单价(单位：分)"/>
+            <column name="creatorUserId" type="bigint" remarks="创建者"/>
+            <column name="creationTime" type="DATETIME" remarks="创建时间"/>
+            <column name="lastModifierUserId" type="bigint" remarks="更新者"/>
+            <column name="lastModificationTime" type="DATETIME" remarks="更新时间"/>
+        </createTable>
+        <createIndex tableName="chg_charge_rule_time" indexName="idx_ruleId">
+            <column name="ruleId"/>
+        </createIndex>
+    </changeSet>
+</databaseChangeLog>

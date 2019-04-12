@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zoeeasy.cloud.ucc.mapper.UserRoleMapper">
+    <resultMap id="BaseResultMap" type="com.zoeeasy.cloud.ucc.domain.UserRoleEntity">
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <result column="tenantId" property="tenantId" jdbcType="BIGINT"/>
+        <result column="userId" property="userId" jdbcType="BIGINT"/>
+        <result column="roleId" property="roleId" jdbcType="BIGINT"/>
+        <result column="creatorUserId" property="creatorUserId" jdbcType="BIGINT"/>
+        <result column="creationTime" property="creationTime" jdbcType="TIMESTAMP"/>
+        <result column="deleted" property="deleted" jdbcType="TINYINT"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        t.id,
+        t.tenantId,
+        t.userId,
+        t.roleId,
+        t.creatorUserId,
+        t.creationTime
+    </sql>
+
+    <!-- 通过宿主用户获取 -->
+    <select id="findByHostUserId" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM ucc_user_role t
+        WHERE t.tenantId IS NULl AND t.userId= #{userId}
+        ORDER BY pathCode
+    </select>
+
+    <!-- 获取所有静态菜单 -->
+    <select id="findByTenancyUserId" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM ucc_user_role t
+        WHERE t.tenantId=#{tenantId} AND t.userId= #{userId}
+        ORDER BY pathCode
+    </select>
+
+    <!--- 无租户的条件查询 -->
+    <select id="findUserRoleListTenancyLess" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM ucc_user_role t
+        <where>
+            ${ew.sqlSegment}
+        </where>
+    </select>
+
+</mapper>

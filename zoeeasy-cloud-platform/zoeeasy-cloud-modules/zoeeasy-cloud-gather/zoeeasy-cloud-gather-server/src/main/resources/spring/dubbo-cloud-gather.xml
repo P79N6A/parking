@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://code.alibabatech.com/schema/dubbo
+        http://code.alibabatech.com/schema/dubbo/dubbo.xsd
+        ">
+    <!--地磁相关-->
+    <dubbo:service interface="com.zoeeasy.cloud.gather.magnetic.MagneticHeartBeatService"
+                   ref="magneticHeartBeatService" timeout="180000" registry="fundamentalRegistry"
+                   version="${dubbo.service.version}"/>
+
+    <!--海康相关-->
+    <dubbo:service interface="com.zoeeasy.cloud.gather.hikvision.HikvisionParkingService"
+                   ref="hikvisionParkingService" timeout="180000" registry="fundamentalRegistry"
+                   version="${dubbo.service.version}"/>
+
+    <!--停车场相关-->
+    <dubbo:reference id="parkingInfoService" version="${dubbo.service.version}"
+                     interface="com.zoeeasy.cloud.pms.park.ParkingInfoService"
+                     check="false"
+                     timeout="30000" retries="0" registry="fundamentalRegistry"/>
+    <dubbo:reference id="parkingLotInfoService" version="${dubbo.service.version}"
+                     interface="com.zoeeasy.cloud.pms.park.ParkingLotInfoService"
+                     check="false"
+                     timeout="30000" retries="0" registry="fundamentalRegistry"/>
+    <!--区域-->
+    <dubbo:reference id="areaService" version="${dubbo.service.version}"
+                     interface="com.zoeeasy.cloud.pms.area.AreaService"
+                     check="false"
+                     timeout="30000" retries="0" registry="fundamentalRegistry"/>
+
+    <dubbo:reference id="messageSendService" version="${dubbo.service.version}"
+                     interface="com.zoeeasy.cloud.message.MessageSendService"
+                     check="false"
+                     timeout="30000" retries="0" registry="fundamentalRegistry"/>
+</beans>

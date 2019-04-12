@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet id="inv_invoice_order_create_table" author="walkman">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="inv_invoice_order"/>
+            </not>
+        </preConditions>
+        <createTable tableName="inv_invoice_order" remarks="发票订单表">
+            <column autoIncrement="true" name="id" type="bigint" remarks="主键">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_invoice_order"/>
+            </column>
+            <column name="tenantId" type="bigint(20)" remarks="租户ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="orderNo" type="VARCHAR(64)" remarks="发票订单号">
+                <constraints nullable="false"/>
+            </column>
+            <column name="applyNo" type="VARCHAR(64)" remarks="申请订单号">
+                <constraints nullable="false"/>
+            </column>
+            <column name="applyTime" type="DATETIME" remarks="申请时间">
+                <constraints nullable="false"/>
+            </column>
+            <column name="invoiceType" type="tinyint(4)" remarks="发票类型 1:电子发票 2:纸质发票">
+                <constraints nullable="false"/>
+            </column>
+            <column name="headerType" type="tinyint(4)" remarks="抬头类型 1:单位 2:个人">
+                <constraints nullable="false"/>
+            </column>
+            <column name="contentType" type="tinyint(4)" remarks="发票内容类型 1:类别 2:明细">
+                <constraints nullable="false"/>
+            </column>
+            <column name="content" type="VARCHAR(100)" remarks="发票内容" defaultValue=""/>
+            <column name="buyerName" type="VARCHAR(100)" remarks="购方名称,单位抬头为单位名称，个人抬头为个人">
+                <constraints nullable="false"/>
+            </column>
+            <column name="taxNumber" type="VARCHAR(20)" remarks="购方税号" defaultValue=""/>
+            <column name="account" type="VARCHAR(100)" remarks="银行账号" defaultValue=""/>
+            <column name="telephone" type="VARCHAR(20)" remarks="购方电话" defaultValue=""/>
+            <column name="address" type="VARCHAR(100)" remarks="购方地址" defaultValue=""/>
+            <column name="invoiceAmount" type="int(11) unsigned" remarks="开票金额(分)" defaultValue="0"/>
+            <column name="phoneNumber" type="VARCHAR(20)" remarks="购方手机(开票成功会短信提醒购方)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="saleName" type="VARCHAR(100)" remarks="销方名称">
+                <constraints nullable="false"/>
+            </column>
+            <column name="saleTaxNumber" type="VARCHAR(20)" remarks="销方税号">
+                <constraints nullable="false"/>
+            </column>
+            <column name="saleAccount" type="VARCHAR(100)" remarks="销方银行账号"/>
+            <column name="saleTelephone" type="VARCHAR(20)" remarks="销方电话">
+                <constraints nullable="false"/>
+            </column>
+            <column name="saleAddress" type="VARCHAR(100)" remarks="销方地址">
+                <constraints nullable="false"/>
+            </column>
+            <column name="clerk" type="VARCHAR(20)" remarks="开票员">
+                <constraints nullable="false"/>
+            </column>
+            <column name="receiver" type="VARCHAR(20)" remarks="收款人" defaultValue=""/>
+            <column name="checker" type="VARCHAR(20)" remarks="复核人" defaultValue=""/>
+            <column name="receiverName" type="VARCHAR(50)" remarks="收件人姓名" defaultValue=""/>
+            <column name="provinceCode" type="VARCHAR(10)" remarks="省代码" defaultValue=""/>
+            <column name="cityCode" type="VARCHAR(10)" remarks="市代码" defaultValue=""/>
+            <column name="countyCode" type="VARCHAR(10)" remarks="区代码" defaultValue=""/>
+            <column name="receiverAddress" type="VARCHAR(200)" remarks="地址" defaultValue=""/>
+            <column name="payStatus" type="tinyint(4)" defaultValue="0" remarks="支付状态 0 :未支付 1:已支付 2:支付中"/>
+            <column name="payedAmount" type="int(11) unsigned" defaultValue="0" remarks="支付金额(分)"/>
+            <column name="payTime" type="DATETIME" defaultValue="2049-12-31 23:59:59" remarks="支付时间"/>
+            <column name="payWay" type="tinyint(4)" remarks="支付方式(根据PayWayEnum)" defaultValue="0"/>
+            <column name="payType" type="tinyint(4)" remarks="支付类型(根据PayTypeEnum)" defaultValue="0"/>
+            <column name="status" type="tinyint(4)" defaultValue="0" remarks="开票状态"/>
+            <column name="completeTime" type="DATETIME" defaultValue="2049-12-31 23:59:59"
+                    remarks="完成时间"/>
+            <column name="orderCount" type="int(11) unsigned" defaultValue="0" remarks="开票订单数"/>
+            <column name="auditUserId" type="bigint(20)" remarks="审核用户ID"/>
+            <column name="auditTime" type="DATETIME" remarks="审核时间"/>
+            <column name="auditRemark" type="VARCHAR(1000)" remarks="审核备注"/>
+            <column name="expressType" type="tinyint(4)" remarks="运费支付方式 1 :用户支付 2:包邮 3:到付"/>
+            <column name="expressAmount" type="int(11) unsigned" defaultValue="0" remarks="运费"/>
+            <column name="expressName" type="VARCHAR(100)" remarks="快递公司" defaultValue=""/>
+            <column name="expressNo" type="VARCHAR(64)" remarks="快递单号" defaultValue=""/>
+            <column name="expressStatus" type="tinyint(4)" defaultValue="0" remarks="物流状态"/>
+            <column name="signUserId" type="bigint(20)" remarks="签收用户ID"/>
+            <column name="signTime" type="DATETIME" remarks="签收时间"/>
+            <column name="invoiceDate" type="DATETIME" remarks="开票日期"/>
+            <column name="invoiceCode" type="VARCHAR(12)" remarks="发票代码"/>
+            <column name="invoiceNumber" type="VARCHAR(8)" remarks="发票号码"/>
+            <column name="checkCode" type="VARCHAR(20)" remarks="校验码"/>
+            <column name="invoiceUrl" type="VARCHAR(1000)" remarks="电子发票Url"/>
+            <column name="remark" type="varchar(2000)" remarks="备注"/>
+            <column name="creatorUserId" type="bigint" remarks="创建者"/>
+            <column name="creationTime" type="DATETIME" remarks="创建时间"/>
+            <column name="lastModifierUserId" type="bigint" remarks="更新者"/>
+            <column name="lastModificationTime" type="DATETIME" remarks="更新时间"/>
+            <column name="deleterUserId" type="bigint" remarks="删除者"/>
+            <column name="deletionTime" type="DATETIME" remarks="删除时间"/>
+            <column name="deleted" type="tinyint(1)" remarks="删除标记" defaultValue="0"/>
+        </createTable>
+        <createIndex tableName="inv_invoice_order" indexName="idx_applyNo">
+            <column name="applyNo"/>
+        </createIndex>
+        <createIndex tableName="inv_invoice_order" indexName="idx_orderNo">
+            <column name="orderNo"/>
+            <column name="tenantId"/>
+        </createIndex>
+    </changeSet>
+</databaseChangeLog>

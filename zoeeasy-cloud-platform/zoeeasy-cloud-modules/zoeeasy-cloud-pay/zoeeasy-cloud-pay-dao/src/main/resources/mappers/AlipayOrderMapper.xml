@@ -1,0 +1,445 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zoeeasy.cloud.pay.mapper.AlipayOrderMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.zoeeasy.cloud.pay.domain.AlipayOrderEntity">
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <result column="customerUserId" property="customerUserId" jdbcType="BIGINT"/>
+        <result column="tradeNo" property="tradeNo" jdbcType="VARCHAR"/>
+        <result column="outTradeNo" property="outTradeNo" jdbcType="VARCHAR"/>
+        <result column="outBizNo" property="outBizNo" jdbcType="VARCHAR"/>
+        <result column="qrCodeUrl" property="qrCodeUrl" jdbcType="VARCHAR"/>
+        <result column="subject" property="subject" jdbcType="VARCHAR"/>
+        <result column="totalAmount" property="totalAmount" jdbcType="DECIMAL"/>
+        <result column="receiptAmount" property="receiptAmount" jdbcType="DECIMAL"/>
+        <result column="invoiceAmount" property="invoiceAmount" jdbcType="DECIMAL"/>
+        <result column="buyerPayAmount" property="buyerPayAmount" jdbcType="DECIMAL"/>
+        <result column="pointAmount" property="pointAmount" jdbcType="DECIMAL"/>
+        <result column="refundFee" property="refundFee" jdbcType="DECIMAL"/>
+        <result column="currencyType" property="currencyType" jdbcType="VARCHAR"/>
+        <result column="body" property="body" jdbcType="VARCHAR"/>
+        <result column="gmtCreate" property="gmtCreate" jdbcType="TIMESTAMP"/>
+        <result column="gmtPayment" property="gmtPayment" jdbcType="TIMESTAMP"/>
+        <result column="gmtRefund" property="gmtRefund" jdbcType="TIMESTAMP"/>
+        <result column="gmtClose" property="gmtClose" jdbcType="TIMESTAMP"/>
+        <result column="fundBillList" property="fundBillList" jdbcType="VARCHAR"/>
+        <result column="passbackParams" property="passbackParams" jdbcType="VARCHAR"/>
+        <result column="voucherDetailList" property="voucherDetailList" jdbcType="VARCHAR"/>
+        <result column="timeoutExpress" property="timeoutExpress" jdbcType="VARCHAR"/>
+        <result column="goodsType" property="goodsType" jdbcType="TINYINT"/>
+        <result column="promoParams" property="promoParams" jdbcType="VARCHAR"/>
+        <result column="extendParams" property="extendParams"/>
+        <result column="enablePayChannels" property="enablePayChannels" jdbcType="VARCHAR"/>
+        <result column="disablePayChannels" property="disablePayChannels" jdbcType="VARCHAR"/>
+        <result column="storeId" property="storeId" jdbcType="VARCHAR"/>
+        <result column="extUserInfo" property="extUserInfo"/>
+        <result column="buyerId" property="buyerId" jdbcType="VARCHAR"/>
+        <result column="buyerLogonId" property="buyerLogonId" jdbcType="VARCHAR"/>
+        <result column="sellerId" property="sellerId" jdbcType="VARCHAR"/>
+        <result column="sellerEmail" property="sellerEmail" jdbcType="VARCHAR"/>
+        <result column="tradeStatus" property="tradeStatus" jdbcType="INTEGER"/>
+        <result column="creatorUserId" property="creatorUserId" jdbcType="BIGINT"/>
+        <result column="creationTime" property="creationTime" jdbcType="TIMESTAMP"/>
+        <result column="lastModifierUserId" property="lastModifierUserId" jdbcType="BIGINT"/>
+        <result column="lastModificationTime" property="lastModificationTime" jdbcType="TIMESTAMP"/>
+        <result column="deleterUserId" property="deleterUserId" jdbcType="BIGINT"/>
+        <result column="deletionTime" property="deletionTime" jdbcType="TIMESTAMP"/>
+        <result column="deleted" property="deleted" jdbcType="CHAR"/>
+        <result column="version" property="version" jdbcType="BIGINT"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, customerUserId, tradeNo, outTradeNo, outBizNo, qrCodeUrl,subject, totalAmount, receiptAmount, invoiceAmount, buyerPayAmount, pointAmount,
+        refundFee,currencyType,body,gmtCreate,gmtPayment,gmtRefund,gmtClose,fundBillList,passbackParams,voucherDetailList,
+        timeoutExpress,goodsType,promoParams,extendParams,enablePayChannels,disablePayChannels,storeId,extUserInfo,buyerId,
+        buyerLogonId,sellerId,sellerEmail,tradeStatus,creatorUserId, creationTime, lastModifierUserId, lastModificationTime,
+        deleterUserId, deletionTime, deleted,version
+    </sql>
+
+    <insert id="add" parameterType="com.zoeeasy.cloud.pay.domain.AlipayOrderEntity">
+        INSERT INTO pay_alipay_order
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="tenantId != null">
+                tenantId,
+            </if>
+            <if test="customerUserId != null">
+                customerUserId,
+            </if>
+            <if test="tradeNo != null">
+                tradeNo,
+            </if>
+            <if test="outTradeNo != null">
+                outTradeNo,
+            </if>
+            <if test="outBizNo != null">
+                outBizNo,
+            </if>
+            <if test="qrCodeUrl != null">
+                qrCodeUrl,
+            </if>
+            <if test="subject != null">
+                subject,
+            </if>
+            <if test="tradeStatus != null">
+                tradeStatus,
+            </if>
+            <if test="totalAmount != null">
+                totalAmount,
+            </if>
+            <if test="receiptAmount != null">
+                receiptAmount,
+            </if>
+            <if test="invoiceAmount != null">
+                invoiceAmount,
+            </if>
+            <if test="buyerPayAmount != null">
+                buyerPayAmount,
+            </if>
+            <if test="pointAmount != null">
+                pointAmount,
+            </if>
+            <if test="refundFee != null">
+                refundFee,
+            </if>
+            <if test="currencyType != null">
+                currencyType,
+            </if>
+            <if test="body != null">
+                body,
+            </if>
+            <if test="gmtCreate != null">
+                gmtCreate,
+            </if>
+            <if test="gmtPayment != null">
+                gmtPayment,
+            </if>
+            <if test="gmtRefund != null">
+                gmtRefund,
+            </if>
+            <if test="gmtClose != null">
+                gmtClose,
+            </if>
+            <if test="fundBillList != null">
+                fundBillList,
+            </if>
+            <if test="passbackParams != null">
+                passbackParams,
+            </if>
+            <if test="voucherDetailList != null">
+                voucherDetailList,
+            </if>
+            <if test="timeoutExpress != null">
+                timeoutExpress,
+            </if>
+            <if test="goodsType != null">
+                goodsType,
+            </if>
+            <if test="promoParams != null">
+                promoParams,
+            </if>
+            <if test="extendParams != null">
+                extendParams,
+            </if>
+            <if test="enablePayChannels != null">
+                enablePayChannels,
+            </if>
+            <if test="disablePayChannels != null">
+                disablePayChannels,
+            </if>
+            <if test="storeId != null">
+                storeId,
+            </if>
+            <if test="extUserInfo != null">
+                extUserInfo,
+            </if>
+            <if test="buyerId != null">
+                buyerId,
+            </if>
+            <if test="buyerLogonId != null">
+                buyerLogonId,
+            </if>
+            <if test="sellerId != null">
+                sellerId,
+            </if>
+            <if test="sellerEmail != null">
+                sellerEmail,
+            </if>
+            <if test="creatorUserId != null">
+                creatorUserId,
+            </if>
+            <if test="creationTime != null">
+                creationTime,
+            </if>
+            <if test="lastModifierUserId != null">
+                lastModifierUserId,
+            </if>
+            <if test="lastModificationTime != null">
+                lastModificationTime,
+            </if>
+            <if test="deleterUserId != null">
+                deleterUserId,
+            </if>
+            <if test="deletionTime != null">
+                deletionTime,
+            </if>
+            <if test="deleted != null">
+                deleted,
+            </if>
+            <if test="version != null">
+                version,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="tenantId != null">
+                #{tenantId},
+            </if>
+            <if test="customerUserId != null">
+                #{customerUserId},
+            </if>
+            <if test="tradeNo != null">
+                #{tradeNo},
+            </if>
+            <if test="outTradeNo != null">
+                #{outTradeNo},
+            </if>
+            <if test="outBizNo != null">
+                #{outBizNo},
+            </if>
+            <if test="qrCodeUrl != null">
+                #{qrCodeUrl},
+            </if>
+            <if test="subject != null">
+                #{subject},
+            </if>
+            <if test="tradeStatus != null">
+                #{tradeStatus},
+            </if>
+            <if test="totalAmount != null">
+                #{totalAmount},
+            </if>
+            <if test="receiptAmount != null">
+                #{receiptAmount},
+            </if>
+            <if test="invoiceAmount != null">
+                #{invoiceAmount},
+            </if>
+            <if test="buyerPayAmount != null">
+                #{buyerPayAmount},
+            </if>
+            <if test="pointAmount != null">
+                #{pointAmount},
+            </if>
+            <if test="refundFee != null">
+                #{refundFee},
+            </if>
+            <if test="currencyType != null">
+                #{currencyType},
+            </if>
+            <if test="body != null">
+                #{body},
+            </if>
+            <if test="gmtCreate != null">
+                #{gmtCreate},
+            </if>
+            <if test="gmtPayment != null">
+                #{gmtPayment},
+            </if>
+            <if test="gmtRefund != null">
+                #{gmtRefund},
+            </if>
+            <if test="gmtClose != null">
+                #{gmtClose},
+            </if>
+            <if test="fundBillList != null">
+                #{fundBillList},
+            </if>
+            <if test="passbackParams != null">
+                #{passbackParams},
+            </if>
+            <if test="voucherDetailList != null">
+                #{voucherDetailList},
+            </if>
+            <if test="timeoutExpress != null">
+                #{timeoutExpress},
+            </if>
+            <if test="goodsType != null">
+                #{goodsType},
+            </if>
+            <if test="promoParams != null">
+                #{promoParams},
+            </if>
+            <if test="extendParams != null">
+                #{extendParams},
+            </if>
+            <if test="enablePayChannels != null">
+                #{enablePayChannels},
+            </if>
+            <if test="disablePayChannels != null">
+                #{disablePayChannels},
+            </if>
+            <if test="storeId != null">
+                #{storeId},
+            </if>
+            <if test="extUserInfo != null">
+                #{extUserInfo},
+            </if>
+            <if test="buyerId != null">
+                #{buyerId},
+            </if>
+            <if test="buyerLogonId != null">
+                #{buyerLogonId},
+            </if>
+            <if test="sellerId != null">
+                #{sellerId},
+            </if>
+            <if test="sellerEmail != null">
+                #{sellerEmail},
+            </if>
+            <if test="creatorUserId != null">
+                #{creatorUserId},
+            </if>
+            <if test="creationTime != null">
+                #{creationTime},
+            </if>
+            <if test="lastModifierUserId != null">
+                #{lastModifierUserId},
+            </if>
+            <if test="lastModificationTime != null">
+                #{lastModificationTime},
+            </if>
+            <if test="deleterUserId != null">
+                #{deleterUserId},
+            </if>
+            <if test="deletionTime != null">
+                #{deletionTime},
+            </if>
+            <if test="deleted != null">
+                #{deleted},
+            </if>
+            <if test="version != null">
+                #{version},
+            </if>
+        </trim>
+    </insert>
+
+    <select id="get" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        from pay_alipay_order
+        <where>
+            deleted = '0' ${ew.sqlSegment}
+        </where>
+    </select>
+
+    <update id="updateByOutOrderNo" parameterType="com.zoeeasy.cloud.pay.domain.AlipayOrderEntity">
+        UPDATE pay_alipay_order
+        <set>
+            <if test="tradeNo != null">
+                tradeNo = #{tradeNo},
+            </if>
+            <if test="outBizNo != null">
+                outBizNo = #{outBizNo},
+            </if>
+            <if test="qrCodeUrl != null">
+                qrCodeUrl = #{qrCodeUrl},
+            </if>
+            <if test="subject != null">
+                subject = #{subject},
+            </if>
+            <if test="tradeStatus != null">
+                tradeStatus = #{tradeStatus},
+            </if>
+            <if test="totalAmount != null">
+                totalAmount = #{totalAmount},
+            </if>
+            <if test="receiptAmount != null">
+                receiptAmount = #{receiptAmount},
+            </if>
+            <if test="invoiceAmount != null">
+                invoiceAmount = #{invoiceAmount},
+            </if>
+            <if test="buyerPayAmount != null">
+                buyerPayAmount = #{buyerPayAmount},
+            </if>
+            <if test="pointAmount != null">
+                pointAmount = #{pointAmount},
+            </if>
+            <if test="refundFee != null">
+                refundFee = #{refundFee},
+            </if>
+            <if test="currencyType != null">
+                currencyType = #{currencyType},
+            </if>
+            <if test="body != null">
+                body = #{body},
+            </if>
+            <if test="gmtCreate != null">
+                gmtCreate = #{gmtCreate},
+            </if>
+            <if test="gmtPayment != null">
+                gmtPayment = #{gmtPayment},
+            </if>
+            <if test="gmtRefund != null">
+                gmtRefund = #{gmtRefund},
+            </if>
+            <if test="gmtClose != null">
+                gmtClose = #{gmtClose},
+            </if>
+            <if test="fundBillList != null">
+                fundBillList = #{fundBillList},
+            </if>
+            <if test="passbackParams != null">
+                passbackParams = #{passbackParams},
+            </if>
+            <if test="voucherDetailList != null">
+                voucherDetailList = #{voucherDetailList},
+            </if>
+            <if test="timeoutExpress != null">
+                timeoutExpress = #{timeoutExpress},
+            </if>
+            <if test="goodsType != null">
+                goodsType = #{goodsType},
+            </if>
+            <if test="promoParams != null">
+                promoParams = #{promoParams},
+            </if>
+            <if test="extendParams != null">
+                extendParams = #{extendParams},
+            </if>
+            <if test="enablePayChannels != null">
+                enablePayChannels = #{enablePayChannels},
+            </if>
+            <if test="disablePayChannels != null">
+                disablePayChannels = #{disablePayChannels},
+            </if>
+            <if test="storeId != null">
+                storeId = #{storeId},
+            </if>
+            <if test="extUserInfo != null">
+                extUserInfo = #{extUserInfo},
+            </if>
+            <if test="buyerId != null">
+                buyerId = #{buyerId},
+            </if>
+            <if test="buyerLogonId != null">
+                buyerLogonId = #{buyerLogonId},
+            </if>
+            <if test="sellerId != null">
+                sellerId = #{sellerId},
+            </if>
+            <if test="sellerEmail != null">
+                sellerEmail = #{sellerEmail},
+            </if>
+            <if test="lastModifierUserId != null">
+                lastModifierUserId = #{lastModifierUserId},
+            </if>
+            <if test="lastModificationTime != null">
+                lastModificationTime = #{lastModificationTime},
+            </if>
+        </set>
+        WHERE outTradeNo = #{outTradeNo}
+    </update>
+
+</mapper>

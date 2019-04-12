@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zoeeasy.cloud.invoice.mapper.InvoiceApplyMapper">
+
+    <resultMap id="BaseResultMap" type="com.zoeeasy.cloud.invoice.domain.InvoiceApplyEntity">
+        <result property="id" column="id"/>
+        <result property="customerUserId" column="customerUserId"/>
+        <result property="applyNo" column="applyNo"/>
+        <result property="applyTime" column="applyTime"/>
+        <result property="invoiceType" column="invoiceType"/>
+        <result property="headerType" column="headerType"/>
+        <result property="contentType" column="contentType"/>
+        <result property="buyerName" column="buyerName"/>
+        <result property="taxNumber" column="taxNumber"/>
+        <result property="account" column="account"/>
+        <result property="telephone" column="telephone"/>
+        <result property="address" column="address"/>
+        <result property="invoiceAmount" column="invoiceAmount"/>
+        <result property="phoneNumber" column="phoneNumber"/>
+        <result property="receiverName" column="receiverName"/>
+        <result property="provinceCode" column="provinceCode"/>
+        <result property="cityCode" column="cityCode"/>
+        <result property="countyCode" column="countyCode"/>
+        <result property="receiverAddress" column="receiverAddress"/>
+        <result property="expressType" column="expressType"/>
+        <result property="expressAmount" column="expressAmount"/>
+        <result property="payStatus" column="payStatus"/>
+        <result property="payedAmount" column="payedAmount"/>
+        <result property="payTime" column="payTime"/>
+        <result property="payOrderNo" column="payOrderNo"/>
+        <result property="payedUserId" column="payedUserId"/>
+        <result property="payWay" column="payWay"/>
+        <result property="payType" column="payType"/>
+        <result property="status" column="status"/>
+        <result property="completeTime" column="completeTime"/>
+        <result property="orderCount" column="orderCount"/>
+        <result property="remark" column="remark"/>
+        <result property="creatorUserId" column="creatorUserId"/>
+        <result property="creationTime" column="creationTime"/>
+        <result property="lastModifierUserId" column="lastModifierUserId"/>
+        <result property="lastModificationTime" column="lastModificationTime"/>
+        <result property="deleterUserId" column="deleterUserId"/>
+        <result property="deletionTime" column="deletionTime"/>
+        <result property="deleted" column="deleted"/>
+    </resultMap>
+
+    <!--通用结果查询列-->
+    <sql id="Base_Column_List">
+                id,
+            customerUserId,
+            applyNo,
+            applyTime,
+            invoiceType,
+            headerType,
+            contentType,
+            buyerName,
+            taxNumber,
+            account,
+            telephone,
+            address,
+            invoiceAmount,
+            phoneNumber,
+            receiverName,
+            provinceCode,
+            cityCode,
+            countyCode,
+            receiverAddress,
+            expressType,
+            expressAmount,
+            payStatus,
+            payedAmount,
+            payTime,
+            payOrderNo,
+            payedUserId,
+            payWay,
+            payType,
+            status,
+            completeTime,
+            orderCount,
+            remark,
+            creatorUserId,
+            creationTime,
+            lastModifierUserId,
+            lastModificationTime,
+            deleterUserId,
+            deletionTime,
+            deleted
+        </sql>
+
+
+</mapper>
