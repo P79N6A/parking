@@ -1,0 +1,53 @@
+@import url("./color.less");
+
+.header{
+  display: flex;
+  align-items: center;
+  height: 60px;
+}
+.left{
+  width: 180px;
+  height: 100%;
+  background-color: @darkColor;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  img{
+    height: 36px;
+  }
+  border-bottom: 1px solid @darkerColor;
+}
+.head-content{
+  height: 100%;
+  padding: 0 20px;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: @darkerColor;
+  span{
+    color: #fff;
+    font-weight: 700;
+    font-size: 20px;
+  }
+}
+.user-box{
+  display: flex;
+  align-items: center;
+  .head-img{
+    margin-right: 12px;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    overflow: hidden;
+    img{
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+    }
+  }
+  .user-name{
+    color: #fff;
+    font-size: 14px;
+  }
+}
