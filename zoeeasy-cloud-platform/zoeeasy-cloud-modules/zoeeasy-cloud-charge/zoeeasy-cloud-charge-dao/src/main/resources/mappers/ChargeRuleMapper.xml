@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zoeeasy.cloud.charge.mapper.ChargeRuleMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.zoeeasy.cloud.charge.domain.ChargeRuleEntity">
+        <id column="id" property="id"/>
+        <result property="tenantId" column="tenantId"/>
+        <result property="code" column="code"/>
+        <result property="name" column="name"/>
+        <result property="ruleType" column="ruleType"/>
+        <result property="carType" column="carType"/>
+        <result property="plateNumberType" column="plateNumberType"/>
+        <result property="parkingLevel" column="parkingLevel"/>
+        <result property="holidayType" column="holidayType"/>
+        <result property="timesStartTime" column="timesStartTime"/>
+        <result property="timesEndTime" column="timesEndTime"/>
+        <result property="perStartTime" column="perStartTime"/>
+        <result property="perEndTime" column="perEndTime"/>
+        <result property="perPrice" column="perPrice"/>
+        <result property="topStatus" column="topStatus"/>
+        <result property="freeTime" column="freeTime"/>
+        <result property="overFreeTime" column="overFreeTime"/>
+        <result property="existPartTime" column="existPartTime"/>
+        <result property="inTimeTop" column="inTimeTop"/>
+        <result property="topAmount" column="topAmount"/>
+        <result property="dayTopAmount" column="dayTopAmount"/>
+        <result property="unitTime" column="unitTime"/>
+        <result property="description" column="description"/>
+        <result property="creatorUserId" column="creatorUserId"/>
+        <result property="creationTime" column="creationTime"/>
+        <result property="lastModifierUserId" column="lastModifierUserId"/>
+        <result property="lastModificationTime" column="lastModificationTime"/>
+        <result property="deleterUserId" column="deleterUserId"/>
+        <result property="deletionTime" column="deletionTime"/>
+        <result property="deleted" column="deleted"/>
+        <result column="version" property="version"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,
+        tenantId,
+        code,
+        name,
+        ruleType,
+        carType,
+        plateNumberType,
+        parkingLevel,
+        holidayType,
+        timesStartTime,
+        timesEndTime,
+        perStartTime,
+        perEndTime,
+        perPrice,
+        topStatus,
+        freeTime,
+        overFreeTime,
+        existPartTime,
+        inTimeTop,
+        topAmount,
+        dayTopAmount,
+        unitTime,
+        description,
+        creatorUserId,
+        creationTime,
+        lastModifierUserId,
+        lastModificationTime,
+        deleterUserId,
+        deletionTime,
+        deleted
+    </sql>
+    <select id="findByIds" resultMap="BaseResultMap">
+        <foreach collection="list" item="item" index="index" separator="UNION">
+            select
+            <include refid="Base_Column_List"/>
+            from chg_charge_rule
+            <where>
+                deleted = 0
+                and
+                id= #{item}
+            </where>
+        </foreach>
+    </select>
+    <select id="selectByRuleId" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from chg_charge_rule
+        <where>
+            deleted = '0' and id = #{ruleId} and tenantId = #{tenantId}
+        </where>
+
+    </select>
+
+    <select id="selectById" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from chg_charge_rule
+        <where>
+            deleted = '0' and id = #{ruleId}
+        </where>
+
+    </select>
+
+</mapper>

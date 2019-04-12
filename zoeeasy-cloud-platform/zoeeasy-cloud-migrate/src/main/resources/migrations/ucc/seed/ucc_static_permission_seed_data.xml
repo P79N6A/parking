@@ -1,0 +1,2214 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet author="walkman" id="ucc_static_permission_seed_data">
+        <comment>系统静态权限初始化数据</comment>
+        <!-- root pages -->
+        <insert tableName="ucc_permission">
+            <column name="id" value="1"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="0"/>
+            <column name="menuId" value="0"/>
+            <column name="code" value="pages"/>
+            <column name="name" value="pages"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="4"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value="顶级权限"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <!-- root admin -->
+        <insert tableName="ucc_permission">
+            <column name="id" value="2"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="1"/>
+            <column name="menuId" value="1"/>
+            <column name="code" value="pages:admin"/>
+            <column name="name" value="管理"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="4"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <!-- admin:dashboard -->
+        <insert tableName="ucc_permission">
+            <column name="id" value="3"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="2"/>
+            <column name="menuId" value="2"/>
+            <column name="code" value="pages:admin:dashboard"/>
+            <column name="name" value="首页"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="4"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <!-- 商户管理 -->
+        <insert tableName="ucc_permission">
+            <column name="id" value="4"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="2"/>
+            <column name="menuId" value="5"/>
+            <column name="code" value="pages:admin:tenant"/>
+            <column name="name" value="商户管理"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="1"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <insert tableName="ucc_permission">
+            <column name="id" value="5"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="4"/>
+            <column name="menuId" value="5"/>
+            <column name="code" value="pages:admin:tenant:create"/>
+            <column name="name" value="创建"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="1"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <insert tableName="ucc_permission">
+            <column name="id" value="6"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="4"/>
+            <column name="menuId" value="5"/>
+            <column name="code" value="pages:admin:tenant:view"/>
+            <column name="name" value="查看"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="1"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <insert tableName="ucc_permission">
+            <column name="id" value="7"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="4"/>
+            <column name="menuId" value="5"/>
+            <column name="code" value="pages:admin:tenant:edit"/>
+            <column name="name" value="编辑"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="1"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <insert tableName="ucc_permission">
+            <column name="id" value="8"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="4"/>
+            <column name="menuId" value="5"/>
+            <column name="code" value="pages:admin:tenant:delete"/>
+            <column name="name" value="删除"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="1"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <insert tableName="ucc_permission">
+            <column name="id" value="9"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="4"/>
+            <column name="menuId" value="5"/>
+            <column name="code" value="pages:admin:tenant:lock"/>
+            <column name="name" value="锁定"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="1"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <insert tableName="ucc_permission">
+            <column name="id" value="10"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="4"/>
+            <column name="menuId" value="5"/>
+            <column name="code" value="pages:admin:tenant:unlock"/>
+            <column name="name" value="解锁"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="1"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <insert tableName="ucc_permission">
+            <column name="id" value="11"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="4"/>
+            <column name="menuId" value="5"/>
+            <column name="code" value="pages:admin:tenant:reset"/>
+            <column name="name" value="重置密码"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="1"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <insert tableName="ucc_permission">
+            <column name="id" value="12"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="4"/>
+            <column name="menuId" value="5"/>
+            <column name="code" value="pages:admin:tenant:cancel"/>
+            <column name="name" value="注销"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="1"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <!-- 停车场管理 -->
+        <insert tableName="ucc_permission">
+            <column name="id" value="13"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="2"/>
+            <column name="menuId" value="19"/>
+            <column name="code" value="pages:admin:parking:manager"/>
+            <column name="name" value="停车场管理"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="1"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <insert tableName="ucc_permission">
+            <column name="id" value="14"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="13"/>
+            <column name="menuId" value="19"/>
+            <column name="code" value="pages:admin:parking:manager:create"/>
+            <column name="name" value="创建"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="1"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <insert tableName="ucc_permission">
+            <column name="id" value="15"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="13"/>
+            <column name="menuId" value="19"/>
+            <column name="code" value="pages:admin:parking:manager:edit"/>
+            <column name="name" value="编辑"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="1"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <insert tableName="ucc_permission">
+            <column name="id" value="16"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="13"/>
+            <column name="menuId" value="19"/>
+            <column name="code" value="pages:admin:parking:manager:view"/>
+            <column name="name" value="查看"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="1"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <insert tableName="ucc_permission">
+            <column name="id" value="17"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="13"/>
+            <column name="menuId" value="19"/>
+            <column name="code" value="pages:admin:parking:manager:delete"/>
+            <column name="name" value="删除"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="1"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <insert tableName="ucc_permission">
+            <column name="id" value="18"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="13"/>
+            <column name="menuId" value="19"/>
+            <column name="code" value="pages:admin:parking:manager:on"/>
+            <column name="name" value="上架"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="1"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <insert tableName="ucc_permission">
+            <column name="id" value="19"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="13"/>
+            <column name="menuId" value="19"/>
+            <column name="code" value="pages:admin:parking:manager:off"/>
+            <column name="name" value="下架"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="1"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <!-- 停车场审核 -->
+        <insert tableName="ucc_permission">
+            <column name="id" value="20"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="2"/>
+            <column name="menuId" value="20"/>
+            <column name="code" value="pages:admin:parking:apply"/>
+            <column name="name" value="停车场审核"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="1"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <insert tableName="ucc_permission">
+            <column name="id" value="21"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="20"/>
+            <column name="menuId" value="20"/>
+            <column name="code" value="pages:admin:parking:apply:approve"/>
+            <column name="name" value="审核"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="1"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <!-- 基础数据-区域管理-->
+        <insert tableName="ucc_permission">
+            <column name="id" value="22"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="2"/>
+            <column name="menuId" value="21"/>
+            <column name="code" value="pages:admin:basic:area"/>
+            <column name="name" value="区域管理"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="2"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <insert tableName="ucc_permission">
+            <column name="id" value="23"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="22"/>
+            <column name="menuId" value="21"/>
+            <column name="code" value="pages:admin:basic:area:create"/>
+            <column name="name" value="创建"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="2"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <insert tableName="ucc_permission">
+            <column name="id" value="24"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="22"/>
+            <column name="menuId" value="21"/>
+            <column name="code" value="pages:admin:basic:area:view"/>
+            <column name="name" value="查看"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="2"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <insert tableName="ucc_permission">
+            <column name="id" value="25"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="22"/>
+            <column name="menuId" value="21"/>
+            <column name="code" value="pages:admin:basic:area:edit"/>
+            <column name="name" value="编辑"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="2"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <insert tableName="ucc_permission">
+            <column name="id" value="26"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="22"/>
+            <column name="menuId" value="21"/>
+            <column name="code" value="pages:admin:basic:area:delete"/>
+            <column name="name" value="删除"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="2"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <!-- 基础数据-停车场管理 -->
+        <insert tableName="ucc_permission">
+            <column name="id" value="27"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="2"/>
+            <column name="menuId" value="22"/>
+            <column name="code" value="pages:admin:basic:parkinginfo"/>
+            <column name="name" value="停车场管理"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="2"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <insert tableName="ucc_permission">
+            <column name="id" value="28"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="27"/>
+            <column name="menuId" value="22"/>
+            <column name="code" value="pages:admin:basic:parkinginfo:create"/>
+            <column name="name" value="创建"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="2"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <insert tableName="ucc_permission">
+            <column name="id" value="29"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="27"/>
+            <column name="menuId" value="22"/>
+            <column name="code" value="pages:admin:basic:parkinginfo:view"/>
+            <column name="name" value="查看"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="2"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <insert tableName="ucc_permission">
+            <column name="id" value="30"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="27"/>
+            <column name="menuId" value="22"/>
+            <column name="code" value="pages:admin:basic:parkinginfo:edit"/>
+            <column name="name" value="编辑"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="2"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <insert tableName="ucc_permission">
+            <column name="id" value="31"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="27"/>
+            <column name="menuId" value="22"/>
+            <column name="code" value="pages:admin:basic:parkinginfo:delete"/>
+            <column name="name" value="删除"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="2"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <!-- 基础数据-停车区域管理 -->
+        <insert tableName="ucc_permission">
+            <column name="id" value="32"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="2"/>
+            <column name="menuId" value="23"/>
+            <column name="code" value="pages:admin:basic:parkingarea"/>
+            <column name="name" value="停车区域管理"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="2"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <insert tableName="ucc_permission">
+            <column name="id" value="33"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="32"/>
+            <column name="menuId" value="23"/>
+            <column name="code" value="pages:admin:basic:parkingarea:create"/>
+            <column name="name" value="创建"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="2"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <insert tableName="ucc_permission">
+            <column name="id" value="34"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="32"/>
+            <column name="menuId" value="23"/>
+            <column name="code" value="pages:admin:basic:parkingarea:view"/>
+            <column name="name" value="查看"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="2"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <insert tableName="ucc_permission">
+            <column name="id" value="35"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="32"/>
+            <column name="menuId" value="23"/>
+            <column name="code" value="pages:admin:basic:parkingarea:edit"/>
+            <column name="name" value="编辑"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="2"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <insert tableName="ucc_permission">
+            <column name="id" value="36"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="32"/>
+            <column name="menuId" value="23"/>
+            <column name="code" value="pages:admin:basic:parkingarea:delete"/>
+            <column name="name" value="删除"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="2"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <!-- 基础数据-车库管理 -->
+        <insert tableName="ucc_permission">
+            <column name="id" value="37"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="2"/>
+            <column name="menuId" value="24"/>
+            <column name="code" value="pages:admin:basic:garage"/>
+            <column name="name" value="车库管理"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="2"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <insert tableName="ucc_permission">
+            <column name="id" value="38"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="37"/>
+            <column name="menuId" value="24"/>
+            <column name="code" value="pages:admin:basic:garage:create"/>
+            <column name="name" value="创建"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="2"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <insert tableName="ucc_permission">
+            <column name="id" value="39"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="37"/>
+            <column name="menuId" value="24"/>
+            <column name="code" value="pages:admin:basic:garage:view"/>
+            <column name="name" value="查看"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="2"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <insert tableName="ucc_permission">
+            <column name="id" value="40"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="37"/>
+            <column name="menuId" value="24"/>
+            <column name="code" value="pages:admin:basic:garage:edit"/>
+            <column name="name" value="编辑"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="2"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <insert tableName="ucc_permission">
+            <column name="id" value="41"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="37"/>
+            <column name="menuId" value="24"/>
+            <column name="code" value="pages:admin:basic:garage:delete"/>
+            <column name="name" value="删除"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="2"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <!-- 基础数据-出入口管理 -->
+        <insert tableName="ucc_permission">
+            <column name="id" value="45"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="2"/>
+            <column name="menuId" value="25"/>
+            <column name="code" value="pages:admin:basic:gate"/>
+            <column name="name" value="出入口管理"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="2"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <insert tableName="ucc_permission">
+            <column name="id" value="46"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="45"/>
+            <column name="menuId" value="25"/>
+            <column name="code" value="pages:admin:basic:gate:create"/>
+            <column name="name" value="创建"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="2"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <insert tableName="ucc_permission">
+            <column name="id" value="47"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="45"/>
+            <column name="menuId" value="25"/>
+            <column name="code" value="pages:admin:basic:gate:view"/>
+            <column name="name" value="查看"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="2"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <insert tableName="ucc_permission">
+            <column name="id" value="48"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="45"/>
+            <column name="menuId" value="25"/>
+            <column name="code" value="pages:admin:basic:gate:edit"/>
+            <column name="name" value="编辑"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="2"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <insert tableName="ucc_permission">
+            <column name="id" value="49"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="45"/>
+            <column name="menuId" value="25"/>
+            <column name="code" value="pages:admin:basic:gate:delete"/>
+            <column name="name" value="删除"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="2"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <!-- 基础数据-车道管理 -->
+        <insert tableName="ucc_permission">
+            <column name="id" value="50"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="2"/>
+            <column name="menuId" value="26"/>
+            <column name="code" value="pages:admin:basic:lane"/>
+            <column name="name" value="车道管理"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="2"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <insert tableName="ucc_permission">
+            <column name="id" value="51"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="50"/>
+            <column name="menuId" value="26"/>
+            <column name="code" value="pages:admin:basic:lane:create"/>
+            <column name="name" value="创建"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="2"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <insert tableName="ucc_permission">
+            <column name="id" value="52"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="50"/>
+            <column name="menuId" value="26"/>
+            <column name="code" value="pages:admin:basic:lane:view"/>
+            <column name="name" value="查看"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="2"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <insert tableName="ucc_permission">
+            <column name="id" value="53"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="50"/>
+            <column name="menuId" value="26"/>
+            <column name="code" value="pages:admin:basic:lane:edit"/>
+            <column name="name" value="编辑"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="2"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <insert tableName="ucc_permission">
+            <column name="id" value="54"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="50"/>
+            <column name="menuId" value="26"/>
+            <column name="code" value="pages:admin:basic:lane:delete"/>
+            <column name="name" value="删除"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="2"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <!-- 基础数据-泊位管理 -->
+        <insert tableName="ucc_permission">
+            <column name="id" value="55"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="2"/>
+            <column name="menuId" value="27"/>
+            <column name="code" value="pages:admin:basic:lotinfo"/>
+            <column name="name" value="泊位管理"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="2"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <insert tableName="ucc_permission">
+            <column name="id" value="56"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="55"/>
+            <column name="menuId" value="27"/>
+            <column name="code" value="pages:admin:basic:lotinfo:create"/>
+            <column name="name" value="创建"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="2"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <insert tableName="ucc_permission">
+            <column name="id" value="57"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="55"/>
+            <column name="menuId" value="27"/>
+            <column name="code" value="pages:admin:basic:lotinfo:view"/>
+            <column name="name" value="查看"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="2"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <insert tableName="ucc_permission">
+            <column name="id" value="58"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="55"/>
+            <column name="menuId" value="27"/>
+            <column name="code" value="pages:admin:basic:lotinfo:edit"/>
+            <column name="name" value="编辑"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="2"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <insert tableName="ucc_permission">
+            <column name="id" value="59"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="55"/>
+            <column name="menuId" value="27"/>
+            <column name="code" value="pages:admin:basic:lotinfo:delete"/>
+            <column name="name" value="删除"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="2"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <!-- 运营管理-业务管理-过车记录 -->
+        <insert tableName="ucc_permission">
+            <column name="id" value="60"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="2"/>
+            <column name="menuId" value="29"/>
+            <column name="code" value="pages:admin:operation:business:passing"/>
+            <column name="name" value="过车记录"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="2"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <!-- 运营管理-业务管理-在场车辆 -->
+        <insert tableName="ucc_permission">
+            <column name="id" value="61"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="2"/>
+            <column name="menuId" value="30"/>
+            <column name="code" value="pages:admin:operation:business:parking"/>
+            <column name="name" value="在场车辆"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="2"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <!--  运营管理-业务管理-停车记录 -->
+        <insert tableName="ucc_permission">
+            <column name="id" value="62"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="2"/>
+            <column name="menuId" value="31"/>
+            <column name="code" value="pages:admin:operation:business:record"/>
+            <column name="name" value="停车记录"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="2"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <!-- 运营管理-收费配置-节假日管理 -->
+        <insert tableName="ucc_permission">
+            <column name="id" value="63"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="2"/>
+            <column name="menuId" value="33"/>
+            <column name="code" value="pages:admin:operation:charge:holiday"/>
+            <column name="name" value="节假日管理"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="2"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <!-- 运营管理-收费配置-收费规则  -->
+        <insert tableName="ucc_permission">
+            <column name="id" value="64"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="2"/>
+            <column name="menuId" value="34"/>
+            <column name="code" value="pages:admin:operation:charge:rule"/>
+            <column name="name" value="收费规则"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="2"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <!-- 运营管理-收费配置-路边收费员 -->
+        <insert tableName="ucc_permission">
+            <column name="id" value="65"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="2"/>
+            <column name="menuId" value="35"/>
+            <column name="code" value="pages:admin:operation:charge:roadway"/>
+            <column name="name" value="路边收费员"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="2"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <!-- 运营管理-排班管理-排班配置 -->
+        <insert tableName="ucc_permission">
+            <column name="id" value="66"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="2"/>
+            <column name="menuId" value="37"/>
+            <column name="code" value="pages:admin:operation:schedule:setting"/>
+            <column name="name" value="排班配置"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="2"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <!-- 运营管理-排班管理-手动排班 -->
+        <insert tableName="ucc_permission">
+            <column name="id" value="67"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="2"/>
+            <column name="menuId" value="38"/>
+            <column name="code" value="pages:admin:operation:schedule:manual"/>
+            <column name="name" value="手动排班"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="2"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <!-- 运营管理-排班管理-历史排班 -->
+        <insert tableName="ucc_permission">
+            <column name="id" value="68"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="2"/>
+            <column name="menuId" value="39"/>
+            <column name="code" value="pages:admin:operation:schedule:history"/>
+            <column name="name" value="历史排班"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="2"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <!-- 运营管理-巡查管理-路边巡检员 -->
+        <insert tableName="ucc_permission">
+            <column name="id" value="69"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="2"/>
+            <column name="menuId" value="41"/>
+            <column name="code" value="pages:admin:operation:inspect:roadway"/>
+            <column name="name" value="巡查管理"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="2"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <!--  运营管理-巡查管理-巡查管理 -->
+        <insert tableName="ucc_permission">
+            <column name="id" value="70"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="2"/>
+            <column name="menuId" value="42"/>
+            <column name="code" value="pages:admin:operation:inspect:signIn"/>
+            <column name="name" value="签到记录"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="2"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <!-- 运营管理-巡查管理-巡查记录 -->
+        <insert tableName="ucc_permission">
+            <column name="id" value="71"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="2"/>
+            <column name="menuId" value="43"/>
+            <column name="code" value="pages:admin:operation:inspect:record"/>
+            <column name="name" value="巡查记录"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="2"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <!-- 运营管理-巡查管理-交接班记录 -->
+        <insert tableName="ucc_permission">
+            <column name="id" value="72"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="2"/>
+            <column name="menuId" value="44"/>
+            <column name="code" value="pages:admin:operation:inspect:switch"/>
+            <column name="name" value="交接班记录"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="2"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <!-- 运营管理-预定规则 -->
+        <insert tableName="ucc_permission">
+            <column name="id" value="73"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="2"/>
+            <column name="menuId" value="46"/>
+            <column name="code" value="pages:admin:operation:appoint:rule"/>
+            <column name="name" value="预定规则"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="2"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <!-- 运营管理-预定订单 -->
+        <insert tableName="ucc_permission">
+            <column name="id" value="74"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="2"/>
+            <column name="menuId" value="47"/>
+            <column name="code" value="pages:admin:operation:appoint:order"/>
+            <column name="name" value="预定订单"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="2"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <!-- 运营管理-订单管理 -->
+        <insert tableName="ucc_permission">
+            <column name="id" value="75"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="2"/>
+            <column name="menuId" value="48"/>
+            <column name="code" value="pages:admin:operation:order"/>
+            <column name="name" value="订单管理"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="2"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <!-- 运营管理-车辆管理-包期规则 -->
+        <insert tableName="ucc_permission">
+            <column name="id" value="76"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="2"/>
+            <column name="menuId" value="50"/>
+            <column name="code" value="pages:admin:operation:vehicle:packetrule"/>
+            <column name="name" value="包期规则"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="2"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <!-- 运营管理-车辆管理-包期车管理 -->
+        <insert tableName="ucc_permission">
+            <column name="id" value="77"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="2"/>
+            <column name="menuId" value="51"/>
+            <column name="code" value="pages:admin:operation:vehicle:packetmanager"/>
+            <column name="name" value="包期车管理"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="2"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <!-- 运营管理-车辆管理-包期取消 -->
+        <insert tableName="ucc_permission">
+            <column name="id" value="78"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="2"/>
+            <column name="menuId" value="52"/>
+            <column name="code" value="pages:admin:operation:vehicle:packetcancel"/>
+            <column name="name" value="包期取消"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="2"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <!-- 车辆管理-固定车 -->
+        <insert tableName="ucc_permission">
+            <column name="id" value="79"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="2"/>
+            <column name="menuId" value="53"/>
+            <column name="code" value="pages:admin:operation:vehicle:fixed"/>
+            <column name="name" value="固定车"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="2"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <!-- 车辆管理-黑名单 -->
+        <insert tableName="ucc_permission">
+            <column name="id" value="80"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="2"/>
+            <column name="menuId" value="54"/>
+            <column name="code" value="pages:admin:operation:vehicle:blackList"/>
+            <column name="name" value="黑名单"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="2"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <!-- 车辆管理-白名单 -->
+        <insert tableName="ucc_permission">
+            <column name="id" value="81"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="2"/>
+            <column name="menuId" value="55"/>
+            <column name="code" value="pages:admin:operation:vehicle:whiteList"/>
+            <column name="name" value="白名单"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="2"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <!-- 车辆管理-访客车 -->
+        <insert tableName="ucc_permission">
+            <column name="id" value="82"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="2"/>
+            <column name="menuId" value="56"/>
+            <column name="code" value="pages:admin:operation:vehicle:visitList"/>
+            <column name="name" value="访客车"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="2"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <!-- 财务管理 -->
+        <insert tableName="ucc_permission">
+            <column name="id" value="83"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="2"/>
+            <column name="menuId" value="58"/>
+            <column name="code" value="pages:admin:operation:vehicle:rule"/>
+            <column name="name" value="财务管理"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="2"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <!-- 财务管理 -->
+        <insert tableName="ucc_permission">
+            <column name="id" value="84"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="2"/>
+            <column name="menuId" value="59"/>
+            <column name="code" value="pages:admin:operation:vehicle:order"/>
+            <column name="name" value="财务管理"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="2"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <!-- 发票管理-发票申请 -->
+        <insert tableName="ucc_permission">
+            <column name="id" value="85"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="2"/>
+            <column name="menuId" value="61"/>
+            <column name="code" value="pages:admin:operation:invoice:apply"/>
+            <column name="name" value="发票申请"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="2"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <!-- 发票管理-历史开票 -->
+        <insert tableName="ucc_permission">
+            <column name="id" value="86"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="2"/>
+            <column name="menuId" value="62"/>
+            <column name="code" value="pages:admin:operation:invoice:history"/>
+            <column name="name" value="历史开票"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="2"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <!-- 报表管理-停车效率分析 -->
+        <insert tableName="ucc_permission">
+            <column name="id" value="87"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="2"/>
+            <column name="menuId" value="64"/>
+            <column name="code" value="pages:admin:operation:report:parking"/>
+            <column name="name" value="停车效率分析"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="2"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <!-- 报表管理-运营效率分析 -->
+        <insert tableName="ucc_permission">
+            <column name="id" value="88"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="2"/>
+            <column name="menuId" value="65"/>
+            <column name="code" value="pages:admin:operation:report:operating"/>
+            <column name="name" value="运营效率分析"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="2"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <!-- 设备管理-地磁管理器 -->
+        <insert tableName="ucc_permission">
+            <column name="id" value="89"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="2"/>
+            <column name="menuId" value="67"/>
+            <column name="code" value="pages:admin:device:manager:magnetic"/>
+            <column name="name" value="地磁管理器"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="2"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <!-- 设备管理-地磁检测器 -->
+        <insert tableName="ucc_permission">
+            <column name="id" value="90"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="2"/>
+            <column name="menuId" value="68"/>
+            <column name="code" value="pages:admin:device:manager:detector"/>
+            <column name="name" value="地磁检测器"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="2"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <!-- 设备管理-视频设备 -->
+        <insert tableName="ucc_permission">
+            <column name="id" value="91"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="2"/>
+            <column name="menuId" value="69"/>
+            <column name="code" value="pages:admin:device:manager:camera"/>
+            <column name="name" value="视频设备"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="2"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <!-- 设备配置-停车场配置 -->
+        <insert tableName="ucc_permission">
+            <column name="id" value="92"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="2"/>
+            <column name="menuId" value="71"/>
+            <column name="code" value="pages:admin:device:setting:parking"/>
+            <column name="name" value="停车场配置"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="2"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <!-- 设备配置-泊位配置 -->
+        <insert tableName="ucc_permission">
+            <column name="id" value="93"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="2"/>
+            <column name="menuId" value="70"/>
+            <column name="code" value="pages:admin:device:setting:parkingLot"/>
+            <column name="name" value="泊位配置"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="2"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <!-- 设备配置-出入口配置 -->
+        <insert tableName="ucc_permission">
+            <column name="id" value="94"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="2"/>
+            <column name="menuId" value="73"/>
+            <column name="code" value="pages:admin:device:setting:gate"/>
+            <column name="name" value="出入口配置"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="2"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <!-- 设备运营管理-地磁检测记录 -->
+        <insert tableName="ucc_permission">
+            <column name="id" value="95"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="2"/>
+            <column name="menuId" value="75"/>
+            <column name="code" value="pages:admin:device:operation:detectRecord"/>
+            <column name="name" value="地磁检测记录"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="2"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <!-- 设备运营管理-地磁管理器状态 -->
+        <insert tableName="ucc_permission">
+            <column name="id" value="96"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="2"/>
+            <column name="menuId" value="76"/>
+            <column name="code" value="pages:admin:device:operation:managerStatus"/>
+            <column name="name" value="地磁管理器状态"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="2"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <!-- 设备运营管理-地磁检测器状态 -->
+        <insert tableName="ucc_permission">
+            <column name="id" value="97"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="2"/>
+            <column name="menuId" value="77"/>
+            <column name="code" value="pages:admin:device:operation:detectorStatus"/>
+            <column name="name" value="地磁检测器状态"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="2"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <!-- 设备运营管理-地磁管理器异常 -->
+        <insert tableName="ucc_permission">
+            <column name="id" value="98"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="2"/>
+            <column name="menuId" value="78"/>
+            <column name="code" value="pages:admin:device:operation:managerException"/>
+            <column name="name" value="地磁管理器异常"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="2"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <!-- 设备运营管理-地磁检测器异常 -->
+        <insert tableName="ucc_permission">
+            <column name="id" value="99"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="2"/>
+            <column name="menuId" value="79"/>
+            <column name="code" value="pages:admin:device:operation:detectorException"/>
+            <column name="name" value="地磁检测器异常"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="2"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <!-- 设备运营管理-视频检测记录 -->
+        <insert tableName="ucc_permission">
+            <column name="id" value="100"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="2"/>
+            <column name="menuId" value="80"/>
+            <column name="code" value="pages:admin:device:operation:cameraRecord"/>
+            <column name="name" value="视频检测记录"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="2"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <!-- 部门管理 -->
+        <insert tableName="ucc_permission">
+            <column name="id" value="101"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="2"/>
+            <column name="menuId" value="10"/>
+            <column name="code" value="pages:admin:user:organization"/>
+            <column name="name" value="部门管理"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="4"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <insert tableName="ucc_permission">
+            <column name="id" value="102"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="101"/>
+            <column name="menuId" value="10"/>
+            <column name="code" value="pages:admin:user:organization:create"/>
+            <column name="name" value="创建"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="4"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <insert tableName="ucc_permission">
+            <column name="id" value="103"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="101"/>
+            <column name="menuId" value="10"/>
+            <column name="code" value="pages:admin:user:organization:view"/>
+            <column name="name" value="查看"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="4"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <insert tableName="ucc_permission">
+            <column name="id" value="104"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="101"/>
+            <column name="menuId" value="10"/>
+            <column name="code" value="pages:admin:user:organization:edit"/>
+            <column name="name" value="编辑"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="4"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <insert tableName="ucc_permission">
+            <column name="id" value="105"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="101"/>
+            <column name="menuId" value="10"/>
+            <column name="code" value="pages:admin:user:organization:delete"/>
+            <column name="name" value="删除"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="4"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <!-- 用户管理 -->
+        <insert tableName="ucc_permission">
+            <column name="id" value="106"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="2"/>
+            <column name="menuId" value="11"/>
+            <column name="code" value="pages:admin:user:employees"/>
+            <column name="name" value="用户管理"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="4"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <insert tableName="ucc_permission">
+            <column name="id" value="107"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="106"/>
+            <column name="menuId" value="11"/>
+            <column name="code" value="pages:admin:user:employees:create"/>
+            <column name="name" value="创建"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="4"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <insert tableName="ucc_permission">
+            <column name="id" value="108"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="106"/>
+            <column name="menuId" value="11"/>
+            <column name="code" value="pages:admin:user:employees:view"/>
+            <column name="name" value="查看"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="4"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <insert tableName="ucc_permission">
+            <column name="id" value="109"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="106"/>
+            <column name="menuId" value="11"/>
+            <column name="code" value="pages:admin:user:employees:edit"/>
+            <column name="name" value="编辑"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="4"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <insert tableName="ucc_permission">
+            <column name="id" value="110"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="106"/>
+            <column name="menuId" value="11"/>
+            <column name="code" value="pages:admin:user:employees:delete"/>
+            <column name="name" value="删除"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="4"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <!-- 角色管理 -->
+        <insert tableName="ucc_permission">
+            <column name="id" value="111"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="2"/>
+            <column name="menuId" value="12"/>
+            <column name="code" value="pages:admin:user:role"/>
+            <column name="name" value="角色管理"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="4"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <insert tableName="ucc_permission">
+            <column name="id" value="112"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="111"/>
+            <column name="menuId" value="12"/>
+            <column name="code" value="pages:admin:user:role:create"/>
+            <column name="name" value="创建"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="4"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <insert tableName="ucc_permission">
+            <column name="id" value="113"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="111"/>
+            <column name="menuId" value="12"/>
+            <column name="code" value="pages:admin:user:role:view"/>
+            <column name="name" value="查看"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="4"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <insert tableName="ucc_permission">
+            <column name="id" value="114"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="111"/>
+            <column name="menuId" value="12"/>
+            <column name="code" value="pages:admin:user:role:edit"/>
+            <column name="name" value="编辑"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="4"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <insert tableName="ucc_permission">
+            <column name="id" value="115"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="111"/>
+            <column name="menuId" value="12"/>
+            <column name="code" value="pages:admin:user:role:delete"/>
+            <column name="name" value="删除"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="4"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <!-- 权限管理 -->
+        <insert tableName="ucc_permission">
+            <column name="id" value="116"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="2"/>
+            <column name="menuId" value="13"/>
+            <column name="code" value="pages:admin:user:permission"/>
+            <column name="name" value="权限管理"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="4"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <!-- 菜单管理 -->
+        <insert tableName="ucc_permission">
+            <column name="id" value="117"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="2"/>
+            <column name="menuId" value="14"/>
+            <column name="code" value="pages:admin:user:menu"/>
+            <column name="name" value="菜单管理"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="4"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <!-- 字典管理 -->
+        <insert tableName="ucc_permission">
+            <column name="id" value="118"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="2"/>
+            <column name="menuId" value="15"/>
+            <column name="code" value="pages:admin:system:dictionary"/>
+            <column name="name" value="字典管理"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="4"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <insert tableName="ucc_permission">
+            <column name="id" value="119"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="118"/>
+            <column name="menuId" value="15"/>
+            <column name="code" value="pages:admin:system:dictionary:create"/>
+            <column name="name" value="创建"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="4"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <insert tableName="ucc_permission">
+            <column name="id" value="120"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="118"/>
+            <column name="menuId" value="15"/>
+            <column name="code" value="pages:admin:system:dictionary:view"/>
+            <column name="name" value="查看"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="4"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <insert tableName="ucc_permission">
+            <column name="id" value="121"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="118"/>
+            <column name="menuId" value="15"/>
+            <column name="code" value="pages:admin:system:dictionary:edit"/>
+            <column name="name" value="编辑"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="4"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <insert tableName="ucc_permission">
+            <column name="id" value="122"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="118"/>
+            <column name="menuId" value="15"/>
+            <column name="code" value="pages:admin:system:dictionary:delete"/>
+            <column name="name" value="删除"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="4"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <!--  参数配置 -->
+        <insert tableName="ucc_permission">
+            <column name="id" value="123"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="2"/>
+            <column name="menuId" value="16"/>
+            <column name="code" value="pages:admin:system:setting"/>
+            <column name="name" value="参数配置"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="4"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <insert tableName="ucc_permission">
+            <column name="id" value="124"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="123"/>
+            <column name="menuId" value="16"/>
+            <column name="code" value="pages:admin:system:setting:create"/>
+            <column name="name" value="创建"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="4"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <insert tableName="ucc_permission">
+            <column name="id" value="125"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="123"/>
+            <column name="menuId" value="16"/>
+            <column name="code" value="pages:admin:system:setting:view"/>
+            <column name="name" value="查看"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="4"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <insert tableName="ucc_permission">
+            <column name="id" value="126"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="123"/>
+            <column name="menuId" value="16"/>
+            <column name="code" value="pages:admin:system:setting:edit"/>
+            <column name="name" value="编辑"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="4"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <insert tableName="ucc_permission">
+            <column name="id" value="127"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="123"/>
+            <column name="menuId" value="16"/>
+            <column name="code" value="pages:admin:system:setting:delete"/>
+            <column name="name" value="删除"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="4"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <!-- 操作日志 -->
+        <insert tableName="ucc_permission">
+            <column name="id" value="128"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="2"/>
+            <column name="menuId" value="17"/>
+            <column name="code" value="pages:admin:system:auditLog"/>
+            <column name="name" value="操作日志"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="4"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <!-- 登录日志 -->
+        <insert tableName="ucc_permission">
+            <column name="id" value="129"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="2"/>
+            <column name="menuId" value="18"/>
+            <column name="code" value="pages:admin:system:loginLog"/>
+            <column name="name" value="登录日志"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="4"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

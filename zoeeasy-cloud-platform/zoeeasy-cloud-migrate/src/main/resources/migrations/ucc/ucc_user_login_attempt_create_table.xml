@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet id="ucc_user_login_attempt_create_table" author="walkman">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="ucc_user_login_attempt"/>
+            </not>
+        </preConditions>
+        <createTable tableName="ucc_user_login_attempt" remarks="用户尝试登陆表">
+            <column autoIncrement="true" name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_user_login_attempt"/>
+            </column>
+            <column name="tenantId" type="bigint(20)" remarks="租户ID"/>
+            <column name="account" type="varchar(128)" remarks="账户名"/>
+            <column name="credential" type="varchar(32)" remarks="登陆凭证"/>
+            <column name="channel" type="tinyint(4)" remarks="登陆渠道"/>
+            <column name="clientId" type="varchar(64)" remarks="客户端ID"/>
+            <column name="clientName" type="varchar(64)" remarks="客户端ID"/>
+            <column name="browserInfo" type="varchar(64)" remarks="浏览器信息"/>
+            <column name="deviceInfo" type="varchar(64)" remarks="设备信息"/>
+            <column name="result" type="tinyint(4)" remarks="登陆结果"/>
+            <column name="remarks" type="varchar(255)" remarks="说明"/>
+            <column name="creatorUserId" type="bigint" remarks="创建者"/>
+            <column name="creationTime" type="DATETIME" remarks="创建时间"/>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

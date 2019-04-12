@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet author="walkman" id="ucc_static_menu_seed_data_20190304">
+        <insert tableName="ucc_menu">
+            <column name="id" value="85"/>
+            <column name="parentId" value="1"/>
+            <column name="pathCode" value="00001.00009"/>
+            <column name="level" value="1.1"/>
+            <column name="sort" value="0"/>
+            <column name="code" value="Administration.Home"/>
+            <column name="name" value="首页"/>
+            <column name="url" value="administration/home"/>
+            <column name="icon" value="dashboard"/>
+            <column name="component" value="Home"/>
+            <column name="tenancyHostSide" value="1"/>
+            <column name="shown" value="1"/>
+            <column name="staticMenu" value="1"/>
+            <column name="status" value="1"/>
+            <column name="type" value="1"/>
+            <column name="permission" value=""/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <insert tableName="ucc_menu">
+            <column name="id" value="86"/>
+            <column name="parentId" value="1"/>
+            <column name="pathCode" value="00001.00010"/>
+            <column name="level" value="1.2"/>
+            <column name="sort" value="0"/>
+            <column name="code" value="Administration.Index"/>
+            <column name="name" value="首页"/>
+            <column name="url" value="administration/index"/>
+            <column name="icon" value="dashboard"/>
+            <column name="component" value="Index"/>
+            <column name="tenancyHostSide" value="2"/>
+            <column name="shown" value="1"/>
+            <column name="staticMenu" value="1"/>
+            <column name="status" value="1"/>
+            <column name="type" value="1"/>
+            <column name="permission" value=""/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <sql>
+            update ucc_menu set deleted = '1' where id =2;
+        </sql>
+    </changeSet>
+</databaseChangeLog>

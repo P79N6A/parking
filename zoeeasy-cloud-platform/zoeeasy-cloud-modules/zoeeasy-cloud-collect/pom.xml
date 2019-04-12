@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>zoeeasy-cloud-modules</artifactId>
+        <groupId>com.zoeeasy</groupId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>zoeeasy-cloud-collect</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <name>Zoeeasy Cloud Platform :: Zoeeasy Cloud Collect Parent</name>
+    <properties>
+        <t-io.version>3.2.6.v20190110-RELEASE</t-io.version>
+    </properties>
+    <modules>
+        <module>zoeeasy-cloud-collect-api</module>
+        <module>zoeeasy-cloud-collect-api-dubbo</module>
+        <module>zoeeasy-cloud-collect-server</module>
+    </modules>
+    <dependencies>
+        <dependency>
+            <groupId>org.t-io</groupId>
+            <artifactId>tio-core</artifactId>
+            <version>${t-io.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.t-io</groupId>
+            <artifactId>tio-utils</artifactId>
+            <version>${t-io.version}</version>
+        </dependency>
+    </dependencies>
+</project>

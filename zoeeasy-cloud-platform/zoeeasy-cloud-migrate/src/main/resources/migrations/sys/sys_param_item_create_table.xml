@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet author="walkman" id="sys_param_item_create_table">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="sys_param_item"/>
+            </not>
+        </preConditions>
+        <createTable tableName="sys_param_item" remarks="参数数据表">
+            <column autoIncrement="true" name="id" type="bigint" remarks="参数数据主键">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_param_item"/>
+            </column>
+            <column name="tenantId" type="bigint(20)" remarks="租户ID"/>
+            <column name="paramCode" type="VARCHAR(64)" remarks="参数编码">
+                <constraints nullable="false"/>
+            </column>
+            <column name="paramKey" type="VARCHAR(32)" remarks="参数键">
+                <constraints nullable="false"/>
+            </column>
+            <column name="paramLabel" type="VARCHAR(100)" remarks="参数标签">
+                <constraints nullable="false"/>
+            </column>
+            <column name="paramValue" type="VARCHAR(2000)" remarks="参数值"/>
+            <column name="sort" type="smallint(6)" remarks="参数排序" defaultValue="0"/>
+            <column name="status" type="tinyint(4)" remarks="状态（1正常 0停用" defaultValue="0"/>
+            <column name="required" type="tinyint(1)" remarks="是否必须" defaultValue="0"/>
+            <column name="remark" type="VARCHAR(1000)" remarks="备注" defaultValue=""/>
+            <column name="creatorUserId" type="bigint" remarks="创建者"/>
+            <column name="creationTime" type="DATETIME" remarks="创建时间"/>
+            <column name="lastModifierUserId" type="bigint" remarks="更新者"/>
+            <column name="lastModificationTime" type="DATETIME" remarks="更新时间"/>
+            <column name="deleterUserId" type="bigint" remarks="删除者"/>
+            <column name="deletionTime" type="DATETIME" remarks="删除时间"/>
+            <column name="deleted" type="tinyint(1)" remarks="删除标记" defaultValue="0"/>
+        </createTable>
+        <createIndex tableName="sys_param_item" indexName="idx_tenant_param">
+            <column name="paramKey"/>
+            <column name="paramCode"/>
+            <column name="tenantId"/>
+        </createIndex>
+    </changeSet>
+</databaseChangeLog>

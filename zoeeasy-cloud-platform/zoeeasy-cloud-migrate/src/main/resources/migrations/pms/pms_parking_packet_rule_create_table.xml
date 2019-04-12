@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet id="pms_parking_packet_rule_create_table" author="zm">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="pms_parking_packet_rule"/>
+            </not>
+        </preConditions>
+        <createTable tableName="pms_parking_packet_rule" remarks="停车场包期规则表">
+            <column autoIncrement="true" name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_parking_packet_rule"/>
+            </column>
+            <column name="tenantId" type="bigint(20) unsigned" remarks="租户ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="parkingId" type="bigint(20) unsigned" remarks="停车场ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ruleId" type="bigint(20) unsigned" remarks="包期规则ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creatorUserId" type="bigint" remarks="创建者"/>
+            <column name="creationTime" type="DATETIME" remarks="创建时间"/>
+        </createTable>
+        <createIndex tableName="pms_parking_packet_rule" indexName="idx_tenant_parking">
+            <column name="tenantId"/>
+            <column name="parkingId"/>
+        </createIndex>
+        <createIndex tableName="pms_parking_packet_rule" indexName="idx_tenant_ruleId">
+            <column name="tenantId"/>
+            <column name="ruleId"/>
+        </createIndex>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zoeeasy.cloud.sys.mapper.AuditLogMapper">
+
+    <resultMap id="BaseResultMap" type="com.zoeeasy.cloud.sys.domain.AuditLogEntity">
+        <result property="id" column="id"/>
+        <result property="tenantId" column="tenantId"/>
+        <result property="userId" column="userId"/>
+        <result property="account" column="account"/>
+        <result property="title" column="title"/>
+        <result property="type" column="type"/>
+        <result property="logType" column="logType"/>
+        <result property="operatorType" column="operatorType"/>
+        <result property="remoteAddress" column="remoteAddress"/>
+        <result property="userAgent" column="userAgent"/>
+        <result property="requestUrl" column="requestUrl"/>
+        <result property="method" column="method"/>
+        <result property="status" column="status"/>
+        <result property="params" column="params"/>
+        <result property="content" column="content"/>
+        <result property="exception" column="exception"/>
+        <result property="creatorUserId" column="creatorUserId"/>
+        <result property="creationTime" column="creationTime"/>
+    </resultMap>
+
+    <!--通用结果查询列-->
+    <sql id="Base_Column_List">
+                id,
+            tenantId,
+            userId,
+            account,
+            title,
+            type,
+            logType,
+            operatorType,
+            remoteAddress,
+            userAgent,
+            requestUrl,
+            method,
+            status,
+            params,
+            content,
+            exception,
+            creatorUserId,
+            creationTime
+        </sql>
+
+
+</mapper>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet id="ucc_user_create_table" author="walkman">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="ucc_user"/>
+            </not>
+        </preConditions>
+        <createTable tableName="ucc_user" remarks="用户表">
+            <column autoIncrement="true" name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_user"/>
+            </column>
+            <column name="tenantId" type="bigint(20)" remarks="租户ID"/>
+            <column name="uuid" type="varchar(32)" remarks="uuid">
+                <constraints nullable="false"/>
+            </column>
+            <column name="account" type="varchar(128)" remarks="账户名">
+                <constraints nullable="false"/>
+            </column>
+            <column name="password" type="varchar(32)" remarks="密码">
+                <constraints nullable="false"/>
+            </column>
+            <column name="salt" type="varchar(64)" remarks="盐"/>
+            <column name="userName" type="varchar(128)" remarks="用户名">
+                <constraints nullable="false"/>
+            </column>
+            <column name="realName" type="varchar(256)" remarks="姓名"/>
+            <column name="nickName" type="varchar(128)" remarks="昵称"/>
+            <column name="userType" type="tinyint(4)" remarks="用户类型" defaultValue="0"/>
+            <column name="status" type="tinyint(4)" remarks="用户状态" defaultValue="0"/>
+            <column name="registerChannel" type="tinyint(4)" remarks="注册渠道" defaultValue="0"/>
+            <column name="phoneNumber" type="varchar(11)" remarks="手机"/>
+            <column name="phoneNumberConfirmed" type="tinyint(1)" remarks="手机号是否确认" defaultValue="0"/>
+            <column name="emailAddress" type="varchar(64)" remarks="邮箱"/>
+            <column name="emailAddressConfirmed" type="tinyint(1)" remarks="邮箱是否确认" defaultValue="0"/>
+            <column name="emailConfirmationCode" type="varchar(64)" remarks="邮箱确认码"/>
+            <column name="portrait" type="varchar(2000)" remarks="头像"/>
+            <column name="accessAttemptCount" type="int(11)" remarks="失败登录次数" defaultValue="0"/>
+            <column name="passwordResetCode" type="varchar(64)" remarks="密码重置码"/>
+            <column name="lastLoginTime" type="datetime" remarks="最后登录时间"/>
+            <column name="creatorUserId" type="bigint" remarks="创建者"/>
+            <column name="creationTime" type="DATETIME" remarks="创建时间"/>
+            <column name="lastModifierUserId" type="bigint" remarks="更新者"/>
+            <column name="lastModificationTime" type="DATETIME" remarks="更新时间"/>
+            <column name="deleterUserId" type="bigint" remarks="删除者"/>
+            <column name="deletionTime" type="DATETIME" remarks="删除时间"/>
+            <column name="deleted" type="tinyint(1)" remarks="删除标记" defaultValue="0"/>
+        </createTable>
+        <createIndex tableName="ucc_user" indexName="idx_tenantId">
+            <column name="tenantId"/>
+        </createIndex>
+        <createIndex tableName="ucc_user" indexName="idx_account">
+            <column name="account"/>
+        </createIndex>
+        <createIndex tableName="ucc_user" indexName="idx_userName">
+            <column name="userName"/>
+        </createIndex>
+        <createIndex tableName="ucc_user" indexName="idx_phoneNumber">
+            <column name="phoneNumber"/>
+        </createIndex>
+        <createIndex tableName="ucc_user" indexName="idx_emailAddress">
+            <column name="emailAddress"/>
+        </createIndex>
+        <createIndex tableName="ucc_user" indexName="idx_deleted">
+            <column name="deleted"/>
+        </createIndex>
+    </changeSet>
+</databaseChangeLog>

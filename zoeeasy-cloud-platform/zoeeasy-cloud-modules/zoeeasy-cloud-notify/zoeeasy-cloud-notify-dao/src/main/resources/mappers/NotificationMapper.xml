@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zoeeasy.cloud.notify.mapper.NotificationMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.zoeeasy.cloud.notify.domain.Notification">
+        <id column="id" property="id"/>
+        <result property="tenantId" column="tenantId"/>
+        <result property="templateId" column=""/>
+        <result property="userId" column="userId"/>
+        <result property="notifyType" column="notifyType"/>
+        <result property="bizType" column="bizType"/>
+        <result property="title" column="title"/>
+        <result property="content" column="content"/>
+        <result property="sendTime" column="sendTime"/>
+        <result property="emailStatus" column="emailStatus"/>
+        <result property="emailSendTime" column="emailSendTime"/>
+        <result property="smsStatus" column="smsStatus"/>
+        <result property="smsSendTime" column="smsSendTime"/>
+        <result property="readStatus" column="readStatus"/>
+        <result property="readTime" column="readTime"/>
+        <result property="creatorUserId" column="creatorUserId"/>
+        <result property="creationTime" column="creationTime"/>
+        <result property="lastModifierUserId" column="lastModifierUserId"/>
+        <result property="lastModificationTime" column="lastModificationTime"/>
+        <result property="deleterUserId" column="deleterUserId"/>
+        <result property="deletionTime" column="deletionTime"/>
+        <result property="deleted" column="deleted"/>
+        <result property="version" column="version"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,
+        tenantId,
+        templateId,
+        userId,
+        notifyType,
+        bizType,
+        title,
+        content,
+        sendTime,
+        emailStatus,
+        emailSendTime,
+        smsStatus,
+        smsSendTime,
+        readStatus,
+        readTime,
+        creatorUserId,
+        creationTime,
+        lastModifierUserId,
+        lastModificationTime,
+        deleterUserId,
+        deletionTime,
+        deleted,
+        version
+    </sql>
+
+    <select id="selectNotificationByUserIdList" resultType="java.lang.Integer">
+        SELECT
+        COUNT(1)
+        FROM not_notification
+        <where>
+            deleted = '0' ${ew.sqlSegment} and date(sendTime) = curdate()
+        </where>
+    </select>
+
+    <update id="deleteNotification">
+        UPDATE
+        not_notification
+        set deleted=1
+        <where>
+            userId=#{userId} and
+            id in
+            <foreach collection="ids" item="item_id" separator="," open="(" close=")">
+                #{item_id}
+            </foreach>
+
+        </where>
+    </update>
+</mapper>

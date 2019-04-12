@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet author="zwq" id="pay_alipay_order_table">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="pay_alipay_order"/>
+            </not>
+        </preConditions>
+        <createTable tableName="pay_alipay_order" remarks="支付宝订单表">
+            <column autoIncrement="true" name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_alipay_order"/>
+            </column>
+            <column name="tenantId" type="bigint(20) unsigned" remarks="租户ID"/>
+            <column name="customerUserId" type="bigint" remarks="车主用户ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="tradeNo" type="VARCHAR(64)" defaultValue="" remarks="支付宝交易号"/>
+            <column name="outTradeNo" type="VARCHAR(64)" remarks="商户订单号">
+                <constraints nullable="false"/>
+            </column>
+            <column name="outBizNo" type="VARCHAR(64)" defaultValue="" remarks="商户返回退款申请的流水号"/>
+            <column name="subject" type="VARCHAR(256)" remarks="订单标题">
+                <constraints nullable="false"/>
+            </column>
+            <column name="tradeStatus" type="tinyint(4)" defaultValue="0" remarks="交易状态"/>
+            <column name="totalAmount" type="DECIMAL(12,2)" defaultValue="0.00" remarks="订单金额">
+                <constraints nullable="false"/>
+            </column>
+            <column name="receiptAmount" type="DECIMAL(12,2)" defaultValue="0.00" remarks="实收金额"/>
+            <column name="invoiceAmount" type="DECIMAL(12,2)" defaultValue="0.00" remarks="开票金额"/>
+            <column name="buyerPayAmount" type="DECIMAL(12,2)" defaultValue="0.00" remarks="用户实际支付金额"/>
+            <column name="pointAmount" type="DECIMAL(12,2)" defaultValue="0.00" remarks="集分宝金额"/>
+            <column name="refundFee" type="DECIMAL(12,2)" defaultValue="0.00" remarks="总退款金额"/>
+            <column name="currencyType" type="VARCHAR(20)" defaultValue="" remarks="货币类型"/>
+            <column name="body" type="VARCHAR(2000)" defaultValue="" remarks="商品描述"/>
+            <column name="gmtCreate" type="DATETIME" remarks="交易创建时间">
+                <constraints nullable="false"/>
+            </column>
+            <column name="gmtPayment" type="DATETIME" remarks="交易付款时间" defaultValue="2049-12-31 23:59:59"/>
+            <column name="gmtRefund" type="DATETIME" remarks="交易退款时间" defaultValue="2049-12-31 23:59:59"/>
+            <column name="gmtClose" type="DATETIME" remarks="交易结束时间" defaultValue="2049-12-31 23:59:59"/>
+            <column name="fundBillList" type="VARCHAR(2000)" defaultValue="" remarks="支付金额信息"/>
+            <column name="passbackParams" type="VARCHAR(2000)" defaultValue="" remarks="回传参数"/>
+            <column name="voucherDetailList" type="VARCHAR(2000)" defaultValue="" remarks="优惠券信息"/>
+            <column name="timeoutExpress" type="VARCHAR(255)" defaultValue="" remarks="交易过期时间"/>
+            <column name="goodsType" type="VARCHAR(16)" remarks="商品主类型：0—虚拟类商品，1—实物类商品"/>
+            <column name="promoParams" type="VARCHAR(1000)" defaultValue="" remarks="优惠参数"/>
+            <column name="extendParams" type="text" remarks="业务扩展参数"/>
+            <column name="enablePayChannels" type="VARCHAR(1000)" defaultValue="" remarks="可用渠道"/>
+            <column name="disablePayChannels" type="VARCHAR(1000)" defaultValue="" remarks="禁用渠道"/>
+            <column name="storeId" type="VARCHAR(1000)" defaultValue="" remarks="商户门店编号"/>
+            <column name="extUserInfo" type="text" remarks="外部指定买家"/>
+            <column name="buyerId" type="VARCHAR(16)" defaultValue="" remarks="买家支付宝用户号"/>
+            <column name="buyerLogonId" type="VARCHAR(100)" defaultValue="" remarks="买家支付宝账号"/>
+            <column name="sellerId" type="VARCHAR(20)" defaultValue="" remarks="卖家支付宝用户号"/>
+            <column name="sellerEmail" type="VARCHAR(100)" defaultValue="" remarks="卖家支付宝账号"/>
+            <column name="creatorUserId" type="bigint" remarks="创建者"/>
+            <column name="creationTime" type="DATETIME" remarks="创建时间"/>
+            <column name="lastModifierUserId" type="bigint" remarks="更新者"/>
+            <column name="lastModificationTime" type="DATETIME" remarks="更新时间"/>
+            <column name="deleterUserId" type="bigint" remarks="删除者"/>
+            <column name="deletionTime" type="DATETIME" remarks="删除时间"/>
+            <column name="deleted" type="tinyint(1)" remarks="删除标记" defaultValue="0"/>
+            <column name="version" type="bigint" remarks="版本号" defaultValue="1"/>
+        </createTable>
+        <createIndex tableName="pay_alipay_order" indexName="idx_tenantId">
+            <column name="tenantId"/>
+        </createIndex>
+        <rollback>drop table pay_alipay_order</rollback>
+    </changeSet>
+</databaseChangeLog>

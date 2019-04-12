@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet id="pms_parking_apply_info_create_table" author="sc">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="pms_parking_apply_info"/>
+            </not>
+        </preConditions>
+        <createTable tableName="pms_parking_apply_info" remarks="停车场审核表">
+            <column autoIncrement="true" name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_parking_apply"/>
+            </column>
+            <column name="tenantId" type="bigint(20)" remarks="租户ID"/>
+            <column name="parkingId" type="bigint(20)" remarks="停车场id">
+                <constraints nullable="false"/>
+            </column>
+            <column name="applyType" type="tinyint(4)" remarks="申请类别: 1上线申请 2下线申请"/>
+            <column name="applyStatus" type="tinyint(4)" remarks="申请状态: 1待申请 2已申请 3已取消"/>
+            <column name="applyUserId" type="bigint(20)" remarks="申请人id"/>
+            <column name="applyRemark" type="varchar(2000)" remarks="申请说明"/>
+            <column name="applyTime" type="DATETIME" remarks="申请时间"/>
+            <column name="auditStatus" type="tinyint(4)" remarks="审核状态: 1待审核 2通过 3未通过"/>
+            <column name="auditUserId" type="bigint(20)" remarks="审核人员id"/>
+            <column name="auditRemark" type="varchar(2000)" remarks="审核说明"/>
+            <column name="auditTime" type="DATETIME" remarks="审核时间"/>
+            <column name="runStatus" type="tinyint(4)" remarks="上下线状态: 1待上线 2已上线 3待下线 4已下线"/>
+            <column name="runUserId" type="bigint(20)" remarks="上下线操作人员"/>
+            <column name="runOperateTime" type="DATETIME" remarks="上下线操作时间"/>
+            <column name="creatorUserId" type="bigint" remarks="创建者"/>
+            <column name="creationTime" type="DATETIME" remarks="创建时间"/>
+            <column name="lastModifierUserId" type="bigint" remarks="更新者"/>
+            <column name="lastModificationTime" type="DATETIME" remarks="更新时间"/>
+            <column name="deleterUserId" type="bigint" remarks="删除者"/>
+            <column name="deletionTime" type="DATETIME" remarks="删除时间"/>
+            <column name="deleted" type="tinyint(1)" remarks="删除标记" defaultValue="0"/>
+        </createTable>
+        <createIndex tableName="pms_parking_apply_info" indexName="idx_parking_id">
+            <column name="parkingId"/>
+        </createIndex>
+    </changeSet>
+</databaseChangeLog>

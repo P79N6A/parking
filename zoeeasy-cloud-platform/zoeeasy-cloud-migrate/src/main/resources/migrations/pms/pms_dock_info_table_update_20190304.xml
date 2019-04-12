@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet id="pms_dock_info_table_update_20190304" author="wf">
+        <renameColumn columnDataType="varchar(400)" newColumnName="openStrobeUrl" oldColumnName="heartBeatUrl"
+                      remarks="远程开闸Url" tableName="pms_dock_info"/>
+    </changeSet>
+</databaseChangeLog>

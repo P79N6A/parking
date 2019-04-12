@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zoeeasy.cloud.inspect.mapper.InspectRecordMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.zoeeasy.cloud.inspect.domain.InspectRecordEntity">
+        <id column="id" property="id"/>
+        <result property="tenantId" column="tenantId"/>
+        <result property="recordId" column="recordId"/>
+        <result property="recordNo" column="recordNo"/>
+        <result property="parkingId" column="parkingId"/>
+        <result property="parkingLotId" column="parkingLotId"/>
+        <result property="cardNumber" column="cardNumber"/>
+        <result property="codeNumber" column="codeNumber"/>
+        <result property="plateNumber" column="plateNumber"/>
+        <result property="plateColor" column="plateColor"/>
+        <result property="carType" column="carType"/>
+        <result property="parkingType" column="parkingType"/>
+        <result property="startTime" column="startTime"/>
+        <result property="endTime" column="endTime"/>
+        <result property="status" column="status"/>
+        <result property="inspectTime" column="inspectTime"/>
+        <result property="inspectReason" column="inspectReason"/>
+        <result property="inspectResult" column="inspectResult"/>
+        <result property="description" column="description"/>
+        <result column="creatorUserId" property="creatorUserId"/>
+        <result column="creationTime" property="creationTime"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,
+        tenantId,
+        recordId,
+        recordNo,
+        parkingId,
+        parkingLotId,
+        cardNumber,
+        codeNumber,
+        plateNumber,
+        plateColor,
+        carType,
+        parkingType,
+        startTime,
+        endTime,
+        status,
+        inspectTime,
+        inspectReason,
+        inspectResult,
+        description,
+        creatorUserId, creationTime
+    </sql>
+
+</mapper>

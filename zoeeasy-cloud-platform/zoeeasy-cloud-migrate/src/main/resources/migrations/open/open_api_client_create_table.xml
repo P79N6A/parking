@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet author="walkman" id="open_api_client_create_table">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="open_api_client"/>
+            </not>
+        </preConditions>
+        <createTable tableName="open_api_client" remarks="平台客户端访问凭证表">
+            <column autoIncrement="true" name="id" type="bigint" remarks="ID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_api_client"/>
+            </column>
+            <column name="tenantId" type="bigint(20)" remarks="租户ID"/>
+            <column name="accessKey" type="VARCHAR(64)" remarks="客户端ID" defaultValue=""/>
+            <column name="accessSecrete" type="VARCHAR(400)" remarks="客户端秘钥" defaultValue=""/>
+            <column name="scope" type="VARCHAR(400)" remarks="scope" defaultValue=""/>
+            <column name="remarks" type="VARCHAR(400)" remarks="标题" defaultValue=""/>
+            <column name="beginTime" type="DATETIME" remarks="有效开始时间" defaultValue="now()"/>
+            <column name="endTime" type="DATETIME" remarks="有效结束时间" defaultValue="2049-12-31 23:59:59"/>
+            <column name="creatorUserId" type="bigint" remarks="创建者"/>
+            <column name="creationTime" type="DATETIME" remarks="创建时间" defaultValue="now()"/>
+            <column name="lastModifierUserId" type="bigint" remarks="更新者"/>
+            <column name="lastModificationTime" type="DATETIME" remarks="更新时间"/>
+            <column name="deleterUserId" type="bigint" remarks="删除者"/>
+            <column name="deletionTime" type="DATETIME" remarks="删除时间"/>
+            <column name="deleted" type="tinyint(1)" remarks="删除标记" defaultValue="0"/>
+        </createTable>
+        <createIndex tableName="open_api_client" indexName="idx_tenantId">
+            <column name="tenantId"/>
+        </createIndex>
+        <createIndex tableName="open_api_client" indexName="idx_accessKey">
+            <column name="accessKey"/>
+        </createIndex>
+        <rollback>drop table open_api_client</rollback>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zoeeasy.cloud.pms.mapper.VehicleRecordMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.zoeeasy.cloud.pms.domain.VehicleRecordEntity">
+        <id column="id" property="id"/>
+        <result column="tenantId" property="tenantId"/>
+        <result column="carBrand" property="carBrand"/>
+        <result column="carStyle" property="carStyle"/>
+        <result column="plateNumber" property="plateNumber"/>
+        <result column="plateColor" property="plateColor"/>
+        <result column="plateType" property="plateType"/>
+        <result column="carType" property="carType"/>
+        <result column="carColor" property="carColor"/>
+        <result column="vehicleNumber" property="vehicleNumber"/>
+        <result column="engineNumber" property="engineNumber"/>
+        <result column="ownerName" property="ownerName"/>
+        <result column="ownerPhone" property="ownerPhone"/>
+        <result column="ownerAddress" property="ownerAddress"/>
+        <result column="ownerCardNo" property="ownerCardNo"/>
+        <result column="creatorUserId" property="creatorUserId"/>
+        <result column="creationTime" property="creationTime"/>
+        <result column="lastModifierUserId" property="lastModifierUserId"/>
+        <result column="lastModificationTime" property="lastModificationTime"/>
+        <result column="deleterUserId" property="deleterUserId"/>
+        <result column="deletionTime" property="deletionTime"/>
+        <result column="deleted" property="deleted"/>
+        <result column="version" property="version"/>
+    </resultMap>
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,
+        tenantId,
+        carBrand,
+        carStyle,
+        plateNumber,
+        plateColor,
+        plateType,
+        carType,
+        carColor,
+        vehicleNumber,
+        engineNumber,
+        ownerName,
+        ownerPhone,
+        ownerAddress,
+        ownerCardNo,
+        creatorUserId,
+        creationTime,
+        lastModifierUserId,
+        lastModificationTime,
+        deleterUserId,
+        deletionTime,
+        deleted,
+        version
+    </sql>
+</mapper>

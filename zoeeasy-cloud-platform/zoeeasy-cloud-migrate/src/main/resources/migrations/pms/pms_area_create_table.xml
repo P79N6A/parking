@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet id="pms_area_create_table" author="sc">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="pms_area"/>
+            </not>
+        </preConditions>
+        <createTable tableName="pms_area" remarks="自定义区域表">
+            <column autoIncrement="true" name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_area"/>
+            </column>
+            <column name="tenantId" type="bigint(20)" remarks="租户ID"/>
+            <column name="code" type="varchar(255)" remarks="地区代码">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" type="varchar(255)" remarks="地区名称">
+                <constraints nullable="false"/>
+            </column>
+            <column name="parentId" type="bigint(20)" remarks="上级ID"/>
+            <column name="pathCode" type="varchar(2000)" remarks="节点路径"/>
+            <column name="level" type="tinyint(4)" remarks="层级"/>
+            <column name="order" type="tinyint(4)" remarks="排序"/>
+            <column name="creatorUserId" type="bigint" remarks="创建者"/>
+            <column name="creationTime" type="DATETIME" remarks="创建时间"/>
+            <column name="lastModifierUserId" type="bigint" remarks="更新者"/>
+            <column name="lastModificationTime" type="DATETIME" remarks="更新时间"/>
+            <column name="deleterUserId" type="bigint" remarks="删除者"/>
+            <column name="deletionTime" type="DATETIME" remarks="删除时间"/>
+            <column name="deleted" type="tinyint(1)" remarks="删除标记" defaultValue="0"/>
+            <column name="version" type="bigint(20)" remarks="版本号" defaultValue="1"/>
+        </createTable>
+        <createIndex tableName="pms_area" indexName="idx_code">
+            <column name="code"/>
+        </createIndex>
+        <createIndex tableName="pms_area" indexName="inx_name">
+            <column name="name"/>
+        </createIndex>
+    </changeSet>
+</databaseChangeLog>

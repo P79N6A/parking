@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <!--gat-->
+    <include file="src/main/resources/migrations/gat/gat_magnetic_heart_beat_create_table.xml"
+             relativeToChangelogFile="false"/>
+    <include file="src/main/resources/migrations/gat/gat_magnetic_status_record_create_table.xml"
+             relativeToChangelogFile="false"/>
+    <include file="src/main/resources/migrations/gat/gat_magnetic_report_record_create_table.xml"
+             relativeToChangelogFile="false"/>
+    <include file="src/main/resources/migrations/gat/gat_hikvision_vehicle_log_create_table.xml"
+             relativeToChangelogFile="false"/>
+    <include file="src/main/resources/migrations/gat/gat_hikvision_vehicle_log_modify_columns_20181218.xml"
+             relativeToChangelogFile="false"/>
+    <include file="src/main/resources/migrations/gat/gat_hikvision_vehicle_log_add_columns_20190105.xml"
+             relativeToChangelogFile="false"/>
+    <include file="src/main/resources/migrations/gat/gat_hikvision_vehicle_record_create_table.xml"
+             relativeToChangelogFile="false"/>
+    <include file="src/main/resources/migrations/gat/gat_hikvision_vehicle_record_modify_columns_20181218.xml"
+             relativeToChangelogFile="false"/>
+    <include file="src/main/resources/migrations/gat/gat_magnetic_heart_beat_drop_index_and_update_column_20181218.xml"
+             relativeToChangelogFile="false"/>
+    <include file="src/main/resources/migrations/gat/gat_magnetic_status_record_update_column_20181218.xml"
+             relativeToChangelogFile="false"/>
+    <include file="src/main/resources/migrations/gat/gat_magnetic_report_record_drop_index_20181218.xml"
+             relativeToChangelogFile="false"/>
+</databaseChangeLog>

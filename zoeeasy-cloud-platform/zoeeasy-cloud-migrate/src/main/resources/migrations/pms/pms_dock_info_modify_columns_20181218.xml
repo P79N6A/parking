@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet id="pms_dock_info_modify_columns_20181218" author="walkman">
+        <preConditions onFail="MARK_RAN">
+            <tableExists tableName="pms_dock_info"/>
+        </preConditions>
+        <renameColumn columnDataType="int(11)" newColumnName="platformPort" oldColumnName="platformPort"
+                      remarks="对接终端/平台的端口" tableName="pms_dock_info"/>
+        <renameColumn columnDataType="smallint(6)" newColumnName="heartBeatInterval" oldColumnName="heartBeatInterval"
+                      remarks="心跳时间间隔：单位秒" tableName="pms_dock_info"/>
+    </changeSet>
+</databaseChangeLog>

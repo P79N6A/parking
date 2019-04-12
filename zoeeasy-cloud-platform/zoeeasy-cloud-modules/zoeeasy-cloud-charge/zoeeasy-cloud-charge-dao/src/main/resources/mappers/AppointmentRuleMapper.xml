@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zoeeasy.cloud.charge.mapper.AppointmentRuleMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.zoeeasy.cloud.charge.domain.AppointmentRuleEntity">
+        <id column="id" property="id"/>
+        <result property="tenantId" column="tenantId"/>
+        <result property="ruleCode" column="ruleCode"/>
+        <result property="ruleName" column="ruleName"/>
+        <result property="startTime" column="startTime"/>
+        <result property="endTime" column="endTime"/>
+        <result property="unitAppointLength" column="unitAppointLength"/>
+        <result property="maxAppointLength" column="maxAppointLength"/>
+        <result property="unitPrice" column="unitPrice"/>
+        <result property="maxAppointAmount" column="maxAppointAmount"/>
+        <result property="countAppointPrice" column="countAppointPrice"/>
+        <result property="fee" column="fee"/>
+        <result property="feeFreeLength" column="feeFreeLength"/>
+        <result property="payLimit" column="payLimit"/>
+        <result property="cancelLimit" column="cancelLimit"/>
+        <result property="unitCancelLength" column="unitCancelLength"/>
+        <result property="unitCancelPrice" column="unitCancelPrice"/>
+        <result property="maxCancelAmount" column="maxCancelAmount"/>
+        <result property="countCancelPrice" column="countCancelPrice"/>
+        <result property="overTimeLimit" column="overTimeLimit"/>
+        <result property="overTimeCancel" column="overTimeCancel"/>
+        <result property="unitOvertimeCancelLength" column="unitOvertimeCancelLength"/>
+        <result property="unitOvertimeCancelPrice" column="unitOvertimeCancelPrice"/>
+        <result property="maxOvertimeCancelAmount" column="maxOvertimeCancelAmount"/>
+        <result property="countOvertimeCancelPrice" column="countOvertimeCancelPrice"/>
+        <result property="flexTime" column="flexTime"/>
+        <result property="refundLimit" column="refundLimit"/>
+        <result property="canRefund" column="canRefund"/>
+        <result property="chargeType" column="chargeType"/>
+        <result property="used" column="used"/>
+        <result property="description" column="description"/>
+        <result property="creatorUserId" column="creatorUserId"/>
+        <result property="creationTime" column="creationTime"/>
+        <result property="lastModifierUserId" column="lastModifierUserId"/>
+        <result property="lastModificationTime" column="lastModificationTime"/>
+        <result property="deleterUserId" column="deleterUserId"/>
+        <result property="deletionTime" column="deletionTime"/>
+        <result property="deleted" column="deleted"/>
+        <result column="version" property="version"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,
+        ruleCode,
+        ruleName,
+        startTime,
+        endTime,
+        unitAppointLength,
+        maxAppointLength,
+        unitPrice,
+        maxAppointAmount,
+        countAppointPrice,
+        fee,
+        feeFreeLength,
+        payLimit,
+        cancelLimit,
+        unitCancelLength,
+        unitCancelPrice,
+        maxCancelAmount,
+        countCancelPrice,
+        overTimeLimit,
+        overTimeCancel,
+        unitOvertimeCancelLength,
+        unitOvertimeCancelPrice,
+        maxOvertimeCancelAmount,
+        countOvertimeCancelPrice,
+        flexTime,
+        refundLimit,
+        canRefund,
+        chargeType,
+        used,
+        description,
+        creatorUserId,
+        creationTime,
+        lastModifierUserId,
+        lastModificationTime,
+        deleterUserId,
+        deletionTime,
+        creatorUserId,
+        deleted,
+        version
+    </sql>
+
+    <select id="selectAppointRuleById" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from chg_appointment_rule
+        <where>
+            deleted = '0' and id = #{ruleId}
+        </where>
+
+    </select>
+
+    <update id="updateAppointRule" parameterType="com.zoeeasy.cloud.charge.domain.AppointmentRuleEntity">
+        UPDATE chg_appointment_rule
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="used != null">
+                used=#{used}
+            </if>
+        </trim>
+        <where>
+            id=#{id}
+        </where>
+    </update>
+
+</mapper>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet author="zwq" id="ord_third_parking_order_table_modify_columns_20181227">
+        <preConditions onFail="MARK_RAN">
+            <tableExists tableName="ord_third_parking_order"/>
+        </preConditions>
+        <renameColumn columnDataType="datetime" newColumnName="costTime" oldColumnName="costTime"
+                      remarks="结算时间" tableName="ord_third_parking_order"/>
+        <renameColumn columnDataType="int(11) unsigned" newColumnName="parkPeriodTime" oldColumnName="parkPeriodTime"
+                      remarks="停车时长(分钟)" tableName="ord_third_parking_order"/>
+        <renameColumn columnDataType="int(11) unsigned" newColumnName="totalCost" oldColumnName="totalCost"
+                      remarks="总收费金额(单位：分)" tableName="ord_third_parking_order"/>
+        <renameColumn columnDataType="int(11) unsigned" newColumnName="payAmount" oldColumnName="payAmount"
+                      remarks="总收费金额(单位：分)" tableName="ord_third_parking_order"/>
+        <addDefaultValue tableName="ord_third_parking_order" columnName="costTime" defaultValue="2049-12-31 23:59:59"/>
+        <addDefaultValue tableName="ord_third_parking_order" columnName="parkPeriodTime" defaultValue="0"/>
+        <addDefaultValue tableName="ord_third_parking_order" columnName="totalCost" defaultValue="0"/>
+        <addDefaultValue tableName="ord_third_parking_order" columnName="payAmount" defaultValue="0"/>
+    </changeSet>
+</databaseChangeLog>

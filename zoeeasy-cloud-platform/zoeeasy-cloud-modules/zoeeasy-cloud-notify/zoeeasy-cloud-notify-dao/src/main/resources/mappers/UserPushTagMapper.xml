@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zoeeasy.cloud.notify.mapper.UserPushTagMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.zoeeasy.cloud.notify.domain.UserPushTag">
+        <id column="id" property="id"/>
+        <result property="tenantId" column="parkingId"/>
+        <result property="userId" column="tag"/>
+        <result property="tagId" column="tagType"/>
+        <result property="creatorUserId" column="creatorUserId"/>
+        <result property="creationTime" column="creationTime"/>
+        <result property="lastModifierUserId" column="lastModifierUserId"/>
+        <result property="lastModificationTime" column="lastModificationTime"/>
+        <result property="deleterUserId" column="deleterUserId"/>
+        <result property="deletionTime" column="deletionTime"/>
+        <result property="deleted" column="deleted"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,
+        tenantId,
+        userId,
+        tagId,
+        creatorUserId,
+        creationTime,
+        lastModifierUserId,
+        lastModificationTime,
+        deleterUserId,
+        deletionTime,
+        deleted
+    </sql>
+
+</mapper>

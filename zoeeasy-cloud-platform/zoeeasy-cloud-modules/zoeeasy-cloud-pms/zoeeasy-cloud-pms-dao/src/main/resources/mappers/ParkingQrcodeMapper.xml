@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zoeeasy.cloud.pms.mapper.ParkingQrcodeMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.zoeeasy.cloud.pms.domain.ParkingQrcodeEntity">
+        <id column="id" property="id"/>
+        <result column="tenantId" property="tenantId"/>
+        <result column="parkingId" property="parkingId"/>
+        <result column="noncestr" property="noncestr"/>
+        <result column="codeUrl" property="codeUrl"/>
+        <result column="creatorUserId" property="creatorUserId"/>
+        <result column="creationTime" property="creationTime"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, tenantId, parkingId, noncestr, codeUrl, creatorUserId, creationTime
+    </sql>
+
+    <select id="findParkingQrcode" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from pms_parking_qrcode
+        <where>
+            ${ew.sqlSegment}
+        </where>
+    </select>
+
+</mapper>

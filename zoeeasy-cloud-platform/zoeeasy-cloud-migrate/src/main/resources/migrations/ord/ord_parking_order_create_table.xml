@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet id="ord_parking_order_create_table" author="walkman">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="ord_parking_order"/>
+            </not>
+        </preConditions>
+        <createTable tableName="ord_parking_order" remarks="停车订单表">
+            <column autoIncrement="true" name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_parking_order"/>
+            </column>
+            <column name="tenantId" type="bigint(20)" remarks="租户ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="recordNo" type="varchar(64)" remarks="平台停车记录流水号">
+                <constraints nullable="false"/>
+            </column>
+            <column name="orderNo" type="varchar(64)" remarks="平台停车账单流水号">
+                <constraints nullable="false"/>
+            </column>
+            <column name="parkingId" type="bigint(20)" remarks="平台停车场ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="parkingName" type="varchar(400)" remarks="停车场名称"/>
+            <column name="parkingLotId" type="bigint(20)" remarks="平台泊位ID"/>
+            <column name="parkingLotNumber" type="varchar(200)" remarks="泊位号"/>
+            <column name="plateNumber" type="varchar(20)" defaultValue="" remarks="车牌号"/>
+            <column name="plateColor" type="tinyint(4)" defaultValue="0" remarks="车牌颜色"/>
+            <column name="carStyle" type="tinyint(4)" defaultValue="0" remarks="车辆类型"/>
+            <column name="startTime" type="datetime" remarks="停车开始时间"/>
+            <column name="endTime" type="datetime" defaultValue="2049-12-31 23:59:59" remarks="停车结束时间"/>
+            <column name="parkingLength" type="bigint(20)" defaultValue="0" remarks="停车时长(秒)"/>
+            <column name="freeLength" type="bigint(20)" defaultValue="0" remarks="免费停车时长(秒)"/>
+            <column name="chargeLength" type="bigint(20)" defaultValue="0" remarks="收费停车时长(秒)"/>
+            <column name="chargeInfoId" type="bigint(20)" remarks="停车场收费信息ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="chargeMode" type="tinyint(4)" defaultValue="1" remarks="收费模式 1:离场前收费 2: 离场后收费"/>
+            <column name="status" type="tinyint(4)" defaultValue="0" remarks="停车状态"/>
+            <column name="thirdBillNo" type="varchar(64)" defaultValue="" remarks="第三方平台账单编号"/>
+            <column name="thirdBillSourceType" type="tinyint(4)" defaultValue="0" remarks="第三方平台账单数据源"/>
+            <column name="thirdBillSyncStatus" type="tinyint(4)" defaultValue="0"
+                    remarks="第三方平台账单同步状态(0 未创建 1 已创建 2 已支付确认)"/>
+            <column name="appointed" type="tinyint(1)" defaultValue="0" remarks="是否预约停车 0 否 1 是"/>
+            <column name="appointOrderNo" type="varchar(64)" defaultValue="" remarks="预约订单号"/>
+            <column name="settle" type="tinyint(1)" defaultValue="0" remarks="是否已结算 0 未结算 1 已结算"/>
+            <column name="settleAmount" type="int(11) unsigned" defaultValue="0" remarks="结算金额(分)"/>
+            <column name="settleTime" type="datetime" defaultValue="2049-12-31 23:59:59" remarks="结算时间"/>
+            <column name="limitFree" type="tinyint(1)" defaultValue="0" remarks="是否限免停车  0 否 1 是"/>
+            <column name="payable" type="tinyint(1)" defaultValue="1" remarks="是否可以支付0 不可支付 1 可以支付"/>
+            <column name="needPay" type="tinyint(1)" defaultValue="1" remarks="是否需要支付0 无需支付 1 需要支付"/>
+            <column name="payableAmount" type="int(11) unsigned" defaultValue="0" remarks="应付金额(分)"/>
+            <column name="freePayReason" type="varchar(200)" defaultValue="" remarks="免于支付说明"/>
+            <column name="payStatus" type="tinyint(4)" defaultValue="0" remarks="支付状态 0 :未支付 1:已支付  2:支付中"/>
+            <column name="actualPayAmount" type="int(11) unsigned" defaultValue="0" remarks="实付金额(分)"/>
+            <column name="payTime" type="datetime" defaultValue="2049-12-31 23:59:59" remarks="支付时间"/>
+            <column name="payedUserId" type="bigint(20)" remarks="支付用户ID"/>
+            <column name="payWay" type="tinyint(4)" remarks="支付方式(根据PayWayEnum)"/>
+            <column name="payType" type="tinyint(4)" remarks="支付类型(根据PayTypeEnum)"/>
+            <column name="artificial" type="tinyint(1)" defaultValue="0" remarks="是否手工单 0 否 1 是"/>
+            <column name="editor" type="varchar(32)" remarks="编辑人员"/>
+            <column name="remark" type="varchar(2000)" remarks="备注"/>
+            <column name="creatorUserId" type="bigint" remarks="创建者"/>
+            <column name="creationTime" type="DATETIME" remarks="创建时间"/>
+            <column name="lastModifierUserId" type="bigint" remarks="更新者"/>
+            <column name="lastModificationTime" type="DATETIME" remarks="更新时间"/>
+            <column name="deleterUserId" type="bigint" remarks="删除者"/>
+            <column name="deletionTime" type="DATETIME" remarks="删除时间"/>
+            <column name="deleted" type="tinyint(1)" remarks="删除标记" defaultValue="0"/>
+            <column name="version" type="bigint" remarks="版本号" defaultValue="1"/>
+        </createTable>
+        <createIndex tableName="ord_parking_order" indexName="idx_recordNo">
+            <column name="recordNo"/>
+        </createIndex>
+        <createIndex tableName="ord_parking_order" indexName="idx_orderNo">
+            <column name="orderNo"/>
+        </createIndex>
+        <createIndex tableName="ord_parking_order" indexName="idx_parkingId">
+            <column name="parkingId"/>
+        </createIndex>
+        <createIndex tableName="ord_parking_order" indexName="idx_plateNumber">
+            <column name="plateNumber"/>
+        </createIndex>
+        <createIndex tableName="ord_parking_order" indexName="idx_appointOrderNo">
+            <column name="appointOrderNo"/>
+        </createIndex>
+        <createIndex tableName="ord_parking_order" indexName="idx_billNo">
+            <column name="thirdBillNo"/>
+        </createIndex>
+        <rollback>drop table ord_parking_order</rollback>
+    </changeSet>
+</databaseChangeLog>

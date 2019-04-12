@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet id="ucc_tenant_approve_info_create_table" author="walkman">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="ucc_tenant_approve_info"/>
+            </not>
+        </preConditions>
+        <createTable tableName="ucc_tenant_approve_info" remarks="租户申请审核表">
+            <column autoIncrement="true" name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_tenant_approve_info"/>
+            </column>
+            <column name="tenantId" type="bigint(20)" remarks="租户ID"/>
+            <column name="applyId" type="bigint(20)" remarks="申请ID"/>
+            <column name="approveUserId" type="bigint(20)" remarks="审批人ID"/>
+            <column name="approveUserName" type="varchar(64)" remarks="审批人姓名"/>
+            <column name="approveTime" type="datetime" remarks="审批时间"/>
+            <column name="result" type="tinyint(4) unsigned" remarks="审批结果：0 不通过；1 通过"/>
+            <column name="remark" type="varchar(256)" remarks="审批不通过时的描述信息"/>
+            <column name="creatorUserId" type="bigint" remarks="创建者"/>
+            <column name="creationTime" type="DATETIME" remarks="创建时间"/>
+            <column name="lastModifierUserId" type="bigint" remarks="更新者"/>
+            <column name="lastModificationTime" type="DATETIME" remarks="更新时间"/>
+            <column name="deleterUserId" type="bigint" remarks="删除者"/>
+            <column name="deletionTime" type="DATETIME" remarks="删除时间"/>
+            <column name="deleted" type="tinyint(1)" remarks="删除标记" defaultValue="0"/>
+        </createTable>
+        <createIndex tableName="ucc_tenant_approve_info" indexName="idx_tenantId">
+            <column name="tenantId"/>
+        </createIndex>
+        <createIndex tableName="ucc_tenant_approve_info" indexName="idx_applyId">
+            <column name="applyId"/>
+        </createIndex>
+    </changeSet>
+</databaseChangeLog>

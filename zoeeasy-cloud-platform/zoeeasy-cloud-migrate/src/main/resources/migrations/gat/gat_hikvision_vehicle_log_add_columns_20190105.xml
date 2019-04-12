@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet id="gat_hikvision_vehicle_log_add_columns_20190105" author="walkman">
+        <preConditions onFail="MARK_RAN">
+            <tableExists tableName="gat_hikvision_vehicle_log"/>
+        </preConditions>
+        <addColumn tableName="gat_hikvision_vehicle_log">
+            <column name="logType" type="tinyint(4)"
+                    afterColumn="status" remarks="日志请求类型（１：同步请求日志　2： 定时校对日志）" defaultValue="0"/>
+        </addColumn>
+        <sql>
+            update gat_hikvision_vehicle_log set logType = 1;
+        </sql>
+    </changeSet>
+</databaseChangeLog>

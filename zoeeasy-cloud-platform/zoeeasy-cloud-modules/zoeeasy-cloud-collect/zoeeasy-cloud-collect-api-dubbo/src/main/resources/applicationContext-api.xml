@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://code.alibabatech.com/schema/dubbo
+        http://code.alibabatech.com/schema/dubbo/dubbo.xsd
+        ">
+
+    <dubbo:reference id="collectOperateService"
+                     interface="com.zoeeasy.cloud.collect.core.CollectOperateService"
+                     check="false" timeout="60000" retries="0" registry="fundamentalRegistry"
+                     version="${dubbo.service.version}"/>
+   
+    <dubbo:reference id="messageSendCollectService" version="${dubbo.service.version}"
+                     interface="com.zoeeasy.cloud.collect.core.MessageSendCollectService"
+                     check="false" timeout="30000" retries="0" registry="fundamentalRegistry"/>
+</beans>

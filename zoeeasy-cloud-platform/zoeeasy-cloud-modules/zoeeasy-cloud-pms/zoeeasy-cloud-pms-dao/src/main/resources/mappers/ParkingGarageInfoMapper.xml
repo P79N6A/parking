@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zoeeasy.cloud.pms.mapper.ParkingGarageInfoMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.zoeeasy.cloud.pms.domain.ParkingGarageInfoEntity">
+        <id column="id" property="id"/>
+        <result property="tenantId" column="tenantId"/>
+        <result property="parkingId" column="parkingId"/>
+        <result property="code" column="code"/>
+        <result column="localCode" property="localCode"/>
+        <result property="name" column="name"/>
+        <result property="bleUuid" column="bleUuid"/>
+        <result property="gateCount" column="gateCount"/>
+        <result property="lotCount" column="lotCount"/>
+        <result property="lotFixed" column="lotFixed"/>
+        <result property="lotAvailable" column="lotAvailable"/>
+        <result property="longitude" column="longitude"/>
+        <result property="latitude" column="latitude"/>
+        <result property="remark" column="remark"/>
+        <result column="creatorUserId" property="creatorUserId"/>
+        <result column="creationTime" property="creationTime"/>
+        <result column="lastModifierUserId" property="lastModifierUserId"/>
+        <result column="lastModificationTime" property="lastModificationTime"/>
+        <result column="deleterUserId" property="deleterUserId"/>
+        <result column="deletionTime" property="deletionTime"/>
+        <result column="deleted" property="deleted"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, tenantId, parkingId, code, localCode, name, bleUuid, gateCount, lotCount, lotFixed, lotAvailable, longitude, latitude,
+        creatorUserId, creationTime, lastModifierUserId, lastModificationTime, deleterUserId, deletionTime, deleted
+    </sql>
+
+    <select id="selectGarageLotTotal" resultType="java.lang.Integer">
+        select sum(lotCount)
+        from pms_parking_garage_info
+        where parkingId = #{parkingId}
+          and deleted = 0
+    </select>
+
+    <select id="selectGarageLotFixedTotal" resultType="java.lang.Integer">
+        select sum(lotFixed)
+        from pms_parking_garage_info
+        where parkingId = #{parkingId}
+          and deleted = 0
+    </select>
+
+    <select id="selectGarageLotFixedTotalByParkingId" resultType="java.lang.Integer">
+        select sum(lotFixed)
+        from pms_parking_garage_info
+        where parkingId = #{parkingId}
+          and deleted = 0
+    </select>
+
+    <select id="selectGarageLotTotalByParkingId" resultType="java.lang.Integer">
+         select sum(lotCount)
+        from pms_parking_garage_info
+        where parkingId = #{parkingId}
+          and deleted = 0
+    </select>
+
+    <update id="deleteGarageByParkingIdNonTenant">
+        update pms_parking_garage_info
+        set deleted=1
+        <where>
+            parkingId=#{parkingId}
+        </where>
+    </update>
+
+    <select id="findByCode" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from pms_parking_garage_info
+        <where>
+            deleted = '0' and localCode = #{localCode}
+        </where>
+    </select>
+
+    <select id="selectByCode" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from pms_parking_garage_info
+        <where>
+            deleted = '0' and code = #{code}
+        </where>
+    </select>
+
+    <select id="selectGarageByNameAndParkingId" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from pms_parking_garage_info
+        <where>
+            deleted = '0' and name = #{name} and parkingId = #{parkingId}
+        </where>
+    </select>
+
+    <select id="findGarageByParkingIdAndCode" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from pms_parking_garage_info
+        <where>
+            deleted = '0' and code = #{code} and parkingId = #{parkingId}
+        </where>
+    </select>
+
+    <update id="updateGarageNonTenant" parameterType="com.zoeeasy.cloud.pms.domain.ParkingGarageInfoEntity">
+        UPDATE pms_parking_garage_info
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="tenantId != null">
+                tenantId = #{tenantId},
+            </if>
+            <if test="parkingId != null">
+                parkingId = #{parkingId},
+            </if>
+            <if test="code != null">
+                code = #{code},
+            </if>
+            <if test="localCode != null">
+                localCode = #{localCode},
+            </if>
+            <if test="name != null">
+                name = #{name},
+            </if>
+            <if test="gateCount != null">
+                gateCount = #{gateCount},
+            </if>
+            <if test="lotCount != null">
+                lotCount = #{lotCount},
+            </if>
+            <if test="lotFixed != null">
+                lotFixed = #{lotFixed},
+            </if>
+            <if test="lotAvailable != null">
+                lotAvailable = #{lotAvailable},
+            </if>
+            <if test="longitude != null">
+                longitude = #{longitude},
+            </if>
+            <if test="latitude != null">
+                latitude = #{latitude},
+            </if>
+            <if test="remark != null">
+                remark = #{remark},
+            </if>
+            <if test="lastModifierUserId != null">
+                lastModifierUserId = #{lastModifierUserId},
+            </if>
+            <if test="lastModificationTime != null">
+                lastModificationTime = #{lastModificationTime}
+            </if>
+        </trim>
+        <where>
+            id=#{id}
+        </where>
+    </update>
+
+</mapper>

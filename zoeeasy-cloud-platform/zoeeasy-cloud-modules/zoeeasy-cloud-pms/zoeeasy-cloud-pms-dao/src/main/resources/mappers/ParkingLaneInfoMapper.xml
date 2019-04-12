@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zoeeasy.cloud.pms.mapper.ParkingLaneInfoMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.zoeeasy.cloud.pms.domain.ParkingLaneInfoEntity">
+        <id column="id" property="id"/>
+        <result column="tenantId" property="tenantId"/>
+        <result column="parkingId" property="parkingId"/>
+        <result column="garageId" property="garageId"/>
+        <result column="gateId" property="gateId"/>
+        <result column="code" property="code"/>
+        <result column="localCode" property="localCode"/>
+        <result column="name" property="name"/>
+        <result column="direction" property="direction"/>
+        <result column="creatorUserId" property="creatorUserId"/>
+        <result column="creationTime" property="creationTime"/>
+        <result column="lastModifierUserId" property="lastModifierUserId"/>
+        <result column="lastModificationTime" property="lastModificationTime"/>
+        <result column="deleterUserId" property="deleterUserId"/>
+        <result column="deletionTime" property="deletionTime"/>
+        <result column="deleted" property="deleted"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, tenantId, parkingId, garageId, gateId, code, localCode, name, direction,
+        creatorUserId, creationTime, lastModifierUserId, lastModificationTime, deleterUserId, deletionTime, deleted
+    </sql>
+
+    <update id="deleteParkingLaneInfoNonTenant">
+        update pms_parking_lane_info
+        set deleted=1
+        <where>
+            parkingId=#{parkingId}
+        </where>
+    </update>
+
+    <select id="selectByCode" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from pms_parking_lane_info
+        <where>
+            deleted = '0' and code = #{code}
+        </where>
+    </select>
+
+    <select id="selectByLocalCode" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from pms_parking_lane_info
+        <where>
+            deleted = '0' and localCode = #{localCode}
+        </where>
+    </select>
+
+    <select id="selectGateIdAndName" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from pms_parking_lane_info
+        <where>
+            deleted = '0' and name = #{name} and gateId = #{gateId}
+        </where>
+    </select>
+
+    <select id="selectByGarageIdAndName" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from pms_parking_lane_info
+        <where>
+            deleted = '0' and name = #{name} and garageId = #{garageId} and gateId is null
+        </where>
+    </select>
+
+    <select id="selectByParkingIdAndName" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from pms_parking_lane_info
+        <where>
+            deleted = '0' and name = #{name} and parkingId = #{parkingId} and garageId is null and gateId is null
+        </where>
+    </select>
+
+    <select id="selectByParkingIdAndCode" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from pms_parking_lane_info
+        <where>
+            deleted = '0' and code = #{code} and parkingId = #{parkingId}
+        </where>
+    </select>
+
+    <update id="updateParkingLaneNonTenant" parameterType="com.zoeeasy.cloud.pms.domain.ParkingLaneInfoEntity">
+        UPDATE pms_parking_lane_info
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="tenantId != null">
+                tenantId = #{tenantId},
+            </if>
+            <if test="parkingId != null">
+                parkingId = #{parkingId},
+            </if>
+            <if test="garageId != null">
+                garageId = #{garageId},
+            </if>
+            <if test="gateId != null">
+                gateId = #{gateId},
+            </if>
+            <if test="code != null">
+                code = #{code},
+            </if>
+            <if test="localCode != null">
+                localCode = #{localCode},
+            </if>
+            <if test="name != null">
+                name = #{name},
+            </if>
+            <if test="direction != null">
+                direction = #{direction},
+            </if>
+            <if test="remarks != null">
+                remarks = #{remarks},
+            </if>
+            <if test="lastModifierUserId != null">
+                lastModifierUserId = #{lastModifierUserId},
+            </if>
+            <if test="lastModificationTime != null">
+                lastModificationTime = #{lastModificationTime}
+            </if>
+        </trim>
+        <where>
+            id=#{id}
+        </where>
+    </update>
+
+</mapper>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zoeeasy.cloud.charge.mapper.ParkingChargeRuleMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.zoeeasy.cloud.charge.domain.ParkingChargeRuleEntity">
+        <id column="id" property="id"/>
+        <result property="tenantId" column="tenantId"/>
+        <result property="ruleId" column="ruleId"/>
+        <result property="parkingId" column="parkingId"/>
+        <result property="onlineTime" column="onlineTime"/>
+        <result property="offlineTime" column="offlineTime"/>
+        <result column="creatorUserId" property="creatorUserId"/>
+        <result column="creationTime" property="creationTime"/>
+        <result column="lastModifierUserId" property="lastModifierUserId"/>
+        <result column="lastModificationTime" property="lastModificationTime"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,
+        tenantId,
+        ruleId,
+        parkingId,
+        onlineTime,
+        offlineTime,
+        creatorUserId,
+        creationTime,
+        lastModifierUserId,
+        lastModificationTime
+    </sql>
+    <select id="selectChargeRule" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from chg_parking_charge_rule
+        <where>
+            ${ew.sqlSegment}
+        </where>
+    </select>
+    <select id="selectChargeTotal" resultType="java.lang.Integer">
+        select count(1)
+        from chg_parking_charge_rule
+        <where>
+            parkingId=#{parkingId}
+        </where>
+    </select>
+
+    <select id="selectChargeRulePaged" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from chg_parking_charge_rule
+        <where>
+            ${ew.sqlSegment}
+        </where>
+    </select>
+
+    <delete id="deleteParkingChargeRuleNonTenant">
+        delete from chg_parking_charge_rule
+        <where>
+            ${ew.sqlSegment}
+        </where>
+    </delete>
+
+</mapper>

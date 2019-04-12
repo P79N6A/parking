@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet id="ucc_organization_create_table" author="walkman">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="ucc_organization"/>
+            </not>
+        </preConditions>
+        <createTable tableName="ucc_organization" remarks="表">
+            <column autoIncrement="true" name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_organization"/>
+            </column>
+            <column name="tenantId" type="bigint(20)" remarks="租户ID"/>
+            <column name="code" type="varchar(100)" remarks="机构代码">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" type="varchar(100)" remarks="机构名称">
+                <constraints nullable="false"/>
+            </column>
+            <column name="pathCode" type="varchar(2000)" remarks="节点路径"/>
+            <column name="parentId" type="bigint(20)" remarks="父节点"/>
+            <column name="sort" type="smallint(6)" remarks="排序" defaultValue="0"/>
+            <column name="status" type="tinyint(4)" remarks="状态 0、禁用 1、正常" defaultValue="0"/>
+            <column name="remarks" type="varchar(255)" remarks="说明"/>
+            <column name="creatorUserId" type="bigint" remarks="创建者"/>
+            <column name="creationTime" type="DATETIME" remarks="创建时间"/>
+            <column name="lastModifierUserId" type="bigint" remarks="更新者"/>
+            <column name="lastModificationTime" type="DATETIME" remarks="更新时间"/>
+            <column name="deleterUserId" type="bigint" remarks="删除者"/>
+            <column name="deletionTime" type="DATETIME" remarks="删除时间"/>
+            <column name="deleted" type="tinyint(1)" remarks="删除标记" defaultValue="0"/>
+        </createTable>
+        <createIndex tableName="ucc_organization" indexName="idx_tenantId">
+            <column name="tenantId"/>
+        </createIndex>
+        <createIndex tableName="ucc_organization" indexName="idx_code">
+            <column name="code"/>
+        </createIndex>
+        <createIndex tableName="ucc_organization" indexName="idx_name">
+            <column name="name"/>
+        </createIndex>
+        <createIndex tableName="ucc_organization" indexName="idx_parentId">
+            <column name="parentId"/>
+        </createIndex>
+        <createIndex tableName="ucc_organization" indexName="idx_deleted">
+            <column name="deleted"/>
+        </createIndex>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zoeeasy.cloud.invoice.mapper.InvoiceApplyDetailMapper">
+
+    <resultMap id="BaseResultMap" type="com.zoeeasy.cloud.invoice.domain.InvoiceApplyDetailEntity">
+        <result property="id" column="id"/>
+        <result property="tenantId" column="tenantId"/>
+        <result property="applyNo" column="applyNo"/>
+        <result property="orderNo" column="orderNo"/>
+        <result property="parkingId" column="parkingId"/>
+        <result property="plateNumber" column="plateNumber"/>
+        <result property="plateColor" column="plateColor"/>
+        <result property="carStyle" column="carStyle"/>
+        <result property="startTime" column="startTime"/>
+        <result property="endTime" column="endTime"/>
+        <result property="parkingLength" column="parkingLength"/>
+        <result property="invoiceAmount" column="invoiceAmount"/>
+        <result property="creatorUserId" column="creatorUserId"/>
+        <result property="creationTime" column="creationTime"/>
+        <result property="lastModifierUserId" column="lastModifierUserId"/>
+        <result property="lastModificationTime" column="lastModificationTime"/>
+        <result property="deleterUserId" column="deleterUserId"/>
+        <result property="deletionTime" column="deletionTime"/>
+        <result property="deleted" column="deleted"/>
+    </resultMap>
+
+    <!--通用结果查询列-->
+    <sql id="Base_Column_List">
+                id,
+            tenantId,
+            applyNo,
+            orderNo,
+            parkingId,
+            plateNumber,
+            plateColor,
+            carStyle,
+            startTime,
+            endTime,
+            parkingLength,
+            invoiceAmount,
+            creatorUserId,
+            creationTime,
+            lastModifierUserId,
+            lastModificationTime,
+            deleterUserId,
+            deletionTime,
+            deleted
+        </sql>
+
+
+</mapper>

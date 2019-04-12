@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet author="walkman" id="pay_trade_payment_order_table_add_column_20190112">
+        <preConditions onFail="MARK_RAN">
+            <tableExists tableName="pay_trade_payment_order"/>
+        </preConditions>
+        <addColumn tableName="pay_trade_payment_order">
+            <column name="qrCodeUrl" type="VARCHAR(2048)" defaultValue=""
+                    afterColumn="notifyUrl" remarks="二维码支付URL"/>
+        </addColumn>
+    </changeSet>
+</databaseChangeLog>

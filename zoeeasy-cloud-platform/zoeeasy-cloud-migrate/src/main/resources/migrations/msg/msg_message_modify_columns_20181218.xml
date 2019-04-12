@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet author="walkman" id="msg_message_modify_columns_20181218.xml">
+        <preConditions onFail="MARK_RAN">
+            <tableExists tableName="msg_message"/>
+        </preConditions>
+        <renameColumn columnDataType="varchar(64)" newColumnName="messageId" oldColumnName="messageId"
+                      remarks="消息ID" tableName="msg_message"/>
+        <renameColumn columnDataType="varchar(64)" newColumnName="traceId" oldColumnName="traceId"
+                      remarks="traceId" tableName="msg_message"/>
+        <renameColumn columnDataType="varchar(100)" newColumnName="sender" oldColumnName="sender"
+                      remarks="消息发送方" tableName="msg_message"/>
+        <renameColumn columnDataType="varchar(128)" newColumnName="exchangeTopic" oldColumnName="exchangeTopic"
+                      remarks="消息交换器或者Topic" tableName="msg_message"/>
+        <renameColumn columnDataType="varchar(128)" newColumnName="routingKey" oldColumnName="routingKey"
+                      remarks="路由键" tableName="msg_message"/>
+        <renameColumn columnDataType="varchar(128)" newColumnName="consumerQueue" oldColumnName="consumerQueue"
+                      remarks="消息队列" tableName="msg_message"/>
+        <renameColumn columnDataType="varchar(20)" newColumnName="messageType" oldColumnName="messageType"
+                      remarks="消息类型" tableName="msg_message"/>
+        <addNotNullConstraint columnDataType="varchar(64)" columnName="messageId" tableName="msg_message"/>
+    </changeSet>
+</databaseChangeLog>

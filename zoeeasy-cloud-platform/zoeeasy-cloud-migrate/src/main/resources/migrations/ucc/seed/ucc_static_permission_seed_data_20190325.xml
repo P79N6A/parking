@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet author="walkman" id="ucc_static_permission_seed_data_20190325">
+        <comment>系统静态权限初始化数据</comment>
+        <!-- 基础数据-楼层管理-->
+        <insert tableName="ucc_permission">
+            <column name="id" value="244"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="2"/>
+            <column name="menuId" value="87"/>
+            <column name="code" value="pages:admin:basic:floor"/>
+            <column name="name" value="楼层管理"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="2"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <insert tableName="ucc_permission">
+            <column name="id" value="245"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="244"/>
+            <column name="menuId" value="87"/>
+            <column name="code" value="pages:admin:basic:floor:create"/>
+            <column name="name" value="创建"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="2"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <insert tableName="ucc_permission">
+            <column name="id" value="246"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="244"/>
+            <column name="menuId" value="87"/>
+            <column name="code" value="pages:admin:basic:floor:view"/>
+            <column name="name" value="查看"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="2"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <insert tableName="ucc_permission">
+            <column name="id" value="247"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="244"/>
+            <column name="menuId" value="87"/>
+            <column name="code" value="pages:admin:basic:floor:edit"/>
+            <column name="name" value="编辑"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="2"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <insert tableName="ucc_permission">
+            <column name="id" value="248"/>
+            <column name="tenantId" value="NULL"/>
+            <column name="parentId" value="244"/>
+            <column name="menuId" value="87"/>
+            <column name="code" value="pages:admin:basic:floor:delete"/>
+            <column name="name" value="删除"/>
+            <column name="staticPermission" value="1"/>
+            <column name="tenancyHostSide" value="2"/>
+            <column name="sort" value="1"/>
+            <column name="granted" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value=""/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zoeeasy.cloud.pay.mapper.WeixinMessageLogMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.zoeeasy.cloud.pay.domain.WeixinMessageLogEntity">
+        <id column="id" property="id"/>
+        <result column="ip" property="ip"/>
+        <result column="url" property="url"/>
+        <result column="messageType" property="messageType"/>
+        <result column="outTradeNo" property="outTradeNo"/>
+        <result column="outRefundNo" property="outRefundNo"/>
+        <result column="transactionId" property="transactionId"/>
+        <result column="refundId" property="refundId"/>
+        <result column="content" property="content"/>
+        <result column="status" property="status"/>
+        <result column="result" property="result"/>
+        <result column="creatorUserId" property="creatorUserId"/>
+        <result column="creationTime" property="creationTime"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, ip, url, messageType, outTradeNo, outRefundNo, transactionId, refundId, content, status, result, creatorUserId, creationTime
+    </sql>
+
+    <insert id="add" parameterType="com.zoeeasy.cloud.pay.domain.WeixinMessageLogEntity">
+        INSERT INTO pay_wxpay_message_log
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="ip != null">
+                ip,
+            </if>
+            <if test="url != null">
+                url,
+            </if>
+            <if test="messageType != null">
+                messageType,
+            </if>
+            <if test="outTradeNo != null">
+                outTradeNo,
+            </if>
+            <if test="outRefundNo != null">
+                outRefundNo,
+            </if>
+            <if test="transactionId != null">
+                transactionId,
+            </if>
+            <if test="refundId != null">
+                refundId,
+            </if>
+            <if test="content != null">
+                content,
+            </if>
+            <if test="status != null">
+                status,
+            </if>
+            <if test="result != null">
+                result,
+            </if>
+            <if test="creatorUserId != null">
+                creatorUserId,
+            </if>
+            <if test="creationTime != null">
+                creationTime,
+            </if>
+        </trim>
+        <trim prefix="VALUES (" suffix=")" suffixOverrides=",">
+            <if test="ip != null">
+                #{ip},
+            </if>
+            <if test="url != null">
+                #{url},
+            </if>
+            <if test="messageType != null">
+                #{messageType},
+            </if>
+            <if test="outTradeNo != null">
+                #{outTradeNo},
+            </if>
+            <if test="outRefundNo != null">
+                #{outRefundNo},
+            </if>
+            <if test="transactionId != null">
+                #{transactionId},
+            </if>
+            <if test="refundId != null">
+                #{refundId},
+            </if>
+            <if test="content != null">
+                #{content},
+            </if>
+            <if test="status != null">
+                #{status},
+            </if>
+            <if test="result != null">
+                #{result},
+            </if>
+            <if test="creatorUserId != null">
+                #{creatorUserId},
+            </if>
+            <if test="creationTime != null">
+                #{creationTime},
+            </if>
+        </trim>
+    </insert>
+</mapper>

@@ -1,0 +1,495 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zoeeasy.cloud.order.mapper.ParkingAppointmentOrderMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.zoeeasy.cloud.order.domain.ParkingAppointmentOrderEntity">
+        <id column="id" property="id"/>
+        <result property="tenantId" column="tenantId"/>
+        <result property="parkingId" column="parkingId"/>
+        <result property="parkingName" column="parkingName"/>
+        <result property="parkingLotId" column="parkingLotId"/>
+        <result property="parkingLotNumber" column="parkingLotNumber"/>
+        <result property="chargeInfoId" column="chargeInfoId"/>
+        <result property="appointInfoId" column="appointInfoId"/>
+        <result property="orderNo" column="orderNo"/>
+        <result property="plateNumber" column="plateNumber"/>
+        <result property="plateColor" column="plateColor"/>
+        <result property="carStyle" column="carStyle"/>
+        <result property="scheduleDate" column="scheduleDate"/>
+        <result property="scheduleTime" column="scheduleTime"/>
+        <result property="scheduleLength" column="scheduleLength"/>
+        <result property="deadlineTime" column="deadlineTime"/>
+        <result property="payLimit" column="payLimit"/>
+        <result property="payLimitTime" column="payLimitTime"/>
+        <result property="appointStatus" column="appointStatus"/>
+        <result property="payStatus" column="payStatus"/>
+        <result property="payWay" column="payWay"/>
+        <result property="payType" column="payType"/>
+        <result property="payTime" column="payTime"/>
+        <result property="payAmount" column="payAmount"/>
+        <result property="actualPayAmount" column="actualPayAmount"/>
+        <result property="refundAmount" column="refundAmount"/>
+        <result property="canCancel" column="canCancel"/>
+        <result property="overTimeCancel" column="overTimeCancel"/>
+        <result property="cancelTimeLimit" column="cancelTimeLimit"/>
+        <result property="cancelTime" column="cancelTime"/>
+        <result property="cancelReason" column="cancelReason"/>
+        <result property="cancelFee" column="cancelFee"/>
+        <result property="remark" column="remark"/>
+        <result property="entrance" column="entrance"/>
+        <result property="customerUserId" column="customerUserId"/>
+        <result column="creatorUserId" property="creatorUserId"/>
+        <result column="creationTime" property="creationTime"/>
+        <result column="lastModifierUserId" property="lastModifierUserId"/>
+        <result column="lastModificationTime" property="lastModificationTime"/>
+        <result column="deleterUserId" property="deleterUserId"/>
+        <result column="deletionTime" property="deletionTime"/>
+        <result column="deleted" property="deleted"/>
+        <result column="version" property="version"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,
+        tenantId,
+        parkingId,
+        parkingName,
+        parkingLotId,
+        parkingLotNumber,
+        chargeInfoId,
+        appointInfoId,
+        orderNo,
+        plateNumber,
+        plateColor,
+        carStyle,
+        scheduleDate,
+        scheduleTime,
+        scheduleLength,
+        deadlineTime,
+        payLimit,
+        payLimitTime,
+        appointStatus,
+        payStatus,
+        payWay,
+        payType,
+        payTime,
+        payAmount,
+        actualPayAmount,
+        refundAmount,
+        canCancel,
+        overTimeCancel,
+        cancelTimeLimit,
+        cancelTime,
+        cancelFee,
+        cancelReason,
+        remark,
+        entrance,
+        customerUserId,
+        creatorUserId,
+        creationTime,
+        lastModifierUserId,
+        lastModificationTime,
+        deleterUserId,
+        deletionTime,
+        deleted,
+        version
+    </sql>
+    <select id="selectAppointOrder" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from ord_parking_appointment_order
+        <where>
+            deleted = '0' ${ew.sqlSegment}
+        </where>
+    </select>
+
+    <select id="findByOrderNo" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        from ord_parking_appointment_order
+        <where>
+            deleted = '0' ${ew.sqlSegment}
+        </where>
+    </select>
+
+    <select id="selectByOrderNo" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from ord_parking_appointment_order
+        <where>
+            #{orderNo} and deleted = '0'
+        </where>
+    </select>
+    <update id="updateOrder" parameterType="com.zoeeasy.cloud.order.domain.ParkingAppointmentOrderEntity">
+        UPDATE ord_parking_appointment_order
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="appointStatus != null">
+                appointStatus = #{appointStatus}
+            </if>
+        </trim>
+        <where>
+            id= #{id} and orderNo = #{orderNo} and deleted = '0'
+        </where>
+    </update>
+    <insert id="saveAppointOrder" parameterType="com.zoeeasy.cloud.order.domain.ParkingAppointmentOrderEntity">
+        INSERT INTO ord_parking_appointment_order
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="tenantId != null">
+                tenantId,
+            </if>
+            <if test="parkingId != null">
+                parkingId,
+            </if>
+            <if test="parkingName != null">
+                parkingName,
+            </if>
+            <if test="parkingLotId != null">
+                parkingLotId,
+            </if>
+            <if test="parkingLotNumber != null">
+                parkingLotNumber,
+            </if>
+            <if test="chargeInfoId != null">
+                chargeInfoId,
+            </if>
+            <if test="appointInfoId != null">
+                appointInfoId,
+            </if>
+            <if test="orderNo != null">
+                orderNo,
+            </if>
+            <if test="plateNumber != null">
+                plateNumber,
+            </if>
+            <if test="plateColor != null">
+                plateColor,
+            </if>
+            <if test="carStyle != null">
+                carStyle,
+            </if>
+            <if test="scheduleDate != null">
+                scheduleDate,
+            </if>
+            <if test="scheduleTime != null">
+                scheduleTime,
+            </if>
+            <if test="scheduleLength != null">
+                scheduleLength,
+            </if>
+            <if test="deadlineTime != null">
+                deadlineTime,
+            </if>
+            <if test="payLimit != null">
+                payLimit,
+            </if>
+            <if test="payLimitTime != null">
+                payLimitTime,
+            </if>
+            <if test="payWay != null">
+                payWay,
+            </if>
+            <if test="payType != null">
+                payType,
+            </if>
+            <if test="appointStatus != null">
+                appointStatus,
+            </if>
+            <if test="payStatus != null">
+                payStatus,
+            </if>
+            <if test="payTime != null">
+                payTime,
+            </if>
+            <if test="payAmount != null">
+                payAmount,
+            </if>
+            <if test="actualPayAmount != null">
+                actualPayAmount,
+            </if>
+            <if test="refundAmount != null">
+                refundAmount,
+            </if>
+            <if test="canCancel != null">
+                canCancel,
+            </if>
+            <if test="overTimeCancel != null">
+                overTimeCancel,
+            </if>
+            <if test="cancelTimeLimit != null">
+                cancelTimeLimit,
+            </if>
+            <if test="cancelTime != null">
+                cancelTime,
+            </if>
+            <if test="cancelReason != null">
+                cancelReason,
+            </if>
+            <if test="cancelFee != null">
+                cancelFee,
+            </if>
+            <if test="remark != null">
+                remark,
+            </if>
+            <if test="entrance != null">
+                entrance,
+            </if>
+            <if test="customerUserId != null">
+                customerUserId,
+            </if>
+            <if test="creatorUserId != null">
+                creatorUserId,
+            </if>
+            <if test="creationTime != null">
+                creationTime,
+            </if>
+        </trim>
+        <trim prefix="VALUES (" suffix=")" suffixOverrides=",">
+            <if test="tenantId != null">
+                #{tenantId},
+            </if>
+            <if test="parkingId != null">
+                #{parkingId},
+            </if>
+            <if test="parkingName != null">
+                #{parkingName},
+            </if>
+            <if test="parkingLotId != null">
+                #{parkingLotId},
+            </if>
+            <if test="parkingLotNumber != null">
+                #{parkingLotNumber},
+            </if>
+            <if test="chargeInfoId != null">
+                #{chargeInfoId},
+            </if>
+            <if test="appointInfoId != null">
+                #{appointInfoId},
+            </if>
+            <if test="orderNo != null">
+                #{orderNo},
+            </if>
+            <if test="plateNumber != null">
+                #{plateNumber},
+            </if>
+            <if test="plateColor != null">
+                #{plateColor},
+            </if>
+            <if test="carStyle != null">
+                #{carStyle},
+            </if>
+            <if test="scheduleDate != null">
+                #{scheduleDate},
+            </if>
+            <if test="scheduleTime != null">
+                #{scheduleTime},
+            </if>
+            <if test="scheduleLength != null">
+                #{scheduleLength},
+            </if>
+            <if test="deadlineTime != null">
+                #{deadlineTime},
+            </if>
+            <if test="payLimit != null">
+                #{payLimit},
+            </if>
+            <if test="payLimitTime != null">
+                #{payLimitTime},
+            </if>
+            <if test="payWay != null">
+                #{payWay},
+            </if>
+            <if test="payType != null">
+                #{payType},
+            </if>
+            <if test="appointStatus != null">
+                #{appointStatus},
+            </if>
+            <if test="payStatus != null">
+                #{payStatus},
+            </if>
+            <if test="payTime != null">
+                #{payTime},
+            </if>
+            <if test="payAmount != null">
+                #{payAmount},
+            </if>
+            <if test="actualPayAmount != null">
+                #{actualPayAmount},
+            </if>
+            <if test="refundAmount != null">
+                #{refundAmount},
+            </if>
+            <if test="canCancel != null">
+                #{canCancel},
+            </if>
+            <if test="overTimeCancel != null">
+                #{overTimeCancel},
+            </if>
+            <if test="cancelTimeLimit != null">
+                #{cancelTimeLimit},
+            </if>
+            <if test="cancelTime != null">
+                #{cancelTime},
+            </if>
+            <if test="cancelReason != null">
+                #{cancelReason},
+            </if>
+            <if test="cancelFee != null">
+                #{cancelFee},
+            </if>
+            <if test="remark != null">
+                #{remark},
+            </if>
+            <if test="entrance != null">
+                #{entrance},
+            </if>
+            <if test="customerUserId != null">
+                #{customerUserId},
+            </if>
+            <if test="creatorUserId != null">
+                #{creatorUserId},
+            </if>
+            <if test="creationTime != null">
+                #{creationTime},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateAppointOrder" parameterType="com.zoeeasy.cloud.order.domain.ParkingAppointmentOrderEntity">
+        UPDATE ord_parking_appointment_order
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="chargeInfoId != null">
+                chargeInfoId = #{chargeInfoId},
+            </if>
+            <if test="appointInfoId != null">
+                appointInfoId= #{appointInfoId},
+            </if>
+            <if test="parkingName != null">
+                parkingName= #{parkingName},
+            </if>
+            <if test="parkingLotId != null">
+                parkingLotId= #{parkingLotId},
+            </if>
+            <if test="parkingLotNumber != null">
+                parkingLotNumber= #{parkingLotNumber},
+            </if>
+            <if test="parkingId != null">
+                parkingId= #{parkingId},
+            </if>
+            <if test="plateNumber != null">
+                plateNumber= #{plateNumber},
+            </if>
+            <if test="plateColor != null">
+                plateColor= #{plateColor},
+            </if>
+            <if test="carStyle != null">
+                carStyle= #{carStyle},
+            </if>
+            <if test="scheduleDate != null">
+                scheduleDate = #{scheduleDate},
+            </if>
+            <if test="scheduleTime != null">
+                scheduleTime = #{scheduleTime},
+            </if>
+            <if test="scheduleLength != null">
+                scheduleLength= #{scheduleLength},
+            </if>
+            <if test="deadlineTime != null">
+                deadlineTime= #{deadlineTime},
+            </if>
+            <if test="payLimit != null">
+                payLimit= #{payLimit},
+            </if>
+            <if test="payLimitTime != null">
+                payLimitTime= #{payLimitTime},
+            </if>
+            <if test="payWay != null">
+                payWay= #{payWay},
+            </if>
+            <if test="payType != null">
+                payType= #{payType},
+            </if>
+            <if test="appointStatus != null">
+                appointStatus = #{appointStatus},
+            </if>
+            <if test="payStatus != null">
+                payStatus= #{payStatus},
+            </if>
+            <if test="payTime != null">
+                payTime= #{payTime},
+            </if>
+            <if test="payAmount != null">
+                payAmount= #{payAmount},
+            </if>
+            <if test="actualPayAmount != null">
+                actualPayAmount= #{actualPayAmount},
+            </if>
+            <if test="refundAmount != null">
+                refundAmount= #{refundAmount},
+            </if>
+            <if test="canCancel != null">
+                canCancel= #{canCancel},
+            </if>
+            <if test="overTimeCancel != null">
+                overTimeCancel= #{overTimeCancel},
+            </if>
+            <if test="cancelTimeLimit != null">
+                cancelTimeLimit= #{cancelTimeLimit},
+            </if>
+            <if test="cancelTime != null">
+                cancelTime= #{cancelTime},
+            </if>
+            <if test="cancelReason != null">
+                cancelReason= #{cancelReason},
+            </if>
+            <if test="cancelFee != null">
+                cancelFee= #{cancelFee},
+            </if>
+            <if test="remark != null">
+                remark= #{remark},
+            </if>
+            <if test="entrance != null">
+                entrance= #{entrance},
+            </if>
+            <if test="lastModificationTime != null">
+                lastModificationTime = #{lastModificationTime},
+            </if>
+            <if test="lastModifierUserId != null">
+                lastModifierUserId = #{lastModifierUserId},
+            </if>
+        </trim>
+        <where>
+            orderNo = #{orderNo}
+        </where>
+    </update>
+
+    <select id="selectAppointOrderListPage" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM ord_parking_appointment_order
+        <where>
+            deleted = '0' ${ew.sqlSegment}
+        </where>
+        LIMIT
+        #{pageStart},#{pageSize}
+    </select>
+
+    <select id="selectAppointOrderListCount" resultType="java.lang.Integer">
+        SELECT
+        COUNT(1)
+        FROM ord_parking_appointment_order
+        <where>
+            deleted = '0' ${ew.sqlSegment}
+        </where>
+    </select>
+
+    <select id="selectAppointOrderList" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM ord_parking_appointment_order
+        <where>
+            deleted = '0' ${ew.sqlSegment}
+        </where>
+    </select>
+</mapper>

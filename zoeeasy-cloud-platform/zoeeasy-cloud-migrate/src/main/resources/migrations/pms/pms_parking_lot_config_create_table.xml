@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet id="pms_parking_lot_config_create_table" author="sc">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="pms_parking_lot_config"/>
+            </not>
+        </preConditions>
+        <createTable tableName="pms_parking_lot_config" remarks="停车场泊位设备配置信息">
+            <column autoIncrement="true" name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_parking_lot_config"/>
+            </column>
+            <column name="tenantId" type="bigint(20)" remarks="租户ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="parkingId" type="bigint(20)" remarks="停车场ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="parkingLotId" type="bigint(20)" remarks="泊位ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="cameraId" type="bigint(20)" remarks="枪球Id"/>
+            <column name="cameraNo" type="varchar(64)" remarks="枪设备编号"/>
+            <column name="cameraName" type="varchar(32)" remarks="枪设备名称"/>
+            <column name="detectorId" type="bigint(20)" remarks="地磁检测器Id"/>
+            <column name="dockingId" type="bigint(20)" remarks="对接网关ID"/>
+            <column name="lockId" type="bigint(20)" remarks="车位锁ID"/>
+            <column name="creatorUserId" type="bigint" remarks="创建者"/>
+            <column name="creationTime" type="DATETIME" remarks="创建时间"/>
+        </createTable>
+        <createIndex tableName="pms_parking_lot_config" indexName="idx_tenant_parking">
+            <column name="tenantId"/>
+            <column name="parkingId"/>
+            <column name="parkingLotId"/>
+        </createIndex>
+    </changeSet>
+</databaseChangeLog>

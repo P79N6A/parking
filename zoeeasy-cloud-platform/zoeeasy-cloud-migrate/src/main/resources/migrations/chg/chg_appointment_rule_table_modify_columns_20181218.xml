@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet author="zwq" id="chg_appointment_rule_table_modify_columns_20181218">
+        <preConditions onFail="MARK_RAN">
+            <tableExists tableName="chg_appointment_rule"/>
+        </preConditions>
+        <renameColumn columnDataType="smallint(6)" newColumnName="unitAppointLength" oldColumnName="unitAppointLength"
+                      remarks="预定单位时长(分钟)" tableName="chg_appointment_rule"/>
+        <renameColumn columnDataType="smallint(6)" newColumnName="maxAppointLength" oldColumnName="maxAppointLength"
+                      remarks="预定最大时长(分钟)" tableName="chg_appointment_rule"/>
+        <renameColumn columnDataType="smallint(6)" newColumnName="feeFreeLength" oldColumnName="feeFreeLength"
+                      remarks="免收手续费时长" tableName="chg_appointment_rule"/>
+        <renameColumn columnDataType="smallint(6)" newColumnName="payLimit" oldColumnName="payLimit"
+                      remarks="预定支付时限(分钟)" tableName="chg_appointment_rule"/>
+        <renameColumn columnDataType="smallint(6)" newColumnName="cancelLimit" oldColumnName="cancelLimit"
+                      remarks="预定取消时限(分钟),以下单时间开始" tableName="chg_appointment_rule"/>
+        <renameColumn columnDataType="smallint(6)" newColumnName="unitCancelLength" oldColumnName="unitCancelLength"
+                      remarks="预定取消单位时长(分钟)" tableName="chg_appointment_rule"/>
+        <renameColumn columnDataType="smallint(6)" newColumnName="overTimeLimit" oldColumnName="overTimeLimit"
+                      remarks="超时时限(分钟),以预计入场时间开始" tableName="chg_appointment_rule"/>
+        <renameColumn columnDataType="smallint(6)" newColumnName="unitOvertimeCancelLength"
+                      oldColumnName="unitOvertimeCancelLength"
+                      remarks="预定取消单位时长(分钟)" tableName="chg_appointment_rule"/>
+        <renameColumn columnDataType="smallint(6)" newColumnName="flexTime" oldColumnName="flexTime"
+                      remarks="预约弹性入场时间" tableName="chg_appointment_rule"/>
+        <renameColumn columnDataType="smallint(6)" newColumnName="refundLimit" oldColumnName="refundLimit"
+                      remarks="已支付可退款时长" tableName="chg_appointment_rule"/>
+        <addDefaultValue tableName="chg_appointment_rule" columnName="unitAppointLength" defaultValue="0"/>
+        <addDefaultValue tableName="chg_appointment_rule" columnName="maxAppointLength" defaultValue="0"/>
+        <addDefaultValue tableName="chg_appointment_rule" columnName="feeFreeLength" defaultValue="0"/>
+        <addDefaultValue tableName="chg_appointment_rule" columnName="payLimit" defaultValue="0"/>
+        <addDefaultValue tableName="chg_appointment_rule" columnName="cancelLimit" defaultValue="0"/>
+        <addDefaultValue tableName="chg_appointment_rule" columnName="unitCancelLength" defaultValue="0"/>
+        <addDefaultValue tableName="chg_appointment_rule" columnName="overTimeLimit" defaultValue="0"/>
+        <addDefaultValue tableName="chg_appointment_rule" columnName="unitOvertimeCancelLength" defaultValue="0"/>
+        <addDefaultValue tableName="chg_appointment_rule" columnName="flexTime" defaultValue="0"/>
+        <addDefaultValue tableName="chg_appointment_rule" columnName="refundLimit" defaultValue="0"/>
+
+    </changeSet>
+</databaseChangeLog>

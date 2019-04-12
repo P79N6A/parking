@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet author="walkman" id="inv_nuo_invoice_order_item_create_table">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="inv_nuo_invoice_order_item"/>
+            </not>
+        </preConditions>
+        <createTable tableName="inv_nuo_invoice_order_item" remarks="诺诺发票订单明细">
+            <column autoIncrement="true" name="id" type="bigint" remarks="主键">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_message"/>
+            </column>
+            <column name="orderNo" type="VARCHAR(20)" remarks="发票订单号">
+                <constraints nullable="false"/>
+            </column>
+            <column name="goodsName" type="VARCHAR(90)" remarks="商品名称">
+                <constraints nullable="false"/>
+            </column>
+            <column name="num" type="VARCHAR(16)" remarks="数量" defaultValue="0.00"/>
+            <column name="price" type="VARCHAR(16)" remarks="单价" defaultValue="0.00"/>
+            <column name="hsbz" type="CHAR(1)" remarks="单价含税标志 0:不含税,1:含税">
+                <constraints nullable="false"/>
+            </column>
+            <column name="taxRate" type="VARCHAR(10)" remarks="税率">
+                <constraints nullable="false"/>
+            </column>
+            <column name="spec" type="VARCHAR(40)" remarks="规格型号" defaultValue="0"/>
+            <column name="unit" type="VARCHAR(20)" remarks="单位" defaultValue="0"/>
+            <column name="spbm" type="VARCHAR(19)" remarks="税收分类编码">
+                <constraints nullable="false"/>
+            </column>
+            <column name="zsbm" type="VARCHAR(20)" remarks="自行编码" defaultValue=""/>
+            <column name="fphxz" type="CHAR(1)" remarks="发票行性质: 0,正常行; 1,折扣行; 2,被折扣行" defaultValue="0">
+                <constraints nullable="false"/>
+            </column>
+            <column name="yhzcbs" type="CHAR(1)" remarks="优惠政策标识:0,不使用;1,使用" defaultValue="0"/>
+            <column name="zzstsgl" type="VARCHAR(50)" remarks="增值税特殊管理" defaultValue=""/>
+            <column name="lslbs" type="CHAR(1)" remarks="零税率标识:空,非零税率;1,免税;2,不征税;3,普通零税率" defaultValue=""/>
+            <column name="kce" type="VARCHAR(20)" remarks="扣除额" defaultValue="0.00"/>
+            <column name="taxFreeAmt" type="VARCHAR(20)" remarks="不含税金额" defaultValue="0.00"/>
+            <column name="tax" type="VARCHAR(20)" remarks="税额" defaultValue="0.00"/>
+            <column name="taxAmt" type="VARCHAR(20)" remarks="含税金额" defaultValue="0.00"/>
+            <column name="creatorUserId" type="bigint" remarks="创建者"/>
+            <column name="creationTime" type="DATETIME" remarks="创建时间"/>
+            <column name="lastModifierUserId" type="bigint" remarks="更新者"/>
+            <column name="lastModificationTime" type="DATETIME" remarks="更新时间"/>
+            <column name="deleterUserId" type="bigint" remarks="删除者"/>
+            <column name="deletionTime" type="DATETIME" remarks="删除时间"/>
+            <column name="deleted" type="tinyint(1)" remarks="删除标记" defaultValue="0"/>
+        </createTable>
+        <createIndex tableName="inv_nuo_invoice_order_item" indexName="idx_orderNo">
+            <column name="orderNo"/>
+        </createIndex>
+        <rollback>drop table inv_nuo_invoice_order_item</rollback>
+    </changeSet>
+</databaseChangeLog>

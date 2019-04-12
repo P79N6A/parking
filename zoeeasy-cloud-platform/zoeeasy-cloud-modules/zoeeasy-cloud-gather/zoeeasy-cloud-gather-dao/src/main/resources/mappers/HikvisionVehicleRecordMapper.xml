@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zoeeasy.cloud.gather.mapper.HikvisionVehicleRecordMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.zoeeasy.cloud.gather.domain.HikvisionVehicleRecordEntity">
+        <id column="id" property="id"/>
+        <result column="passingUuid" property="passingUuid"/>
+        <result column="uuid" property="uuid"/>
+        <result column="plateNumber" property="plateNumber"/>
+        <result column="plateColor" property="plateColor"/>
+        <result column="carType" property="carType"/>
+        <result column="passDirect" property="passDirect"/>
+        <result column="passTime" property="passTime"/>
+        <result column="parkCode" property="parkCode"/>
+        <result column="parkName" property="parkName"/>
+        <result column="gateCode" property="gateCode"/>
+        <result column="gateName" property="gateName"/>
+        <result column="laneCode" property="laneCode"/>
+        <result column="laneName" property="laneName"/>
+        <result column="berthCode" property="berthCode"/>
+        <result column="processStatus" property="processStatus"/>
+        <result column="processRemark" property="processRemark"/>
+        <result column="creatorUserId" property="creatorUserId"/>
+        <result column="creationTime" property="creationTime"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,
+        passingUuid,
+        uuid,
+        plateNumber,
+        plateColor,
+        carType,
+        passDirect,
+        passTime,
+        parkCode,
+        parkName,
+        gateCode,
+        gateName,
+        laneCode,
+        laneName,
+        berthCode,
+        processStatus,
+        processRemark,
+        creatorUserId,
+        creationTime
+    </sql>
+
+    <update id="updateProcessStatus">
+        UPDATE gat_hikvision_vehicle_record
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="processStatus != null">
+                processStatus = #{processStatus},
+            </if>
+            <if test="processRemark != null">
+                processRemark = #{processRemark},
+            </if>
+        </trim>
+        <where>
+            passingUuid = #{passingUuid}
+        </where>
+    </update>
+
+</mapper>

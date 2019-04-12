@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet id="chg_holiday_schedule_create_table" author="AkeemSuper">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="chg_holiday_schedule"/>
+            </not>
+        </preConditions>
+        <createTable tableName="chg_holiday_schedule" remarks="节假日表">
+            <column autoIncrement="true" name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_chg_holiday_schedule"/>
+            </column>
+            <column name="tenantId" type="bigint(20) unsigned" remarks="租户ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="holidayType" type="tinyint(11)" remarks="假期类型：1工作日，2双休日，3小长假，4长假">
+                <constraints nullable="false"/>
+            </column>
+            <column name="holidayName" type="varchar(255)" remarks="假期名称">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creatorUserId" type="bigint" remarks="创建者"/>
+            <column name="creationTime" type="DATETIME" remarks="创建时间"/>
+            <column name="lastModifierUserId" type="bigint" remarks="更新者"/>
+            <column name="lastModificationTime" type="DATETIME" remarks="更新时间"/>
+            <column name="deleterUserId" type="bigint" remarks="删除者"/>
+            <column name="deletionTime" type="DATETIME" remarks="删除时间"/>
+            <column name="deleted" type="tinyint(1)" remarks="删除标记" defaultValue="0"/>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

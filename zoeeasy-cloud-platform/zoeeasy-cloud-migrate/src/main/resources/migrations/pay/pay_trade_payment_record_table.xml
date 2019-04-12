@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet author="zwq" id="pay_trade_payment_record_table">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="pay_trade_payment_record"/>
+            </not>
+        </preConditions>
+        <createTable tableName="pay_trade_payment_record" remarks="平台支付记录表">
+            <column autoIncrement="true" name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_trade_payment_record"/>
+            </column>
+            <column name="tenantId" type="bigint(20) unsigned" remarks="租户ID"/>
+            <column name="customerUserId" type="bigint" remarks="车主用户ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="orderNo" type="VARCHAR(64)" defaultValue="" remarks="支付订单号">
+                <constraints nullable="false"/>
+            </column>
+            <column name="transactionNo" type="VARCHAR(64)" defaultValue=""
+                    remarks="支付业务订单号,对应支付宝tradeNo或微信支付outTradeNo"/>
+            <column name="orderFrom" type="varchar(30)" defaultValue="" remarks="订单来源"/>
+            <column name="bizOrderType" type="tinyint(4)" remarks="交易业务类型 ：消费、充值等">
+                <constraints nullable="false"/>
+            </column>
+            <column name="bizOrderNo" type="varchar(64)" defaultValue="" remarks="交易业务订单号">
+                <constraints nullable="false"/>
+            </column>
+            <column name="orderAmount" type="int(11) unsigned" remarks="订单金额" defaultValue="0"/>
+            <column name="productName" type="varchar(300)" defaultValue="" remarks="商品名称"/>
+            <column name="payerUserId" type="bigint" remarks="付款人ID"/>
+            <column name="payerUsername" type="varchar(60)" defaultValue="" remarks="付款人名称"/>
+            <column name="payerPayAmount" type="int(11) unsigned" remarks="付款方支付金额" defaultValue="0"/>
+            <column name="payerFee" type="int(11) unsigned" remarks="付款方手续费" defaultValue="0"/>
+            <column name="payerAccountType" type="varchar(30)" defaultValue=""
+                    remarks="付款方账户类型(参考账户类型枚举:AccountTypeEnum)"/>
+            <column name="receiverUserId" type="bigint" remarks="收款人ID"/>
+            <column name="receiverUsername" type="varchar(60)" defaultValue="" remarks="收款人名称"/>
+            <column name="receiverPayAmount" type="int(11) unsigned" remarks="收款方支付金额" defaultValue="0"/>
+            <column name="receiverFee" type="int(11) unsigned" remarks="收款方手续费" defaultValue="0"/>
+            <column name="receiverAccountType" type="varchar(30)" defaultValue=""
+                    remarks="收款方账户类型(参考账户类型枚举:AccountTypeEnum)"/>
+            <column name="orderDate" type="date" remarks="订单日期">
+                <constraints nullable="false"/>
+            </column>
+            <column name="orderTime" type="datetime" remarks="订单时间">
+                <constraints nullable="false"/>
+            </column>
+            <column name="orderIp" type="varchar(50)" defaultValue="" remarks="下单IP(客户端IP,在网关页面获取)"/>
+            <column name="orderRefererUrl" type="varchar(100)" defaultValue="" remarks="从哪个页面链接过来的(可用于防诈骗)"/>
+            <column name="returnUrl" type="varchar(600)" defaultValue="" remarks="页面回调通知URL"/>
+            <column name="notifyUrl" type="varchar(600)" defaultValue="" remarks="后台异步通知URL"/>
+            <column name="platformIncome" type="int(11) unsigned" remarks="平台收入" defaultValue="0"/>
+            <column name="platformCost" type="int(11) unsigned" remarks="平台成本" defaultValue="0"/>
+            <column name="platformProfit" type="int(11) unsigned" remarks="平台利润" defaultValue="0"/>
+            <column name="feeRate" type="decimal(20,6)" remarks="费率" defaultValue="0.000000"/>
+            <column name="succeedPayTime" type="DATETIME" defaultValue="2049-12-31 23:59:59" remarks="支付成功时间"/>
+            <column name="completeTime" type="DATETIME" defaultValue="2049-12-31 23:59:59" remarks="完成时间"/>
+            <column name="payWay" type="tinyint(4)" defaultValue="0" remarks="支付通道编号"/>
+            <column name="payType" type="tinyint(4)" defaultValue="0" remarks="支付方式类型编号"/>
+            <column name="fundIntoType" type="tinyint(4)" defaultValue="0" remarks="资金流入类型"/>
+            <column name="refunded" type="tinyint(1)" remarks="是否退款(0:否,1: 是,默认值为:0)" defaultValue="0"/>
+            <column name="refundTimes" type="int(11)" remarks="退款次数(默认值为:0)" defaultValue="0"/>
+            <column name="successRefundAmount" type="int(11) unsigned" remarks="成功退款总金额" defaultValue="0"/>
+            <column name="succeedRefundTime" type="DATETIME" remarks="退款成功时间"/>
+            <column name="status" type="tinyint(4)" defaultValue="" remarks="状态(参考枚举:PayStatusEnum)"/>
+            <column name="remark" type="varchar(3000)" defaultValue="" remarks="备注"/>
+            <column name="creatorUserId" type="bigint" remarks="创建者"/>
+            <column name="creationTime" type="DATETIME" remarks="创建时间"/>
+            <column name="lastModifierUserId" type="bigint" remarks="更新者"/>
+            <column name="lastModificationTime" type="DATETIME" remarks="更新时间"/>
+            <column name="deleterUserId" type="bigint" remarks="删除者"/>
+            <column name="deletionTime" type="DATETIME" remarks="删除时间"/>
+            <column name="deleted" type="tinyint(1)" remarks="删除标记" defaultValue="0"/>
+            <column name="version" type="bigint" remarks="版本号" defaultValue="1"/>
+        </createTable>
+        <createIndex tableName="pay_trade_payment_record" indexName="idx_tenantId">
+            <column name="tenantId"/>
+        </createIndex>
+        <rollback>drop table pay_trade_payment_record</rollback>
+    </changeSet>
+</databaseChangeLog>

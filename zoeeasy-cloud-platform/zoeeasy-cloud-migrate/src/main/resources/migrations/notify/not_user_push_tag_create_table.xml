@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet author="AkeemSuper" id="not_user_push_tag_create_table">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="not_user_push_tag"/>
+            </not>
+        </preConditions>
+        <createTable tableName="not_user_push_tag" remarks="用户标签表">
+            <column autoIncrement="true" name="id" type="bigint" remarks="ID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_not_user_push_tag"/>
+            </column>
+            <column name="tenantId" type="bigint(20)" remarks="租户ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="userId" type="bigint(20)" remarks="用户id">
+                <constraints nullable="false"/>
+            </column>
+            <column name="tagId" type="bigint(20)" remarks="标签id">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creatorUserId" type="bigint" remarks="创建者"/>
+            <column name="creationTime" type="DATETIME" remarks="创建时间"/>
+            <column name="lastModifierUserId" type="bigint" remarks="更新者"/>
+            <column name="lastModificationTime" type="DATETIME" remarks="更新时间"/>
+            <column name="deleterUserId" type="bigint" remarks="删除者"/>
+            <column name="deletionTime" type="DATETIME" remarks="删除时间"/>
+            <column name="deleted" type="tinyint(1)" remarks="删除标记" defaultValue="0"/>
+        </createTable>
+        <createIndex tableName="not_push_tag" indexName="idx_tag">
+            <column name="tag"></column>
+        </createIndex>
+        <rollback>drop table not_user_push_tag</rollback>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zoeeasy.cloud.invoice.mapper.NuoInvoiceOrderItemMapper">
+
+    <resultMap id="BaseResultMap" type="com.zoeeasy.cloud.invoice.domain.NuoInvoiceOrderItemEntity">
+        <result property="id" column="id"/>
+        <result property="orderNo" column="orderNo"/>
+        <result property="goodsName" column="goodsName"/>
+        <result property="num" column="num"/>
+        <result property="price" column="price"/>
+        <result property="hsbz" column="hsbz"/>
+        <result property="taxRate" column="taxRate"/>
+        <result property="spec" column="spec"/>
+        <result property="unit" column="unit"/>
+        <result property="spbm" column="spbm"/>
+        <result property="zsbm" column="zsbm"/>
+        <result property="fphxz" column="fphxz"/>
+        <result property="yhzcbs" column="yhzcbs"/>
+        <result property="zzstsgl" column="zzstsgl"/>
+        <result property="lslbs" column="lslbs"/>
+        <result property="kce" column="kce"/>
+        <result property="taxFreeAmt" column="taxFreeAmt"/>
+        <result property="tax" column="tax"/>
+        <result property="taxAmt" column="taxAmt"/>
+        <result property="creatorUserId" column="creatorUserId"/>
+        <result property="creationTime" column="creationTime"/>
+        <result property="lastModifierUserId" column="lastModifierUserId"/>
+        <result property="lastModificationTime" column="lastModificationTime"/>
+        <result property="deleterUserId" column="deleterUserId"/>
+        <result property="deletionTime" column="deletionTime"/>
+        <result property="deleted" column="deleted"/>
+    </resultMap>
+
+    <!--通用结果查询列-->
+    <sql id="Base_Column_List">
+                id,
+            orderNo,
+            goodsName,
+            num,
+            price,
+            hsbz,
+            taxRate,
+            spec,
+            unit,
+            spbm,
+            zsbm,
+            fphxz,
+            yhzcbs,
+            zzstsgl,
+            lslbs,
+            kce,
+            taxFreeAmt,
+            tax,
+            taxAmt,
+            creatorUserId,
+            creationTime,
+            lastModifierUserId,
+            lastModificationTime,
+            deleterUserId,
+            deletionTime,
+            deleted
+        </sql>
+
+
+</mapper>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet author="zwq" id="pay_alipay_order_table_modify_columns_20181220">
+        <preConditions onFail="MARK_RAN">
+            <tableExists tableName="pay_alipay_order"/>
+        </preConditions>
+        <renameColumn columnDataType="tinyint(4)" newColumnName="goodsType" oldColumnName="goodsType"
+                      remarks="商品主类型：0—虚拟类商品，1—实物类商品" tableName="pay_alipay_order"/>
+    </changeSet>
+</databaseChangeLog>

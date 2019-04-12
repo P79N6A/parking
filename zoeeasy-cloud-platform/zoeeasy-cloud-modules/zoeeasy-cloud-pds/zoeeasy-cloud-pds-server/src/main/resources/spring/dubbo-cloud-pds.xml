@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://code.alibabatech.com/schema/dubbo
+        http://code.alibabatech.com/schema/dubbo/dubbo.xsd
+        ">
+    <dubbo:service interface="com.zoeeasy.cloud.pds.magneticdetector.MagneticDetectorService"
+                   ref="magneticDetectorService" timeout="180000" registry="fundamentalRegistry"
+                   version="${dubbo.service.version}"/>
+    <dubbo:service interface="com.zoeeasy.cloud.pds.magneticerrorreport.MagneticErrorReportService"
+                   ref="magneticErrorReportService" timeout="180000" registry="fundamentalRegistry"
+                   version="${dubbo.service.version}"/>
+    <dubbo:service interface="com.zoeeasy.cloud.pds.magneticmanager.MagneticManagerService"
+                   ref="magneticManagerService" timeout="180000" registry="fundamentalRegistry"
+                   version="${dubbo.service.version}"/>
+    <dubbo:service interface="com.zoeeasy.cloud.pds.device.PlatformDeviceService"
+                   ref="platformDeviceService" timeout="180000" registry="fundamentalRegistry"
+                   version="${dubbo.service.version}"/>
+    <!--停车场相关-->
+    <dubbo:reference id="parkingInfoService" version="${dubbo.service.version}"
+                     interface="com.zoeeasy.cloud.pms.park.ParkingInfoService"
+                     check="false"
+                     timeout="30000" retries="0" registry="fundamentalRegistry"/>
+    <dubbo:reference id="parkingLotInfoService" version="${dubbo.service.version}"
+                     interface="com.zoeeasy.cloud.pms.park.ParkingLotInfoService"
+                     check="false"
+                     timeout="30000" retries="0" registry="fundamentalRegistry"/>
+    <!--商户-->
+    <dubbo:reference id="tenantService" version="${dubbo.service.version}"
+                     interface="com.zoeeasy.cloud.ucc.tenant.TenantService"
+                     check="false"
+                     timeout="30000" retries="0" registry="fundamentalRegistry"/>
+</beans>

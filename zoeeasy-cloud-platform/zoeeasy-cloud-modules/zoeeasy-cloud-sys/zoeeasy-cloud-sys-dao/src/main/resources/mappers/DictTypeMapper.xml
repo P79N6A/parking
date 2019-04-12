@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zoeeasy.cloud.sys.mapper.DictTypeMapper">
+
+    <resultMap id="BaseResultMap" type="com.zoeeasy.cloud.sys.domain.DictTypeEntity">
+        <result property="id" column="id"/>
+        <result property="tenantId" column="tenantId"/>
+        <result property="dictCode" column="dictCode"/>
+        <result property="dictName" column="dictName"/>
+        <result property="parentCode" column="parentCode"/>
+        <result property="sort" column="sort"/>
+        <result property="staticDict" column="staticDict"/>
+        <result property="tenancyHostSide" column="tenancyHostSide"/>
+        <result property="status" column="status"/>
+        <result property="remark" column="remark"/>
+        <result property="creatorUserId" column="creatorUserId"/>
+        <result property="creationTime" column="creationTime"/>
+        <result property="lastModifierUserId" column="lastModifierUserId"/>
+        <result property="lastModificationTime" column="lastModificationTime"/>
+        <result property="deleterUserId" column="deleterUserId"/>
+        <result property="deletionTime" column="deletionTime"/>
+        <result property="deleted" column="deleted"/>
+    </resultMap>
+
+    <!--通用结果查询列-->
+    <sql id="Base_Column_List">
+                id,
+            tenantId,
+            dictCode,
+            dictName,
+            parentCode,
+            sort,
+            staticDict,
+            tenancyHostSide,
+            status,
+            remark,
+            creatorUserId,
+            creationTime,
+            lastModifierUserId,
+            lastModificationTime,
+            deleterUserId,
+            deletionTime,
+            deleted
+        </sql>
+
+    <select id="findStatic" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from sys_dict_type
+        <where>
+            deleted = '0' and tenancyHostSide = 4 and tenantId is null and parentCode = #{parentCode} ORDER BY sort ASC
+        </where>
+
+    </select>
+    <select id="findByDictCode" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from sys_dict_type
+        <where>
+            deleted = '0' and tenantId is null and dictCode = #{dictCode}
+        </where>
+    </select>
+</mapper>

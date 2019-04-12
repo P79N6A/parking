@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://code.alibabatech.com/schema/dubbo
+        http://code.alibabatech.com/schema/dubbo/dubbo.xsd
+        ">
+
+    <!--auditLog-->
+    <dubbo:service ref="auditLogService"
+                   interface="com.zoeeasy.cloud.sys.auditlog.AuditLogService"
+                   version="${dubbo.service.version}" timeout="30000" registry="fundamentalRegistry"/>
+    <dubbo:service ref="dictService"
+                   interface="com.zoeeasy.cloud.sys.dict.DictService"
+                   version="${dubbo.service.version}" timeout="30000" registry="fundamentalRegistry"/>
+    <dubbo:service ref="parameterService"
+                   interface="com.zoeeasy.cloud.sys.parameter.ParameterService"
+                   version="${dubbo.service.version}" timeout="30000" registry="fundamentalRegistry"/>
+    <dubbo:service ref="visitLogService"
+                   interface="com.zoeeasy.cloud.sys.visit.VisitLogService"
+                   version="${dubbo.service.version}" timeout="30000" registry="fundamentalRegistry"/>
+    <dubbo:reference id="userService" version="${dubbo.service.version}"
+                     interface="com.zoeeasy.cloud.ucc.user.UserService"
+                     check="false"
+                     timeout="30000" retries="0" registry="fundamentalRegistry"/>
+</beans>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet id="inv_invoice_apply_create_table" author="walkman">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="inv_invoice_apply"/>
+            </not>
+        </preConditions>
+        <createTable tableName="inv_invoice_apply" remarks="发票申请表">
+            <column autoIncrement="true" name="id" type="bigint" remarks="主键">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_invoice_apply"/>
+            </column>
+            <column name="customerUserId" type="bigint(20)" remarks="用户ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="applyNo" type="VARCHAR(64)" remarks="申请订单号">
+                <constraints nullable="false"/>
+            </column>
+            <column name="applyTime" type="DATETIME" remarks="申请时间">
+                <constraints nullable="false"/>
+            </column>
+            <column name="invoiceType" type="tinyint(4)" remarks="发票类型 1:电子发票 2:纸质发票">
+                <constraints nullable="false"/>
+            </column>
+            <column name="headerType" type="tinyint(4)" remarks="抬头类型 1:单位 2:个人">
+                <constraints nullable="false"/>
+            </column>
+            <column name="contentType" type="tinyint(4)" remarks="发票内容类型 1:类别 2:明细">
+                <constraints nullable="false"/>
+            </column>
+            <column name="buyerName" type="VARCHAR(100)" remarks="购方名称,单位抬头为单位名称，个人抬头为个人">
+                <constraints nullable="false"/>
+            </column>
+            <column name="taxNumber" type="VARCHAR(20)" remarks="购方税号" defaultValue=""/>
+            <column name="account" type="VARCHAR(100)" remarks="银行账号" defaultValue=""/>
+            <column name="telephone" type="VARCHAR(20)" remarks="购方电话" defaultValue=""/>
+            <column name="address" type="VARCHAR(100)" remarks="购方地址" defaultValue=""/>
+            <column name="invoiceAmount" type="int(11) unsigned" defaultValue="0" remarks="开票金额(分)"/>
+            <column name="phoneNumber" type="VARCHAR(20)" remarks="购方手机(开票成功会短信提醒购方)"/>
+            <column name="receiverName" type="VARCHAR(50)" remarks="收件人姓名" defaultValue=""/>
+            <column name="provinceCode" type="VARCHAR(10)" remarks="省代码" defaultValue=""/>
+            <column name="cityCode" type="VARCHAR(10)" remarks="市代码" defaultValue=""/>
+            <column name="countyCode" type="VARCHAR(10)" remarks="区代码" defaultValue=""/>
+            <column name="receiverAddress" type="VARCHAR(200)" remarks="地址" defaultValue=""/>
+            <column name="expressType" type="tinyint(4)" remarks="运费支付方式 1 :用户支付 2:包邮 3:到付"/>
+            <column name="expressAmount" type="int(11) unsigned" defaultValue="0" remarks="运费"/>
+            <column name="payStatus" type="tinyint(4)" defaultValue="0" remarks="支付状态 0 :未支付 1:已支付  2:支付中"/>
+            <column name="payedAmount" type="int(11) unsigned" defaultValue="0" remarks="支付金额(分)"/>
+            <column name="payTime" type="DATETIME" defaultValue="2049-12-31 23:59:59" remarks="支付时间"/>
+            <column name="payOrderNo" type="VARCHAR(64)" remarks="支付订单号" defaultValue=""/>
+            <column name="payedUserId" type="bigint(20)" remarks="支付用户ID"/>
+            <column name="payWay" type="tinyint(4)" remarks="支付方式(根据PayWayEnum)" defaultValue="0"/>
+            <column name="payType" type="tinyint(4)" remarks="支付类型(根据PayTypeEnum)" defaultValue="0"/>
+            <column name="status" type="tinyint(4)" defaultValue="0" remarks="开票状态"/>
+            <column name="completeTime" type="DATETIME" defaultValue="2049-12-31 23:59:59"
+                    remarks="完成时间"/>
+            <column name="orderCount" type="int(11) unsigned" defaultValue="0" remarks="开票订单数"/>
+            <column name="remark" type="VARCHAR(2000)" remarks="备注"/>
+            <column name="creatorUserId" type="bigint" remarks="创建者"/>
+            <column name="creationTime" type="DATETIME" remarks="创建时间"/>
+            <column name="lastModifierUserId" type="bigint" remarks="更新者"/>
+            <column name="lastModificationTime" type="DATETIME" remarks="更新时间"/>
+            <column name="deleterUserId" type="bigint" remarks="删除者"/>
+            <column name="deletionTime" type="DATETIME" remarks="删除时间"/>
+            <column name="deleted" type="tinyint(1)" remarks="删除标记" defaultValue="0"/>
+        </createTable>
+        <createIndex tableName="inv_invoice_apply" indexName="idx_orderNo">
+            <column name="customerUserId"/>
+        </createIndex>
+        <createIndex tableName="inv_invoice_apply" indexName="idx_applyNo">
+            <column name="applyNo"/>
+        </createIndex>
+    </changeSet>
+</databaseChangeLog>

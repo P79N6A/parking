@@ -1,0 +1,494 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.zoeeasy.cloud.pms.mapper.PassingVehicleRecordMapper">
+    <resultMap id="BaseResultMap" type="com.zoeeasy.cloud.pms.domain.PassingVehicleRecordEntity">
+        <!-- 树形基础模块 -->
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <result column="tenantId" property="tenantId"/>
+        <result column="parkingId" property="parkingId"/>
+        <result column="parkingCode" property="parkingCode"/>
+        <result column="parkingName" property="parkingName"/>
+        <result column="garageId" property="garageId"/>
+        <result column="gateId" property="gateId"/>
+        <result column="laneId" property="laneId"/>
+        <result column="parkingLotId" property="parkingLotId"/>
+        <result column="parkingLotNumber" property="parkingLotNumber"/>
+        <result column="passingNo" property="passingNo"/>
+        <result column="passingUuid" property="passingUuid"/>
+        <result column="thirdPassingId" property="thirdPassingId"/>
+        <result column="aliPassingId" property="aliPassingId"/>
+        <result column="cardNumber" property="cardNumber"/>
+        <result column="codeNumber" property="codeNumber"/>
+        <result column="plateNumber" property="plateNumber"/>
+        <result column="plateNoExist" property="plateNoExist"/>
+        <result column="plateColor" property="plateColor"/>
+        <result column="carType" property="carType"/>
+        <result column="plateNumberConfidence" property="plateNumberConfidence"/>
+        <result column="passingType" property="passingType"/>
+        <result column="confidence" property="confidence"/>
+        <result column="parkingType" property="parkingType"/>
+        <result column="passTime" property="passTime"/>
+        <result column="entryTime" property="entryTime"/>
+        <result column="exitTime" property="exitTime"/>
+        <result column="dataSource" property="dataSource"/>
+        <result column="dataType" property="dataType"/>
+        <result column="photoUploaded" property="photoUploaded"/>
+        <result column="photoCount" property="photoCount"/>
+        <result column="uploadedDate" property="uploadedDate"/>
+        <result column="abnormalType" property="abnormalType"/>
+        <result column="abnormalReason" property="abnormalReason"/>
+        <result column="proofStatus" property="proofStatus"/>
+        <result column="proofUserId" property="proofUserId"/>
+        <result column="proofDate" property="proofDate"/>
+        <result column="remark" property="remark"/>
+        <result column="creatorUserId" property="creatorUserId" jdbcType="BIGINT"/>
+        <result column="creationTime" property="creationTime" jdbcType="TIMESTAMP"/>
+        <result column="lastModifierUserId" property="lastModifierUserId" jdbcType="BIGINT"/>
+        <result column="lastModificationTime" property="lastModificationTime" jdbcType="TIMESTAMP"/>
+        <result column="deleterUserId" property="deleterUserId" jdbcType="BIGINT"/>
+        <result column="deletionTime" property="deletionTime" jdbcType="TIMESTAMP"/>
+        <result column="deleted" property="deleted" jdbcType="TINYINT"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,
+        tenantId,
+        parkingId,
+        parkingCode,
+        parkingName,
+        garageId,
+        gateId,
+        laneId,
+        parkingLotId,
+        parkingLotNumber,
+        passingNo,
+        passingUuid,
+        thirdPassingId,
+        aliPassingId,
+        cardNumber,
+        codeNumber,
+        plateNumber,
+        plateNoExist,
+        plateColor,
+        carType,
+        plateNumberConfidence,
+        passingType,
+        confidence,
+        parkingType,
+        passTime,
+        entryTime,
+        exitTime,
+        dataSource,
+        dataType,
+        photoUploaded,
+        photoCount,
+        uploadedDate,
+        abnormalType,
+        abnormalReason,
+        proofStatus,
+        proofUserId,
+        proofDate,
+        remark,
+        creatorUserId,
+        creationTime,
+        lastModifierUserId,
+        lastModificationTime,
+        deleterUserId,
+        deletionTime,
+        deleted
+    </sql>
+
+    <select id="findLastEntryRecord" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from pms_passing_vehicle_record
+        <where>
+            deleted = '0' ${ew.sqlSegment}
+        </where>
+        ORDER BY passTime DESC limit 1
+    </select>
+
+    <select id="selectByPassingNo" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from pms_passing_vehicle_record
+        <where>
+            deleted = '0' ${ew.sqlSegment}
+        </where>
+    </select>
+    <select id="selectPassRecord" resultType="com.zoeeasy.cloud.pms.domain.PassingVehicleRecordEntity">
+        select
+        <include refid="Base_Column_List"/>
+        from pms_passing_vehicle_record
+        <where>
+            deleted = '0' ${ew.sqlSegment}
+        </where>
+    </select>
+
+    <insert id="save" useGeneratedKeys="true" keyProperty="id"
+            parameterType="com.zoeeasy.cloud.pms.domain.PassingVehicleRecordEntity">
+        INSERT INTO pms_passing_vehicle_record
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="tenantId != null">
+                tenantId,
+            </if>
+            <if test="parkingId != null">
+                parkingId,
+            </if>
+            <if test="parkingCode != null">
+                parkingCode,
+            </if>
+            <if test="parkingName != null">
+                parkingName,
+            </if>
+            <if test="garageId != null">
+                garageId,
+            </if>
+            <if test="gateId != null">
+                gateId,
+            </if>
+            <if test="laneId != null">
+                laneId,
+            </if>
+            <if test="parkingLotId != null">
+                parkingLotId,
+            </if>
+            <if test="parkingLotNumber != null">
+                parkingLotNumber,
+            </if>
+            <if test="passingNo != null">
+                passingNo,
+            </if>
+            <if test="passingUuid != null">
+                passingUuid,
+            </if>
+            <if test="thirdPassingId != null">
+                thirdPassingId,
+            </if>
+            <if test="aliPassingId != null">
+                aliPassingId,
+            </if>
+            <if test="cardNumber != null">
+                cardNumber,
+            </if>
+            <if test="codeNumber != null">
+                codeNumber,
+            </if>
+            <if test="plateNumber != null">
+                plateNumber,
+            </if>
+            <if test="plateNoExist != null">
+                plateNoExist,
+            </if>
+            <if test="plateColor != null">
+                plateColor,
+            </if>
+            <if test="carType != null">
+                carType,
+            </if>
+            <if test="plateNumberConfidence != null">
+                plateNumberConfidence,
+            </if>
+            <if test="passingType != null">
+                passingType,
+            </if>
+            <if test="confidence != null">
+                confidence,
+            </if>
+            <if test="parkingType != null">
+                parkingType,
+            </if>
+            <if test="passTime != null">
+                passTime,
+            </if>
+            <if test="entryTime != null">
+                entryTime,
+            </if>
+            <if test="exitTime != null ">
+                exitTime,
+            </if>
+            <if test="dataSource != null">
+                dataSource,
+            </if>
+            <if test="dataType != null">
+                dataType,
+            </if>
+            <if test="photoUploaded != null">
+                photoUploaded,
+            </if>
+            <if test="photoCount != null">
+                photoCount,
+            </if>
+            <if test="uploadedDate != null">
+                uploadedDate,
+            </if>
+            <if test="abnormalType != null">
+                abnormalType,
+            </if>
+            <if test="abnormalReason != null">
+                abnormalReason,
+            </if>
+            <if test="proofStatus != null">
+                proofStatus,
+            </if>
+            <if test="proofUserId != null">
+                proofUserId,
+            </if>
+            <if test="proofDate != null">
+                proofDate,
+            </if>
+            <if test="remark != null">
+                remark,
+            </if>
+            <if test="creatorUserId != null">
+                creatorUserId,
+            </if>
+            <if test="creationTime != null">
+                creationTime,
+            </if>
+        </trim>
+        <trim prefix="VALUES (" suffix=")" suffixOverrides=",">
+            <if test="tenantId != null">
+                #{tenantId},
+            </if>
+            <if test="parkingId != null">
+                #{parkingId},
+            </if>
+            <if test="parkingCode != null">
+                #{parkingCode},
+            </if>
+            <if test="parkingName != null">
+                #{parkingName},
+            </if>
+            <if test="garageId != null">
+                #{garageId},
+            </if>
+            <if test="gateId != null">
+                #{gateId},
+            </if>
+            <if test="laneId != null">
+                #{laneId},
+            </if>
+            <if test="parkingLotId != null">
+                #{parkingLotId},
+            </if>
+            <if test="parkingLotNumber != null">
+                #{parkingLotNumber},
+            </if>
+            <if test="passingNo != null">
+                #{passingNo},
+            </if>
+            <if test="passingUuid != null">
+                #{passingUuid},
+            </if>
+            <if test="thirdPassingId != null">
+                #{thirdPassingId},
+            </if>
+            <if test="aliPassingId != null">
+                #{aliPassingId},
+            </if>
+            <if test="cardNumber != null">
+                #{cardNumber},
+            </if>
+            <if test="codeNumber != null">
+                #{codeNumber},
+            </if>
+            <if test="plateNumber != null">
+                #{plateNumber},
+            </if>
+            <if test="plateNoExist != null">
+                #{plateNoExist},
+            </if>
+            <if test="plateColor != null">
+                #{plateColor},
+            </if>
+            <if test="carType != null">
+                #{carType},
+            </if>
+            <if test="plateNumberConfidence != null">
+                #{plateNumberConfidence},
+            </if>
+            <if test="passingType != null">
+                #{passingType},
+            </if>
+            <if test="confidence != null">
+                #{confidence},
+            </if>
+            <if test="parkingType != null">
+                #{parkingType},
+            </if>
+            <if test="passTime != null">
+                #{passTime},
+            </if>
+            <if test="entryTime != null">
+                #{entryTime},
+            </if>
+            <if test="exitTime != null ">
+                #{exitTime},
+            </if>
+            <if test="dataSource != null">
+                #{dataSource},
+            </if>
+            <if test="dataType != null">
+                #{dataType},
+            </if>
+            <if test="photoUploaded != null">
+                #{photoUploaded},
+            </if>
+            <if test="photoCount != null">
+                #{photoCount},
+            </if>
+            <if test="uploadedDate != null">
+                #{uploadedDate},
+            </if>
+            <if test="abnormalType != null">
+                #{abnormalType},
+            </if>
+            <if test="abnormalReason != null">
+                #{abnormalReason},
+            </if>
+            <if test="proofStatus != null">
+                #{proofStatus},
+            </if>
+            <if test="proofUserId != null">
+                #{proofUserId},
+            </if>
+            <if test="proofDate != null">
+                #{proofDate},
+            </if>
+            <if test="remark != null">
+                #{remark},
+            </if>
+            <if test="creatorUserId != null">
+                #{creatorUserId},
+            </if>
+            <if test="creationTime != null">
+                #{creationTime},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPassNo" parameterType="com.zoeeasy.cloud.pms.domain.PassingVehicleRecordEntity">
+        UPDATE pms_passing_vehicle_record
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="parkingCode != null">
+                parkingCode = #{parkingCode},
+            </if>
+            <if test="parkingName != null">
+                parkingName = #{parkingName},
+            </if>
+            <if test="garageId != null">
+                garageId = #{garageId},
+            </if>
+            <if test="gateId != null">
+                gateId = #{gateId},
+            </if>
+            <if test="laneId != null">
+                laneId = #{laneId},
+            </if>
+            <if test="parkingLotId != null">
+                parkingLotId = #{parkingLotId},
+            </if>
+            <if test="parkingLotNumber != null">
+                parkingLotNumber = #{parkingLotNumber},
+            </if>
+            <if test="passingNo != null">
+                passingNo = #{passingNo},
+            </if>
+            <if test="passingUuid != null">
+                passingUuid = #{passingUuid},
+            </if>
+            <if test="thirdPassingId != null">
+                thirdPassingId = #{thirdPassingId},
+            </if>
+            <if test="aliPassingId != null">
+                aliPassingId = #{aliPassingId},
+            </if>
+            <if test="cardNumber != null">
+                cardNumber = #{cardNumber},
+            </if>
+            <if test="codeNumber != null">
+                codeNumber = #{codeNumber},
+            </if>
+            <if test="plateNumber != null">
+                plateNumber = #{plateNumber},
+            </if>
+            <if test="plateNoExist != null">
+                plateNoExist = #{plateNoExist},
+            </if>
+            <if test="plateColor != null">
+                plateColor = #{plateColor},
+            </if>
+            <if test="carType != null">
+                carType = #{carType},
+            </if>
+            <if test="plateNumberConfidence != null">
+                plateNumberConfidence = #{plateNumberConfidence},
+            </if>
+            <if test="passingType != null">
+                passingType = #{passingType},
+            </if>
+            <if test="confidence != null">
+                confidence = #{confidence},
+            </if>
+            <if test="parkingType != null">
+                parkingType = #{parkingType},
+            </if>
+            <if test="passTime != null">
+                passTime = #{passTime},
+            </if>
+            <if test="entryTime != null">
+                entryTime = #{entryTime},
+            </if>
+            <if test="exitTime != null ">
+                exitTime = #{exitTime},
+            </if>
+            <if test="dataSource != null">
+                dataSource = #{dataSource},
+            </if>
+            <if test="dataType != null">
+                dataType = #{dataType},
+            </if>
+            <if test="photoUploaded != null">
+                photoUploaded = #{photoUploaded},
+            </if>
+            <if test="photoCount != null">
+                photoCount = #{photoCount},
+            </if>
+            <if test="uploadedDate != null">
+                uploadedDate = #{uploadedDate},
+            </if>
+            <if test="abnormalType != null">
+                abnormalType = #{abnormalType},
+            </if>
+            <if test="abnormalReason != null">
+                abnormalReason= #{abnormalReason},
+            </if>
+            <if test="proofStatus != null">
+                proofStatus = #{proofStatus},
+            </if>
+            <if test="proofUserId != null">
+                proofUserId = #{proofUserId},
+            </if>
+            <if test="proofDate != null">
+                proofDate = #{proofDate},
+            </if>
+            <if test="remark != null">
+                remark = #{remark},
+            </if>
+            <if test="lastModifierUserId != null">
+                lastModifierUserId = #{lastModifierUserId},
+            </if>
+            <if test="lastModificationTime != null">
+                lastModificationTime = #{lastModificationTime}
+            </if>
+        </trim>
+        <where>
+            passingNo = #{passingNo}
+            <if test="parkingId != null">
+                and parkingId = #{parkingId}
+            </if>
+        </where>
+    </update>
+
+</mapper>

@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://code.alibabatech.com/schema/dubbo
+        http://code.alibabatech.com/schema/dubbo/dubbo.xsd
+        ">
+    <!--appoint-->
+    <dubbo:reference id="appointOrderManagerIntegrationService" version="${dubbo.service.version}"
+                     interface="com.zoeeasy.cloud.integration.appoint.AppointOrderManagerIntegrationService"
+                     check="false"
+                     timeout="30000" retries="0" registry="fundamentalRegistry"/>
+    <dubbo:reference id="appointOrderPlatformIntegrationService" version="${dubbo.service.version}"
+                     interface="com.zoeeasy.cloud.integration.appoint.AppointOrderPlatformIntegrationService"
+                     check="false"
+                     timeout="30000" retries="0" registry="fundamentalRegistry"/>
+    <dubbo:reference id="appointRuleManagerIntegrationService" version="${dubbo.service.version}"
+                     interface="com.zoeeasy.cloud.integration.appoint.AppointRuleManagerIntegrationService"
+                     check="false"
+                     timeout="30000" retries="0" registry="fundamentalRegistry"/>
+    <!-- common -->
+    <dubbo:reference id="commonIntegrationService" version="${dubbo.service.version}"
+                     interface="com.zoeeasy.cloud.integration.common.CommonIntegrationService"
+                     check="false"
+                     timeout="30000" retries="0" registry="fundamentalRegistry"/>
+
+    <!--inspect-->
+    <dubbo:reference id="inspectPushService" version="${dubbo.service.version}"
+                     interface="com.zoeeasy.cloud.integration.inspect.InspectPushService"
+                     check="false"
+                     timeout="30000" retries="0" registry="fundamentalRegistry"/>
+    <dubbo:reference id="inspectRecordIntegrationService" version="${dubbo.service.version}"
+                     interface="com.zoeeasy.cloud.integration.inspect.InspectRecordIntegrationService"
+                     check="false"
+                     timeout="30000" retries="0" registry="fundamentalRegistry"/>
+    <dubbo:reference id="inspectParkOrderIntegrationService" version="${dubbo.service.version}"
+                     interface="com.zoeeasy.cloud.integration.inspect.InspectParkOrderIntegrationService"
+                     check="false"
+                     timeout="30000" retries="0" registry="fundamentalRegistry"/>
+    <dubbo:reference id="inspectParkIntegrationService" version="${dubbo.service.version}"
+                     interface="com.zoeeasy.cloud.integration.inspect.InspectParkIntegrationService"
+                     check="false"
+                     timeout="30000" retries="0" registry="fundamentalRegistry"/>
+    <dubbo:reference id="inspectPreparePayParkingOrderService" version="${dubbo.service.version}"
+                     interface="com.zoeeasy.cloud.integration.inspect.InspectPreparePayParkingOrderService"
+                     check="false"
+                     timeout="30000" retries="0" registry="fundamentalRegistry"/>
+    <!--magnetic-->
+    <dubbo:reference id="airJoyService" version="${dubbo.service.version}"
+                     interface="com.zoeeasy.cloud.integration.magnetic.AirJoyService"
+                     check="false"
+                     timeout="30000" retries="0" registry="fundamentalRegistry"/>
+    <dubbo:reference id="inMotionService" version="${dubbo.service.version}"
+                     interface="com.zoeeasy.cloud.integration.magnetic.InMotionService"
+                     check="false"
+                     timeout="30000" retries="0" registry="fundamentalRegistry"/>
+
+    <dubbo:reference id="fuShangService" version="${dubbo.service.version}"
+                     interface="com.zoeeasy.cloud.integration.magnetic.FuShangService"
+                     check="false"
+                     timeout="30000" retries="0" registry="fundamentalRegistry"/>
+    <!--message-->
+    <dubbo:reference id="messageSendIntegrationService" version="${dubbo.service.version}"
+                     interface="com.zoeeasy.cloud.integration.message.MessageSendIntegrationService"
+                     check="false"
+                     timeout="30000" retries="0" registry="fundamentalRegistry"/>
+    <!--open-->
+    <dubbo:reference id="openPassRecordService" version="${dubbo.service.version}"
+                     interface="com.zoeeasy.cloud.integration.open.OpenPassRecordService"
+                     check="false"
+                     timeout="30000" retries="0" registry="fundamentalRegistry"/>
+    <dubbo:reference id="terminateParkingOrderService" version="${dubbo.service.version}"
+                     interface="com.zoeeasy.cloud.integration.open.TerminateParkingOrderService"
+                     check="false"
+                     timeout="30000" retries="0" registry="fundamentalRegistry"/>
+    <!--order-->
+    <dubbo:reference id="customerParkingOrderIntegrationService" version="${dubbo.service.version}"
+                     interface="com.zoeeasy.cloud.integration.order.CustomerParkingOrderIntegrationService"
+                     check="false"
+                     timeout="30000" retries="0" registry="fundamentalRegistry"/>
+    <dubbo:reference id="parkingOrderIntegrationService" version="${dubbo.service.version}"
+                     interface="com.zoeeasy.cloud.integration.order.ParkingOrderIntegrationService"
+                     check="false"
+                     timeout="30000" retries="0" registry="fundamentalRegistry"/>
+    <dubbo:reference id="parkingOrderManagerIntegrationService" version="${dubbo.service.version}"
+                     interface="com.zoeeasy.cloud.integration.order.ParkingOrderManagerIntegrationService"
+                     check="false"
+                     timeout="30000" retries="0" registry="fundamentalRegistry"/>
+
+    <!--park-->
+    <dubbo:reference id="calculateIntegrationService" version="${dubbo.service.version}"
+                     interface="com.zoeeasy.cloud.integration.park.CalculateIntegrationService"
+                     check="false"
+                     timeout="30000" retries="0" registry="fundamentalRegistry"/>
+    <dubbo:reference id="parkChargeRuleIntegrationService" version="${dubbo.service.version}"
+                     interface="com.zoeeasy.cloud.integration.park.ParkChargeRuleIntegrationService"
+                     check="false"
+                     timeout="30000" retries="0" registry="fundamentalRegistry"/>
+    <dubbo:reference id="cloudParkingLotService" version="${dubbo.service.version}"
+                     interface="com.zoeeasy.cloud.integration.park.CloudParkingLotService"
+                     check="false"
+                     timeout="30000" retries="0" registry="fundamentalRegistry"/>
+    <!-- parking-->
+    <dubbo:reference id="parkingImageIntegrationService" version="${dubbo.service.version}"
+                     interface="com.zoeeasy.cloud.integration.parking.ParkingImageIntegrationService"
+                     check="false"
+                     timeout="30000" retries="0" registry="fundamentalRegistry"/>
+    <!--pass-->
+    <dubbo:reference id="passIntegrationService" version="${dubbo.service.version}"
+                     interface="com.zoeeasy.cloud.integration.pass.PassingVehicleIntegrationService"
+                     check="false"
+                     timeout="30000" retries="0" registry="fundamentalRegistry"/>
+    <!--pay-->
+    <dubbo:reference id="payConfigIntegrationService" version="${dubbo.service.version}"
+                     interface="com.zoeeasy.cloud.integration.pay.PayConfigIntegrationService"
+                     check="false"
+                     timeout="30000" retries="0" registry="fundamentalRegistry"/>
+    <dubbo:reference id="payNotifyService" version="${dubbo.service.version}"
+                     interface="com.zoeeasy.cloud.integration.pay.PayNotifyService"
+                     check="false"
+                     timeout="30000" retries="0" registry="fundamentalRegistry"/>
+    <dubbo:reference id="tradePaymentIntegrationService" version="${dubbo.service.version}"
+                     interface="com.zoeeasy.cloud.integration.pay.TradePaymentIntegrationService"
+                     check="false"
+                     timeout="30000" retries="0" registry="fundamentalRegistry"/>
+    <!--platform-->
+    <dubbo:reference id="platParkingInfoIntegrationService" version="${dubbo.service.version}"
+                     interface="com.zoeeasy.cloud.integration.platform.PlatformParkingInfoIntegrationService"
+                     check="false"
+                     timeout="180000" retries="0" registry="fundamentalRegistry"/>
+    <!-- push -->
+    <dubbo:reference id="pushIntegrationService" version="${dubbo.service.version}"
+                     interface="com.zoeeasy.cloud.integration.push.PushIntegrationService"
+                     check="false"
+                     timeout="30000" retries="0" registry="fundamentalRegistry"/>
+    <!-- trade -->
+    <dubbo:reference id="tradePaymentTransactionService" version="${dubbo.service.version}"
+                     interface="com.zoeeasy.cloud.integration.trade.TradePaymentTransactionService"
+                     check="false"
+                     timeout="30000" retries="0" registry="fundamentalRegistry"/>
+    <dubbo:reference id="tradeChargeIntegrationService" version="${dubbo.service.version}"
+                     interface="com.zoeeasy.cloud.integration.trade.TradeChargeIntegrationService"
+                     check="false"
+                     timeout="30000" retries="0" registry="fundamentalRegistry"/>
+
+    <!--mock-->
+    <dubbo:reference id="mockPushPassRecordService" version="${dubbo.service.version}"
+                     interface="com.zoeeasy.cloud.integration.mock.MockPushPassRecordService"
+                     check="false"
+                     timeout="30000" retries="0" registry="fundamentalRegistry"/>
+    <dubbo:reference id="mockService" version="${dubbo.service.version}"
+                     interface="com.zoeeasy.cloud.integration.mock.MockService"
+                     check="false"
+                     timeout="18000000" retries="0" registry="fundamentalRegistry"/>
+</beans>

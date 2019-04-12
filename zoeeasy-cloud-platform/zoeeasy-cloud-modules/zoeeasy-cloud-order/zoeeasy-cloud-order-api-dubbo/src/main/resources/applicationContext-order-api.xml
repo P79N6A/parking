@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://code.alibabatech.com/schema/dubbo
+        http://code.alibabatech.com/schema/dubbo/dubbo.xsd
+        ">
+    <!--appoint-->
+    <dubbo:reference id="appointmentOrderManagerService"
+                     interface="com.zoeeasy.cloud.order.appoint.AppointmentOrderManagerService"
+                     check="false" timeout="60000" retries="0" registry="fundamentalRegistry"
+                     version="${dubbo.service.version}"/>
+    <dubbo:reference id="platformAppointOrderService"
+                     interface="com.zoeeasy.cloud.order.appoint.PlatformAppointOrderService"
+                     check="false" timeout="60000" retries="0" registry="fundamentalRegistry"
+                     version="${dubbo.service.version}"/>
+    <!--hikvision-->
+    <dubbo:reference id="thirdParkingOrderService"
+                     interface="com.zoeeasy.cloud.order.hikvision.ThirdParkingOrderService"
+                     check="false" timeout="60000" retries="0" registry="fundamentalRegistry"
+                     version="${dubbo.service.version}"/>
+    <!--inspect-->
+    <dubbo:reference id="inspectParkingOrderService"
+                     interface="com.zoeeasy.cloud.order.inspect.InspectParkingOrderService"
+                     check="false" timeout="60000" retries="0" registry="fundamentalRegistry"
+                     version="${dubbo.service.version}"/>
+    <!-- parking -->
+    <dubbo:reference id="parkingOrderService"
+                     interface="com.zoeeasy.cloud.order.parking.ParkingOrderManagerService"
+                     check="false" timeout="60000" retries="0" registry="fundamentalRegistry"
+                     version="${dubbo.service.version}"/>
+    <dubbo:reference id="platformParkingOrderService"
+                     interface="com.zoeeasy.cloud.order.parking.PlatformParkingOrderService"
+                     check="false" timeout="60000" retries="0" registry="fundamentalRegistry"
+                     version="${dubbo.service.version}"/>
+    <!--transaction-->
+    <dubbo:reference id="parkingOrderTransactionService"
+                     interface="com.zoeeasy.cloud.order.transaction.ParkingOrderTransactionService"
+                     check="false" timeout="60000" retries="0" registry="fundamentalRegistry"
+                     version="${dubbo.service.version}"/>
+    <!--message-->
+    <dubbo:reference id="messageSendOrderService"
+                     interface="com.zoeeasy.cloud.order.message.MessageSendOrderService"
+                     check="false" timeout="60000" retries="0" registry="fundamentalRegistry"
+                     version="${dubbo.service.version}"/>
+</beans>

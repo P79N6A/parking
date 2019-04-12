@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet id="ord_charge_order_create_table" author="walkman">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="ord_charge_order"/>
+            </not>
+        </preConditions>
+        <createTable tableName="ord_charge_order" remarks="收费订单表">
+            <column autoIncrement="true" name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_charge_order"/>
+            </column>
+            <column name="tenantId" type="bigint(20)" remarks="租户ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="parkingId" type="bigint(20)" remarks="平台停车场ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="orderType" type="tinyint(4)" defaultValue="0"
+                    remarks="业务订单类型"/>
+            <column name="orderNo" type="varchar(64)" remarks="平台停车账单流水号">
+                <constraints nullable="false"/>
+            </column>
+            <column name="chargeNo" type="varchar(64)" remarks="平台收款流水号">
+                <constraints nullable=" false"/>
+            </column>
+            <column name="payOrderNo" type="varchar(64)" remarks="平台支付流水号"/>
+            <column name="chargeMode" type="tinyint(4)" defaultValue="1" remarks="收费模式 1:离场前收费 2: 离场后收费"/>
+            <column name="chargeTime" type="DATETIME" remarks="收费时间">
+                <constraints nullable=" false"/>
+            </column>
+            <column name="chargeableAmount" type="int(11) unsigned" defaultValue="0" remarks="应收金额(分)"/>
+            <column name="chargedAmount" type="int(11) unsigned" defaultValue="0" remarks="实收金额(分)"/>
+            <column name="payStatus" type="tinyint(4)" defaultValue="0" remarks="支付状态 0 :未支付 1:已支付  2:支付中"/>
+            <column name="payableAmount" type="int(11) unsigned" defaultValue="0" remarks=" 应付付金额(分)"/>
+            <column name="payedAmount" type="int(11) unsigned" defaultValue="0" remarks="实付金额(分)"/>
+            <column name="payTime" type="datetime" defaultValue="2049-12-31 23:59:59" remarks="支付时间"/>
+            <column name="payedUserId" type="bigint(20)" remarks="支付用户ID"/>
+            <column name="payedUserName" type="varchar(64)" remarks="支付用户名称"/>
+            <column name="payWay" type="tinyint(4)" remarks="支付方式(根据PayWayEnum)"/>
+            <column name="payType" type="tinyint(4)" remarks="支付类型(根据PayTypeEnum)"/>
+            <column name="chargeUserId" type="bigint" remarks="收款人ID"/>
+            <column name="chargeUserName" type="varchar(64)" remarks="收款人姓名"/>
+            <column name="remark" type="varchar(2000)" remarks="备注"/>
+            <column name="tccStatus" type="tinyint(4)" defaultValue="0"
+                    remarks="TCC事务状态标志"/>
+            <column name="creatorUserId" type="bigint" remarks="创建者"/>
+            <column name="creationTime" type="DATETIME" remarks="创建时间"/>
+            <column name="lastModifierUserId" type="bigint" remarks="更新者"/>
+            <column name="lastModificationTime" type="DATETIME" remarks="更新时间"/>
+            <column name="deleterUserId" type="bigint" remarks="删除者"/>
+            <column name="deletionTime" type="DATETIME" remarks="删除时间"/>
+            <column name="deleted" type="tinyint(1)" remarks="删除标记" defaultValue="0"/>
+            <column name="version" type="bigint" remarks="版本号" defaultValue="1"/>
+        </createTable>
+        <createIndex tableName="ord_charge_order" indexName="idx_tenant_parking">
+            <column name="tenantId"/>
+            <column name="parkingId"/>
+        </createIndex>
+        <createIndex tableName="ord_charge_order" indexName="idx_order_tenant_parking">
+            <column name="orderNo"/>
+            <column name="tenantId"/>
+            <column name="parkingId"/>
+        </createIndex>
+        <rollback>drop table ord_charge_order</rollback>
+    </changeSet>
+</databaseChangeLog>

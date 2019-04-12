@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet id="pms_parking_floor_create_table" author="songchao">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="pms_parking_floor"/>
+            </not>
+        </preConditions>
+        <createTable tableName="pms_parking_floor" remarks="楼层信息表">
+            <column autoIncrement="true" name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_floor"/>
+            </column>
+            <column name="tenantId" type="bigint(20)" remarks="租户ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="parkingId" type="bigint(20)" remarks="停车场ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="garageId" type="bigint(20)" remarks="车库ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="floorCode" type="varchar(64)" remarks="楼层编号">
+                <constraints nullable="false"/>
+            </column>
+            <column name="floorName" type="varchar(128)" remarks="楼层名称">
+                <constraints nullable="false"/>
+            </column>
+            <column name="lotCount" type="smallint(6)" remarks="泊位数量">
+                <constraints nullable="false"/>
+            </column>
+            <column name="lotFixed" type="smallint(6)" remarks="固定车位总数">
+                <constraints nullable="false"/>
+            </column>
+            <column name="lotAvailable" type="smallint(6)" remarks="剩余车位数">
+                <constraints nullable="false"/>
+            </column>
+            <column name="remark" type="varchar(128)" remarks="楼层说明"/>
+            <column name="creatorUserId" type="bigint" remarks="创建者"/>
+            <column name="creationTime" type="DATETIME" remarks="创建时间"/>
+            <column name="lastModifierUserId" type="bigint" remarks="更新者"/>
+            <column name="lastModificationTime" type="DATETIME" remarks="更新时间"/>
+            <column name="deleterUserId" type="bigint" remarks="删除者"/>
+            <column name="deletionTime" type="DATETIME" remarks="删除时间"/>
+            <column name="deleted" type="tinyint(1)" remarks="删除标记" defaultValue="0"/>
+        </createTable>
+        <createIndex tableName="pms_parking_floor" indexName="idx_code">
+            <column name="floorCode"/>
+        </createIndex>
+        <createIndex tableName="pms_parking_floor" indexName="inx_name">
+            <column name="floorName"/>
+        </createIndex>
+
+    </changeSet>
+</databaseChangeLog>

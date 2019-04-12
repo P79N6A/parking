@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet id="chg_charge_rule_create_table" author="AkeemSuper">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="chg_charge_rule"/>
+            </not>
+        </preConditions>
+        <createTable tableName="chg_charge_rule" remarks="收费规则信息表">
+            <column autoIncrement="true" name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_chg_charge_rule"/>
+            </column>
+            <column name="tenantId" type="bigint(20) unsigned" remarks="租户ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="code" type="varchar(64)" remarks="收费规则编号">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" type="varchar(255)" remarks="收费规则名称">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ruleType" type="tinyint(4)" remarks="规则类型 1 不收费,2 按时计费 3,按次计费 4,日夜分时分次计费">
+                <constraints nullable="false"/>
+            </column>
+            <column name="carType" type="tinyint(4)" remarks="车辆类型">
+                <constraints nullable="false"/>
+            </column>
+            <column name="plateNumberType" type="char(2)" remarks="车牌类型"/>
+            <column name="parkingLevel" type="tinyint(4)" remarks="停车点等级 1,不区分 ,2 一级,3 二级, 4三级">
+                <constraints nullable="false"/>
+            </column>
+            <column name="holidayType" type="tinyint(4)" remarks="假期类型：  1 工作日，2 双休 3 小长假 4长假">
+                <constraints nullable="false"/>
+            </column>
+            <column name="timesStartTime" type="varchar(20)" defaultValue="" remarks="计时开始时间"/>
+            <column name="timesEndTime" type="varchar(20)" defaultValue="" remarks="计时结束时间"/>
+            <column name="perStartTime" type="varchar(20)" defaultValue="" remarks="计次开始时间"/>
+            <column name="perEndTime" type="varchar(20)" defaultValue="" remarks="计次结束时间"/>
+            <column name="perPrice" type="smallint" defaultValue="0" remarks="按次收费金额(单位:分)"/>
+            <column name="topStatus" type="tinyint(1)" defaultValue="0" remarks="是否启用封顶金额：0,不启用1,启用"/>
+            <column name="freeTime" type="smallint(6)" defaultValue="0" remarks="免费时长(单位:分钟)"/>
+            <column name="overFreeTime" type="tinyint(1)" defaultValue="0" remarks="超出免费时长时免费时长是否收费 0,不收费 1,收费"/>
+            <column name="existPartTime" type="tinyint(1)" defaultValue="0" remarks="24小时内存在按时段收费则全按时段收费 0, 否 1是"/>
+            <column name="inTimeTop" type="tinyint(1)" defaultValue="0" remarks="24小时内是否启用封顶金额 0,不启用1,启用"/>
+            <column name="topAmount" type="int(11)" defaultValue="0" remarks="封顶金额(单位:分)"/>
+            <column name="dayTopAmount" type="int(11)" defaultValue="0" remarks="24小时封顶金额(单位:分)"/>
+            <column name="unitTime" type="smallint(6)" remarks="最小计时单位(单位:分钟)"/>
+            <column name="description" type="varchar(255)" defaultValue="" remarks="描述"/>
+            <column name="creatorUserId" type="bigint" remarks="创建者"/>
+            <column name="creationTime" type="DATETIME" remarks="创建时间"/>
+            <column name="lastModifierUserId" type="bigint" remarks="更新者"/>
+            <column name="lastModificationTime" type="DATETIME" remarks="更新时间"/>
+            <column name="deleterUserId" type="bigint" remarks="删除者"/>
+            <column name="deletionTime" type="DATETIME" remarks="删除时间"/>
+            <column name="deleted" type="tinyint(1)" remarks="删除标记" defaultValue="0"/>
+            <column name="version" type="bigint" remarks="版本号" defaultValue="1"/>
+        </createTable>
+        <addUniqueConstraint tableName="chg_charge_rule" columnNames="code"
+                             constraintName="up_code"
+                             deferrable="false" disabled="false" initiallyDeferred="false"/>
+        <createIndex tableName="chg_charge_rule" indexName="idx_tenant">
+            <column name="tenantId"/>
+        </createIndex>
+    </changeSet>
+</databaseChangeLog>

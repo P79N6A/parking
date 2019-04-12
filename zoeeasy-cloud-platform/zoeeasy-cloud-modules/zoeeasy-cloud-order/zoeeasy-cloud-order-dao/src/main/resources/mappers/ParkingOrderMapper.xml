@@ -1,0 +1,960 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zoeeasy.cloud.order.mapper.ParkingOrderMapper">
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.zoeeasy.cloud.order.domain.ParkingOrderEntity">
+        <id column="id" property="id"/>
+        <result property="tenantId" column="tenantId"/>
+        <result property="recordNo" column="recordNo"/>
+        <result property="orderNo" column="orderNo"/>
+        <result property="parkingId" column="parkingId"/>
+        <result property="parkingName" column="parkingName"/>
+        <result property="parkingLotId" column="parkingLotId"/>
+        <result property="parkingLotNumber" column="parkingLotNumber"/>
+        <result property="plateNumber" column="plateNumber"/>
+        <result property="plateColor" column="plateColor"/>
+        <result property="carStyle" column="carStyle"/>
+        <result property="startTime" column="startTime"/>
+        <result property="endTime" column="endTime"/>
+        <result property="parkingLength" column="parkingLength"/>
+        <result property="freeLength" column="freeLength"/>
+        <result property="chargeLength" column="chargeLength"/>
+        <result property="chargeInfoId" column="chargeInfoId"/>
+        <result property="chargeMode" column="chargeMode"/>
+        <result property="chargeType" column="chargeType"/>
+        <result property="status" column="status"/>
+        <result property="orderType" column="orderType"/>
+        <result property="orderSource" column="orderSource"/>
+        <result property="parentOrderNo" column="parentOrderNo"/>
+        <result property="childOrder" column="childOrder"/>
+        <result property="prepayable" column="prepayable"/>
+        <result property="thirdBillNo" column="thirdBillNo"/>
+        <result property="thirdBillSourceType" column="thirdBillSourceType"/>
+        <result property="thirdBillSyncStatus" column="thirdBillSyncStatus"/>
+        <result property="appointed" column="appointed"/>
+        <result property="appointOrderNo" column="appointOrderNo"/>
+        <result property="settle" column="settle"/>
+        <result property="settleAmount" column="settleAmount"/>
+        <result property="settleTime" column="settleTime"/>
+        <result property="limitFree" column="limitFree"/>
+        <result property="payable" column="payable"/>
+        <result property="needPay" column="needPay"/>
+        <result property="payableAmount" column="payableAmount"/>
+        <result property="freePayReason" column="freePayReason"/>
+        <result property="payStatus" column="payStatus"/>
+        <result property="actualPayAmount" column="actualPayAmount"/>
+        <result property="prepaidAmount" column="prepaidAmount"/>
+        <result property="surplusAmount" column="surplusAmount"/>
+        <result property="unpaidAmount" column="unpaidAmount"/>
+        <result property="payTime" column="payTime"/>
+        <result property="payedUserId" column="payedUserId"/>
+        <result property="payWay" column="payWay"/>
+        <result property="payType" column="payType"/>
+        <result property="artificial" column="artificial"/>
+        <result property="editor" column="editor"/>
+        <result property="remark" column="remark"/>
+        <result property="terminateType" column="terminateType"/>
+        <result property="terminateTime" column="terminateTime"/>
+        <result property="terminateUserId" column="terminateUserId"/>
+        <result property="terminateUserName" column="terminateUserName"/>
+        <result property="invoiceStatus" column="invoiceStatus"/>
+        <result property="invoiceApplyNo" column="invoiceApplyNo"/>
+        <result property="tccStatus" column="tccStatus"/>
+        <result column="creatorUserId" property="creatorUserId"/>
+        <result column="creationTime" property="creationTime"/>
+        <result column="lastModifierUserId" property="lastModifierUserId"/>
+        <result column="lastModificationTime" property="lastModificationTime"/>
+        <result column="deleterUserId" property="deleterUserId"/>
+        <result column="deletionTime" property="deletionTime"/>
+        <result column="deleted" property="deleted"/>
+        <result property="version" column="version"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,
+        tenantId,
+        recordNo,
+        orderNo,
+        parkingId,
+        parkingName,
+        parkingLotId,
+        parkingLotNumber,
+        plateNumber,
+        plateColor,
+        carStyle,
+        startTime,
+        endTime,
+        parkingLength,
+        freeLength,
+        chargeLength,
+        chargeInfoId,
+        chargeMode,
+        chargeType,
+        status,
+        orderType,
+        orderSource,
+        parentOrderNo,
+        childOrder,
+        prepayable,
+        thirdBillNo,
+        thirdBillSourceType,
+        thirdBillSyncStatus,
+        appointed,
+        appointOrderNo,
+        settle,
+        settleAmount,
+        settleTime,
+        limitFree,
+        payable,
+        needPay,
+        payableAmount,
+        freePayReason,
+        payStatus,
+        actualPayAmount,
+        prepaidAmount,
+        surplusAmount,
+        unpaidAmount,
+        payTime,
+        payedUserId,
+        payWay,
+        payType,
+        artificial,
+        editor,
+        remark,
+        terminateType,
+        terminateTime,
+        terminateUserId,
+        terminateUserName,
+        invoiceStatus,
+        invoiceApplyNo,
+        tccStatus,
+        creatorUserId,
+        creationTime,
+        lastModifierUserId,
+        lastModificationTime,
+        deleterUserId,
+        deletionTime,
+        deleted,
+        version
+    </sql>
+
+    <select id="findByRecord" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from ord_parking_order
+        <where>
+            deleted = '0' and recordNo = #{recordNo} and tenantId = #{tenantId}
+        </where>
+    </select>
+
+    <select id="findByOrderNo" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM ord_parking_order
+        WHERE orderNo = #{orderNo} AND deleted = '0'
+    </select>
+
+    <select id="findByPlateOrderNo" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM ord_parking_order
+        WHERE plateNumber = #{plateNumber} AND orderNo = #{orderNo} AND deleted = '0'
+    </select>
+
+    <insert id="saveOrder" parameterType="com.zoeeasy.cloud.order.domain.ParkingOrderEntity"
+            useGeneratedKeys="true"
+            keyProperty="id">
+        INSERT INTO ord_parking_order
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="tenantId != null">
+                tenantId,
+            </if>
+            <if test="recordNo != null">
+                recordNo,
+            </if>
+            <if test="orderNo != null">
+                orderNo,
+            </if>
+            <if test="parkingId != null">
+                parkingId,
+            </if>
+            <if test="parkingName != null">
+                parkingName,
+            </if>
+            <if test="parkingLotId != null">
+                parkingLotId,
+            </if>
+            <if test="parkingLotNumber != null">
+                parkingLotNumber,
+            </if>
+            <if test="plateNumber != null">
+                plateNumber,
+            </if>
+            <if test="plateColor != null">
+                plateColor,
+            </if>
+            <if test="carStyle != null">
+                carStyle,
+            </if>
+            <if test="startTime != null">
+                startTime,
+            </if>
+            <if test="endTime != null">
+                endTime,
+            </if>
+            <if test="parkingLength != null">
+                parkingLength,
+            </if>
+            <if test="freeLength != null">
+                freeLength,
+            </if>
+            <if test="chargeLength != null">
+                chargeLength,
+            </if>
+            <if test="chargeInfoId != null">
+                chargeInfoId,
+            </if>
+            <if test="chargeMode != null">
+                chargeMode,
+            </if>
+            <if test="chargeType != null">
+                chargeType,
+            </if>
+            <if test="status != null">
+                status,
+            </if>
+            <if test="orderType != null">
+                orderType,
+            </if>
+            <if test="orderSource != null">
+                orderSource,
+            </if>
+            <if test="parentOrderNo != null">
+                parentOrderNo,
+            </if>
+            <if test="childOrder != null">
+                childOrder,
+            </if>
+            <if test="prepayable != null">
+                prepayable,
+            </if>
+            <if test="thirdBillNo != null">
+                thirdBillNo,
+            </if>
+            <if test="thirdBillSourceType != null">
+                thirdBillSourceType,
+            </if>
+            <if test="thirdBillSyncStatus != null">
+                thirdBillSyncStatus,
+            </if>
+            <if test="appointed != null">
+                appointed,
+            </if>
+            <if test="appointOrderNo != null">
+                appointOrderNo,
+            </if>
+            <if test="settle != null">
+                settle,
+            </if>
+            <if test="settleAmount != null">
+                settleAmount,
+            </if>
+            <if test="settleTime != null">
+                settleTime,
+            </if>
+            <if test="limitFree != null">
+                limitFree,
+            </if>
+            <if test="payable != null">
+                payable,
+            </if>
+            <if test="needPay != null">
+                needPay,
+            </if>
+            <if test="payableAmount != null">
+                payableAmount,
+            </if>
+            <if test="freePayReason != null">
+                freePayReason,
+            </if>
+            <if test="payStatus != null">
+                payStatus,
+            </if>
+            <if test="actualPayAmount != null">
+                actualPayAmount,
+            </if>
+            <if test="prepaidAmount != null">
+                prepaidAmount,
+            </if>
+            <if test="surplusAmount != null">
+                surplusAmount,
+            </if>
+            <if test="unpaidAmount != null">
+                unpaidAmount,
+            </if>
+            <if test="payTime != null">
+                payTime,
+            </if>
+            <if test="payedUserId != null">
+                payedUserId,
+            </if>
+            <if test="payWay != null">
+                payWay,
+            </if>
+            <if test="payType != null">
+                payType,
+            </if>
+            <if test="artificial != null">
+                artificial,
+            </if>
+            <if test="editor != null">
+                editor,
+            </if>
+            <if test="remark != null">
+                remark,
+            </if>
+            <if test="terminateType != null">
+                terminateType,
+            </if>
+            <if test="terminateTime != null">
+                terminateTime,
+            </if>
+            <if test="terminateUserId != null">
+                terminateUserId,
+            </if>
+            <if test="terminateUserName != null">
+                terminateUserName,
+            </if>
+            <if test="invoiceStatus != null">
+                invoiceStatus,
+            </if>
+            <if test="invoiceApplyNo != null">
+                invoiceApplyNo,
+            </if>
+            <if test="tccStatus != null">
+                tccStatus,
+            </if>
+            <if test="creatorUserId != null">
+                creatorUserId,
+            </if>
+            <if test="creationTime != null">
+                creationTime,
+            </if>
+        </trim>
+        <trim prefix="VALUES (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id},
+            </if>
+            <if test="tenantId != null">
+                #{tenantId},
+            </if>
+            <if test="recordNo != null">
+                #{recordNo},
+            </if>
+            <if test="orderNo != null">
+                #{orderNo},
+            </if>
+            <if test="parkingId != null">
+                #{parkingId},
+            </if>
+            <if test="parkingName != null">
+                #{parkingName},
+            </if>
+            <if test="parkingLotId != null">
+                #{parkingLotId},
+            </if>
+            <if test="parkingLotNumber != null">
+                #{parkingLotNumber},
+            </if>
+            <if test="plateNumber != null">
+                #{plateNumber},
+            </if>
+            <if test="plateColor != null">
+                #{plateColor},
+            </if>
+            <if test="carStyle != null">
+                #{carStyle},
+            </if>
+            <if test="startTime != null">
+                #{startTime},
+            </if>
+            <if test="endTime != null">
+                #{endTime},
+            </if>
+            <if test="parkingLength != null">
+                #{parkingLength},
+            </if>
+            <if test="freeLength != null">
+                #{freeLength},
+            </if>
+            <if test="chargeLength != null">
+                #{chargeLength},
+            </if>
+            <if test="chargeInfoId != null">
+                #{chargeInfoId},
+            </if>
+            <if test="chargeMode != null">
+                #{chargeMode},
+            </if>
+            <if test="chargeType != null">
+                #{chargeType},
+            </if>
+            <if test="status != null">
+                #{status},
+            </if>
+
+            <if test="orderType != null">
+                #{orderType},
+            </if>
+            <if test="orderSource != null">
+                #{orderSource},
+            </if>
+            <if test="parentOrderNo != null">
+                #{parentOrderNo},
+            </if>
+            <if test="childOrder != null">
+                #{childOrder},
+            </if>
+            <if test="prepayable != null">
+                #{prepayable},
+            </if>
+            <if test="thirdBillNo != null">
+                #{thirdBillNo},
+            </if>
+            <if test="thirdBillSourceType != null">
+                #{thirdBillSourceType},
+            </if>
+            <if test="thirdBillSyncStatus != null">
+                #{thirdBillSyncStatus},
+            </if>
+            <if test="appointed != null">
+                #{appointed},
+            </if>
+            <if test="appointOrderNo != null">
+                #{appointOrderNo},
+            </if>
+            <if test="settle != null">
+                #{settle},
+            </if>
+            <if test="settleAmount != null">
+                #{settleAmount},
+            </if>
+            <if test="settleTime != null">
+                #{settleTime},
+            </if>
+            <if test="limitFree != null">
+                #{limitFree},
+            </if>
+            <if test="payable != null">
+                #{payable},
+            </if>
+            <if test="needPay != null">
+                #{needPay},
+            </if>
+            <if test="payableAmount != null">
+                #{payableAmount},
+            </if>
+            <if test="freePayReason != null">
+                #{freePayReason},
+            </if>
+            <if test="payStatus != null">
+                #{payStatus},
+            </if>
+            <if test="actualPayAmount != null">
+                #{actualPayAmount},
+            </if>
+            <if test="prepaidAmount != null">
+                #{prepaidAmount},
+            </if>
+            <if test="surplusAmount != null">
+                #{surplusAmount},
+            </if>
+            <if test="unpaidAmount != null">
+                #{unpaidAmount},
+            </if>
+            <if test="payTime != null">
+                #{payTime},
+            </if>
+            <if test="payedUserId != null">
+                #{payedUserId},
+            </if>
+            <if test="payWay != null">
+                #{payWay},
+            </if>
+            <if test="payType != null">
+                #{payType},
+            </if>
+            <if test="artificial != null">
+                #{artificial},
+            </if>
+            <if test="editor != null">
+                #{editor},
+            </if>
+            <if test="remark != null">
+                #{remark},
+            </if>
+
+            <if test="terminateType != null">
+                #{terminateType},
+            </if>
+            <if test="terminateTime != null">
+                #{terminateTime},
+            </if>
+            <if test="terminateUserId != null">
+                #{terminateUserId},
+            </if>
+            <if test="terminateUserName != null">
+                #{terminateUserName},
+            </if>
+            <if test="invoiceStatus != null">
+                #{invoiceStatus},
+            </if>
+            <if test="invoiceApplyNo != null">
+                #{invoiceApplyNo},
+            </if>
+            <if test="tccStatus != null">
+                #{tccStatus},
+            </if>
+            <if test="creatorUserId != null">
+                #{creatorUserId},
+            </if>
+            <if test="creationTime != null">
+                #{creationTime},
+            </if>
+            <if test="lastModifierUserId != null">
+                #{lastModifierUserId},
+            </if>
+            <if test="lastModificationTime != null">
+                #{lastModificationTime},
+            </if>
+            <if test="deleterUserId != null">
+                #{deleterUserId},
+            </if>
+            <if test="deletionTime != null">
+                #{deletionTime},
+            </if>
+            <if test="deleted != null">
+                #{deleted},
+            </if>
+            <if test="version != null">
+                #{version},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateOrder" parameterType="com.zoeeasy.cloud.order.domain.ParkingOrderEntity">
+        UPDATE ord_parking_order
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="recordNo != null">
+                recordNo = #{recordNo},
+            </if>
+            <if test="parkingId != null">
+                parkingId = #{parkingId},
+            </if>
+            <if test="parkingName != null">
+                parkingName = #{parkingName},
+            </if>
+            <if test="parkingLotId != null">
+                parkingLotId = #{parkingLotId},
+            </if>
+            <if test="parkingLotNumber != null">
+                parkingLotNumber = #{parkingLotNumber},
+            </if>
+            <if test="plateNumber != null">
+                plateNumber = #{plateNumber},
+            </if>
+            <if test="plateColor != null">
+                plateColor = #{plateColor},
+            </if>
+            <if test="carStyle != null">
+                carStyle = #{carStyle},
+            </if>
+            <if test="startTime != null">
+                startTime = #{startTime},
+            </if>
+            <if test="endTime != null">
+                endTime = #{endTime},
+            </if>
+            <if test="parkingLength != null">
+                parkingLength = #{parkingLength},
+            </if>
+            <if test="freeLength != null">
+                freeLength = #{freeLength},
+            </if>
+            <if test="chargeLength != null">
+                chargeLength = #{chargeLength},
+            </if>
+            <if test="chargeInfoId != null">
+                chargeInfoId = #{chargeInfoId},
+            </if>
+            <if test="chargeMode != null">
+                chargeMode = #{chargeMode},
+            </if>
+            <if test="chargeType != null">
+                chargeType = #{chargeType},
+            </if>
+            <if test="status != null">
+                status = #{status},
+            </if>
+            <if test="orderType != null">
+                orderType = #{orderType},
+            </if>
+            <if test="orderSource != null">
+                orderSource = #{orderSource},
+            </if>
+            <if test="parentOrderNo != null">
+                parentOrderNo = #{parentOrderNo},
+            </if>
+            <if test="childOrder != null">
+                childOrder = #{childOrder},
+            </if>
+            <if test="prepayable != null">
+                prepayable = #{prepayable},
+            </if>
+            <if test="thirdBillNo != null">
+                thirdBillNo = #{thirdBillNo},
+            </if>
+            <if test="thirdBillSourceType != null">
+                thirdBillSourceType = #{thirdBillSourceType},
+            </if>
+            <if test="thirdBillSyncStatus != null">
+                thirdBillSyncStatus = #{thirdBillSyncStatus},
+            </if>
+            <if test="appointed != null">
+                appointed = #{appointed},
+            </if>
+            <if test="appointOrderNo != null">
+                appointOrderNo = #{appointOrderNo},
+            </if>
+            <if test="settle != null">
+                settle = #{settle},
+            </if>
+            <if test="settleAmount != null">
+                settleAmount = #{settleAmount},
+            </if>
+            <if test="settleTime != null">
+                settleTime = #{settleTime},
+            </if>
+            <if test="limitFree != null">
+                limitFree = #{limitFree},
+            </if>
+            <if test="payable != null">
+                payable = #{payable},
+            </if>
+            <if test="needPay != null">
+                needPay = #{needPay},
+            </if>
+            <if test="payableAmount != null">
+                payableAmount = #{payableAmount},
+            </if>
+            <if test="freePayReason != null">
+                freePayReason = #{freePayReason},
+            </if>
+            <if test="payStatus != null">
+                payStatus = #{payStatus},
+            </if>
+            <if test="actualPayAmount != null">
+                actualPayAmount = #{actualPayAmount},
+            </if>
+            <if test="prepaidAmount != null">
+                prepaidAmount = #{prepaidAmount},
+            </if>
+            <if test="surplusAmount != null">
+                surplusAmount = #{surplusAmount},
+            </if>
+            <if test="unpaidAmount != null">
+                unpaidAmount = #{unpaidAmount},
+            </if>
+            <if test="payTime != null">
+                payTime = #{payTime},
+            </if>
+            <if test="payedUserId != null">
+                payedUserId = #{payedUserId},
+            </if>
+            <if test="payWay != null">
+                payWay = #{payWay},
+            </if>
+            <if test="payType != null">
+                payType = #{payType},
+            </if>
+            <if test="artificial != null">
+                artificial = #{artificial},
+            </if>
+            <if test="editor != null">
+                editor = #{editor},
+            </if>
+            <if test="remark != null">
+                remark = #{remark},
+            </if>
+            <if test="terminateType != null">
+                terminateType = #{terminateType},
+            </if>
+            <if test="terminateTime != null">
+                terminateTime = #{terminateTime},
+            </if>
+            <if test="terminateUserId != null">
+                terminateUserId = #{terminateUserId},
+            </if>
+            <if test="terminateUserName != null">
+                terminateUserName = #{terminateUserName},
+            </if>
+            <if test="invoiceStatus != null">
+                invoiceStatus = #{invoiceStatus},
+            </if>
+            <if test="invoiceApplyNo != null">
+                invoiceApplyNo = #{invoiceApplyNo},
+            </if>
+            <if test="tccStatus != null">
+                tccStatus = #{tccStatus},
+            </if>
+            <if test="lastModifierUserId != null">
+                lastModifierUserId = #{lastModifierUserId},
+            </if>
+            <if test="lastModificationTime != null">
+                lastModificationTime = #{lastModificationTime},
+            </if>
+        </trim>
+        <where>
+            orderNo = #{orderNo}
+        </where>
+    </update>
+
+    <!-- 通过车牌号和 订单号修改  -->
+    <update id="updateOrderByPlateNumber" parameterType="com.zoeeasy.cloud.order.domain.ParkingOrderEntity">
+        UPDATE ord_parking_order
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="recordNo != null">
+                recordNo = #{recordNo},
+            </if>
+            <if test="parkingId != null">
+                parkingId = #{parkingId},
+            </if>
+            <if test="parkingName != null">
+                parkingName = #{parkingName},
+            </if>
+            <if test="parkingLotId != null">
+                parkingLotId = #{parkingLotId},
+            </if>
+            <if test="parkingLotNumber != null">
+                parkingLotNumber = #{parkingLotNumber},
+            </if>
+            <if test="plateNumber != null">
+                plateNumber = #{plateNumber},
+            </if>
+            <if test="plateColor != null">
+                plateColor = #{plateColor},
+            </if>
+            <if test="carStyle != null">
+                carStyle = #{carStyle},
+            </if>
+            <if test="startTime != null">
+                startTime = #{startTime},
+            </if>
+            <if test="endTime != null">
+                endTime = #{endTime},
+            </if>
+            <if test="parkingLength != null">
+                parkingLength = #{parkingLength},
+            </if>
+            <if test="freeLength != null">
+                freeLength = #{freeLength},
+            </if>
+            <if test="chargeLength != null">
+                chargeLength = #{chargeLength},
+            </if>
+            <if test="chargeInfoId != null">
+                chargeInfoId = #{chargeInfoId},
+            </if>
+            <if test="chargeMode != null">
+                chargeMode = #{chargeMode},
+            </if>
+            <if test="chargeType != null">
+                chargeType = #{chargeType},
+            </if>
+            <if test="status != null">
+                status = #{status},
+            </if>
+            <if test="orderType != null">
+                orderType = #{orderType},
+            </if>
+            <if test="orderSource != null">
+                orderSource = #{orderSource},
+            </if>
+            <if test="parentOrderNo != null">
+                parentOrderNo = #{parentOrderNo},
+            </if>
+            <if test="childOrder != null">
+                childOrder = #{childOrder},
+            </if>
+            <if test="prepayable != null">
+                prepayable = #{prepayable},
+            </if>
+            <if test="thirdBillNo != null">
+                thirdBillNo = #{thirdBillNo},
+            </if>
+            <if test="thirdBillSourceType != null">
+                thirdBillSourceType = #{thirdBillSourceType},
+            </if>
+            <if test="thirdBillSyncStatus != null">
+                thirdBillSyncStatus = #{thirdBillSyncStatus},
+            </if>
+            <if test="appointed != null">
+                appointed = #{appointed},
+            </if>
+            <if test="appointOrderNo != null">
+                appointOrderNo = #{appointOrderNo},
+            </if>
+            <if test="settle != null">
+                settle = #{settle},
+            </if>
+            <if test="settleAmount != null">
+                settleAmount = #{settleAmount},
+            </if>
+            <if test="settleTime != null">
+                settleTime = #{settleTime},
+            </if>
+            <if test="limitFree != null">
+                limitFree = #{limitFree},
+            </if>
+            <if test="payable != null">
+                payable = #{payable},
+            </if>
+            <if test="needPay != null">
+                needPay = #{needPay},
+            </if>
+            <if test="payableAmount != null">
+                payableAmount = #{payableAmount},
+            </if>
+            <if test="freePayReason != null">
+                freePayReason = #{freePayReason},
+            </if>
+            <if test="payStatus != null">
+                payStatus = #{payStatus},
+            </if>
+            <if test="actualPayAmount != null">
+                actualPayAmount = #{actualPayAmount},
+            </if>
+            <if test="prepaidAmount != null">
+                prepaidAmount = #{prepaidAmount},
+            </if>
+            <if test="surplusAmount != null">
+                surplusAmount = #{surplusAmount},
+            </if>
+            <if test="unpaidAmount != null">
+                unpaidAmount = #{unpaidAmount},
+            </if>
+            <if test="payTime != null">
+                payTime = #{payTime},
+            </if>
+            <if test="payedUserId != null">
+                payedUserId = #{payedUserId},
+            </if>
+            <if test="payWay != null">
+                payWay = #{payWay},
+            </if>
+            <if test="payType != null">
+                payType = #{payType},
+            </if>
+            <if test="artificial != null">
+                artificial = #{artificial},
+            </if>
+            <if test="editor != null">
+                editor = #{editor},
+            </if>
+            <if test="remark != null">
+                remark = #{remark},
+            </if>
+            <if test="terminateType != null">
+                terminateType = #{terminateType},
+            </if>
+            <if test="terminateTime != null">
+                terminateTime = #{terminateTime},
+            </if>
+            <if test="terminateUserId != null">
+                terminateUserId = #{terminateUserId},
+            </if>
+            <if test="terminateUserName != null">
+                terminateUserName = #{terminateUserName},
+            </if>
+            <if test="invoiceStatus != null">
+                invoiceStatus = #{invoiceStatus},
+            </if>
+            <if test="invoiceApplyNo != null">
+                invoiceApplyNo = #{invoiceApplyNo},
+            </if>
+            <if test="tccStatus != null">
+                tccStatus = #{tccStatus},
+            </if>
+            <if test="lastModifierUserId != null">
+                lastModifierUserId = #{lastModifierUserId},
+            </if>
+            <if test="lastModificationTime != null">
+                lastModificationTime = #{lastModificationTime},
+            </if>
+        </trim>
+        <where>
+            orderNo = #{orderNo} AND plateNumber = #{plateNumber} AND deleted = 0
+        </where>
+    </update>
+
+    <select id="selectOrderList" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM ord_parking_order
+        <where>
+            deleted = 0 ${ew.sqlSegment}
+        </where>
+    </select>
+
+    <select id="selectOrderListPage" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM ord_parking_order
+        <where>
+            deleted = 0 ${ew.sqlSegment}
+        </where>
+    </select>
+
+    <select id="selectOrderListCount" resultType="java.lang.Integer">
+        SELECT
+        COUNT(1)
+        FROM ord_parking_order
+        <where>
+            deleted = 0 ${ew.sqlSegment}
+        </where>
+    </select>
+
+    <select id="findOrder" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM ord_parking_order
+        <where>
+            deleted = 0 AND plateNumber = #{plateNumber} AND plateColor=#{plateColor} AND payStatus = 1 ORDER BY
+            creationTime DESC
+            limit 1
+        </where>
+    </select>
+
+    <select id="findOrderByNumberAndColor" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM ord_parking_order
+        <where>
+            deleted = 0 AND plateNumber = #{plateNumber} AND plateColor=#{plateColor} ORDER BY creationTime DESC
+            limit 1
+        </where>
+    </select>
+
+    <select id="findOrderByThirdBillNo" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM ord_parking_order
+        <where>
+            deleted = 0 AND thirdBillNo = #{thirdBillNo}
+        </where>
+    </select>
+</mapper>

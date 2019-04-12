@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zoeeasy.cloud.charge.mapper.ParkingAppointmentRuleMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.zoeeasy.cloud.charge.domain.ParkingAppointmentRuleEntity">
+        <id column="id" property="id"/>
+        <result property="tenantId" column="tenantId"/>
+        <result property="ruleId" column="ruleId"/>
+        <result property="parkingId" column="parkingId"/>
+        <result property="onlineTime" column="onlineTime"/>
+        <result property="offlineTime" column="offlineTime"/>
+        <result column="creatorUserId" property="creatorUserId"/>
+        <result column="creationTime" property="creationTime"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,
+        tenantId,
+        ruleId,
+        parkingId,
+        onlineTime,
+        offlineTime,
+        creatorUserId,
+        creationTime
+    </sql>
+
+
+    <select id="selectParkingAppointRule" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM chg_parking_appointment_rule
+        <where>
+            ${ew.sqlSegment}
+        </where>
+    </select>
+
+    <select id="selectParkingAppointRuleList" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM chg_parking_appointment_rule
+        <where>
+            ${ew.sqlSegment}
+        </where>
+    </select>
+
+    <select id="selectParkingAppointRuleCount" resultType="java.lang.Integer">
+        select count(1) from chg_parking_appointment_rule
+        <where>
+            ruleId=#{ruleId}
+        </where>
+    </select>
+
+    <delete id="deleteParkingAppointRuleNonTenant">
+        delete from chg_parking_appointment_rule
+        <where>
+            parkingId=#{parkingId}
+        </where>
+    </delete>
+
+</mapper>

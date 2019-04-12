@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet id="pms_parking_current_info_create_table" author="sc">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="pms_parking_current_info"/>
+            </not>
+        </preConditions>
+        <createTable tableName="pms_parking_current_info" remarks="停车场当前状态表">
+            <column autoIncrement="true" name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_parking_current_info"/>
+            </column>
+            <column name="tenantId" type="bigint(20)" remarks="运营商ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="parkingId" type="bigint(20)" remarks="停车场ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="operationState" type="tinyint(3)" remarks="运营状态，0-正常营业，1-暂停营业">
+                <constraints nullable="false"/>
+            </column>
+            <column name="lotAvailable" type="smallint(6)" remarks="可用车位数" defaultValue="0"/>
+            <column name="lotAppointmentAvailable" type="smallint(6)" remarks="可预订剩余车位数" defaultValue="0"/>
+            <column name="lotBagAvailable" type="smallint(6)" remarks="剩余可包期车的数量" defaultValue="0"/>
+            <column name="creatorUserId" type="bigint" remarks="创建者"/>
+            <column name="creationTime" type="DATETIME" remarks="创建时间"/>
+            <column name="lastModifierUserId" type="bigint" remarks="更新者"/>
+            <column name="lastModificationTime" type="DATETIME" remarks="更新时间"/>
+        </createTable>
+        <createIndex tableName="pms_parking_current_info" indexName="idx_tenant_parking">
+            <column name="tenantId"/>
+            <column name="parkingId"/>
+        </createIndex>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet id="pms_parking_charge_info_create_table" author="sc">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="pms_parking_charge_info"/>
+            </not>
+        </preConditions>
+        <createTable tableName="pms_parking_charge_info" remarks="停车场收费信息表">
+            <column autoIncrement="true" name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_parking_charge_info"/>
+            </column>
+            <column name="tenantId" type="bigint(20)" remarks="租户ID"/>
+            <column name="parkingId" type="bigint(20)" remarks="停车场ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="freeTime" type="smallint(11)" remarks="免费停车时长：单位分钟" defaultValue="20"/>
+            <column name="chargeRule" type="varchar(2000)" remarks="收费规则的简短描述" defaultValue=""/>
+            <column name="chargeDescription" type="text" remarks="收费描述信息"/>
+            <column name="relatedRule" type="tinyint(1)" remarks="是否关联收费规则，  0-否，1-是" defaultValue="0"/>
+            <column name="active" type="tinyint(1)" remarks="是否当前有效的收费信息">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creatorUserId" type="bigint" remarks="创建者"/>
+            <column name="creationTime" type="DATETIME" remarks="创建时间"/>
+            <column name="lastModifierUserId" type="bigint" remarks="更新者"/>
+            <column name="lastModificationTime" type="DATETIME" remarks="更新时间"/>
+            <column name="deleterUserId" type="bigint" remarks="删除者"/>
+            <column name="deletionTime" type="DATETIME" remarks="删除时间"/>
+            <column name="deleted" type="tinyint(1)" remarks="删除标记" defaultValue="0"/>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

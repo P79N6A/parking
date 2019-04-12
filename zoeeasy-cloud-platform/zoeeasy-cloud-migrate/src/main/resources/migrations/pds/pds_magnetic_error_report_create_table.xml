@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet id="pds_magnetic_error_report_create_table" author="lhj">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="pds_magnetic_error_report"/>
+            </not>
+        </preConditions>
+        <createTable tableName="pds_magnetic_error_report" remarks="地磁误报处理记录表">
+            <column autoIncrement="true" name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pds_magnetic_error_report"/>
+            </column>
+            <column name="tenantId" type="bigint(20) unsigned" remarks="租户ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="detectorId" type="bigint(20)" remarks="'检测器ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="parkingId" type="bigint(20)" remarks="停车场ID"/>
+            <column name="parkingLotId" type="bigint(20)" remarks="泊位ID"/>
+            <column name="provider" type="smallint(6)" remarks="地磁管理器类型(厂商) 数据字典"/>
+            <column name="serialNumber" type="VARCHAR(50)" remarks="(厂商)设备序列号"/>
+            <column name="terminalId" type="varchar(64)" remarks="手持终端编号"/>
+            <column name="reportTime" type="datetime" remarks="地磁报告时间"/>
+            <column name="reportType" type="tinyint(4)" remarks="地磁报告类型(1-车辆到达, 2-车辆离开)"/>
+            <column name="inspectUserId" type="bigint(20)" remarks="收费员或巡检员ID"/>
+            <column name="inspectUserName" type="varchar(64)" remarks="收费员或巡检员姓名"/>
+            <column name="processTime" type="datetime" remarks="误报处理时间"/>
+            <column name="processReason" type="smallint(6)" defaultValue="0"
+                    remarks="误报原因，0-地磁误报进车（进车时），1-地磁误报出车（出车时），2-连续上报"/>
+            <column name="creatorUserId" type="bigint" remarks="创建者"/>
+            <column name="creationTime" type="DATETIME" remarks="创建时间"/>
+        </createTable>
+        <createIndex tableName="pds_magnetic_error_report" indexName="idx_magnetic_tenantId">
+            <column name="tenantId"/>
+            <column name="parkingId"/>
+            <column name="detectorId"/>
+        </createIndex>
+        <createIndex tableName="pds_magnetic_error_report" indexName="idx_magnetic_provider">
+            <column name="provider"/>
+            <column name="serialNumber"/>
+        </createIndex>
+        <createIndex tableName="pds_magnetic_error_report" indexName="idx_magnetic_userId">
+            <column name="tenantId"/>
+            <column name="inspectUserId"/>
+        </createIndex>
+    </changeSet>
+</databaseChangeLog>

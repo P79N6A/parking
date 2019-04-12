@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet id="pms_packet_approve_create_table" author="zm">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="pms_packet_approve"/>
+            </not>
+        </preConditions>
+        <createTable tableName="pms_packet_approve" remarks="包期车辆审核表">
+            <column autoIncrement="true" name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_packet_vehicle"/>
+            </column>
+            <column name="tenantId" type="bigint(20) unsigned" remarks="租户ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="packetId" type="bigint(20) unsigned" remarks="包期车ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="approveTime" type="DATETIME" remarks="申请时间"/>
+            <column name="approveStatus" type="tinyint(4)" remarks="审核状态：0 待审核, 1 审核驳回, 2 审核通过"/>
+            <column name="rejectReason" type="tinyint(4)" remarks="驳回原因：0 其他 1 未到期，暂不能取消包期"/>
+            <column name="reason" type="varchar(255)" remarks="其他原因"/>
+            <column name="creatorUserId" type="bigint" remarks="创建者"/>
+            <column name="creationTime" type="DATETIME" remarks="创建时间"/>
+            <column name="lastModifierUserId" type="bigint" remarks="更新者"/>
+            <column name="lastModificationTime" type="DATETIME" remarks="更新时间"/>
+            <column name="deleterUserId" type="bigint" remarks="删除者"/>
+            <column name="deletionTime" type="DATETIME" remarks="删除时间"/>
+            <column name="deleted" type="tinyint(1)" remarks="删除标记" defaultValue="0"/>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

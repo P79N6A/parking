@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zoeeasy.cloud.pms.mapper.DockInfoMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.zoeeasy.cloud.pms.domain.DockInfoEntity">
+        <id column="id" property="id"/>
+        <result column="tenantId" property="tenantId"/>
+        <result column="platformCode" property="platformCode"/>
+        <result column="platformName" property="platformName"/>
+        <result column="platformType" property="platformType"/>
+        <result column="terminateCode" property="terminateCode"/>
+        <result column="terminateName" property="terminateName"/>
+        <result column="terminateVersion" property="terminateVersion"/>
+        <result column="userName" property="userName"/>
+        <result column="password" property="password"/>
+        <result column="accesskey" property="accesskey"/>
+        <result column="accessSecrete" property="accessSecrete"/>
+        <result column="token" property="token"/>
+        <result column="startTime" property="startTime"/>
+        <result column="endTime" property="endTime"/>
+        <result column="lastHeartBeatTime" property="lastHeartBeatTime"/>
+        <result column="netZoneType" property="netZoneType"/>
+        <result column="platformIp" property="platformIp"/>
+        <result column="platformPort" property="platformPort"/>
+        <result column="protocolVersion" property="protocolVersion"/>
+        <result column="placeOrderUrl" property="placeOrderUrl"/>
+        <result column="notifyOrderUrl" property="notifyOrderUrl"/>
+        <result column="openStrobeUrl" property="openStrobeUrl"/>
+        <result column="heartBeatInterval" property="heartBeatInterval"/>
+        <result column="creatorUserId" property="creatorUserId"/>
+        <result column="creationTime" property="creationTime"/>
+        <result column="lastModifierUserId" property="lastModifierUserId"/>
+        <result column="lastModificationTime" property="lastModificationTime"/>
+        <result column="deleterUserId" property="deleterUserId"/>
+        <result column="deletionTime" property="deletionTime"/>
+        <result column="deleted" property="deleted"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,
+        tenantId,
+        platformCode,
+        platformName,
+        platformType,
+        terminateCode,
+        terminateName,
+        terminateVersion,
+        userName,
+        password,
+        accesskey,
+        accessSecrete,
+        token,
+        startTime,
+        endTime,
+        lastHeartBeatTime,
+        platformIp,
+        platformPort,
+        protocolVersion,
+        placeOrderUrl,
+        notifyOrderUrl,
+        openStrobeUrl,
+        heartBeatInterval,
+        creatorUserId,
+        creationTime,
+        lastModifierUserId,
+        lastModificationTime,
+        deleterUserId,
+        deletionTime,
+        deleted
+    </sql>
+    <insert id="save" useGeneratedKeys="true" keyProperty="id"
+            parameterType="com.zoeeasy.cloud.pms.domain.DockInfoEntity">
+        insert into pms_dock_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="tenantId != null">
+                tenantId,
+            </if>
+            <if test="platformCode != null">
+                platformCode,
+            </if>
+            <if test="platformName != null">
+                platformName,
+            </if>
+            <if test="platformType != null">
+                platformType,
+            </if>
+            <if test="terminateCode != null">
+                terminateCode,
+            </if>
+            <if test="terminateName != null">
+                terminateName,
+            </if>
+            <if test="terminateVersion != null">
+                terminateVersion,
+            </if>
+            <if test="userName != null">
+                userName,
+            </if>
+            <if test="password != null">
+                password,
+            </if>
+            <if test="accesskey != null">
+                accesskey,
+            </if>
+            <if test="accessSecrete != null">
+                accessSecrete,
+            </if>
+            <if test="token != null">
+                token,
+            </if>
+            <if test="startTime != null">
+                startTime,
+            </if>
+            <if test="endTime != null">
+                endTime,
+            </if>
+            <if test="lastHeartBeatTime != null">
+                lastHeartBeatTime,
+            </if>
+            <if test="netZoneType != null">
+                netZoneType,
+            </if>
+            <if test="platformIp != null">
+                platformIp,
+            </if>
+            <if test="platformPort != null">
+                platformPort,
+            </if>
+            <if test="protocolVersion != null">
+                protocolVersion,
+            </if>
+            <if test="placeOrderUrl != null">
+                placeOrderUrl,
+            </if>
+            <if test="notifyOrderUrl != null">
+                notifyOrderUrl,
+            </if>
+            <if test="openStrobeUrl != null">
+                openStrobeUrl,
+            </if>
+            <if test="heartBeatInterval != null">
+                heartBeatInterval,
+            </if>
+            <if test="creatorUserId != null">
+                creatorUserId,
+            </if>
+            <if test="creationTime != null">
+                creationTime,
+            </if>
+        </trim>
+        <trim prefix="VALUES(" suffix=")" suffixOverrides=",">
+            <if test="tenantId != null">
+                #{tenantId},
+            </if>
+            <if test="platformCode != null">
+                #{platformCode},
+            </if>
+            <if test="platformName != null">
+                #{platformName},
+            </if>
+            <if test="platformType != null">
+                #{platformType},
+            </if>
+            <if test="terminateCode != null">
+                #{terminateCode},
+            </if>
+            <if test="terminateName != null">
+                #{terminateName} ,
+            </if>
+            <if test="terminateVersion != null">
+                #{terminateVersion} ,
+            </if>
+            <if test="userName != null">
+                #{userName} ,
+            </if>
+            <if test="password != null">
+                #{password},
+            </if>
+            <if test="accesskey != null">
+                #{accesskey},
+            </if>
+            <if test="accessSecrete != null">
+                #{accessSecrete},
+            </if>
+            <if test="token != null">
+                #{token},
+            </if>
+            <if test="startTime != null">
+                #{startTime},
+            </if>
+            <if test="endTime != null">
+                #{endTime},
+            </if>
+            <if test="lastHeartBeatTime != null">
+                #{lastHeartBeatTime},
+            </if>
+            <if test="netZoneType != null">
+                #{netZoneType},
+            </if>
+            <if test="platformIp != null">
+                #{platformIp},
+            </if>
+            <if test="platformPort != null">
+                #{platformPort},
+            </if>
+            <if test="protocolVersion != null">
+                #{protocolVersion},
+            </if>
+            <if test="placeOrderUrl != null">
+                #{placeOrderUrl},
+            </if>
+            <if test="notifyOrderUrl != null">
+                #{notifyOrderUrl},
+            </if>
+            <if test="openStrobeUrl != null">
+                #{openStrobeUrl},
+            </if>
+            <if test="heartBeatInterval != null">
+                #{heartBeatInterval},
+            </if>
+            <if test="creatorUserId != null">
+                #{creatorUserId} ,
+            </if>
+            <if test="creationTime != null">
+                #{creationTime},
+            </if>
+        </trim>
+
+    </insert>
+    <select id="findById" resultType="com.zoeeasy.cloud.pms.domain.DockInfoEntity">
+        select
+        <include refid="Base_Column_List"/>
+        from pms_dock_info
+        <where>
+            id = #{id} and deleted = '0'
+        </where>
+    </select>
+    <select id="findByCloudCode" resultType="com.zoeeasy.cloud.pms.domain.DockInfoEntity">
+        select
+        <include refid="Base_Column_List"/>
+        from pms_dock_info
+        <where>
+            platformCode = #{cloudCode} and tenantId = #{tenantId} and deleted = '0'
+        </where>
+    </select>
+    <select id="findOne" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from pms_dock_info
+        <where>
+            deleted = '0' ${ew.sqlSegment}
+        </where>
+    </select>
+
+
+</mapper>

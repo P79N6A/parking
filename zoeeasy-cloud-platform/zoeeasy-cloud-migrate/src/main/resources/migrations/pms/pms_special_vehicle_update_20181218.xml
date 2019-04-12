@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet id="pms_special_vehicle_update_20181218.xml" author="zm">
+        <renameColumn columnDataType="varchar(64)" newColumnName="parkingLotNumber" oldColumnName="parkingLotNumber"
+                      remarks="泊位编号" tableName="pms_special_vehicle"/>
+    </changeSet>
+</databaseChangeLog>

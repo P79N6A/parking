@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet id="pds_magnetic_detector_update_column_20181218" author="lhj">
+        <renameColumn columnDataType="smallint(6)" newColumnName="electricity" oldColumnName="electricity"
+                      remarks="电量" tableName="pds_magnetic_detector"/>
+        <renameColumn columnDataType="tinyint(4)" newColumnName="status" oldColumnName="status"
+                      remarks="地磁检测器当前状态，-1：未知，0：正常，4：失联" tableName="pds_magnetic_detector"/>
+        <renameColumn columnDataType="int(11)" newColumnName="port" oldColumnName="port"
+                      remarks="端口号" tableName="pds_magnetic_detector"/>
+        <addDefaultValue tableName="pds_magnetic_detector" columnName="installPosition" defaultValue=""/>
+    </changeSet>
+</databaseChangeLog>

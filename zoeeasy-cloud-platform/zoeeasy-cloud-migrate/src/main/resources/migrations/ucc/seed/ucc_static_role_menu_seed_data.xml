@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet author="walkman" id="ucc_static_role_menu_seed_data">
+        <comment>系统静态角色-菜单初始化数据</comment>
+        <!--  宿主管理员角色菜单 -->
+        <insert tableName="ucc_role_menu">
+            <column name="roleId" value="1"/>
+            <column name="menuId" value="1"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="ucc_role_menu">
+            <column name="roleId" value="1"/>
+            <column name="menuId" value="2"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="ucc_role_menu">
+            <column name="roleId" value="1"/>
+            <column name="menuId" value="3"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="ucc_role_menu">
+            <column name="roleId" value="1"/>
+            <column name="menuId" value="4"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="ucc_role_menu">
+            <column name="roleId" value="1"/>
+            <column name="menuId" value="5"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="ucc_role_menu">
+            <column name="roleId" value="1"/>
+            <column name="menuId" value="6"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="ucc_role_menu">
+            <column name="roleId" value="1"/>
+            <column name="menuId" value="10"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="ucc_role_menu">
+            <column name="roleId" value="1"/>
+            <column name="menuId" value="11"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="ucc_role_menu">
+            <column name="roleId" value="1"/>
+            <column name="menuId" value="12"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="ucc_role_menu">
+            <column name="roleId" value="1"/>
+            <column name="menuId" value="13"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="ucc_role_menu">
+            <column name="roleId" value="1"/>
+            <column name="menuId" value="14"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="ucc_role_menu">
+            <column name="roleId" value="1"/>
+            <column name="menuId" value="15"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="ucc_role_menu">
+            <column name="roleId" value="1"/>
+            <column name="menuId" value="16"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="ucc_role_menu">
+            <column name="roleId" value="1"/>
+            <column name="menuId" value="17"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="ucc_role_menu">
+            <column name="roleId" value="1"/>
+            <column name="menuId" value="18"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="ucc_role_menu">
+            <column name="roleId" value="1"/>
+            <column name="menuId" value="19"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="ucc_role_menu">
+            <column name="roleId" value="1"/>
+            <column name="menuId" value="20"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

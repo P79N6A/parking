@@ -1,0 +1,21 @@
+﻿<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd"
+       default-autowire="byName">
+
+    <bean id="logAspectBean" class="com.scapegoat.infrastructure.logger.aspect.LogAspect">
+        <property name="from" value="client"/>
+        <property name="local" value="ucc-server"/>
+    </bean>
+
+    <aop:config>
+        <aop:pointcut id="pc-service"
+                      expression="execution(* com.zoeeasy.cloud.ucc.service.impl..*.*(..))"/>
+        <aop:advisor advice-ref="fluentValidateInterceptor" pointcut-ref="pc-service" order="0"/>
+        <aop:aspect id="logAspect" ref="logAspectBean" order="0">
+            <aop:around pointcut-ref="pc-service" method="log"/>
+        </aop:aspect>
+    </aop:config>
+
+</beans>

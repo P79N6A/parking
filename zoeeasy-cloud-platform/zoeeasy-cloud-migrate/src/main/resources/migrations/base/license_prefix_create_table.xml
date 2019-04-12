@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet id="license_prefix_create_table" author="walkman">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="license_prefix"/>
+            </not>
+        </preConditions>
+        <createTable tableName="license_prefix" remarks=" 车牌归属地表">
+            <column autoIncrement="true" name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_license_prefix"/>
+            </column>
+            <column name="parentId" type="bigint(20)" remarks="父节点"/>
+            <column name="name" type="varchar(255)" remarks="名称" >
+                <constraints nullable="false"/>
+            </column>
+            <column name="type" type="int(11)" remarks="类型  1 前缀 2 首字母"/>
+            <column name="creatorUserId" type="bigint" remarks="创建者"/>
+            <column name="creationTime" type="DATETIME" remarks="创建时间"/>
+            <column name="lastModifierUserId" type="bigint" remarks="更新者"/>
+            <column name="lastModificationTime" type="DATETIME" remarks="更新时间"/>
+            <column name="deleterUserId" type="bigint" remarks="删除者"/>
+            <column name="deletionTime" type="DATETIME" remarks="删除时间"/>
+            <column name="deleted" type="tinyint(1)" remarks="删除标记" defaultValue="0"/>
+        </createTable>
+        <createIndex tableName="license_prefix" indexName="idx_name">
+            <column name="name"/>
+        </createIndex>
+        <createIndex tableName="license_prefix" indexName="idx_parent">
+            <column name="parentId"/>
+        </createIndex>
+    </changeSet>
+</databaseChangeLog>

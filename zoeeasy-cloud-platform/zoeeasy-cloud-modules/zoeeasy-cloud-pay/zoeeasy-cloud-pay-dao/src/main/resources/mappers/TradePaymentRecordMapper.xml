@@ -1,0 +1,567 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zoeeasy.cloud.pay.mapper.TradePaymentRecordMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.zoeeasy.cloud.pay.domain.TradePaymentRecordEntity">
+        <id column="id" property="id"/>
+        <result column="tenantId" property="tenantId"/>
+        <result column="customerUserId" property="customerUserId"/>
+        <result column="orderNo" property="orderNo"/>
+        <result column="transactionNo" property="transactionNo"/>
+        <result column="orderFrom" property="orderFrom"/>
+        <result column="bizOrderType" property="bizOrderType"/>
+        <result column="bizOrderNo" property="bizOrderNo"/>
+        <result column="orderAmount" property="orderAmount"/>
+        <result column="productName" property="productName"/>
+        <result column="payerUserId" property="payerUserId"/>
+        <result column="payerUsername" property="payerUsername"/>
+        <result column="payerPayAmount" property="payerPayAmount"/>
+        <result column="payerFee" property="payerFee"/>
+        <result column="payerAccountType" property="payerAccountType"/>
+        <result column="receiverUserId" property="receiverUserId"/>
+        <result column="receiverUsername" property="receiverUsername"/>
+        <result column="receiverPayAmount" property="receiverPayAmount"/>
+        <result column="receiverFee" property="receiverFee"/>
+        <result column="receiverAccountType" property="receiverAccountType"/>
+        <result column="orderDate" property="orderDate"/>
+        <result column="orderTime" property="orderTime"/>
+        <result column="orderIp" property="orderIp"/>
+        <result column="orderRefererUrl" property="orderRefererUrl"/>
+        <result column="returnUrl" property="returnUrl"/>
+        <result column="notifyUrl" property="notifyUrl"/>
+        <result column="qrCodeUrl" property="qrCodeUrl"/>
+        <result column="platformIncome" property="platformIncome"/>
+        <result column="platformCost" property="platformCost"/>
+        <result column="platformProfit" property="platformProfit"/>
+        <result column="feeRate" property="feeRate"/>
+        <result column="payWay" property="payWay"/>
+        <result column="payType" property="payType"/>
+        <result column="fundIntoType" property="fundIntoType"/>
+        <result column="succeedPayTime" property="succeedPayTime"/>
+        <result column="completeTime" property="completeTime"/>
+        <result column="refunded" property="refunded"/>
+        <result column="refundTimes" property="refundTimes"/>
+        <result column="successRefundAmount" property="successRefundAmount"/>
+        <result column="succeedRefundTime" property="succeedRefundTime"/>
+        <result column="status" property="status"/>
+        <result column="remark" property="remark"/>
+        <result column="creationTime" property="creationTime"/>
+        <result column="lastModifierUserId" property="lastModifierUserId"/>
+        <result column="lastModificationTime" property="lastModificationTime"/>
+        <result column="deleterUserId" property="deleterUserId"/>
+        <result column="deletionTime" property="deletionTime"/>
+        <result column="deleted" property="deleted"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,
+        tenantId,
+        customerUserId,
+        orderNo,
+        transactionNo,
+        orderFrom,
+        bizOrderType,
+        bizOrderNo,
+        orderAmount,
+        productName,
+        payerUserId,
+        payerUsername,
+        payerPayAmount,
+        payerFee,
+        payerAccountType,
+        receiverUserId,
+        receiverUsername,
+        receiverPayAmount,
+        receiverFee,
+        receiverAccountType,
+        orderDate,
+        orderTime,
+        orderIp,
+        orderRefererUrl,
+        returnUrl,
+        notifyUrl,
+        qrCodeUrl,
+        platformIncome,
+        platformCost,
+        platformProfit,
+        feeRate,
+        succeedPayTime,
+        completeTime,
+        payWay,
+        payType,
+        fundIntoType,
+        refunded,
+        refundTimes,
+        successRefundAmount,
+        succeedRefundTime,
+        status,
+        remark,
+        creatorUserId, creationTime, lastModifierUserId, lastModificationTime, deleterUserId, deletionTime, deleted
+    </sql>
+
+    <insert id="add" parameterType="com.zoeeasy.cloud.pay.domain.TradePaymentRecordEntity">
+        INSERT INTO pay_trade_payment_record
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="tenantId != null">
+                tenantId,
+            </if>
+            <if test="customerUserId != null">
+                customerUserId,
+            </if>
+            <if test="orderNo != null">
+                orderNo,
+            </if>
+            <if test="transactionNo != null">
+                transactionNo,
+            </if>
+            <if test="orderFrom != null">
+                orderFrom,
+            </if>
+            <if test="bizOrderType != null">
+                bizOrderType,
+            </if>
+            <if test="bizOrderNo != null">
+                bizOrderNo,
+            </if>
+            <if test="orderAmount != null">
+                orderAmount,
+            </if>
+            <if test="productName != null">
+                productName,
+            </if>
+            <if test="payerUserId != null">
+                payerUserId,
+            </if>
+            <if test="payerUsername != null">
+                payerUsername,
+            </if>
+            <if test="payerPayAmount != null">
+                payerPayAmount,
+            </if>
+            <if test="payerFee != null">
+                payerFee,
+            </if>
+            <if test="payerAccountType != null">
+                payerAccountType,
+            </if>
+            <if test="receiverUserId != null">
+                receiverUserId,
+            </if>
+            <if test="receiverUsername != null">
+                receiverUsername,
+            </if>
+            <if test="receiverPayAmount != null">
+                receiverPayAmount,
+            </if>
+            <if test="receiverFee != null">
+                receiverFee,
+            </if>
+            <if test="receiverAccountType != null">
+                receiverAccountType,
+            </if>
+            <if test="orderDate != null">
+                orderDate,
+            </if>
+            <if test="orderTime != null">
+                orderTime,
+            </if>
+            <if test="orderIp != null">
+                orderIp,
+            </if>
+            <if test="orderRefererUrl != null">
+                orderRefererUrl,
+            </if>
+            <if test="returnUrl != null">
+                returnUrl,
+            </if>
+            <if test="notifyUrl != null">
+                notifyUrl,
+            </if>
+            <if test="qrCodeUrl != null">
+                qrCodeUrl,
+            </if>
+            <if test="platformIncome != null">
+                platformIncome,
+            </if>
+            <if test="platformCost != null">
+                platformCost,
+            </if>
+            <if test="platformProfit != null">
+                platformProfit,
+            </if>
+            <if test="feeRate != null">
+                feeRate,
+            </if>
+            <if test="succeedPayTime != null">
+                succeedPayTime,
+            </if>
+            <if test="completeTime != null">
+                completeTime,
+            </if>
+            <if test="payWay != null">
+                payWay,
+            </if>
+            <if test="payType != null">
+                payType,
+            </if>
+            <if test="fundIntoType != null">
+                fundIntoType,
+            </if>
+            <if test="refunded != null">
+                refunded,
+            </if>
+            <if test="refundTimes != null">
+                refundTimes,
+            </if>
+            <if test="successRefundAmount != null">
+                successRefundAmount,
+            </if>
+            <if test="succeedRefundTime != null">
+                succeedRefundTime,
+            </if>
+            <if test="status != null">
+                status,
+            </if>
+            <if test="remark != null">
+                remark,
+            </if>
+            <if test="creatorUserId != null">
+                creatorUserId,
+            </if>
+            <if test="creationTime != null">
+                creationTime,
+            </if>
+            <if test="lastModifierUserId != null">
+                lastModifierUserId,
+            </if>
+            <if test="lastModificationTime != null">
+                lastModificationTime,
+            </if>
+            <if test="deleterUserId != null">
+                deleterUserId,
+            </if>
+            <if test="deletionTime != null">
+                deletionTime,
+            </if>
+            <if test="deleted != null">
+                deleted,
+            </if>
+            <if test="version != null">
+                version,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="tenantId != null">
+                #{tenantId},
+            </if>
+            <if test="customerUserId != null">
+                #{customerUserId},
+            </if>
+            <if test="orderNo != null">
+                #{orderNo},
+            </if>
+            <if test="transactionNo != null">
+                #{transactionNo},
+            </if>
+            <if test="orderFrom != null">
+                #{orderFrom},
+            </if>
+            <if test="bizOrderType != null">
+                #{bizOrderType},
+            </if>
+            <if test="bizOrderNo != null">
+                #{bizOrderNo},
+            </if>
+            <if test="orderAmount != null">
+                #{orderAmount},
+            </if>
+            <if test="productName != null">
+                #{productName},
+            </if>
+            <if test="payerUserId != null">
+                #{payerUserId},
+            </if>
+            <if test="payerUsername != null">
+                #{payerUsername},
+            </if>
+            <if test="payerPayAmount != null">
+                #{payerPayAmount},
+            </if>
+            <if test="payerFee != null">
+                #{payerFee},
+            </if>
+            <if test="payerAccountType != null">
+                #{payerAccountType},
+            </if>
+            <if test="receiverUserId != null">
+                #{receiverUserId},
+            </if>
+            <if test="receiverUsername != null">
+                #{receiverUsername},
+            </if>
+            <if test="receiverPayAmount != null">
+                #{receiverPayAmount},
+            </if>
+            <if test="receiverFee != null">
+                #{receiverFee},
+            </if>
+            <if test="receiverAccountType != null">
+                #{receiverAccountType},
+            </if>
+            <if test="orderDate != null">
+                #{orderDate},
+            </if>
+            <if test="orderTime != null">
+                #{orderTime},
+            </if>
+            <if test="orderIp != null">
+                #{orderIp},
+            </if>
+            <if test="orderRefererUrl != null">
+                #{orderRefererUrl},
+            </if>
+            <if test="returnUrl != null">
+                #{returnUrl},
+            </if>
+            <if test="notifyUrl != null">
+                #{notifyUrl},
+            </if>
+            <if test="qrCodeUrl != null">
+                #{qrCodeUrl},
+            </if>
+            <if test="platformIncome != null">
+                #{platformIncome},
+            </if>
+            <if test="platformCost != null">
+                #{platformCost},
+            </if>
+            <if test="platformProfit != null">
+                #{platformProfit},
+            </if>
+            <if test="feeRate != null">
+                #{feeRate},
+            </if>
+            <if test="succeedPayTime != null">
+                #{succeedPayTime},
+            </if>
+            <if test="completeTime != null">
+                #{completeTime},
+            </if>
+            <if test="payWay != null">
+                #{payWay},
+            </if>
+            <if test="payType != null">
+                #{payType},
+            </if>
+            <if test="fundIntoType != null">
+                #{fundIntoType},
+            </if>
+            <if test="refunded != null">
+                #{refunded},
+            </if>
+            <if test="refundTimes != null">
+                #{refundTimes},
+            </if>
+            <if test="successRefundAmount != null">
+                #{successRefundAmount},
+            </if>
+            <if test="succeedRefundTime != null">
+                #{succeedRefundTime},
+            </if>
+            <if test="status != null">
+                #{status},
+            </if>
+            <if test="remark != null">
+                #{remark},
+            </if>
+            <if test="creatorUserId != null">
+                #{creatorUserId},
+            </if>
+            <if test="creationTime != null">
+                #{creationTime},
+            </if>
+            <if test="lastModifierUserId != null">
+                #{lastModifierUserId},
+            </if>
+            <if test="lastModificationTime != null">
+                #{lastModificationTime},
+            </if>
+            <if test="deleterUserId != null">
+                #{deleterUserId},
+            </if>
+            <if test="deletionTime != null">
+                #{deletionTime},
+            </if>
+            <if test="deleted != null">
+                #{deleted},
+            </if>
+            <if test="version != null">
+                #{version},
+            </if>
+        </trim>
+    </insert>
+
+
+    <update id="updateByCustomerOrderNo" parameterType="com.zoeeasy.cloud.pay.domain.TradePaymentRecordEntity">
+        UPDATE pay_trade_payment_record
+        <set>
+            <if test="orderNo != null">
+                orderNo = #{orderNo},
+            </if>
+            <if test="transactionNo != null">
+                transactionNo = #{transactionNo},
+            </if>
+            <if test="orderFrom != null">
+                orderFrom = #{orderFrom},
+            </if>
+            <if test="bizOrderType != null">
+                bizOrderType = #{bizOrderType},
+            </if>
+            <if test="bizOrderNo != null">
+                bizOrderNo = #{bizOrderNo},
+            </if>
+            <if test="orderAmount != null">
+                orderAmount = #{orderAmount},
+            </if>
+            <if test="productName != null">
+                productName = #{productName},
+            </if>
+            <if test="payerUserId != null">
+                payerUserId = #{payerUserId},
+            </if>
+            <if test="payerUsername != null">
+                payerUsername = #{payerUsername},
+            </if>
+            <if test="payerPayAmount != null">
+                payerPayAmount = #{payerPayAmount},
+            </if>
+            <if test="payerFee != null">
+                payerFee = #{payerFee},
+            </if>
+            <if test="payerAccountType != null">
+                payerAccountType = #{payerAccountType},
+            </if>
+            <if test="receiverUserId != null">
+                receiverUserId = #{receiverUserId},
+            </if>
+            <if test="receiverUsername != null">
+                receiverUsername = #{receiverUsername},
+            </if>
+            <if test="receiverPayAmount != null">
+                receiverPayAmount = #{receiverPayAmount},
+            </if>
+            <if test="receiverFee != null">
+                receiverFee = #{receiverFee},
+            </if>
+            <if test="receiverAccountType != null">
+                receiverAccountType = #{receiverAccountType},
+            </if>
+            <if test="orderDate != null">
+                orderDate = #{orderDate},
+            </if>
+            <if test="orderTime != null">
+                orderTime = #{orderTime},
+            </if>
+            <if test="orderIp != null">
+                orderIp = #{orderIp},
+            </if>
+            <if test="orderRefererUrl != null">
+                orderRefererUrl = #{orderRefererUrl},
+            </if>
+            <if test="returnUrl != null">
+                returnUrl = #{returnUrl},
+            </if>
+            <if test="notifyUrl != null">
+                notifyUrl = #{notifyUrl},
+            </if>
+            <if test="qrCodeUrl != null">
+                notifyUrl = #{qrCodeUrl},
+            </if>
+            <if test="platformIncome != null">
+                platformIncome = #{platformIncome},
+            </if>
+            <if test="platformCost != null">
+                platformCost = #{platformCost},
+            </if>
+            <if test="platformProfit != null">
+                platformProfit = #{platformProfit},
+            </if>
+            <if test="feeRate != null">
+                feeRate = #{feeRate},
+            </if>
+            <if test="succeedPayTime != null">
+                succeedPayTime = #{succeedPayTime},
+            </if>
+            <if test="completeTime != null">
+                completeTime = #{completeTime},
+            </if>
+            <if test="payWay != null">
+                payWay = #{payWay},
+            </if>
+            <if test="payType != null">
+                payType = #{payType},
+            </if>
+            <if test="fundIntoType != null">
+                fundIntoType = #{fundIntoType},
+            </if>
+            <if test="refunded != null">
+                refunded = #{refunded},
+            </if>
+            <if test="refundTimes != null">
+                refundTimes = #{refundTimes},
+            </if>
+            <if test="successRefundAmount != null">
+                successRefundAmount = #{successRefundAmount},
+            </if>
+            <if test="succeedRefundTime != null">
+                succeedRefundTime = #{succeedRefundTime},
+            </if>
+            <if test="status != null">
+                status = #{status},
+            </if>
+            <if test="remark != null">
+                remark = #{remark},
+            </if>
+            <if test="lastModifierUserId != null">
+                lastModifierUserId = #{lastModificationTime},
+            </if>
+            <if test="lastModificationTime != null">
+                lastModificationTime = #{lastModificationTime},
+            </if>
+        </set>
+        WHERE
+        customerUserId = #{customerUserId}
+        AND orderNo = #{orderNo} AND deleted = '0'
+    </update>
+
+    <select id="getByBizOrderNo" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        AND pay_trade_payment_record
+        <where>
+            deleted = '0' ${ew.sqlSegment}
+        </where>
+    </select>
+
+    <select id="selectByOrderNo" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM pay_trade_payment_record
+        <where>
+            orderNo = #{orderNo} AND deleted = '0'
+        </where>
+    </select>
+
+    <select id="selectByCustomerOrderNo" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM pay_trade_payment_record
+        <where>
+            customerUserId = #{customerUserId}
+            AND orderNo = #{orderNo} AND deleted = '0'
+        </where>
+    </select>
+
+</mapper>

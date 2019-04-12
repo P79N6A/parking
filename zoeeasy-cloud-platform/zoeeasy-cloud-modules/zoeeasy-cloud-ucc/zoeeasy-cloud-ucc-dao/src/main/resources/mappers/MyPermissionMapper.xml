@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zoeeasy.cloud.ucc.mapper.PermissionMapper">
+    <resultMap id="BaseResultMap" type="com.zoeeasy.cloud.ucc.domain.PermissionEntity">
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <result column="tenantId" property="tenantId" jdbcType="BIGINT"/>
+        <result column="parentId" property="parentId" jdbcType="BIGINT"/>
+        <result column="menuId" property="menuId" jdbcType="BIGINT"/>
+        <result column="code" property="code" jdbcType="VARCHAR"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+        <result column="staticPermission" property="staticPermission" jdbcType="TINYINT"/>
+        <result column="tenancyHostSide" property="tenancyHostSide" jdbcType="TINYINT"/>
+        <result column="sort" property="sort" jdbcType="SMALLINT"/>
+        <result column="granted" property="granted" jdbcType="TINYINT"/>
+        <result column="status" property="status" jdbcType="TINYINT"/>
+        <result column="remarks" property="remarks" jdbcType="VARCHAR"/>
+        <result column="creatorUserId" property="creatorUserId" jdbcType="BIGINT"/>
+        <result column="creationTime" property="creationTime" jdbcType="TIMESTAMP"/>
+        <result column="lastModifierUserId" property="lastModifierUserId" jdbcType="BIGINT"/>
+        <result column="lastModificationTime" property="lastModificationTime" jdbcType="TIMESTAMP"/>
+        <result column="deleterUserId" property="deleterUserId" jdbcType="BIGINT"/>
+        <result column="deletionTime" property="deletionTime" jdbcType="TIMESTAMP"/>
+        <result column="deleted" property="deleted" jdbcType="TINYINT"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        t.id,
+        t.tenantId,
+        t.parentId,
+        t.menuId,
+        t.code,
+        t.name,
+        t.staticPermission,
+        t.tenancyHostSide,
+        t.sort,
+        t.granted,
+        t.status,
+        t.remarks,
+        t.creatorUserId,
+        t.creationTime,
+        t.lastModifierUserId,
+        t.lastModificationTime,
+        t.deleterUserId,
+        t.deletionTime,
+        t.deleted
+    </sql>
+
+    <!-- 获取所有静态权限 -->
+    <select id="getAllStaticPermission" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM ucc_permission t
+        WHERE t.tenantId IS NULL AND t.staticPermission= 1 AND t.deleted=0
+    </select>
+
+    <!-- 获取所有宿主端静态权限 -->
+    <select id="getAllHostSideStaticPermission" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM ucc_permission t
+        WHERE t.tenantId IS NULL t.staticPermission= 1 AND (t.tenancyHostSide = 1 OR t.tenancyHostSide=4) AND
+        t.deleted=0
+    </select>
+
+    <!-- 获取所有租户端静态权限 -->
+    <select id="getAllTenancySideStaticPermission" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM ucc_permission t
+        WHERE t.tenantId IS NULL AND t.staticPermission= 1 AND (t.tenancyHostSide = 2 OR t.tenancyHostSide=4) AND
+        t.deleted=0
+    </select>
+
+    <!-- 查询宿主端静态权限 -->
+    <select id="findHostSideStaticPermission" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM ucc_permission t
+        <where>
+            ${ew.sqlSegment} AND
+            t.tenantId IS NULL AND t.staticPermission= 1 AND (t.tenancyHostSide = 1 OR t.tenancyHostSide=4)
+            AND t.deleted=0
+        </where>
+    </select>
+    <!-- 查询租户端静态权限 -->
+    <select id="findTenancySideStaticPermission" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM ucc_permission t
+        <where>
+            ${ew.sqlSegment} AND
+            t.tenantId IS NULL AND t.staticPermission= 1 AND (t.tenancyHostSide = 2 OR t.tenancyHostSide=4) AND
+            t.deleted=0
+        </where>
+    </select>
+
+</mapper>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet id="pms_vehicle_record_create_table" author="zm">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="pms_vehicle_record"/>
+            </not>
+        </preConditions>
+        <createTable tableName="pms_vehicle_record" remarks="平台车辆表">
+            <column autoIncrement="true" name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true"
+                             primaryKeyName="pk_vehicle_record"/>
+            </column>
+            <column name="tenantId" type="bigint(20) unsigned" remarks="租户ID"/>
+            <column name="carBrand" type="varchar(255)" remarks="车辆品牌"/>
+            <column name="carStyle" type="varchar(255)" remarks="车辆类型"/>
+            <column name="plateNumber" type="varchar(10)" remarks="车牌编号">
+                <constraints nullable="false"/>
+            </column>
+            <column name="plateColor" type="tinyint(4) unsigned" remarks="车牌颜色">
+                <constraints nullable="false"/>
+            </column>
+            <column name="plateType" type="char(2)" remarks="车牌类型"/>
+            <column name="carType" type="tinyint(4) unsigned" remarks="车辆类型"/>
+            <column name="carColor" type="tinyint(4) unsigned" remarks="车辆颜色"/>
+            <column name="vehicleNumber" type="varchar(32)" remarks="车架号"/>
+            <column name="engineNumber" type="varchar(32)" remarks="发动机号"/>
+            <column name="ownerName" type="varchar(32)" remarks="车主姓名"/>
+            <column name="ownerPhone" type="varchar(32)" remarks="车主手机"/>
+            <column name="ownerAddress" type="varchar(32)" remarks="车主地址"/>
+            <column name="ownerCardNo" type="varchar(32)" remarks="车主身份证号"/>
+            <column name="creatorUserId" type="bigint" remarks="创建者"/>
+            <column name="creationTime" type="DATETIME" remarks="创建时间"/>
+            <column name="lastModifierUserId" type="bigint" remarks="更新者"/>
+            <column name="lastModificationTime" type="DATETIME" remarks="更新时间"/>
+            <column name="deleterUserId" type="bigint" remarks="删除者"/>
+            <column name="deletionTime" type="DATETIME" remarks="删除时间"/>
+            <column name="deleted" type="char(1)" remarks="删除标记" defaultValue="0"/>
+            <column name="version" type="bigint" remarks="版本号" defaultValue="1"/>
+        </createTable>
+        <createIndex tableName="pms_vehicle_record" indexName="idx_vehicle_tenantId">
+            <column name="tenantId"/>
+        </createIndex>
+        <createIndex tableName="pms_vehicle_record" indexName="idx_vehicle_plateNumber">
+            <column name="plateNumber"/>
+            <column name="plateColor"/>
+        </createIndex>
+        <createIndex tableName="pms_vehicle_record" indexName="idx_vehicle_deleted">
+            <column name="deleted"/>
+        </createIndex>
+    </changeSet>
+</databaseChangeLog>

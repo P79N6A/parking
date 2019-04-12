@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet author="zwq" id="pay_wxpay_message_log_table_modify_columns_20181218">
+        <preConditions onFail="MARK_RAN">
+            <tableExists tableName="pay_wxpay_message_log"/>
+        </preConditions>
+        <renameColumn columnDataType="varchar(64)" newColumnName="ip" oldColumnName="ip"
+                      remarks="ip" tableName="pay_wxpay_message_log"/>
+
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet author="walkman" id="open_api_parkinfo_create_table">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="open_api_parkinfo"/>
+            </not>
+        </preConditions>
+        <createTable tableName="open_api_parkinfo" remarks="访问凭证停车场关系表">
+            <column autoIncrement="true" name="id" type="bigint" remarks="ID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_api_parkinfo"/>
+            </column>
+            <column name="tenantId" type="bigint(20)" remarks="租户ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="openId" type="bigint(20)" remarks="令牌id">
+                <constraints nullable="false"/>
+            </column>
+            <column name="parkingId" type="bigint(20)" remarks="停车场ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creatorUserId" type="bigint" remarks="创建者"/>
+            <column name="creationTime" type="DATETIME" remarks="创建时间"/>
+        </createTable>
+        <createIndex tableName="open_api_parkinfo" indexName="idx_tenantId">
+            <column name="tenantId"/>
+            <column name="openId"/>
+        </createIndex>
+        <rollback>drop table open_api_parkinfo</rollback>
+    </changeSet>
+</databaseChangeLog>

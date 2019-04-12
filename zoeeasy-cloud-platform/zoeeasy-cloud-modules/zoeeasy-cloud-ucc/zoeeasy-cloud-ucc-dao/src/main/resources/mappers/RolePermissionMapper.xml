@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zoeeasy.cloud.ucc.mapper.RolePermissionMapper">
+    <resultMap id="BaseResultMap" type="com.zoeeasy.cloud.ucc.domain.RolePermissionEntity">
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <result column="tenantId" property="tenantId" jdbcType="BIGINT"/>
+        <result column="roleId" property="roleId" jdbcType="BIGINT"/>
+        <result column="permissionId" property="permissionId" jdbcType="BIGINT"/>
+        <result column="creatorUserId" property="creatorUserId" jdbcType="BIGINT"/>
+        <result column="creationTime" property="creationTime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        t.id,
+        t.tenantId,
+        t.roleId,
+        t.permissionId,
+        t.creatorUserId,
+        t.creationTime
+    </sql>
+
+    <!-- 通过宿主角色获取 -->
+    <select id="findByHostRoleId" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM ucc_role_permission t
+        WHERE t.tenantId IS NULl AND t.roleId= #{roleId}
+    </select>
+
+    <!-- 通过租户角色获取 -->
+    <select id="findByTenancyRoleId" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM ucc_role_permission t
+        WHERE t.tenantId=#{tenantId} AND t.roleId= #{roleId}
+    </select>
+
+    <!--- 无租户的条件查询 -->
+    <select id="findTenancyless" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM ucc_role_permission t
+        <where>
+            ${ew.sqlSegment}
+        </where>
+    </select>
+
+</mapper>

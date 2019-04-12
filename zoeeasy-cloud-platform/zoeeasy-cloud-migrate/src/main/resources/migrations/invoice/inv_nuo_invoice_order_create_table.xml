@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet author="walkman" id="inv_nuo_invoice_order_create_table">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="inv_nuo_invoice_order"/>
+            </not>
+        </preConditions>
+        <createTable tableName="inv_nuo_invoice_order" remarks="诺诺发票订单表">
+            <column autoIncrement="true" name="id" type="bigint" remarks="主键">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_message"/>
+            </column>
+            <column name="orderNo" type="VARCHAR(20)" remarks="发票订单号">
+                <constraints nullable="false"/>
+            </column>
+            <column name="fpqqlsh" type="VARCHAR(32)" remarks="发票请求流水号" defaultValue=""/>
+            <column name="invoiceDate" type="DATETIME" remarks="开票时间">
+                <constraints nullable="false"/>
+            </column>
+            <column name="invoiceId" type="VARCHAR(32)" remarks="发票主键" defaultValue=""/>
+            <column name="identity" type="VARCHAR(100)" remarks="诺诺网备案身份">
+                <constraints nullable="false"/>
+            </column>
+            <column name="buyerName" type="VARCHAR(100)" remarks="购方名称">
+                <constraints nullable="false"/>
+            </column>
+            <column name="taxNum" type="VARCHAR(20)" remarks="购方税号" defaultValue=""/>
+            <column name="phone" type="VARCHAR(20)" remarks="购方手机(开票成功会短信提醒购方)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="address" type="VARCHAR(100)" remarks="购方地址" defaultValue=""/>
+            <column name="account" type="VARCHAR(100)" remarks="银行账号" defaultValue=""/>
+            <column name="telephone" type="VARCHAR(20)" remarks="购方电话" defaultValue=""/>
+            <column name="saleTaxNum" type="VARCHAR(20)" remarks="销方税号">
+                <constraints nullable="false"/>
+            </column>
+            <column name="saleAccount" type="VARCHAR(100)" remarks="销方银行账号" defaultValue=""/>
+            <column name="salePhone" type="VARCHAR(20)" remarks="销方电话">
+                <constraints nullable="false"/>
+            </column>
+            <column name="saleAddress" type="VARCHAR(100)" remarks="销方地址">
+                <constraints nullable="false"/>
+            </column>
+            <column name="kpType" type="CHAR(1)" remarks="开票类型:1,正票;2, 红票" defaultValue="1"/>
+            <column name="message" type="VARCHAR(130)" remarks="备注信息" defaultValue=""/>
+            <column name="payee" type="VARCHAR(8)" remarks="收款人" defaultValue=""/>
+            <column name="checker" type="VARCHAR(8)" remarks="复核人" defaultValue=""/>
+            <column name="clerk" type="VARCHAR(8)" remarks="开票员">
+                <constraints nullable="false"/>
+            </column>
+            <column name="redFpdm" type="VARCHAR(12)" remarks="红票必填，不满12位请左补 0, 对应蓝票发票代码" defaultValue=""/>
+            <column name="redFphm" type="VARCHAR(8)" remarks="红票必填，不满8位请左补 0,对应蓝票发票号码" defaultValue=""/>
+            <column name="tsfs" type="CHAR(1)" remarks="推送方式 -1,不推送;0,邮箱;1,手机(默认);2,邮箱、手机" defaultValue="1"/>
+            <column name="email" type="VARCHAR(50)" remarks="推送邮箱" defaultValue=""/>
+            <column name="qdbz" type="CHAR(1)" remarks="清单标志:0,根据项目名称数自动产生清单; 1, 将项目信息打印至清单" defaultValue="0"/>
+            <column name="qdxmmc" type="VARCHAR(90)" remarks="清单项目名称" defaultValue=""/>
+            <column name="dkbz" type="CHAR(1)" remarks="代开标志:0非代开;1 代开" defaultValue=""/>
+            <column name="deptId" type="VARCHAR(32)" remarks="部门门店" defaultValue=""/>
+            <column name="clerkId" type="VARCHAR(32)" remarks="开票员id" defaultValue=""/>
+            <column name="invoiceLine" type="CHAR(1)" remarks="发票种类" defaultValue=""/>
+            <column name="cpybz" type="CHAR(1)" remarks="成品油标志：0 非成品油， 1 成品油" defaultValue="0"/>
+            <column name="status" type="CHAR(2)"
+                    remarks="开票状态　2 为开票并签章成功，其他状态分别为 20:未开票;21:提交服务器开票成功;22:提交服务器开票失败;24:签章失败;3 为发票已作废 31：发票作废中"
+                    defaultValue="20"/>
+            <column name="pdfUrl" type="VARCHAR(1000)" remarks="发票地址" defaultValue=""/>
+            <column name="jpgUrl" type="VARCHAR(1000)" remarks="发票详情地址" defaultValue=""/>
+            <column name="kprq" type="DATETIME" remarks="开票日期"/>
+            <column name="fpdm" type="VARCHAR(12)" remarks="发票代码" defaultValue=""/>
+            <column name="fphm" type="VARCHAR(8)" remarks="发票号码" defaultValue=""/>
+            <column name="jym" type="VARCHAR(20)" remarks="校验码" defaultValue=""/>
+            <column name="bhsje" type="VARCHAR(50)" remarks="不含税金额" defaultValue="0.00"/>
+            <column name="hjse" type="VARCHAR(50)" remarks="合计税额" defaultValue="0.00"/>
+            <column name="result" type="VARCHAR(100)" remarks="开票信息，成功或者失败的信息" defaultValue=""/>
+            <column name="resultMessage" type="VARCHAR(100)" remarks="结果信息" defaultValue=""/>
+            <column name="creatorUserId" type="bigint" remarks="创建者"/>
+            <column name="creationTime" type="DATETIME" remarks="创建时间"/>
+            <column name="lastModifierUserId" type="bigint" remarks="更新者"/>
+            <column name="lastModificationTime" type="DATETIME" remarks="更新时间"/>
+            <column name="deleterUserId" type="bigint" remarks="删除者"/>
+            <column name="deletionTime" type="DATETIME" remarks="删除时间"/>
+            <column name="deleted" type="tinyint(1)" remarks="删除标记" defaultValue="0"/>
+        </createTable>
+        <createIndex tableName="inv_nuo_invoice_order" indexName="idx_orderNo">
+            <column name="orderNo"/>
+        </createIndex>
+        <createIndex tableName="inv_nuo_invoice_order" indexName="idx_fpqqlsh">
+            <column name="fpqqlsh"/>
+        </createIndex>
+        <rollback>drop table inv_nuo_invoice_order</rollback>
+    </changeSet>
+</databaseChangeLog>

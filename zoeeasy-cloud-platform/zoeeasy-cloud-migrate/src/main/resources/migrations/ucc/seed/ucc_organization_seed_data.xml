@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet author="walkman" id="ucc_organization_seed_data">
+        <comment>系统默认部门初始化数据</comment>
+
+        <insert tableName="ucc_organization">
+            <column name="id" value="1"/>
+            <column name="code" value="1000000000000000"/>
+            <column name="name" value="任意停车"/>
+            <column name="pathCode" value="00001"/>
+            <column name="parentId" value="0"/>
+            <column name="sort" value="0"/>
+            <column name="status" value="1"/>
+            <column name="remarks" value="任意停车平台"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

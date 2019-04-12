@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zoeeasy.cloud.pms.mapper.ParkingLotStatusMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.zoeeasy.cloud.pms.domain.ParkingLotStatusEntity">
+        <id column="id" property="id"/>
+        <result column="tenantId" property="tenantId"/>
+        <result column="parkingId" property="parkingId"/>
+        <result column="parkingLotId" property="parkingLotId"/>
+        <result column="status" property="status"/>
+        <result column="intoPassingId" property="intoPassingId"/>
+        <result column="plateNumber" property="plateNumber"/>
+        <result column="plateColor" property="plateColor"/>
+        <result column="occupyTime" property="occupyTime"/>
+        <result column="creatorUserId" property="creatorUserId"/>
+        <result column="creationTime" property="creationTime"/>
+        <result column="lastModifierUserId" property="lastModifierUserId"/>
+        <result column="lastModificationTime" property="lastModificationTime"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, tenantId, parkingId, parkingLotId, status, intoPassingId, plateNumber, plateColor, occupyTime,
+        creatorUserId, creationTime, lastModifierUserId, lastModificationTime
+    </sql>
+
+
+    <select id="findByParkingIdAndParkingLotId" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from pms_parking_lot_status
+        <where>
+            parkingId = #{parkingId} and parkingLotId = #{parkingLotId} and tenantId = #{tenantId}
+        </where>
+    </select>
+
+    <select id="findByParkingLotId" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from pms_parking_lot_status
+        <where>
+            parkingLotId = #{parkingLotId}
+        </where>
+    </select>
+
+
+    <update id="updateStatusById" parameterType="com.zoeeasy.cloud.pms.domain.ParkingLotStatusEntity">
+        UPDATE pms_parking_lot_status
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="tenantId != null">
+                tenantId = #{tenantId},
+            </if>
+            <if test="parkingId != null">
+                parkingId = #{parkingId},
+            </if>
+            <if test="parkingLotId != null">
+                parkingLotId = #{parkingLotId},
+            </if>
+            <if test="status != null">
+                status = #{status},
+            </if>
+            <if test="intoPassingId != null">
+                intoPassingId = #{intoPassingId},
+            </if>
+            <if test="plateNumber != null">
+                plateNumber = #{plateNumber},
+            </if>
+            <if test="plateColor != null">
+                plateColor = #{plateNumber},
+            </if>
+            <if test="occupyTime != null">
+                occupyTime = #{plateNumber},
+            </if>
+            <if test="lastModifierUserId != null">
+                lastModifierUserId = #{lastModifierUserId},
+            </if>
+            <if test="lastModificationTime != null">
+                lastModificationTime = #{lastModificationTime},
+            </if>
+        </trim>
+        <where>
+            id = #{id}
+        </where>
+    </update>
+
+    <select id="findCountByParkingIdNonTenant" resultType="java.lang.Integer">
+        select count(1) from pms_parking_lot_status
+        <where>
+            ${ew.sqlSegment}
+        </where>
+    </select>
+
+    <delete id="deleteParkingLotStatusNonTenant">
+        delete from pms_parking_lot_status
+        <where>
+            parkingId=#{parkingId}
+        </where>
+    </delete>
+
+</mapper>

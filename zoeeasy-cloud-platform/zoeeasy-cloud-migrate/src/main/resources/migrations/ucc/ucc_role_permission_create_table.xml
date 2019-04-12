@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet id="ucc_role_permission_create_table" author="walkman">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="ucc_role_permission"/>
+            </not>
+        </preConditions>
+        <createTable tableName="ucc_role_permission" remarks="角色权限表">
+            <column autoIncrement="true" name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_role_permission"/>
+            </column>
+            <column name="tenantId" type="bigint" remarks="租户ID"/>
+            <column name="roleId" type="bigint" remarks="角色ID"/>
+            <column name="permissionId" type="bigint" remarks="权限ID"/>
+            <column name="creatorUserId" type="bigint" remarks="创建者"/>
+            <column name="creationTime" type="DATETIME" remarks="创建时间"/>
+        </createTable>
+        <createIndex tableName="ucc_role_permission" indexName="idx_tenantId">
+            <column name="tenantId"/>
+        </createIndex>
+        <createIndex tableName="ucc_role_permission" indexName="idx_roleId">
+            <column name="roleId"/>
+        </createIndex>
+        <createIndex tableName="ucc_role_permission" indexName="idx_permissionId">
+            <column name="permissionId"/>
+        </createIndex>
+    </changeSet>
+</databaseChangeLog>

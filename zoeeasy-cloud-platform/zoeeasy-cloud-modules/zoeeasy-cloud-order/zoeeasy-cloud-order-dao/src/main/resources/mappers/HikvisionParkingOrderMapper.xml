@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zoeeasy.cloud.order.mapper.ThirdParkingOrderMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.zoeeasy.cloud.order.domain.ThirdParkingOrderEntity">
+        <id column="id" property="id"/>
+        <result property="recordNo" column="recordNo"/>
+        <result property="orderNo" column="orderNo"/>
+        <result property="billNo" column="billNo"/>
+        <result property="parkingId" column="parkingId"/>
+        <result property="plateNumber" column="plateNumber"/>
+        <result property="plateColor" column="plateColor"/>
+        <result property="carType" column="carType"/>
+        <result property="enterTime" column="enterTime"/>
+        <result property="costTime" column="costTime"/>
+        <result property="totalCost" column="totalCost"/>
+        <result property="payTime" column="payTime"/>
+        <result property="payAmount" column="payAmount"/>
+        <result property="payType" column="payType"/>
+        <result property="status" column="status"/>
+        <result column="creatorUserId" property="creatorUserId"/>
+        <result column="creationTime" property="creationTime"/>
+        <result column="lastModifierUserId" property="lastModifierUserId"/>
+        <result column="lastModificationTime" property="lastModificationTime"/>
+        <result column="deleterUserId" property="deleterUserId"/>
+        <result column="deletionTime" property="deletionTime"/>
+        <result column="deleted" property="deleted"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,
+        recordNo,
+        orderNo,
+        billNo,
+        parkingId,
+        plateNumber,
+        plateColor,
+        carType,
+        enterTime,
+        costTime,
+        totalCost,
+        payTime,
+        payAmount,
+        payType,
+        status,
+        creatorUserId,
+        creationTime,
+        lastModifierUserId,
+        lastModificationTime,
+        deleterUserId,
+        deletionTime,
+        deleted
+    </sql>
+    <select id="findByOrderNo" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from ord_third_parking_order
+        <where>
+            deleted = '0' and orderNo=#{orderNo} and tenantId = #{tenantId}
+        </where>
+    </select>
+    <insert id="saveOrder" parameterType="com.zoeeasy.cloud.order.domain.ThirdParkingOrderEntity">
+        INSERT INTO ord_third_parking_order
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="tenantId != null">
+                tenantId,
+            </if>
+            <if test="recordNo != null">
+                recordNo,
+            </if>
+            <if test="orderNo != null">
+                orderNo,
+            </if>
+            <if test="billNo != null">
+                billNo,
+            </if>
+            <if test="parkingId != null">
+                parkingId,
+            </if>
+            <if test="plateNumber != null">
+                plateNumber,
+            </if>
+            <if test="plateColor != null">
+                plateColor,
+            </if>
+            <if test="carType != null">
+                carType,
+            </if>
+            <if test="parkCode != null">
+                parkCode,
+            </if>
+            <if test="enterTime != null">
+                enterTime,
+            </if>
+            <if test="costTime != null">
+                costTime,
+            </if>
+            <if test="parkPeriodTime != null">
+                parkPeriodTime,
+            </if>
+            <if test="totalCost != null">
+                totalCost,
+            </if>
+            <if test="payTime != null">
+                payTime,
+            </if>
+            <if test="payAmount != null">
+                payAmount,
+            </if>
+            <if test="payType != null">
+                payType,
+            </if>
+            <if test="status != null">
+                status,
+            </if>
+            <if test="creatorUserId != null">
+                creatorUserId,
+            </if>
+            <if test="creationTime != null">
+                creationTime,
+            </if>
+        </trim>
+        <trim prefix="VALUES (" suffix=")" suffixOverrides=",">
+            <if test="tenantId != null">
+                #{tenantId},
+            </if>
+            <if test="recordNo != null">
+                #{recordNo},
+            </if>
+            <if test="orderNo != null">
+                #{orderNo},
+            </if>
+            <if test="billNo != null">
+                #{billNo},
+            </if>
+            <if test="parkingId != null">
+                #{parkingId},
+            </if>
+            <if test="plateNumber != null">
+                #{plateNumber},
+            </if>
+            <if test="plateColor != null">
+                #{plateColor},
+            </if>
+            <if test="carType != null">
+                #{carType},
+            </if>
+            <if test="parkCode != null">
+                #{parkCode},
+            </if>
+            <if test="enterTime != null">
+                #{enterTime},
+            </if>
+            <if test="costTime != null">
+                #{costTime},
+            </if>
+            <if test="parkPeriodTime != null">
+                #{parkPeriodTime},
+            </if>
+            <if test="totalCost != null">
+                #{totalCost},
+            </if>
+            <if test="payTime != null">
+                #{payTime},
+            </if>
+            <if test="payAmount != null">
+                #{payAmount},
+            </if>
+            <if test="payType != null">
+                #{payType},
+            </if>
+            <if test="status != null">
+                #{status},
+            </if>
+            <if test="creatorUserId != null">
+                #{creatorUserId},
+            </if>
+            <if test="creationTime != null">
+                #{creationTime},
+            </if>
+        </trim>
+    </insert>
+    <select id="findByBillNo" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from ord_third_parking_order
+        <where>
+            deleted = '0' and billNo = #{billNo}
+        </where>
+    </select>
+
+</mapper>

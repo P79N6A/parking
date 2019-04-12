@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet id="pms_parking_info_add_column_20190108" author="walkman">
+        <preConditions onFail="MARK_RAN">
+            <tableExists tableName="pms_parking_info"/>
+        </preConditions>
+        <addColumn tableName="pms_parking_info">
+            <column name="freeTime" type="int(11)" remarks="免费停车时长：单位分钟" defaultValue="0"/>
+        </addColumn>
+    </changeSet>
+</databaseChangeLog>
