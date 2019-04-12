@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet author="sinotopia" id="example-seed-data">
+
+        <!-- Example Client -->
+        <insert tableName="sms_client">
+            <column name="clientId" value="zhuyi-parking"/>
+            <column name="clientSecrete" value="Q25t5wXT6TwfVkR7QC7y38doaym7QC "/>
+            <column name="clientName" value=" 智停APP"/>
+            <column name="channelProvider" value="aliyunSendProxyService"/>
+            <column name="status" value="1"/>
+            <column name="description" value="智停移动端APP"/>
+            <column name="creatorUserId" value="1"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+
+        <insert tableName="sms_client">
+            <column name="clientId" value="testParkingMobile"/>
+            <column name="clientSecrete" value="testParkingMobile"/>
+            <column name="clientName" value="testParkingMobile"/>
+            <column name="channelProvider" value="ruanweiSendProxyService"/>
+            <column name="status" value="1"/>
+            <column name="description" value=""/>
+            <column name="creatorUserId" value="1"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+
+        <insert tableName="sms_template">
+            <column name="clientId" value="zhuyi-parking"/>
+            <column name="templateId" value="SMS_120475234"/>
+            <column name="templateName" value="信息变更验证码"/>
+            <column name="signName" value="阿里云短信测试专用"/>
+            <column name="type" value="1"/>
+            <column name="status" value="1"/>
+            <column name="content" value="验证码${code}，您正在尝试变更重要信息，请妥善保管账户信息。"/>
+            <column name="description" value="信息变更验证码（阿里云测试）"/>
+            <column name="creatorUserId" value="1"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+
+        <insert tableName="sms_template">
+            <column name="clientId" value="zhuyi-parking"/>
+            <column name="templateId" value="SMS_120475235"/>
+            <column name="templateName" value="修改密码验证码"/>
+            <column name="signName" value="阿里云短信测试专用"/>
+            <column name="type" value="1"/>
+            <column name="status" value="1"/>
+            <column name="content" value="验证码${code}，您正在尝试修改登录密码，请妥善保管账户信息。"/>
+            <column name="description" value="修改密码验证码（阿里云测试）"/>
+            <column name="creatorUserId" value="1"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+
+        <insert tableName="sms_template">
+            <column name="clientId" value="zhuyi-parking"/>
+            <column name="templateId" value="SMS_120475236"/>
+            <column name="templateName" value="用户注册验证码"/>
+            <column name="signName" value="阿里云短信测试专用"/>
+            <column name="type" value="1"/>
+            <column name="status" value="1"/>
+            <column name="content" value="验证码${code}，您正在注册成为新用户，感谢您的支持！"/>
+            <column name="description" value="用户注册验证码（阿里云测试）"/>
+            <column name="creatorUserId" value="1"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+
+        <insert tableName="sms_template">
+            <column name="clientId" value="zhuyi-parking"/>
+            <column name="templateId" value="SMS_120475237"/>
+            <column name="templateName" value="登录异常验证码"/>
+            <column name="signName" value="阿里云短信测试专用"/>
+            <column name="type" value="1"/>
+            <column name="status" value="1"/>
+            <column name="content" value="验证码${code}，您正尝试异地登录，若非本人操作，请勿泄露。"/>
+            <column name="description" value="登录异常验证码（阿里云测试）"/>
+            <column name="creatorUserId" value="1"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+
+        <insert tableName="sms_template">
+            <column name="clientId" value="zhuyi-parking"/>
+            <column name="templateId" value="SMS_120475238"/>
+            <column name="templateName" value="登录确认验证码"/>
+            <column name="signName" value="阿里云短信测试专用"/>
+            <column name="type" value="1"/>
+            <column name="status" value="1"/>
+            <column name="content" value="验证码${code}，您正在登录，若非本人操作，请勿泄露。"/>
+            <column name="description" value="登录确认验证码（阿里云测试）"/>
+            <column name="creatorUserId" value="1"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+
+        <insert tableName="sms_template">
+            <column name="clientId" value="zhuyi-parking"/>
+            <column name="templateId" value="SMS_120475239"/>
+            <column name="templateName" value="短信测试"/>
+            <column name="signName" value="阿里云短信测试专用"/>
+            <column name="type" value="1"/>
+            <column name="status" value="1"/>
+            <column name="content" value="尊敬的${customer}，欢迎您使用阿里云通信服务！"/>
+            <column name="description" value="短信测试（阿里云测试）"/>
+            <column name="creatorUserId" value="1"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+
+        <insert tableName="sms_template">
+            <column name="clientId" value="zhuyi-parking"/>
+            <column name="templateId" value="SMS_120475240"/>
+            <column name="templateName" value="身份验证验证码"/>
+            <column name="signName" value="阿里云短信测试专用"/>
+            <column name="type" value="1"/>
+            <column name="status" value="1"/>
+            <column name="content" value="验证码${code}，您正在进行身份验证，打死不要告诉别人哦！"/>
+            <column name="description" value="身份验证验证码（阿里云测试）"/>
+            <column name="creatorUserId" value="1"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://code.alibabatech.com/schema/dubbo
+        http://code.alibabatech.com/schema/dubbo/dubbo.xsd
+        ">
+
+    <dubbo:reference id="apiSmsClientService" interface="com.zhuyitech.sms.service.api.SmsClientService"
+                     check="false" timeout="60000" retries="0" registry="fundamentalRegistry" version="1.0.0"/>
+    <dubbo:reference id="apiSmsContentService" interface="com.zhuyitech.sms.service.api.SmsContentService"
+                     check="false" timeout="60000" retries="0" registry="fundamentalRegistry" version="1.0.0"/>
+    <dubbo:reference id="apiSmsSendService" interface="com.zhuyitech.sms.service.api.SmsSendService"
+                     check="false" timeout="60000" retries="0" registry="fundamentalRegistry" version="1.0.0"/>
+    <dubbo:reference id="apiSmsTemplateService" interface="com.zhuyitech.sms.service.api.SmsTemplateService"
+                     check="false" timeout="60000" retries="0" registry="fundamentalRegistry" version="1.0.0"/>
+    <dubbo:reference id="apiSmsVerifyCodeService" interface="com.zhuyitech.sms.service.api.SmsVerifyCodeService"
+                     check="false" timeout="60000" retries="0" registry="fundamentalRegistry" version="1.0.0"/>
+    <dubbo:reference id="apiSmsLookupService" interface="com.zhuyitech.sms.service.api.SmsLookupService"
+                     check="false" timeout="60000" retries="0" registry="fundamentalRegistry" version="1.0.0"/>
+</beans>

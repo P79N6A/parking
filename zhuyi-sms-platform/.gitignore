@@ -1,0 +1,14 @@
+*/target
+*.iml
+target/*
+*/target/
+.project
+.classpath
+.settings
+.class
+.idea
+.idea/*
+*.ipr
+*.iws
+*target*
+*/config/

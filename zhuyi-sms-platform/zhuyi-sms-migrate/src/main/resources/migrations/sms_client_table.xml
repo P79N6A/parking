@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet author="sinotopia" id="sms_client_table">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="sms_client"/>
+            </not>
+        </preConditions>
+        <createTable tableName="sms_client" remarks="短信客户端表">
+            <column autoIncrement="true" name="id" type="bigint" remarks="ID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_sms_client"/>
+            </column>
+            <column name="clientId" type="VARCHAR(64)" remarks="客户端ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="clientSecrete" type="VARCHAR(255)" remarks="客户端秘钥">
+                <constraints nullable="false"/>
+            </column>
+            <column name="clientName" type="VARCHAR(255)" remarks="客户端名称">
+                <constraints nullable="false"/>
+            </column>
+            <column name="channelProvider" type="VARCHAR(255)" remarks="通道提供程序"/>
+            <column name="status" type="int(2)" remarks="状态"/>
+            <column name="description" type="VARCHAR(255)" remarks="备注"/>
+            <column name="creatorUserId" type="bigint" remarks="创建者"/>
+            <column name="creationTime" type="DATETIME" remarks="创建时间"/>
+            <column name="LastModifierUserId" type="bigint" remarks="更新者"/>
+            <column name="LastModificationTime" type="DATETIME" remarks="更新时间"/>
+            <column name="deleterUserId" type="bigint" remarks="删除者"/>
+            <column name="deletionTime" type="DATETIME" remarks="删除时间"/>
+            <column name="deleted" type="CHAR(1)" remarks="删除标记"/>
+        </createTable>
+        <createIndex tableName="sms_client" indexName="idx_clientId">
+            <column name="clientId"></column>
+        </createIndex>
+        <addUniqueConstraint tableName="sms_client" columnNames="clientId" constraintName="uq_clientId"
+                             deferrable="false" disabled="false" initiallyDeferred="false"/>
+    </changeSet>
+</databaseChangeLog>

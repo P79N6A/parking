@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zhuyitech.sms.mapper.SmsVerifyCodeMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.zhuyitech.sms.domain.SmsVerifyCode">
+        <id column="id" property="id"/>
+        <result column="clientId" property="clientId"/>
+        <result column="templateId" property="templateId"/>
+        <result column="phoneNumber" property="phoneNumber"/>
+        <result column="verifyType" property="verifyType"/>
+        <result column="verifyCode" property="verifyCode"/>
+        <result column="expiredSeconds" property="expiredSeconds"/>
+        <result column="status" property="status"/>
+        <result column="used" property="used"/>
+        <result column="description" property="description"/>
+        <result column="creatorUserId" property="creatorUserId"/>
+        <result column="creationTime" property="creationTime"/>
+        <result column="lastModifierUserId" property="lastModifierUserId"/>
+        <result column="lastModificationTime" property="lastModificationTime"/>
+        <result column="deleterUserId" property="deleterUserId"/>
+        <result column="deletionTime" property="deletionTime"/>
+        <result column="deleted" property="deleted"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,
+        clientId,
+        templateId,
+        phoneNumber,
+        verifyType,
+        verifyCode,
+        expiredSeconds,
+        status,
+        used,
+        description,
+        creatorUserId,
+        creationTime,
+        lastModifierUserId,
+        lastModificationTime,
+        deleterUserId,
+        deletionTime,
+        deleted
+    </sql>
+
+</mapper>
