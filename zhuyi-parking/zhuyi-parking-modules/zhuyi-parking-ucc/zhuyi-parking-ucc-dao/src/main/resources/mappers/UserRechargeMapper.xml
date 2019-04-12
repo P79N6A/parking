@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhuyitech.parking.ucc.mapper.UserRechargeMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.zhuyitech.parking.ucc.domain.UserRecharge">
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <result column="userId" property="userId" jdbcType="BIGINT"/>
+        <result column="orderUuid" property="orderUuid" jdbcType="VARCHAR"/>
+        <result column="orderNo" property="orderNo" jdbcType="VARCHAR"/>
+        <result column="payOrderNo" property="payOrderNo" jdbcType="VARCHAR"/>
+        <result column="rechargeAmount" property="rechargeAmount" jdbcType="DECIMAL"/>
+        <result column="rechargeRealAmount" property="rechargeRealAmount" jdbcType="DECIMAL"/>
+        <result column="rechargeType" property="rechargeType" jdbcType="INTEGER"/>
+        <result column="rechargeChannel" property="rechargeChannel" jdbcType="INTEGER"/>
+        <result column="rechargeTime" property="rechargeTime" jdbcType="TIMESTAMP"/>
+        <result column="rechargeStatus" property="rechargeStatus" jdbcType="INTEGER"/>
+        <result column="succeedTime" property="succeedTime" jdbcType="TIMESTAMP"/>
+        <result column="creatorUserId" property="creatorUserId" jdbcType="BIGINT"/>
+        <result column="creationTime" property="creationTime" jdbcType="TIMESTAMP"/>
+        <result column="lastModifierUserId" property="lastModifierUserId" jdbcType="BIGINT"/>
+        <result column="lastModificationTime" property="lastModificationTime" jdbcType="TIMESTAMP"/>
+        <result column="deleterUserId" property="deleterUserId" jdbcType="BIGINT"/>
+        <result column="deletionTime" property="deletionTime" jdbcType="TIMESTAMP"/>
+        <result column="deleted" property="deleted" jdbcType="CHAR"/>
+        <result column="version" property="version" jdbcType="BIGINT"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,userId,orderUuid,orderNo,payOrderNo,rechargeAmount,rechargeRealAmount,rechargeType,rechargeChannel,rechargeTime,
+        rechargeStatus,succeedTime,creatorUserId, creationTime, lastModifierUserId, lastModificationTime, deleterUserId,
+        deletionTime, deleted,version
+    </sql>
+
+</mapper>

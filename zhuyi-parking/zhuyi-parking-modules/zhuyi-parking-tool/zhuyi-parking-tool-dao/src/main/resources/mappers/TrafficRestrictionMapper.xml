@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhuyitech.parking.tool.mapper.TrafficRestrictionMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.zhuyitech.parking.tool.domain.TrafficRestriction">
+        <id column="id" property="id"/>
+        <result property="city" column="city"/>
+        <result property="cityName" column="cityName"/>
+        <result property="date" column="date"/>
+        <result property="fine" column="fine"/>
+        <result property="holiday" column="holiday"/>
+        <result property="remarks" column="remarks"/>
+        <result property="tailNumber" column="tailNumber"/>
+        <result property="week" column="week"/>
+        <result property="trafficRestriction" column="trafficRestriction"/>
+        <result column="creatorUserId" property="creatorUserId"/>
+        <result column="creationTime" property="creationTime"/>
+        <result column="lastModifierUserId" property="lastModifierUserId"/>
+        <result column="lastModificationTime" property="lastModificationTime"/>
+        <result column="deleterUserId" property="deleterUserId"/>
+        <result column="deletionTime" property="deletionTime"/>
+        <result column="deleted" property="deleted"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,city,cityName,date,fine,holiday,remarks,tailNumber,week ,trafficRestriction,
+        creatorUserId, creationTime, lastModifierUserId, lastModificationTime, deleterUserId, deletionTime, deleted
+    </sql>
+    <!-- 限行查询结果列-->
+    <sql id="TrafficRestriction_Column_List">
+     t.id,
+     t.city,
+     t.cityName,
+     t.date,
+     t.fine,
+     t.holiday,
+     t.remarks,
+     t.tailNumber,
+     t.week,
+     t.trafficRestriction,
+     t.creatorUserId,
+     t.creationTime,
+     t.lastModifierUserId,
+     t.lastModificationTime,
+     t.deleterUserId,
+     t.deletionTime,
+     t.deleted
+    </sql>
+
+    <!-- 删除限行-->
+    <delete id="deletedTrafficLimit">
+        delete from up_traffic_restriction where date &lt; #{date}
+    </delete>
+
+    <select id="findOneTrafficRestriction" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from up_traffic_restriction
+        <where>
+            ${ew.sqlSegment}
+        </where>
+        ORDER BY creationTime DESC limit 1
+    </select>
+
+</mapper>

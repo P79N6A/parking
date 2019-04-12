@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhuyitech.parking.data.mapper.ParkingInfoMapper">
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.zhuyitech.parking.data.domain.ParkingInfo">
+        <id column="id" property="id"/>
+        <result column="aliParkId" property="aliParkId"/>
+        <result column="hikParkId" property="hikParkId"/>
+        <result column="code" property="code"/>
+        <result column="name" property="name"/>
+        <result column="fullName" property="fullName"/>
+        <result column="status" property="status"/>
+        <result column="outTime" property="outTime"/>
+        <result column="type" property="type"/>
+        <result column="lotType" property="lotType"/>
+        <result column="logo" property="logo"/>
+        <result column="openStartTime" property="openStartTime"/>
+        <result column="openEndTime" property="openEndTime"/>
+        <result column="chargeMode" property="chargeMode"/>
+        <result column="payMode" property="payMode"/>
+        <result column="payType" property="payType"/>
+        <result column="chargeDescription" property="chargeDescription"/>
+        <result column="chargeRule" property="chargeRule"/>
+        <result column="appointmentRule" property="appointmentRule"/>
+        <result column="supportAppointment" property="supportAppointment"/>
+        <result column="latitude" property="latitude"/>
+        <result column="longitude" property="longitude"/>
+        <result column="provinceCode" property="provinceCode"/>
+        <result column="cityCode" property="cityCode"/>
+        <result column="countyCode" property="countyCode"/>
+        <result column="address" property="address"/>
+        <result column="zipCode" property="zipCode"/>
+        <result column="managerUnit" property="managerUnit"/>
+        <result column="ownerName" property="ownerName"/>
+        <result column="operatorUnit" property="operatorUnit"/>
+        <result column="chargerUnit" property="chargerUnit"/>
+        <result column="contactName" property="contactName"/>
+        <result column="contactTel" property="contactTel"/>
+        <result column="contactPhone" property="contactPhone"/>
+        <result column="contactEmail" property="contactEmail"/>
+        <result column="contactQQ" property="contactQQ"/>
+        <result column="contactWeixin" property="contactWeixin"/>
+        <result column="contactAlipay" property="contactAlipay"/>
+        <result column="lotTotal" property="lotTotal"/>
+        <result column="lotFixed" property="lotFixed"/>
+        <result column="lotAvailable" property="lotAvailable"/>
+        <result column="lotAppointmentTotal" property="lotAppointmentTotal"/>
+        <result column="lotAppointmentAvailable" property="lotAppointmentAvailable"/>
+        <result column="description" property="description"/>
+        <result column="creatorUserId" property="creatorUserId"/>
+        <result column="creationTime" property="creationTime"/>
+        <result column="lastModifierUserId" property="lastModifierUserId"/>
+        <result column="lastModificationTime" property="lastModificationTime"/>
+        <result column="deleterUserId" property="deleterUserId"/>
+        <result column="deletionTime" property="deletionTime"/>
+        <result column="deleted" property="deleted"/>
+        <result column="version" property="version"/>
+    </resultMap>
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, aliParkId,hikParkId, code, name, fullName, status, outTime, type,
+        lotType,logo,openStartTime,openEndTime,payMode,payType,lotAppointmentAvailable,lotAppointmentTotal,
+        supportAppointment,chargeMode,chargeRule,appointmentRule,
+        chargeDescription,latitude,longitude,provinceCode,cityCode,countyCode,address,
+        zipCode,managerUnit,ownerName,operatorUnit,chargerUnit,contactName,contactTel,contactPhone,
+        contactEmail,contactQQ,contactWeixin,contactAlipay,lotTotal,lotFixed,lotAvailable,
+        creatorUserId, creationTime, lastModifierUserId, lastModificationTime, deleterUserId, deletionTime, deleted,version
+    </sql>
+
+</mapper>

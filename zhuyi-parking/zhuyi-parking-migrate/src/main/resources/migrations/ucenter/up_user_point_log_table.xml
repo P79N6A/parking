@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet author="walkman" id="up_user_point_log_table">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="up_user_point_log"/>
+            </not>
+        </preConditions>
+        <createTable tableName="up_user_point_log" remarks="用户积分流水表">
+            <column autoIncrement="true" name="id" type="bigint" remarks="主键">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_user_point_log"/>
+            </column>
+            <column name="userId" type="bigint" remarks="用户ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="point" type="double(16,8)" remarks="积分余额"/>
+            <column name="amount" type="double(16,8)" remarks="变动额"></column>
+            <column name="transactionNo" type="VARCHAR(255)" remarks="交易流水号"/>
+            <column name="bizNo" type="VARCHAR(255)" remarks="业务流水号"/>
+            <column name="bizType" type="integer(11)" remarks="业务类型"/>
+            <column name="direction" type="integer(11)" remarks="变动方向"/>
+            <column name="status" type="integer(12)" remarks="状态"/>
+            <column name="remark" type="VARCHAR(200)" remarks="备注"/>
+            <column name="creatorUserId" type="bigint" remarks="创建者"></column>
+            <column name="creationTime" type="DATETIME" remarks="创建时间"></column>
+            <column name="LastModifierUserId" type="bigint"/>
+            <column name="LastModificationTime" type="DATETIME"/>
+            <column name="deleterUserId" type="bigint"/>
+            <column name="deletionTime" type="DATETIME"/>
+            <column name="deleted" type="CHAR(1)"/>
+            <column name="version" type="bigint"/>
+        </createTable>
+        <createIndex tableName="up_user_point_log" indexName="idx_userId">
+            <column name="userId"></column>
+        </createIndex>
+        <addDefaultValue tableName="up_user_point_log" columnName="point" defaultValue="0"/>
+        <addDefaultValue tableName="up_user_point_log" columnName="amount" defaultValue="0"/>
+        <addDefaultValue tableName="up_user_point_log" columnName="deleted" defaultValue="0"/>
+        <addDefaultValue tableName="up_user_point_log" columnName="version" defaultValue="1"/>
+        <rollback>drop table up_user_point_log</rollback>
+    </changeSet>
+</databaseChangeLog>

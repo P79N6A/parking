@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet author="walkman" id="up_hikvision_vehicle_record_table_modify_column_20180802">
+        <preConditions onFail="MARK_RAN">
+            <tableExists tableName="up_hikvision_vehicle_record"/>
+        </preConditions>
+        <addColumn tableName="up_hikvision_vehicle_record">
+            <column name="passingUuid" type="VARCHAR(64)" afterColumn="id"
+                    remarks="平台过车唯一编号"/>
+            <column name="processStatus" type="int" afterColumn="berthCode" remarks="平台处理状态(1 未处理 2 处理中 3 已处理 4 处理失败)"/>
+            <column name="processRemark" type="VARCHAR(2000)" afterColumn="processStatus"
+                    remarks="处理说明"/>
+        </addColumn>
+        <createIndex tableName="up_hikvision_vehicle_record" indexName="idx_passingUuid">
+            <column name="passingUuid"/>
+        </createIndex>
+        <createIndex tableName="up_hikvision_vehicle_record" indexName="idx_processStatus">
+            <column name="processStatus"/>
+        </createIndex>
+        <!-- 历史数据置为已处理 -->
+        <sql>update up_hikvision_vehicle_record set processStatus = 3;</sql>
+        <rollback>
+            <dropColumn tableName="up_hikvision_vehicle_record" columnName="passingUuid"/>
+            <dropColumn tableName="up_hikvision_vehicle_record" columnName="processStatus"/>
+            <dropColumn tableName="up_hikvision_vehicle_record" columnName="processRemark"/>
+            <dropIndex tableName="up_hikvision_vehicle_record" indexName="idx_passingUuid"/>
+            <dropIndex tableName="up_hikvision_vehicle_record" indexName="idx_processStatus"/>
+        </rollback>
+    </changeSet>
+</databaseChangeLog>

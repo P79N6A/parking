@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhuyitech.parking.tool.mapper.AppVersionMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.zhuyitech.parking.tool.domain.AppVersion">
+        <id column="id" property="id"/>
+        <result column="terminateType" property="terminateType"/>
+        <result column="version" property="version"/>
+        <result column="versionName" property="versionName"/>
+        <result column="updateDescription" property="updateDescription"/>
+        <result column="status" property="status"/>
+        <result column="codeUrl" property="codeUrl"/>
+        <result column="downloadUrl" property="downloadUrl"/>
+        <result column="fileUrl" property="fileUrl"/>
+        <result column="publishTime" property="publishTime"/>
+        <result column="withdrawTime" property="withdrawTime"/>
+        <result column="creatorUserId" property="creatorUserId"/>
+        <result column="creationTime" property="creationTime"/>
+        <result column="lastModifierUserId" property="lastModifierUserId"/>
+        <result column="lastModificationTime" property="lastModificationTime"/>
+        <result column="deleterUserId" property="deleterUserId"/>
+        <result column="deletionTime" property="deletionTime"/>
+        <result column="deleted" property="deleted"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,terminateType,version,versionName,updateDescription,status,codeUrl,downloadUrl,fileUrl,publishTime,withdrawTime,creatorUserId,
+        creationTime,lastModifierUserId,lastModificationTime,deleterUserId,deletionTime,deleted
+    </sql>
+
+</mapper>

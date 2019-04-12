@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet author="AkeemSuper" id="up_work_calendar_table_add_columns_20180508">
+        <preConditions onFail="MARK_RAN">
+            <tableExists tableName="up_work_calendar"/>
+        </preConditions>
+        <addColumn tableName="up_work_calendar">
+            <column name="deleterUserId" type="bigint" remarks="删除者"/>
+        </addColumn>
+        <rollback>drop table up_work_calendar</rollback>
+    </changeSet>
+</databaseChangeLog>

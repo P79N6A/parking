@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhuyitech.parking.tool.mapper.TrafficRestrictionPolicyMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.zhuyitech.parking.tool.domain.TrafficRestrictionPolicy">
+        <id column="id" property="id"/>
+        <result property="carType" column="carType"/>
+        <result property="title" column="title"/>
+        <result property="cityId" column="cityId"/>
+        <result property="restrictionArea" column="restrictionArea"/>
+        <result property="restrictionDetail" column="restrictionDetail"/>
+        <result property="restrictionRule" column="restrictionRule"/>
+        <result property="restrictionTime" column="restrictionTime"/>
+        <result column="creatorUserId" property="creatorUserId"/>
+        <result column="creationTime" property="creationTime"/>
+        <result column="lastModifierUserId" property="lastModifierUserId"/>
+        <result column="lastModificationTime" property="lastModificationTime"/>
+        <result column="deleterUserId" property="deleterUserId"/>
+        <result column="deletionTime" property="deletionTime"/>
+        <result column="deleted" property="deleted"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,cityId,carType,title,restrictionArea,restrictionDetail,restrictionRule,restrictionTime,
+        creatorUserId, creationTime,lastModifierUserId,lastModificationTime,deleterUserId,deletionTime,deleted
+    </sql>
+
+    <sql id="Simple_Column_List">
+        id,cityId,carType,title,restrictionArea,restrictionRule,restrictionTime,
+        creatorUserId, creationTime,lastModifierUserId,lastModificationTime,deleterUserId,deletionTime,deleted
+    </sql>
+
+    <select id="selectOnePolicy" resultMap="BaseResultMap">
+        select
+        <include refid="Simple_Column_List"/>
+        from up_traffic_restriction_policy
+        <where>
+            ${ew.sqlSegment}
+        </where>
+    </select>
+
+    <select id="selectListPolicy" resultMap="BaseResultMap">
+        select
+        <include refid="Simple_Column_List"/>
+        from up_traffic_restriction_policy
+        <where>
+            ${ew.sqlSegment}
+        </where>
+    </select>
+
+
+</mapper>

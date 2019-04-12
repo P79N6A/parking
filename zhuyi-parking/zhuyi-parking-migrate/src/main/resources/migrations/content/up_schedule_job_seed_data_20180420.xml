@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet author="walkman" id="up_schedule_job_seed_data_20180420">
+        <insert tableName="up_schedule_job">
+            <column name="jobId" value="JOB_ALI_PAY_BILL_DOWNLOAD"/>
+            <column name="jobName" value="支付宝账单下载"/>
+            <column name="jobType" value="3"/>
+            <column name="priority" value="0"/>
+            <column name="maxRetryTimes" value="3"/>
+            <column name="relyOnPrevCycle" value="1"/>
+            <column name="submitNodeGroup" value=""/>
+            <column name="taskTrackerNodeGroup" value="zhuyi_parking_task_tracker"/>
+            <column name="extParams" value=""/>
+            <column name="internalExtParams" value=""/>
+            <column name="needFeedback" value="1"/>
+            <column name="cronExpression" value="0 0 10 * * ?"/>
+            <column name="triggerTime" value="NULL"/>
+            <column name="repeatCount" value="NULL"/>
+            <column name="repeatInterval" value="NULL"/>
+            <column name="jobStatus" value="1"/>
+            <column name="description" value="支付宝账单下载"/>
+            <column name="deleted" value="0"/>
+            <column name="version" value="1"/>
+        </insert>
+        <insert tableName="up_schedule_job">
+            <column name="jobId" value="JOB_WEIXIN_PAY_BILL_DOWNLOAD"/>
+            <column name="jobName" value="微信支付账单下载"/>
+            <column name="jobType" value="3"/>
+            <column name="priority" value="0"/>
+            <column name="maxRetryTimes" value="5"/>
+            <column name="relyOnPrevCycle" value="1"/>
+            <column name="submitNodeGroup" value=""/>
+            <column name="taskTrackerNodeGroup" value="zhuyi_parking_task_tracker"/>
+            <column name="extParams" value=""/>
+            <column name="internalExtParams" value=""/>
+            <column name="needFeedback" value="1"/>
+            <column name="cronExpression" value="0 0 10 * * ?"/>
+            <column name="triggerTime" value="NULL"/>
+            <column name="repeatCount" value="NULL"/>
+            <column name="repeatInterval" value="NULL"/>
+            <column name="jobStatus" value="1"/>
+            <column name="description" value="微信支付账单下载"/>
+            <column name="deleted" value="0"/>
+            <column name="version" value="1"/>
+        </insert>
+        <insert tableName="up_schedule_job">
+            <column name="jobId" value="JOB_APPOINT_ORDER_PAY_TIMEOUT_CANCEL"/>
+            <column name="jobName" value="预约订单超时未支付取消"/>
+            <column name="jobType" value="3"/>
+            <column name="priority" value="0"/>
+            <column name="maxRetryTimes" value="5"/>
+            <column name="relyOnPrevCycle" value="1"/>
+            <column name="submitNodeGroup" value=""/>
+            <column name="taskTrackerNodeGroup" value="zhuyi_parking_task_tracker"/>
+            <column name="extParams" value=""/>
+            <column name="internalExtParams" value=""/>
+            <column name="needFeedback" value="1"/>
+            <column name="cronExpression" value="0 */1 * * * ?"/>
+            <column name="triggerTime" value="NULL"/>
+            <column name="repeatCount" value="NULL"/>
+            <column name="repeatInterval" value="NULL"/>
+            <column name="jobStatus" value="1"/>
+            <column name="description" value="微信支付账单下载"/>
+            <column name="deleted" value="0"/>
+            <column name="version" value="1"/>
+        </insert>
+        <insert tableName="up_schedule_job">
+            <column name="jobId" value="JOB_APPOINT_ORDER_ENTER_TIMEOUT_CANCEL"/>
+            <column name="jobName" value="预约订单超时未入场取消"/>
+            <column name="jobType" value="3"/>
+            <column name="priority" value="0"/>
+            <column name="maxRetryTimes" value="5"/>
+            <column name="relyOnPrevCycle" value="1"/>
+            <column name="submitNodeGroup" value=""/>
+            <column name="taskTrackerNodeGroup" value="zhuyi_parking_task_tracker"/>
+            <column name="extParams" value=""/>
+            <column name="internalExtParams" value=""/>
+            <column name="needFeedback" value="1"/>
+            <column name="cronExpression" value="0 */1 * * * ?"/>
+            <column name="triggerTime" value="NULL"/>
+            <column name="repeatCount" value="NULL"/>
+            <column name="repeatInterval" value="NULL"/>
+            <column name="jobStatus" value="1"/>
+            <column name="description" value="预约订单超时未入场取消"/>
+            <column name="deleted" value="0"/>
+            <column name="version" value="1"/>
+        </insert>
+        <insert tableName="up_schedule_job">
+            <column name="jobId" value="JOB_LICENSE_POINT_SYNC"/>
+            <column name="jobName" value="驾驶证扣分查询"/>
+            <column name="jobType" value="3"/>
+            <column name="priority" value="0"/>
+            <column name="maxRetryTimes" value="5"/>
+            <column name="relyOnPrevCycle" value="1"/>
+            <column name="submitNodeGroup" value=""/>
+            <column name="taskTrackerNodeGroup" value="zhuyi_parking_task_tracker"/>
+            <column name="extParams" value=""/>
+            <column name="internalExtParams" value=""/>
+            <column name="needFeedback" value="1"/>
+            <column name="cronExpression" value="0 0 0 1 * ?"/>
+            <column name="triggerTime" value="NULL"/>
+            <column name="repeatCount" value="NULL"/>
+            <column name="repeatInterval" value="NULL"/>
+            <column name="jobStatus" value="1"/>
+            <column name="description" value="驾驶证扣分查询"/>
+            <column name="deleted" value="0"/>
+            <column name="version" value="1"/>
+        </insert>
+        <insert tableName="up_schedule_job">
+            <column name="jobId" value="JOB_VEHICLE_VIOLATION_SYNC"/>
+            <column name="jobName" value="车辆违章记录同步"/>
+            <column name="jobType" value="3"/>
+            <column name="priority" value="0"/>
+            <column name="maxRetryTimes" value="5"/>
+            <column name="relyOnPrevCycle" value="1"/>
+            <column name="submitNodeGroup" value=""/>
+            <column name="taskTrackerNodeGroup" value="zhuyi_parking_task_tracker"/>
+            <column name="extParams" value=""/>
+            <column name="internalExtParams" value=""/>
+            <column name="needFeedback" value="1"/>
+            <column name="cronExpression" value="0 0 1 * * ?"/>
+            <column name="triggerTime" value="NULL"/>
+            <column name="repeatCount" value="NULL"/>
+            <column name="repeatInterval" value="NULL"/>
+            <column name="jobStatus" value="1"/>
+            <column name="description" value="车辆违章记录同步"/>
+            <column name="deleted" value="0"/>
+            <column name="version" value="1"/>
+        </insert>
+        <insert tableName="up_schedule_job">
+            <column name="jobId" value="JOB_TRAFFIC_RESTRICTION"/>
+            <column name="jobName" value="限行措施同步"/>
+            <column name="jobType" value="3"/>
+            <column name="priority" value="0"/>
+            <column name="maxRetryTimes" value="5"/>
+            <column name="relyOnPrevCycle" value="1"/>
+            <column name="submitNodeGroup" value=""/>
+            <column name="taskTrackerNodeGroup" value="zhuyi_parking_task_tracker"/>
+            <column name="extParams" value=""/>
+            <column name="internalExtParams" value=""/>
+            <column name="needFeedback" value="1"/>
+            <column name="cronExpression" value="0 0 23 * * ?"/>
+            <column name="triggerTime" value="NULL"/>
+            <column name="repeatCount" value="NULL"/>
+            <column name="repeatInterval" value="NULL"/>
+            <column name="jobStatus" value="1"/>
+            <column name="description" value="限行措施同步"/>
+            <column name="deleted" value="0"/>
+            <column name="version" value="1"/>
+        </insert>
+        <insert tableName="up_schedule_job">
+            <column name="jobId" value="JOB_WEATHER_LIVES"/>
+            <column name="jobName" value="实时天气同步"/>
+            <column name="jobType" value="3"/>
+            <column name="priority" value="0"/>
+            <column name="maxRetryTimes" value="5"/>
+            <column name="relyOnPrevCycle" value="1"/>
+            <column name="submitNodeGroup" value=""/>
+            <column name="taskTrackerNodeGroup" value="zhuyi_parking_task_tracker"/>
+            <column name="extParams" value=""/>
+            <column name="internalExtParams" value=""/>
+            <column name="needFeedback" value="1"/>
+            <column name="cronExpression" value="0 0/30 * * * ?"/>
+            <column name="triggerTime" value="NULL"/>
+            <column name="repeatCount" value="NULL"/>
+            <column name="repeatInterval" value="NULL"/>
+            <column name="jobStatus" value="1"/>
+            <column name="description" value="实时天气同步"/>
+            <column name="deleted" value="0"/>
+            <column name="version" value="1"/>
+        </insert>
+        <insert tableName="up_schedule_job">
+            <column name="jobId" value="JOB_WEATHER_FORECASTS"/>
+            <column name="jobName" value="预报天气同步"/>
+            <column name="jobType" value="3"/>
+            <column name="priority" value="0"/>
+            <column name="maxRetryTimes" value="5"/>
+            <column name="relyOnPrevCycle" value="1"/>
+            <column name="submitNodeGroup" value=""/>
+            <column name="taskTrackerNodeGroup" value="zhuyi_parking_task_tracker"/>
+            <column name="extParams" value=""/>
+            <column name="internalExtParams" value=""/>
+            <column name="needFeedback" value="1"/>
+            <column name="cronExpression" value="0 0 */1 * * ?"/>
+            <column name="triggerTime" value="NULL"/>
+            <column name="repeatCount" value="NULL"/>
+            <column name="repeatInterval" value="NULL"/>
+            <column name="jobStatus" value="1"/>
+            <column name="description" value="预报天气同步"/>
+            <column name="deleted" value="0"/>
+            <column name="version" value="1"/>
+        </insert>
+        <insert tableName="up_schedule_job">
+            <column name="jobId" value="JOB_OIL_PRICE"/>
+            <column name="jobName" value="油价数据同步"/>
+            <column name="jobType" value="3"/>
+            <column name="priority" value="0"/>
+            <column name="maxRetryTimes" value="5"/>
+            <column name="relyOnPrevCycle" value="1"/>
+            <column name="submitNodeGroup" value=""/>
+            <column name="taskTrackerNodeGroup" value="zhuyi_parking_task_tracker"/>
+            <column name="extParams" value=""/>
+            <column name="internalExtParams" value=""/>
+            <column name="needFeedback" value="1"/>
+            <column name="cronExpression" value="0 0 0 * * ?"/>
+            <column name="triggerTime" value="NULL"/>
+            <column name="repeatCount" value="NULL"/>
+            <column name="repeatInterval" value="NULL"/>
+            <column name="jobStatus" value="1"/>
+            <column name="description" value="微信支付账单下载"/>
+            <column name="deleted" value="0"/>
+            <column name="version" value="1"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

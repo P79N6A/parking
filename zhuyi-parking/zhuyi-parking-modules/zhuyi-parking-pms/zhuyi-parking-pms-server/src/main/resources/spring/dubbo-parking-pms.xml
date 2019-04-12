@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://code.alibabatech.com/schema/dubbo
+        http://code.alibabatech.com/schema/dubbo/dubbo.xsd
+        ">
+
+    <dubbo:service ref="pmsLookupService"
+                   interface="com.zhuyitech.parking.pms.service.api.PmsLookupService"
+                   version="1.0.0" timeout="30000" registry="fundamentalRegistry"/>
+    <dubbo:service ref="carBrandService"
+                   interface="com.zhuyitech.parking.pms.service.api.CarBrandService"
+                   version="1.0.0" timeout="30000" registry="fundamentalRegistry"/>
+    <dubbo:service ref="licensePrefixService"
+                   interface="com.zhuyitech.parking.pms.service.api.LicensePrefixService"
+                   version="1.0.0" timeout="30000" registry="fundamentalRegistry"/>
+    <dubbo:service ref="vehicleRecordService"
+                   interface="com.zhuyitech.parking.pms.service.api.VehicleRecordService"
+                   version="1.0.0" timeout="30000" registry="fundamentalRegistry"/>
+
+    <dubbo:reference id="messageLogService" version="1.0.0"
+                     interface="com.zhuyitech.parking.tool.service.api.MessageLogService"
+                     check="false"
+                     timeout="30000" retries="0" registry="fundamentalRegistry"/>
+    <dubbo:reference id="regionService" version="1.0.0"
+                     interface="com.zhuyitech.parking.tool.service.api.RegionService"
+                     check="false"
+                     timeout="30000" retries="0" registry="fundamentalRegistry"/>
+    <dubbo:reference id="ossService" version="1.0.0"
+                     interface="com.zhuyitech.parking.tool.service.api.OssService"
+                     check="false"
+                     timeout="30000" retries="0" registry="fundamentalRegistry"/>
+    <dubbo:reference id="miscService" version="1.0.0"
+                     interface="com.zhuyitech.parking.tool.service.api.MiscService"
+                     check="false"
+                     timeout="30000" retries="0" registry="fundamentalRegistry"/>
+    <dubbo:reference id="pushNotificationService" version="1.0.0"
+                     interface="com.zhuyitech.parking.tool.service.api.PushNotificationService"
+                     check="false"
+                     timeout="30000" retries="0" registry="fundamentalRegistry"/>
+    <dubbo:reference id="notificationService" version="1.0.0"
+                     interface="com.zhuyitech.parking.tool.service.api.NotificationService"
+                     check="false"
+                     timeout="30000" retries="0" registry="fundamentalRegistry"/>
+    <dubbo:reference id="userService" version="1.0.0"
+                     interface="com.zhuyitech.parking.ucc.service.api.UserService"
+                     check="false"
+                     timeout="30000" retries="0" registry="fundamentalRegistry"/>
+    <dubbo:reference id="userCarInfoService" version="1.0.0"
+                     interface="com.zhuyitech.parking.ucc.car.UserCarInfoService"
+                     check="false"
+                     timeout="30000" retries="0" registry="fundamentalRegistry"/>
+
+</beans>

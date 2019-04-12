@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet author="zwq" id="up_app_version_table_add_columns_20180524">
+        <preConditions onFail="MARK_RAN">
+            <tableExists tableName="up_app_version"/>
+        </preConditions>
+        <addColumn tableName="up_app_version">
+            <column name="forceUpdate" type="CHAR(1)" afterColumn="withdrawTime" remarks="是否强制更新"
+                    defaultValue="0">
+            </column>
+        </addColumn>
+    </changeSet>
+</databaseChangeLog>

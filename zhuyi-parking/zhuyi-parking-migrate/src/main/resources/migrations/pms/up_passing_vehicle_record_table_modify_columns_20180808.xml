@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet author="walkman" id="up_passing_vehicle_record_table_modify_columns_20180808">
+        <preConditions onFail="MARK_RAN">
+            <tableExists tableName="up_passing_vehicle_record"/>
+        </preConditions>
+        <addColumn tableName="up_passing_vehicle_record">
+            <column name="passingUuid" type="VARCHAR(64)" afterColumn="passingNo"
+                    remarks="平台过车唯一编号"/>
+        </addColumn>
+        <createIndex tableName="up_passing_vehicle_record" indexName="idx_passingUuid">
+            <column name="passingUuid"/>
+        </createIndex>
+        <createIndex tableName="up_passing_vehicle_record" indexName="idx_passingNo">
+            <column name="passingNo"/>
+        </createIndex>
+        <createIndex tableName="up_passing_vehicle_record" indexName="idx_dataSource">
+            <column name="dataSource"/>
+        </createIndex>
+        <createIndex tableName="up_passing_vehicle_record" indexName="idx_photoUploaded">
+            <column name="photoUploaded"/>
+        </createIndex>
+        <rollback>
+            <dropColumn tableName="up_passing_vehicle_record" columnName="passingUuid"/>
+            <dropIndex tableName="up_passing_vehicle_record" indexName="idx_passingUuid"/>
+            <dropIndex tableName="up_passing_vehicle_record" indexName="idx_passingNo"/>
+            <dropIndex tableName="up_passing_vehicle_record" indexName="idx_dataSource"/>
+            <dropIndex tableName="up_passing_vehicle_record" indexName="idx_photoUploaded"/>
+        </rollback>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhuyitech.parking.tool.mapper.WeatherInfoMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.zhuyitech.parking.tool.domain.WeatherInfo">
+        <id column="id" property="id"/>
+        <result column="adcode" property="adcode"/>
+        <result column="temperature" property="temperature"/>
+        <result column="weather" property="weather"/>
+        <result column="winddirection" property="winddirection"/>
+        <result column="windpower" property="windpower"/>
+        <result column="humidity" property="humidity"/>
+        <result column="reporttime" property="reporttime"/>
+        <result column="dayweather" property="dayweather"/>
+        <result column="nightweather" property="nightweather"/>
+        <result property="daytemp" column="daytemp"/>
+        <result property="nighttemp" column="nighttemp"/>
+        <result property="daywind" column="daywind"/>
+        <result property="nightwind" column="nightwind"/>
+        <result property="daypower" column="daypower"/>
+        <result property="nightpower" column="nightpower"/>
+        <result property="reportType" column="reportType"/>
+        <result column="creatorUserId" property="creatorUserId"/>
+        <result column="creationTime" property="creationTime"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,adcode,temperature,weather,winddirection,windpower,humidity,reporttime,dayweather,nightweather,daytemp,nighttemp,daywind,nightwind,
+        daypower,nightpower,reportType,creatorUserId,creationTime
+    </sql>
+
+    <select id="selectCurrentWeather" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from up_weather_info
+        <where>
+            reporttime = (SELECT
+            max(reporttime)
+            FROM
+            up_weather_info
+            <where>
+                <include refid="currentWeatherWhere"/>
+            </where>
+            )
+            AND
+            <include refid="currentWeatherWhere"/>
+        </where>
+    </select>
+
+    <sql id="currentWeatherWhere">
+        adcode = #{adcode} AND reportType = #{reportType}
+    </sql>
+
+    <select id="selectForecastWeather" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from up_weather_info
+        <where>
+            reporttime = (SELECT
+            max(reporttime)
+            FROM
+            up_weather_info
+            <where>
+                <include refid="forecastWeatherWhere"/>
+            </where>
+            )
+            AND
+            <include refid="forecastWeatherWhere"/>
+        </where>
+    </select>
+
+    <sql id="forecastWeatherWhere">
+        adcode = #{adcode} AND reportType = #{reportType} AND forecastTime = #{forecastTime}
+    </sql>
+
+    <delete id="deleteWeatherBefore">
+        delete from up_weather_info
+        where reporttime &lt; #{reporttime}
+    </delete>
+</mapper>

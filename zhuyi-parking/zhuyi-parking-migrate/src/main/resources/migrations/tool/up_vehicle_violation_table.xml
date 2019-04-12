@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet author="yuzhicheng" id="up_vehicle_violation_table">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="up_vehicle_violation"/>
+            </not>
+        </preConditions>
+        <createTable tableName="up_vehicle_violation" remarks="车辆违章信息表">
+            <column autoIncrement="true" name="id" type="bigint" remarks="ID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_vehicle_violation"/>
+            </column>
+            <column name="carId" type="bigint" remarks="车辆id"/>
+            <column name="code" type="VARCHAR(64)" remarks="违章编码,唯一，非违章条例码"/>
+            <column name="violationTime" type="DATETIME" remarks="违章时间"/>
+            <column name="fine" type="decimal(10,2)" defaultValue="0.00" remarks="罚款金额"/>
+            <column name="address" type="VARCHAR(1000)" remarks="违章地址"/>
+            <column name="reason" type="VARCHAR(1000)" remarks="违章处理原因"/>
+            <column name="point" type="int" remarks="违章扣分"/>
+            <column name="violationCity" type="VARCHAR(128)" remarks="违章发生城市，可能为空"/>
+            <column name="province" type="VARCHAR(64)" remarks="省份"/>
+            <column name="city" type="VARCHAR(128)" remarks="城市"/>
+            <column name="serviceFee" type="decimal(10,2)" defaultValue="0.00" remarks="服务费（与代缴有关，用户可忽略本字段）"/>
+            <column name="markFee" type="decimal(10,2)" defaultValue="0.00" remarks="代扣分费用（与代缴有关，用户可忽略本字段）"/>
+            <column name="canSelect" type="int" remarks="能否勾选办理：0不可勾选, 1可勾选。（与代缴有关，用户可忽略本字段）"/>
+            <column name="processStatus" type="int" defaultValue="1"
+                    remarks="违章处理状态：1：未处理，2：处理中，3：已处理，4：不支持（与代缴有关，用户可忽略本字段）"/>
+            <column name="violationNum" type="VARCHAR(16)" remarks="违章官方编码"/>
+            <column name="organName" type="VARCHAR(255)" remarks="执法机构"/>
+            <column name="paymentStatus" type="int" defaultValue="1" remarks="违章缴费状态 不返回表示无法获取该信息，1-未缴费 2-已缴"/>
+            <column name="creatorUserId" type="bigint" remarks="创建者"/>
+            <column name="creationTime" type="DATETIME" remarks="创建时间"/>
+            <column name="LastModifierUserId" type="bigint" remarks="更新者"/>
+            <column name="LastModificationTime" type="DATETIME" remarks="更新时间"/>
+            <column name="deleterUserId" type="bigint" remarks="删除者"/>
+            <column name="deletionTime" type="DATETIME" remarks="删除时间"/>
+            <column name="deleted" type="CHAR(1)" remarks="删除标记" defaultValue="0"/>
+            <column name="version" type="bigint" remarks="版本号" defaultValue="1"/>
+        </createTable>
+        <createIndex tableName="up_vehicle_violation" indexName="idx_carId">
+            <column name="carId"></column>
+        </createIndex>
+        <createIndex tableName="up_vehicle_violation" indexName="idx_code">
+            <column name="code"></column>
+        </createIndex>
+        <rollback>drop table up_vehicle_violation</rollback>
+    </changeSet>
+</databaseChangeLog>

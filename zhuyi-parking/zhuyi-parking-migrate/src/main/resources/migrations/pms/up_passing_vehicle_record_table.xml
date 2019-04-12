@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet author="AkeemSuper" id="up_passing_vehicle_record_table">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="up_passing_vehicle_record"/>
+            </not>
+        </preConditions>
+        <createTable tableName="up_passing_vehicle_record" remarks="过车记录表">
+            <column autoIncrement="true" name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_passing_record"/>
+            </column>
+            <column name="parkingId" type="bigint" remarks="停车场ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="machine" type="VARCHAR(255)" remarks="设备编号"/>
+            <column name="hikPassingId" type="VARCHAR(255)" remarks="海康平台过车ID"/>
+            <column name="aliPassingId" type="VARCHAR(255)" remarks="阿里平台过车ID"/>
+            <column name="parkingLotId" type="bigint" remarks="泊位ID"/>
+            <column name="plateNumber" type="VARCHAR(20)" remarks="车牌号"/>
+            <column name="plateColor" type="int(2)" remarks="车牌颜色"/>
+            <column name="carType" type="int(2)" remarks="车辆类型"/>
+            <column name="proofStatus" type="CHAR(1)" remarks="校对状态 0:未校对  1:已校对"/>
+            <column name="dataOrigin" type="VARCHAR(255)" remarks="数据来源"/>
+            <column name="confidence" type="int" remarks="过车置信度"/>
+            <column name="plateNumberConfidence" type="int" remarks="车牌置信度"/>
+            <column name="passCarType" type="CHAR(1)" remarks="过车类型  0.入车 1.出车 "/>
+            <column name="passTime" type="DATETIME" remarks="过车时间"/>
+            <column name="passPhoto" type="VARCHAR(2000)" remarks="入车图片"/>
+            <column name="passPhotoThree" type="VARCHAR(2000)" remarks="三合一图片"/>
+            <column name="creatorUserId" type="bigint" remarks="创建者"/>
+            <column name="creationTime" type="DATETIME" remarks="创建时间"/>
+            <column name="LastModifierUserId" type="bigint" remarks="更新者"/>
+            <column name="LastModificationTime" type="DATETIME" remarks="更新时间"/>
+            <column name="deleterUserId" type="bigint" remarks="删除者"/>
+            <column name="deletionTime" type="DATETIME" remarks="删除时间"/>
+            <column name="deleted" type="CHAR(1)" remarks="删除标记"/>
+        </createTable>
+        <createIndex tableName="up_passing_vehicle_record" indexName="idx_parkingId">
+            <column name="parkingId"></column>
+        </createIndex>
+        <createIndex tableName="up_passing_vehicle_record" indexName="idx_parkingLotId">
+            <column name="parkingLotId"></column>
+        </createIndex>
+        <createIndex tableName="up_passing_vehicle_record" indexName="idx_plateNumber">
+            <column name="plateNumber"></column>
+        </createIndex>
+        <rollback>drop table up_passing_vehicle_record</rollback>
+    </changeSet>
+</databaseChangeLog>

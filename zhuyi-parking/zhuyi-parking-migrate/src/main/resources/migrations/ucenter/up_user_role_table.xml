@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet author="walkman" id="up_user_role_table">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="up_user_role"/>
+            </not>
+        </preConditions>
+        <createTable tableName="up_user_role" remarks="用户-角色表">
+            <column autoIncrement="true" name="id" type="bigint" remarks="主键">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_up_user_role"/>
+            </column>
+            <column name="userId" type="bigint" remarks="用户ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="roleId" type="bigint" remarks="角色ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creatorUserId" type="bigint" remarks="创建者"></column>
+            <column name="creationTime" type="DATETIME" remarks="创建时间"></column>
+        </createTable>
+        <addUniqueConstraint tableName="up_user_role" columnNames="userId,roleId"
+                             constraintName="uq_up_user_role"
+                             deferrable="false" disabled="false" initiallyDeferred="false"/>
+        <rollback>drop table up_user_role</rollback>
+    </changeSet>
+</databaseChangeLog>

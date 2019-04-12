@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet author="yuzhicheng" id="up_holiday_schedule_table">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="up_holiday_schedule"/>
+            </not>
+        </preConditions>
+        <createTable tableName="up_holiday_schedule" remarks="节假日表">
+            <column autoIncrement="true" name="id" type="bigint" remarks="ID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_holiday_schedule"/>
+            </column>
+            <column name="holidayType" type="INT" remarks="假期类型：1工作日，2双休日，3小长假，4长假">
+                <constraints nullable="false"/>
+            </column>
+            <column name="holidayName" type="VARCHAR(255)" remarks="假期名称">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creatorUserId" type="bigint" remarks="创建者"/>
+            <column name="creationTime" type="DATETIME" remarks="创建时间"/>
+            <column name="LastModifierUserId" type="bigint" remarks="更新者"/>
+            <column name="LastModificationTime" type="DATETIME" remarks="更新时间"/>
+            <column name="deletionTime" type="DATETIME" remarks="删除时间"/>
+            <column name="deleted" type="CHAR(1)" remarks="删除标记"/>
+        </createTable>
+        <addDefaultValue tableName="up_holiday_schedule" columnName="deleted" defaultValue="0"/>
+        <rollback>drop table up_holiday_schedule</rollback>
+    </changeSet>
+</databaseChangeLog>

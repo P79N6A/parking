@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet author="AkeemSuper" id="up_user_car_auth_table_modify_columns_20180807">
+        <preConditions onFail="MARK_RAN">
+            <tableExists tableName="up_user_car_auth"/>
+        </preConditions>
+        <dropNotNullConstraint tableName="up_user_car_auth" columnName="vehicleNumber" columnDataType="VARCHAR(255)"/>
+        <dropNotNullConstraint tableName="up_user_car_auth" columnName="engineNumber" columnDataType="VARCHAR(255)"/>
+        <addDefaultValue tableName="up_user_car_auth" columnName="vehicleNumber" defaultValue=""/>
+        <addDefaultValue tableName="up_user_car_auth" columnName="engineNumber" defaultValue=""/>
+    </changeSet>
+</databaseChangeLog>

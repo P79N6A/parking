@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet author="walkman" id="up_role_seed_data">
+        <insert tableName="up_role">
+            <column name="id" value="21"/>
+            <column name="code" value="Administrator"/>
+            <column name="name" value="系统管理员"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <insert tableName="up_role">
+            <column name="id" value="22"/>
+            <column name="code" value="User"/>
+            <column name="name" value="User"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <!--up_role_permission  -->
+        <insert tableName="up_role_permission">
+            <column name="id" value="21"/>
+            <column name="roleId" value="21"/>
+            <column name="permissionId" value="21"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="up_role_permission">
+            <column name="id" value="22"/>
+            <column name="roleId" value="21"/>
+            <column name="permissionId" value="22"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="up_role_permission">
+            <column name="id" value="23"/>
+            <column name="roleId" value="21"/>
+            <column name="permissionId" value="23"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="up_role_permission">
+            <column name="id" value="24"/>
+            <column name="roleId" value="21"/>
+            <column name="permissionId" value="24"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="up_role_permission">
+            <column name="id" value="25"/>
+            <column name="roleId" value="22"/>
+            <column name="permissionId" value="23"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <!--up_role_menu -->
+        <insert tableName="up_role_menu">
+            <column name="id" value="1"/>
+            <column name="roleId" value="21"/>
+            <column name="menuId" value="1"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="up_role_menu">
+            <column name="id" value="2"/>
+            <column name="roleId" value="21"/>
+            <column name="menuId" value="2"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="up_role_menu">
+            <column name="id" value="3"/>
+            <column name="roleId" value="21"/>
+            <column name="menuId" value="3"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="up_role_menu">
+            <column name="id" value="4"/>
+            <column name="roleId" value="21"/>
+            <column name="menuId" value="4"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="up_role_menu">
+            <column name="id" value="5"/>
+            <column name="roleId" value="21"/>
+            <column name="menuId" value="5"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="up_role_menu">
+            <column name="id" value="6"/>
+            <column name="roleId" value="21"/>
+            <column name="menuId" value="6"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="up_role_menu">
+            <column name="id" value="7"/>
+            <column name="roleId" value="21"/>
+            <column name="menuId" value="7"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="up_role_menu">
+            <column name="id" value="8"/>
+            <column name="roleId" value="21"/>
+            <column name="menuId" value="8"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="up_role_menu">
+            <column name="id" value="9"/>
+            <column name="roleId" value="21"/>
+            <column name="menuId" value="9"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="up_role_menu">
+            <column name="id" value="10"/>
+            <column name="roleId" value="21"/>
+            <column name="menuId" value="10"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="up_role_menu">
+            <column name="id" value="11"/>
+            <column name="roleId" value="21"/>
+            <column name="menuId" value="11"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="up_role_menu">
+            <column name="id" value="12"/>
+            <column name="roleId" value="21"/>
+            <column name="menuId" value="12"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="up_role_menu">
+            <column name="id" value="13"/>
+            <column name="roleId" value="21"/>
+            <column name="menuId" value="13"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="up_role_menu">
+            <column name="id" value="14"/>
+            <column name="roleId" value="21"/>
+            <column name="menuId" value="14"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+
+        <insert tableName="up_role_menu">
+            <column name="id" value="15"/>
+            <column name="roleId" value="21"/>
+            <column name="menuId" value="15"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="up_role_menu">
+            <column name="id" value="16"/>
+            <column name="roleId" value="21"/>
+            <column name="menuId" value="16"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="up_role_menu">
+            <column name="id" value="17"/>
+            <column name="roleId" value="21"/>
+            <column name="menuId" value="17"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="up_role_menu">
+            <column name="id" value="18"/>
+            <column name="roleId" value="21"/>
+            <column name="menuId" value="18"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="up_role_menu">
+            <column name="id" value="19"/>
+            <column name="roleId" value="21"/>
+            <column name="menuId" value="19"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="up_role_menu">
+            <column name="id" value="20"/>
+            <column name="roleId" value="21"/>
+            <column name="menuId" value="20"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet author="walkman" id="up_notification_template_seed_data">
+        <insert tableName="up_notification_template">
+            <column name="templateId" value="NOT_20180524"/>
+            <column name="templateName" value="停车新账单消息模板"/>
+            <column name="type" value="2"/>
+            <column name="content" value="尊敬的用户您好，您于${orderDate}在${parkingName}，有新的账单产生，请前往我的账单去支付"/>
+            <column name="status" value="1"/>
+            <column name="description" value="停车新账单消息模板"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="LastModifierUserId" value="0"/>
+            <column name="LastModificationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <insert tableName="up_notification_template">
+            <column name="templateId" value="NOT_20180526"/>
+            <column name="templateName" value="停车账单支付成功消息模板"/>
+            <column name="type" value="2"/>
+            <column name="content" value="尊敬的用户您好，您于${orderDate}在${parkingName}，订单已支付，祝您生活愉快！"/>
+            <column name="status" value="1"/>
+            <column name="description" value="停车账单支付成功消息模板"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="LastModifierUserId" value="0"/>
+            <column name="LastModificationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <insert tableName="up_notification_template">
+            <column name="templateId" value="PUSH_20180424"/>
+            <column name="templateName" value="停车新账单推送模板"/>
+            <column name="type" value="1"/>
+            <column name="content" value="尊敬的用户您好，您于${orderDate}在${parkingName}，有新的账单产生，请前往我的账单去支付"/>
+            <column name="status" value="1"/>
+            <column name="description" value="停车新账单消息模板"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="LastModifierUserId" value="0"/>
+            <column name="LastModificationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <insert tableName="up_notification_template">
+            <column name="templateId" value="PUSH_20180526"/>
+            <column name="templateName" value="停车账单支付成功推送模板"/>
+            <column name="type" value="1"/>
+            <column name="content" value="尊敬的用户您好，您于${orderDate}在${parkingName}，订单已支付，祝您生活愉快！"/>
+            <column name="status" value="1"/>
+            <column name="description" value="停车账单支付成功消息模板"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="LastModifierUserId" value="0"/>
+            <column name="LastModificationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <insert tableName="up_notification_template">
+            <column name="templateId" value="PUSH_20180601"/>
+            <column name="templateName" value="明日限行提醒推送模板"/>
+            <column name="type" value="1"/>
+            <column name="content" value="尊敬的用户您好，您的爱车${plateNumber}，将在明日限行,请您提前规划出行路线，祝您生活愉快！"/>
+            <column name="status" value="1"/>
+            <column name="description" value="明日限行提醒消息模板"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="LastModifierUserId" value="0"/>
+            <column name="LastModificationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>
+

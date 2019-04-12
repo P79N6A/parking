@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet author="zwq" id="up_app_version_table">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="up_app_version"/>
+            </not>
+        </preConditions>
+        <createTable tableName="up_app_version" remarks="app版本表">
+            <column autoIncrement="true" name="id" type="bigint" remarks="ID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_app_version"/>
+            </column>
+            <column name="terminateType" type="CHAR(1)" remarks="客户端类型">
+                <constraints nullable="false"/>
+            </column>
+            <column name="version" type="VARCHAR(10)" remarks="版本号">
+                <constraints nullable="false"/>
+            </column>
+            <column name="versionName" type="VARCHAR(64)" remarks="版本名称" defaultValue=""></column>
+            <column name="updateDescription" type="TEXT" remarks="更新说明"></column>
+            <column name="downloadUrl" type="VARCHAR(1280)" remarks="下载链接" defaultValue=""></column>
+            <column name="codeUrl" type="VARCHAR(1280)" remarks="二维码链接" defaultValue=""></column>
+            <column name="fileUrl" type="VARCHAR(1280)" remarks="服务器链接" defaultValue=""></column>
+            <column name="status" type="CHAR(1)" remarks="状态" defaultValue="0"></column>
+            <column name="publishTime" type="DATETIME" remarks="发布时间"></column>
+            <column name="withdrawTime" type="DATETIME" remarks="下架时间"></column>
+            <column name="creatorUserId" type="bigint"/>
+            <column name="creationTime" type="DATETIME"/>
+            <column name="LastModifierUserId" type="bigint"/>
+            <column name="LastModificationTime" type="DATETIME"/>
+            <column name="deleterUserId" type="bigint"/>
+            <column name="deletionTime" type="DATETIME"/>
+            <column name="deleted" type="CHAR(1)" defaultValue="0"/>
+        </createTable>
+        <rollback>drop table up_app_version</rollback>
+    </changeSet>
+</databaseChangeLog>

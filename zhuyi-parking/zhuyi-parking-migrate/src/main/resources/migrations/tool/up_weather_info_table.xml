@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet author="walkman" id="up_weather_info_table">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="up_weather_info"/>
+            </not>
+        </preConditions>
+        <createTable tableName="up_weather_info" remarks="天气数据表">
+            <column autoIncrement="true" name="id" type="bigint" remarks="ID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_weather_info"/>
+            </column>
+            <column name="adcode" type="VARCHAR(32)" remarks="区域编码"></column>
+            <column name="temperature" type="VARCHAR(10)" remarks="温度"></column>
+            <column name="weather" type="VARCHAR(64)" remarks="天气现象（汉字描述）"></column>
+            <column name="winddirection" type="VARCHAR(64)" remarks="风向，风向编码对应描述）"></column>
+            <column name="windpower" type="VARCHAR(64)" remarks="风力，此处返回的是风力编码，风力编码对应风力级别，单位：级"></column>
+            <column name="humidity" type="VARCHAR(32)" remarks="空气湿度"></column>
+            <column name="reporttime" type="DATETIME" remarks="数据发布的时间"></column>
+            <column name="dayweather" type="VARCHAR(32)" remarks="白天天气现象"></column>
+            <column name="nightweather" type="VARCHAR(32)" remarks="白天天气现象"></column>
+            <column name="daytemp" type="VARCHAR(32)" remarks="白天温度"></column>
+            <column name="nighttemp" type="VARCHAR(32)" remarks="晚上温度"></column>
+            <column name="daywind" type="VARCHAR(32)" remarks="白天风向"></column>
+            <column name="nightwind" type="VARCHAR(32)" remarks="晚上风向"></column>
+            <column name="daypower" type="VARCHAR(32)" remarks="白天风力"></column>
+            <column name="nightpower" type="VARCHAR(32)" remarks="晚上风力"></column>
+            <column name="reportType" type="int" remarks="天气类型(0实时1预报)" defaultValue="0"/>
+            <column name="creatorUserId" type="bigint" remarks="创建者"/>
+            <column name="creationTime" type="DATETIME" remarks="创建时间"/>
+        </createTable>
+        <createIndex tableName="up_weather_info" indexName="idx_adcode">
+            <column name="adcode"></column>
+        </createIndex>
+        <rollback>drop table up_weather_info</rollback>
+    </changeSet>
+</databaseChangeLog>

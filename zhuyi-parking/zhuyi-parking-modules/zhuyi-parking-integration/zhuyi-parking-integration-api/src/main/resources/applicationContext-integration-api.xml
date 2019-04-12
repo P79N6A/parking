@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://code.alibabatech.com/schema/dubbo
+        http://code.alibabatech.com/schema/dubbo/dubbo.xsd
+        ">
+
+    <dubbo:reference id="apiAppointmentIntegrationService"
+                     interface="com.zhuyitech.parking.integration.appointment.AppointmentIntegrationService"
+                     check="false"
+                     timeout="30000" retries="0" registry="fundamentalRegistry" version="1.0.0"/>
+    <dubbo:reference id="userParkingOrderIntegrationService"
+                     interface="com.zhuyitech.parking.integration.order.UserParkingOrderIntegrationService"
+                     check="false"
+                     timeout="30000" retries="0" registry="fundamentalRegistry" version="1.0.0"/>
+    <dubbo:reference id="apiTradeIntegrationService"
+                     interface="com.zhuyitech.parking.integration.trade.TradeIntegrationService" check="false"
+                     timeout="30000" retries="0" registry="fundamentalRegistry" version="1.0.0"/>
+    <dubbo:reference id="apiTrafficIntegrationService"
+                     interface="com.zhuyitech.parking.integration.service.api.TrafficIntegrationService" check="false"
+                     timeout="30000" retries="0" registry="fundamentalRegistry" version="1.0.0"/>
+    <dubbo:reference id="apiPushIntegrationService"
+                     interface="com.zhuyitech.parking.integration.service.api.PushIntegrationService"
+                     check="false"
+                     timeout="30000" retries="0" registry="fundamentalRegistry" version="1.0.0"/>
+    <dubbo:reference id="realNameIntegrationService"
+                     interface="com.zhuyitech.parking.integration.service.api.RealNameIntegrationService"
+                     check="false"
+                     timeout="30000" retries="0" registry="fundamentalRegistry" version="1.0.0"/>
+</beans>

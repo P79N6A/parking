@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet author="walkman" id="up_appointment_rule_table_modify_columns_20180504">
+        <preConditions onFail="MARK_RAN">
+            <tableExists tableName="up_appointment_rule"/>
+        </preConditions>
+        <addDefaultValue tableName="up_appointment_rule" columnName="startTime" defaultValue=""/>
+        <addDefaultValue tableName="up_appointment_rule" columnName="endTime" defaultValue=""/>
+        <addDefaultValue tableName="up_appointment_rule" columnName="unitAppointLength" defaultValue="0"/>
+        <addDefaultValue tableName="up_appointment_rule" columnName="maxAppointLength" defaultValue="0"/>
+        <addDefaultValue tableName="up_appointment_rule" columnName="unitPrice" defaultValue="0"/>
+        <addDefaultValue tableName="up_appointment_rule" columnName="maxAppointAmount" defaultValue="0"/>
+        <addDefaultValue tableName="up_appointment_rule" columnName="countAppointPrice" defaultValue="0"/>
+        <addDefaultValue tableName="up_appointment_rule" columnName="fee" defaultValue="0"/>
+        <addDefaultValue tableName="up_appointment_rule" columnName="feeFreeLength" defaultValue="0"/>
+        <addDefaultValue tableName="up_appointment_rule" columnName="payLimit" defaultValue="0"/>
+        <addDefaultValue tableName="up_appointment_rule" columnName="cancelLimit" defaultValue="0"/>
+        <addDefaultValue tableName="up_appointment_rule" columnName="unitCancelLength" defaultValue="0"/>
+        <addDefaultValue tableName="up_appointment_rule" columnName="unitCancelPrice" defaultValue="0"/>
+        <addDefaultValue tableName="up_appointment_rule" columnName="maxCancelAmount" defaultValue="0"/>
+        <addDefaultValue tableName="up_appointment_rule" columnName="countCancelPrice" defaultValue="0"/>
+        <addDefaultValue tableName="up_appointment_rule" columnName="overTimeLimit" defaultValue="0"/>
+        <addDefaultValue tableName="up_appointment_rule" columnName="overTimeCancel" defaultValue="0"/>
+        <addDefaultValue tableName="up_appointment_rule" columnName="unitOvertimeCancelLength" defaultValue="0"/>
+        <addDefaultValue tableName="up_appointment_rule" columnName="unitOvertimeCancelPrice" defaultValue="0"/>
+        <addDefaultValue tableName="up_appointment_rule" columnName="maxOvertimeCancelAmount" defaultValue="0"/>
+        <addDefaultValue tableName="up_appointment_rule" columnName="countOvertimeCancelPrice" defaultValue="0"/>
+        <addDefaultValue tableName="up_appointment_rule" columnName="description" defaultValue="0"/>
+    </changeSet>
+</databaseChangeLog>

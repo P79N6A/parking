@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet author="walkman" id="up_vehicle_record_table">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="up_vehicle_record"/>
+            </not>
+        </preConditions>
+        <createTable tableName="up_vehicle_record" remarks="平台车辆表">
+            <column autoIncrement="true" name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_vehicle_record"/>
+            </column>
+            <column name="carStyle" type="VARCHAR(255)" remarks="车辆类型"/>
+            <column name="carBrand" type="VARCHAR(255)" remarks="车辆品牌"/>
+            <column name="carType" type="VARCHAR(255)" remarks="车辆型号"/>
+            <column name="carColor" type="VARCHAR(2)" remarks="车辆颜色"/>
+            <column name="carLevel" type="VARCHAR(2)" remarks="车辆等级"/>
+            <column name="plateType" type="VARCHAR(2)" remarks="车牌类型"></column>
+            <column name="plateColor" type="VARCHAR(10)" remarks="车牌颜色"></column>
+            <column name="platePrefix" type="VARCHAR(32)" remarks="车牌第一个中文"></column>
+            <column name="plateInitial" type="VARCHAR(32)" remarks="车牌首字母"></column>
+            <column name="ownerName" type="VARCHAR(32)" remarks="车主姓名"/>
+            <column name="plateNumber" type="VARCHAR(32)" remarks="车牌号(后几位字母)"/>
+            <column name="vehicleNumber" type="VARCHAR(255)" remarks="车架号"/>
+            <column name="engineNumber" type="VARCHAR(255)" remarks="发动机号"/>
+            <column name="dataOrigin" type="VARCHAR(255)" remarks="数据来源(系统OR设备)"/>
+            <column name="proofStatus" type="CHAR(1)" defaultValue="0" remarks="校对状态 0:未校对  1:已校对"/>
+            <column name="creatorUserId" type="bigint" remarks="创建者"/>
+            <column name="creationTime" type="DATETIME" remarks="创建时间"/>
+            <column name="LastModifierUserId" type="bigint" remarks="更新者"/>
+            <column name="LastModificationTime" type="DATETIME" remarks="更新时间"/>
+            <column name="deleterUserId" type="bigint" remarks="删除者"/>
+            <column name="deletionTime" type="DATETIME" remarks="删除时间"/>
+            <column name="deleted" type="CHAR(1)" remarks="删除标记"/>
+            <column name="version" type="bigint" remarks="版本号"/>
+        </createTable>
+        <createIndex tableName="up_vehicle_record" indexName="idx_plateNumber">
+            <column name="plateNumber"></column>
+        </createIndex>
+        <addDefaultValue tableName="up_vehicle_record" columnName="deleted" defaultValue="0"/>
+        <addDefaultValue tableName="up_vehicle_record" columnName="version" defaultValue="1"/>
+        <rollback>drop table up_vehicle_record</rollback>
+    </changeSet>
+</databaseChangeLog>

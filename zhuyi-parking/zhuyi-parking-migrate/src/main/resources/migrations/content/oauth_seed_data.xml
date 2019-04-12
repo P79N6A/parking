@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet author="walkman" id="oauth_seed_data">
+
+        <insert tableName="oauth_client_detail">
+            <column name="clientId" value="parking-android"/>
+            <column name="clientSecret" value="0f96f3e84f1445d9cb6f0ec8606f18d0"/>
+            <column name="clientName" value="停车系统Android移动端"/>
+            <column name="clientUri" value=""/>
+            <column name="clientIconUri" value=""/>
+            <column name="resourceIds" value=""/>
+            <column name="scope" value="read write"/>
+            <column name="grantTypes" value="authorization_code,password,refresh_token,client_credentials"/>
+            <column name="redirectUri" value=""/>
+            <column name="roles" value=""/>
+            <column name="accessTokenValidity" value="-1"/>
+            <column name="refreshTokenValidity" value="-1"/>
+            <column name="trusted" value="0"/>
+            <column name="description" value="停车系统Android移动端"/>
+            <column name="deleted" value="0"/>
+            <column name="version" value="1"></column>
+        </insert>
+        <insert tableName="oauth_client_detail">
+            <column name="clientId" value="parking-apple"/>
+            <column name="clientSecret" value="c3a1f331d6b221d9d5c77a8a9bd568ef"/>
+            <column name="clientName" value="停车系统iOS移动端"/>
+            <column name="clientUri" value=""/>
+            <column name="clientIconUri" value=""/>
+            <column name="resourceIds" value=""/>
+            <column name="scope" value="read write"/>
+            <column name="grantTypes" value="authorization_code,password,refresh_token,client_credentials"/>
+            <column name="redirectUri" value=""/>
+            <column name="roles" value=""/>
+            <column name="accessTokenValidity" value="-1"/>
+            <column name="refreshTokenValidity" value="-1"/>
+            <column name="trusted" value="0"/>
+            <column name="description" value="停车系统iOS移动端"/>
+            <column name="deleted" value="0"/>
+            <column name="version" value="1"></column>
+        </insert>
+        <insert tableName="oauth_client_detail">
+            <column name="clientId" value="parking-pc"/>
+            <column name="clientSecret" value="44edf5f29c2ce30d3e4a18b8ce9bc1eb"/>
+            <column name="clientName" value="停车系统网站后台"/>
+            <column name="clientUri" value=""/>
+            <column name="clientIconUri" value=""/>
+            <column name="resourceIds" value=""/>
+            <column name="scope" value="read write"/>
+            <column name="grantTypes" value="authorization_code,password,refresh_token,client_credentials"/>
+            <column name="redirectUri" value=""/>
+            <column name="roles" value=""/>
+            <column name="accessTokenValidity" value="-1"/>
+            <column name="refreshTokenValidity" value="-1"/>
+            <column name="trusted" value="0"/>
+            <column name="description" value="停车系统网站后台"/>
+            <column name="deleted" value="0"/>
+            <column name="version" value="1"></column>
+        </insert>
+        <insert tableName="oauth_client_detail">
+            <column name="clientId" value="parking-web"/>
+            <column name="clientSecret" value="44edf5f29c2ce30d3e4a18b8ce9bc1eb"/>
+            <column name="clientName" value="停车系统网站网页版"/>
+            <column name="clientUri" value=""/>
+            <column name="clientIconUri" value=""/>
+            <column name="resourceIds" value=""/>
+            <column name="scope" value="read write"/>
+            <column name="grantTypes" value="authorization_code,password,refresh_token,client_credentials"/>
+            <column name="redirectUri" value=""/>
+            <column name="roles" value=""/>
+            <column name="accessTokenValidity" value="-1"/>
+            <column name="refreshTokenValidity" value="-1"/>
+            <column name="trusted" value="0"/>
+            <column name="description" value="停车系统网站网页版"/>
+            <column name="deleted" value="0"/>
+            <column name="version" value="1"></column>
+        </insert>
+        <insert tableName="oauth_client_detail">
+            <column name="clientId" value="parking-h5"/>
+            <column name="clientSecret" value="83c8bde641dee1d4334fdf72d15e47a5"/>
+            <column name="clientName" value="停车系统H5"/>
+            <column name="clientUri" value=""/>
+            <column name="clientIconUri" value=""/>
+            <column name="resourceIds" value=""/>
+            <column name="scope" value="read write"/>
+            <column name="grantTypes" value="authorization_code,password,refresh_token,client_credentials"/>
+            <column name="redirectUri" value=""/>
+            <column name="roles" value=""/>
+            <column name="accessTokenValidity" value="-1"/>
+            <column name="refreshTokenValidity" value="-1"/>
+            <column name="trusted" value="0"/>
+            <column name="description" value="停车系统H5"/>
+            <column name="deleted" value="0"/>
+            <column name="version" value="1"></column>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

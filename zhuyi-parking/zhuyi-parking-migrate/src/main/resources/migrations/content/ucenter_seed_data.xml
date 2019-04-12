@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet author="walkman" id="ucenter_seed_data">
+        <insert tableName="up_user">
+            <column name="id" value="21"/>
+            <column name="uuid" value="4f484823c0b346e287eeda716b13a2fa"/>
+            <column name="username" value="admin"/>
+            <column name="password" value="21232f297a57a5a743894a0e4a801fc3"/>
+            <column name="defaultUser" value="1"/>
+            <column name="isAdministrator" value="1"/>
+            <column name="userType" value="1"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+            <column name="version" value="1"></column>
+        </insert>
+        <insert tableName="up_user">
+            <column name="id" value="22"/>
+            <column name="uuid" value="91730412fe1d4979a59becca5c1fdd4a"/>
+            <column name="username" value="root"/>
+            <column name="password" value="098f6bcd4621d373cade4e832627b4f6"/>
+            <column name="defaultUser" value="1"/>
+            <column name="isAdministrator" value="1"/>
+            <column name="userType" value="1"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+            <column name="version" value="1"></column>
+        </insert>
+        <!-- up_user_role -->
+        <insert tableName="up_user_role">
+            <column name="id" value="21"/>
+            <column name="userId" value="21"/>
+            <column name="roleId" value="21"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+        <insert tableName="up_user_role">
+            <column name="id" value="22"/>
+            <column name="userId" value="22"/>
+            <column name="roleId" value="22"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

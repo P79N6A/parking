@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet author="walkman" id="oauth_client_detail_table">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="oauth_client_detail"/>
+            </not>
+        </preConditions>
+        <createTable tableName="oauth_client_detail">
+            <column autoIncrement="true" name="id" type="bigint" remarks="ID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_client_detail"/>
+            </column>
+            <column name="clientId" type="VARCHAR(255)" remarks="客户端ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="clientSecret" type="VARCHAR(255)" remarks="客户端秘钥">
+                <constraints nullable="false"/>
+            </column>
+            <column name="clientName" type="VARCHAR(255)" remarks="客户端名称">
+                <constraints nullable="false"/>
+            </column>
+            <column name="clientUri" type="VARCHAR(255)" remarks="clientUri"/>
+            <column name="clientIconUri" type="VARCHAR(255)" remarks="图标"/>
+            <column name="redirectUri" type="VARCHAR(255)" remarks="redirectUri"/>
+            <column name="resourceIds" type="VARCHAR(2000)" remarks="资源ID"/>
+            <column name="scope" type="VARCHAR(255)" remarks="scope"/>
+            <column name="roles" type="VARCHAR(255)" remarks="roles"/>
+            <column name="grantTypes" type="VARCHAR(255)" remarks="授权类型"/>
+            <column name="accessTokenValidity" type="INTEGER" remarks="accessTokenValidity"/>
+            <column name="refreshTokenValidity" type="INTEGER" remarks="refreshTokenValidity"/>
+            <column name="trusted" type="CHAR(1)" remarks="是否受信任客户端\n0：显示\n1：隐藏"/>
+            <column name="description" type="VARCHAR(4096)" remarks="备注"/>
+            <column name="creatorUserId" type="bigint" remarks="创建者"/>
+            <column name="creationTime" type="DATETIME" remarks="创建时间"/>
+            <column name="LastModifierUserId" type="bigint" remarks="更新者"/>
+            <column name="LastModificationTime" type="DATETIME" remarks="更新时间"/>
+            <column name="deleterUserId" type="bigint" remarks="删除者"/>
+            <column name="deletionTime" type="DATETIME" remarks="删除时间"/>
+            <column name="deleted" type="CHAR(1)" remarks="删除标记"/>
+            <column name="version" type="bigint"></column>
+        </createTable>
+        <createIndex tableName="oauth_client_detail" indexName="idx_clientId">
+            <column name="clientId"></column>
+        </createIndex>
+        <addUniqueConstraint tableName="oauth_client_detail" columnNames="clientId" constraintName="uq_clientId"
+                             deferrable="false" disabled="false" initiallyDeferred="false"/>
+        <addDefaultValue tableName="oauth_client_detail" columnName="accessTokenValidity"
+                         columnDataType="INTEGER" defaultValueNumeric="-1"/>
+        <addDefaultValue tableName="oauth_client_detail" columnName="refreshTokenValidity"
+                         columnDataType="INTEGER" defaultValueNumeric="-1"/>
+        <addDefaultValue tableName="oauth_client_detail" columnName="trusted"
+                         columnDataType="CHAR" defaultValue="0"/>
+        <rollback>drop table oauth_client_detail</rollback>
+    </changeSet>
+</databaseChangeLog>

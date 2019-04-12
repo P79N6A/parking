@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet author="walkman" id="up_notification_template_table">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="up_notification_template"/>
+            </not>
+        </preConditions>
+        <createTable tableName="up_notification_template" remarks="通知消息模板">
+            <column autoIncrement="true" name="id" type="bigint" remarks="ID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_notification_template"/>
+            </column>
+            <column name="templateId" type="VARCHAR(64)" remarks="模板编号">
+                <constraints nullable="false"/>
+            </column>
+            <column name="templateName" type="VARCHAR(255)" remarks="模板名称"/>
+            <column name="type" type="VARCHAR(10)" remarks="模板类型"/>
+            <column name="content" type="VARCHAR(2000)" remarks="模板内容"/>
+            <column name="status" type="int(2)" remarks="状态"/>
+            <column name="description" type="VARCHAR(255)" remarks="说明"/>
+            <column name="creatorUserId" type="bigint"/>
+            <column name="creationTime" type="DATETIME"/>
+            <column name="LastModifierUserId" type="bigint"/>
+            <column name="LastModificationTime" type="DATETIME"/>
+            <column name="deleterUserId" type="bigint"/>
+            <column name="deletionTime" type="DATETIME"/>
+            <column name="deleted" type="CHAR(1)" defaultValue="0"/>
+        </createTable>
+        <rollback>drop table up_notification_template</rollback>
+    </changeSet>
+</databaseChangeLog>

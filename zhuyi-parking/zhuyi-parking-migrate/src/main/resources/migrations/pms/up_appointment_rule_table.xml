@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet author="walkman" id="up_appointment_rule_table">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="up_appointment_rule"/>
+            </not>
+        </preConditions>
+        <createTable tableName="up_appointment_rule" remarks="预约规则信息表">
+            <column name="id" type="bigint" remarks="id" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_appointment_rule"/>
+            </column>
+            <column name="ruleCode" type="VARCHAR(255)" remarks="预约规则编号">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ruleName" type="VARCHAR(255)" remarks="预约规则名称">
+                <constraints nullable="false"/>
+            </column>
+            <column name="startTime" type="VARCHAR(255)" remarks="开放预约开始时间"/>
+            <column name="endTime" type="VARCHAR(255)" remarks="开放预约结束时间"/>
+            <column name="unitAppointLength" type="INT" remarks="预定单位时长(分钟)"/>
+            <column name="maxAppointLength" type="INT" remarks="预定最大时长(分钟)"/>
+            <column name="unitPrice" type="DECIMAL(12,2)" remarks="单位时长(分钟)收取金额"/>
+            <column name="maxAppointAmount" type="DECIMAL(12,2)" remarks="预定最大收费金额"/>
+            <column name="countAppointPrice" type="DECIMAL(12,2)" remarks="单次收取金额"/>
+            <column name="fee" type="DECIMAL(12,2)" remarks="预定收取手续费"/>
+            <column name="feeFreeLength" type="INT" remarks="免收手续费时长"/>
+            <column name="payLimit" type="INT" remarks="预定支付时限(分钟)"/>
+            <!-- 预定取消 -->
+            <column name="cancelLimit" type="INT" remarks="预定取消时限(分钟),以下单时间开始"/>
+            <column name="unitCancelLength" type="INT" remarks="预定取消单位时长(分钟)"/>
+            <column name="unitCancelPrice" type="DECIMAL(12,2)" remarks="单位时长(分钟)收取金额"/>
+            <column name="maxCancelAmount" type="DECIMAL(12,2)" remarks="预定取消最大收费金额"/>
+            <column name="countCancelPrice" type="DECIMAL(12,2)" remarks="单次取消收取金额"/>
+            <!-- 超时取消 -->
+            <column name="overTimeLimit" type="INT" remarks="超时时限(分钟),以预计入场时间开始"/>
+            <column name="overTimeCancel" type="CHAR" remarks="超时是否取消" defaultValue="0"/>
+            <column name="unitOvertimeCancelLength" type="INT" remarks="预定取消单位时长(分钟)"/>
+            <column name="unitOvertimeCancelPrice" type="DECIMAL(12,2)" remarks="单位时长(分钟)收取金额"/>
+            <column name="maxOvertimeCancelAmount" type="DECIMAL(12,2)" remarks="预定取消最大收费金额"/>
+            <column name="countOvertimeCancelPrice" type="DECIMAL(12,2)" remarks="单次取消收取金额"/>
+            <column name="description" type="VARCHAR(255)" remarks="描述"/>
+            <column name="creatorUserId" type="bigint" remarks="创建者"/>
+            <column name="creationTime" type="DATETIME" remarks="创建时间"/>
+            <column name="LastModifierUserId" type="bigint" remarks="更新者"/>
+            <column name="LastModificationTime" type="DATETIME" remarks="更新时间"/>
+            <column name="deleterUserId" type="bigint" remarks="删除者"/>
+            <column name="deletionTime" type="DATETIME" remarks="删除时间"/>
+            <column name="deleted" type="CHAR(1)" remarks="删除标记" defaultValue="0"/>
+            <column name="version" type="bigint" remarks="版本号" defaultValue="1"/>
+        </createTable>
+        <addUniqueConstraint tableName="up_appointment_rule" columnNames="ruleCode"
+                             constraintName="up_ruleCode"
+                             deferrable="false" disabled="false" initiallyDeferred="false"/>
+        <rollback>drop table up_appointment_rule</rollback>
+    </changeSet>
+</databaseChangeLog>

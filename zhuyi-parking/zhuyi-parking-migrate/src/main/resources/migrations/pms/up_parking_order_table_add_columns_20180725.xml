@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet author="wh" id="up_parking_order_table_add_columns_20180725">
+        <preConditions onFail="MARK_RAN">
+            <tableExists tableName="up_parking_order"/>
+        </preConditions>
+        <addColumn tableName="up_parking_order">
+            <column name="artificial" type="CHAR(1)" remarks="是否手工单 0 否 1 是" defaultValue="0" afterColumn="endTime" />
+            <column name="editor" type="VARCHAR(64)" remarks="编辑人员"  afterColumn="creationTime"/>
+        </addColumn>
+    </changeSet>
+</databaseChangeLog>

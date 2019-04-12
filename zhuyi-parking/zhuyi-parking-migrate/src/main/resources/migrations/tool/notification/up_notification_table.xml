@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet author="walkman" id="up_notification_table">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="up_notification"/>
+            </not>
+        </preConditions>
+        <createTable tableName="up_notification" remarks="通知消息表">
+            <column autoIncrement="true" name="id" type="bigint" remarks="ID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_notification"/>
+            </column>
+            <column name="templateId" type="bigint" remarks="模板ID" defaultValue="0"/>
+            <column name="userId" type="bigint" remarks="用户编号" defaultValue="0"/>
+            <column name="notifyType" type="int" remarks="消息通知类型(1:通知 2:活动 3:互动 4:快报)" defaultValue="1"/>
+            <column name="bizType" type="VARCHAR(32)" remarks="业务类型" defaultValue=""/>
+            <column name="title" type="VARCHAR(400)" remarks="标题" defaultValue=""/>
+            <column name="content" type="text" remarks="内容"/>
+            <column name="sendTime" type="DATETIME" remarks="消息发送时间"/>
+            <column name="emailStatus" type="int" remarks="是否发送邮件：-1不发送 0 待发送，1已发送" defaultValue="-1"/>
+            <column name="emailSendTime" type="DATETIME" remarks="发送邮件时间"/>
+            <column name="smsStatus" type="int" remarks="是否发送短信：-1不发送 0 待发送，1已发送" defaultValue="-1"/>
+            <column name="smsSendTime" type="DATETIME" remarks="短信发送时间"/>
+            <column name="readStatus" type="CHAR(1)" remarks="读标志\nY：已读\nN：未读" defaultValue="0"/>
+            <column name="readTime" type="DATETIME" remarks="阅读时间"/>
+            <column name="creatorUserId" type="bigint" remarks="创建者"/>
+            <column name="creationTime" type="DATETIME" remarks="创建时间"/>
+            <column name="LastModifierUserId" type="bigint" remarks="更新者"/>
+            <column name="LastModificationTime" type="DATETIME" remarks="更新时间"/>
+            <column name="deleterUserId" type="bigint" remarks="删除者"/>
+            <column name="deletionTime" type="DATETIME" remarks="删除时间"/>
+            <column name="deleted" type="CHAR(1)" remarks="删除标记" defaultValue="0"/>
+            <column name="version" type="bigint" defaultValue="1"/>
+        </createTable>
+        <createIndex tableName="up_notification" indexName="idx_templateId">
+            <column name="templateId"/>
+        </createIndex>
+        <createIndex tableName="up_notification" indexName="idx_userId">
+            <column name="userId"/>
+        </createIndex>
+        <createIndex tableName="up_notification" indexName="idx_notifyType">
+            <column name="notifyType"/>
+        </createIndex>
+        <createIndex tableName="up_notification" indexName="idx_sendTime">
+            <column name="sendTime"/>
+        </createIndex>
+        <createIndex tableName="up_notification" indexName="idx_readStatus">
+            <column name="readStatus"/>
+        </createIndex>
+        <rollback>drop table up_notification</rollback>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet author="walkman" id="up_passing_vehicle_record_table_modify_columns_20180801">
+        <preConditions onFail="MARK_RAN">
+            <tableExists tableName="up_passing_vehicle_record"/>
+        </preConditions>
+        <dropColumn tableName="up_passing_vehicle_record" columnName="dataOrigin"/>
+        <addColumn tableName="up_passing_vehicle_record">
+            <column name="proofUserId" type="LONG" remarks="校对用户" afterColumn="proofStatus"/>
+            <column name="proofDate" type="DATETIME" afterColumn="proofUserId" remarks="校对时间"/>
+            <column name="dataSource" type="INTEGER" afterColumn="exitTime" remarks="过车数据来源,默认海康" defaultValue="1"/>
+            <column name="photoUploaded" type="CHAR(1)" afterColumn="dataSource" remarks="过车图片是否上传" defaultValue="0"/>
+            <column name="photoCount" type="INTEGER" afterColumn="photoUploaded" remarks="图片数量" defaultValue="0"/>
+            <column name="uploadedDate" type="DATETIME" afterColumn="photoCount" remarks="图片上传时间"/>
+            <column name="remark" type="VARCHAR(2000)" remarks="备注" afterColumn="uploadedDate"/>
+        </addColumn>
+    </changeSet>
+</databaseChangeLog>

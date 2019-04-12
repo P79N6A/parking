@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet author="walkman" id="up_weixin_pay_bill_table">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="up_weixin_pay_bill"/>
+            </not>
+        </preConditions>
+        <createTable tableName="up_weixin_pay_bill" remarks="微信支付对账表">
+            <column autoIncrement="true" name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_weixin_pay_bill"/>
+            </column>
+            <column name="outTradeNo" type="VARCHAR(255)" remarks="商户订单号">
+                <constraints nullable="false"/>
+            </column>
+            <column name="transactionId" type="VARCHAR(255)" remarks="微信支付订单号"/>
+            <column name="outRefundNo" type="VARCHAR(255)" remarks="商户退款单号"/>
+            <column name="refundId" type="VARCHAR(255)" remarks="微信退款单号"/>
+            <column name="openid" type="VARCHAR(128)" remarks="用户标识"/>
+            <column name="deviceInfo" type="VARCHAR(32)" remarks="设备号"/>
+            <column name="billDate" type="DATETIME" remarks="对账单日期"/>
+            <column name="billType" type="VARCHAR(8)" remarks="账单类型"/>
+            <column name="tarType" type="VARCHAR(8)" remarks="压缩账单"/>
+            <column name="tradeDate" type="DATETIME" remarks="交易时间"/>
+            <column name="tradeType" type="VARCHAR(32)" remarks="交易类型"/>
+            <column name="tradeState" type="INTEGER" remarks="交易状态"/>
+            <column name="bankType" type="VARCHAR(255)" remarks="付款银行"/>
+            <column name="feeType" type="VARCHAR(16)" remarks="货币种类"/>
+            <column name="totalAmount" type="DECIMAL(12,2)" remarks="总金额"/>
+            <column name="couponAmount" type="DECIMAL(12,2)" remarks="代金券或立减优惠金额"/>
+            <column name="refundAmount" type="DECIMAL(12,2)" remarks="退款金额"/>
+            <column name="couponRefundAmount" type="DECIMAL(12,2)" remarks="代金券或立减优惠退款金额"/>
+            <column name="refundType" type="VARCHAR(255)" remarks="退款类型"/>
+            <column name="refundState" type="INTEGER" remarks="退款状态"/>
+            <column name="feeRate" type="DECIMAL(12,2)" remarks="手续费"/>
+            <column name="poundageRate" type="DECIMAL(12,2)" remarks="费率"/>
+            <column name="productName" type="VARCHAR(255)" remarks="商品名称"/>
+            <column name="body" type="VARCHAR(255)" remarks="商户数据包"/>
+            <column name="creatorUserId" type="bigint" remarks="创建者"/>
+            <column name="creationTime" type="DATETIME" remarks="创建时间"/>
+            <column name="LastModifierUserId" type="bigint" remarks="更新者"/>
+            <column name="LastModificationTime" type="DATETIME" remarks="更新时间"/>
+            <column name="deleterUserId" type="bigint" remarks="删除者"/>
+            <column name="deletionTime" type="DATETIME" remarks="删除时间"/>
+            <column name="deleted" type="CHAR(1)" remarks="删除标记" defaultValue="0"/>
+        </createTable>
+        <rollback>drop table up_weixin_pay_bill</rollback>
+    </changeSet>
+</databaseChangeLog>

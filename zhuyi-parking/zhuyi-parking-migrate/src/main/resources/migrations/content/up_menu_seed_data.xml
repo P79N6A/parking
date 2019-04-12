@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet author="walkman" id="up_menu_seed_data">
+        <!-- 基础数据 BEGIN-->
+        <insert tableName="up_menu">
+            <column name="id" value="1"></column>
+            <column name="code" value="basicData"></column>
+            <column name="name" value="基础数据"></column>
+            <column name="type" value="menu"></column>
+            <column name="url" value="/basicdata"></column>
+            <column name="sort" value="1"></column>
+            <column name="icon" value="fa fa-circle"></column>
+            <column name="parentId" value="0"></column>
+            <column name="parentIds" value=""></column>
+            <column name="shown" value="1"></column>
+            <column name="permission" value=""></column>
+            <column name="remarks" value=""></column>
+            <column name="creatorUserId" value="0"></column>
+            <column name="creationTime" value="now()"></column>
+            <column name="LastModifierUserId" value="0"></column>
+            <column name="LastModificationTime" value="now()"></column>
+            <column name="deleted" value="0"></column>
+        </insert>
+        <insert tableName="up_menu">
+            <column name="id" value="2"></column>
+            <column name="code" value="regionManager"></column>
+            <column name="name" value="行政区划"></column>
+            <column name="type" value="menu"></column>
+            <column name="url" value="/basicdata/regionManager"></column>
+            <column name="sort" value="1"></column>
+            <column name="icon" value="fa fa-circle"></column>
+            <column name="parentId" value="1"></column>
+            <column name="parentIds" value=""></column>
+            <column name="shown" value="1"></column>
+            <column name="permission" value=""></column>
+            <column name="remarks" value=""></column>
+            <column name="creatorUserId" value="0"></column>
+            <column name="creationTime" value="now()"></column>
+            <column name="LastModifierUserId" value="0"></column>
+            <column name="LastModificationTime" value="now()"></column>
+            <column name="deleted" value="0"></column>
+        </insert>
+        <insert tableName="up_menu">
+            <column name="id" value="3"></column>
+            <column name="code" value="modelManager"></column>
+            <column name="name" value="车型数据"></column>
+            <column name="type" value="menu"></column>
+            <column name="url" value="/basicdata/modelManager"></column>
+            <column name="sort" value="2"></column>
+            <column name="icon" value="fa fa-circle"></column>
+            <column name="parentId" value="1"></column>
+            <column name="parentIds" value="1"></column>
+            <column name="shown" value="1"></column>
+            <column name="permission" value=""></column>
+            <column name="remarks" value=""></column>
+            <column name="creatorUserId" value="0"></column>
+            <column name="creationTime" value="now()"></column>
+            <column name="LastModifierUserId" value="0"></column>
+            <column name="LastModificationTime" value="now()"></column>
+            <column name="deleted" value="0"></column>
+        </insert>
+        <!-- 基础数据 END -->
+        <!-- 系统设置 BEGIN-->
+        <insert tableName="up_menu">
+            <column name="id" value="4"></column>
+            <column name="code" value="systemSetting"></column>
+            <column name="name" value="系统设置"></column>
+            <column name="type" value="menu"></column>
+            <column name="url" value="/systemSetting"></column>
+            <column name="sort" value="2"></column>
+            <column name="icon" value="fa fa-circle"></column>
+            <column name="parentId" value="0"></column>
+            <column name="parentIds" value=""></column>
+            <column name="shown" value="1"></column>
+            <column name="permission" value=""></column>
+            <column name="remarks" value=""></column>
+            <column name="creatorUserId" value="0"></column>
+            <column name="creationTime" value="now()"></column>
+            <column name="LastModifierUserId" value="0"></column>
+            <column name="LastModificationTime" value="now()"></column>
+            <column name="deleted" value="0"></column>
+        </insert>
+        <insert tableName="up_menu">
+            <column name="id" value="5"></column>
+            <column name="code" value="userManager"></column>
+            <column name="name" value="用户管理"></column>
+            <column name="type" value="menu"></column>
+            <column name="url" value="/systemSetting/userManager"></column>
+            <column name="sort" value="1"></column>
+            <column name="icon" value="fa fa-circle"></column>
+            <column name="parentId" value="4"></column>
+            <column name="parentIds" value="0/4"></column>
+            <column name="shown" value="1"></column>
+            <column name="permission" value=""></column>
+            <column name="remarks" value=""></column>
+            <column name="creatorUserId" value="0"></column>
+            <column name="creationTime" value="now()"></column>
+            <column name="LastModifierUserId" value="0"></column>
+            <column name="LastModificationTime" value="now()"></column>
+            <column name="deleted" value="0"></column>
+        </insert>
+        <insert tableName="up_menu">
+            <column name="id" value="6"></column>
+            <column name="code" value="organizationManage"></column>
+            <column name="name" value="部门管理"></column>
+            <column name="type" value="menu"></column>
+            <column name="url" value="/systemSetting/organizationManage"></column>
+            <column name="sort" value="2"></column>
+            <column name="icon" value="fa fa-circle"></column>
+            <column name="parentId" value="4"></column>
+            <column name="parentIds" value=""></column>
+            <column name="shown" value="1"></column>
+            <column name="permission" value=""></column>
+            <column name="remarks" value=""></column>
+            <column name="creatorUserId" value="0"></column>
+            <column name="creationTime" value="now()"></column>
+            <column name="LastModifierUserId" value="0"></column>
+            <column name="LastModificationTime" value="now()"></column>
+            <column name="deleted" value="0"></column>
+        </insert>
+        <insert tableName="up_menu">
+            <column name="id" value="7"></column>
+            <column name="code" value="menuManager"></column>
+            <column name="name" value="系统设置"></column>
+            <column name="type" value="menu"></column>
+            <column name="url" value="/systemSetting/menuManager"></column>
+            <column name="sort" value="3"></column>
+            <column name="icon" value="fa fa-circle"></column>
+            <column name="parentId" value="4"></column>
+            <column name="parentIds" value=""></column>
+            <column name="shown" value="1"></column>
+            <column name="permission" value=""></column>
+            <column name="remarks" value=""></column>
+            <column name="creatorUserId" value="0"></column>
+            <column name="creationTime" value="now()"></column>
+            <column name="LastModifierUserId" value="0"></column>
+            <column name="LastModificationTime" value="now()"></column>
+            <column name="deleted" value="0"></column>
+        </insert>
+        <insert tableName="up_menu">
+            <column name="id" value="8"></column>
+            <column name="code" value="roleManager"></column>
+            <column name="name" value="系统设置"></column>
+            <column name="type" value="menu"></column>
+            <column name="url" value="/systemSetting/roleManager"></column>
+            <column name="sort" value="4"></column>
+            <column name="icon" value="fa fa-circle"></column>
+            <column name="parentId" value="4"></column>
+            <column name="parentIds" value=""></column>
+            <column name="shown" value="1"></column>
+            <column name="permission" value=""></column>
+            <column name="remarks" value=""></column>
+            <column name="creatorUserId" value="0"></column>
+            <column name="creationTime" value="now()"></column>
+            <column name="LastModifierUserId" value="0"></column>
+            <column name="LastModificationTime" value="now()"></column>
+            <column name="deleted" value="0"></column>
+        </insert>
+        <insert tableName="up_menu">
+            <column name="id" value="9"></column>
+            <column name="code" value="systemSetting"></column>
+            <column name="name" value="系统设置"></column>
+            <column name="type" value="menu"></column>
+            <column name="url" value="/systemSetting/permissionManager"></column>
+            <column name="sort" value="5"></column>
+            <column name="icon" value="fa fa-circle"></column>
+            <column name="parentId" value="4"></column>
+            <column name="parentIds" value=""></column>
+            <column name="shown" value="1"></column>
+            <column name="permission" value=""></column>
+            <column name="remarks" value=""></column>
+            <column name="creatorUserId" value="0"></column>
+            <column name="creationTime" value="now()"></column>
+            <column name="LastModifierUserId" value="0"></column>
+            <column name="LastModificationTime" value="now()"></column>
+            <column name="deleted" value="0"></column>
+        </insert>
+        <!-- 短信设置 -->
+        <insert tableName="up_menu">
+            <column name="id" value="10"></column>
+            <column name="code" value="smsSetting"></column>
+            <column name="name" value="短信设置"></column>
+            <column name="type" value="menu"></column>
+            <column name="url" value="/smsSetting"></column>
+            <column name="sort" value="3"></column>
+            <column name="icon" value="fa fa-circle"></column>
+            <column name="parentId" value="0"></column>
+            <column name="parentIds" value=""></column>
+            <column name="shown" value="1"></column>
+            <column name="permission" value=""></column>
+            <column name="remarks" value=""></column>
+            <column name="creatorUserId" value="0"></column>
+            <column name="creationTime" value="now()"></column>
+            <column name="LastModifierUserId" value="0"></column>
+            <column name="LastModificationTime" value="now()"></column>
+            <column name="deleted" value="0"></column>
+        </insert>
+        <insert tableName="up_menu">
+            <column name="id" value="11"></column>
+            <column name="code" value="paramManager"></column>
+            <column name="name" value="参数配置"></column>
+            <column name="type" value="menu"></column>
+            <column name="url" value="/smsSetting/paramManager"></column>
+            <column name="sort" value="1"></column>
+            <column name="icon" value="fa fa-circle"></column>
+            <column name="parentId" value="10"></column>
+            <column name="parentIds" value=""></column>
+            <column name="shown" value="1"></column>
+            <column name="permission" value=""></column>
+            <column name="remarks" value=""></column>
+            <column name="creatorUserId" value="0"></column>
+            <column name="creationTime" value="now()"></column>
+            <column name="LastModifierUserId" value="0"></column>
+            <column name="LastModificationTime" value="now()"></column>
+            <column name="deleted" value="0"></column>
+        </insert>
+        <insert tableName="up_menu">
+            <column name="id" value="12"></column>
+            <column name="code" value="templateManager"></column>
+            <column name="name" value="短信模板"></column>
+            <column name="type" value="menu"></column>
+            <column name="url" value="/smsSetting/templateManager"></column>
+            <column name="sort" value="2"></column>
+            <column name="icon" value="fa fa-circle"></column>
+            <column name="parentId" value="10"></column>
+            <column name="parentIds" value=""></column>
+            <column name="shown" value="1"></column>
+            <column name="permission" value=""></column>
+            <column name="remarks" value=""></column>
+            <column name="creatorUserId" value="0"></column>
+            <column name="creationTime" value="now()"></column>
+            <column name="LastModifierUserId" value="0"></column>
+            <column name="LastModificationTime" value="now()"></column>
+            <column name="deleted" value="0"></column>
+        </insert>
+        <insert tableName="up_menu">
+            <column name="id" value="13"></column>
+            <column name="code" value="smsSend"></column>
+            <column name="name" value="短信发送"></column>
+            <column name="type" value="menu"></column>
+            <column name="url" value="/smsSetting/smsSend"></column>
+            <column name="sort" value="3"></column>
+            <column name="icon" value="fa fa-circle"></column>
+            <column name="parentId" value="10"></column>
+            <column name="parentIds" value=""></column>
+            <column name="shown" value="1"></column>
+            <column name="permission" value=""></column>
+            <column name="remarks" value=""></column>
+            <column name="creatorUserId" value="0"></column>
+            <column name="creationTime" value="now()"></column>
+            <column name="LastModifierUserId" value="0"></column>
+            <column name="LastModificationTime" value="now()"></column>
+            <column name="deleted" value="0"></column>
+        </insert>
+        <insert tableName="up_menu">
+            <column name="id" value="14"></column>
+            <column name="code" value="sendLog"></column>
+            <column name="name" value="发送日志"></column>
+            <column name="type" value="menu"></column>
+            <column name="url" value="/smsSetting/sendLog"></column>
+            <column name="sort" value="4"></column>
+            <column name="icon" value="fa fa-circle"></column>
+            <column name="parentId" value="10"></column>
+            <column name="parentIds" value=""></column>
+            <column name="shown" value="1"></column>
+            <column name="permission" value=""></column>
+            <column name="remarks" value=""></column>
+            <column name="creatorUserId" value="0"></column>
+            <column name="creationTime" value="now()"></column>
+            <column name="LastModifierUserId" value="0"></column>
+            <column name="LastModificationTime" value="now()"></column>
+            <column name="deleted" value="0"></column>
+        </insert>
+        <insert tableName="up_menu">
+            <column name="id" value="15"></column>
+            <column name="code" value="clientManager"></column>
+            <column name="name" value="短信客户端"></column>
+            <column name="type" value="menu"></column>
+            <column name="url" value="/smsSetting/clientManager"></column>
+            <column name="sort" value="5"></column>
+            <column name="icon" value="fa fa-circle"></column>
+            <column name="parentId" value="10"></column>
+            <column name="parentIds" value=""></column>
+            <column name="shown" value="1"></column>
+            <column name="permission" value=""></column>
+            <column name="remarks" value=""></column>
+            <column name="creatorUserId" value="0"></column>
+            <column name="creationTime" value="now()"></column>
+            <column name="LastModifierUserId" value="0"></column>
+            <column name="LastModificationTime" value="now()"></column>
+            <column name="deleted" value="0"></column>
+        </insert>
+        <insert tableName="up_menu">
+            <column name="id" value="16"></column>
+            <column name="code" value="codeManager"></column>
+            <column name="name" value="短信验证码"></column>
+            <column name="type" value="menu"></column>
+            <column name="url" value="/smsSetting/codeManager"></column>
+            <column name="sort" value="6"></column>
+            <column name="icon" value="fa fa-circle"></column>
+            <column name="parentId" value="10"></column>
+            <column name="parentIds" value=""></column>
+            <column name="shown" value="1"></column>
+            <column name="permission" value=""></column>
+            <column name="remarks" value=""></column>
+            <column name="creatorUserId" value="0"></column>
+            <column name="creationTime" value="now()"></column>
+            <column name="LastModifierUserId" value="0"></column>
+            <column name="LastModificationTime" value="now()"></column>
+            <column name="deleted" value="0"></column>
+        </insert>
+        <!-- 停车场管理 -->
+        <insert tableName="up_menu">
+            <column name="id" value="17"></column>
+            <column name="code" value="parkingSetting"></column>
+            <column name="name" value="停车场管理"></column>
+            <column name="type" value="menu"></column>
+            <column name="url" value="/parkingSetting"></column>
+            <column name="sort" value="4"></column>
+            <column name="icon" value="fa fa-circle"></column>
+            <column name="parentId" value="0"></column>
+            <column name="parentIds" value=""></column>
+            <column name="shown" value="1"></column>
+            <column name="permission" value=""></column>
+            <column name="remarks" value=""></column>
+            <column name="creatorUserId" value="0"></column>
+            <column name="creationTime" value="now()"></column>
+            <column name="LastModifierUserId" value="0"></column>
+            <column name="LastModificationTime" value="now()"></column>
+            <column name="deleted" value="0"></column>
+        </insert>
+        <insert tableName="up_menu">
+            <column name="id" value="18"></column>
+            <column name="code" value="parkingSetting"></column>
+            <column name="name" value="停车场管理"></column>
+            <column name="type" value="menu"></column>
+            <column name="url" value="/parkingSetting/parkingManager"></column>
+            <column name="sort" value="1"></column>
+            <column name="icon" value="fa fa-circle"></column>
+            <column name="parentId" value="17"></column>
+            <column name="parentIds" value=""></column>
+            <column name="shown" value="1"></column>
+            <column name="permission" value=""></column>
+            <column name="remarks" value=""></column>
+            <column name="creatorUserId" value="0"></column>
+            <column name="creationTime" value="now()"></column>
+            <column name="LastModifierUserId" value="0"></column>
+            <column name="LastModificationTime" value="now()"></column>
+            <column name="deleted" value="0"></column>
+        </insert>
+        <insert tableName="up_menu">
+            <column name="id" value="19"></column>
+            <column name="code" value="parkingSetting"></column>
+            <column name="name" value="车位管理"></column>
+            <column name="type" value="menu"></column>
+            <column name="url" value="/parkingSetting/portManger"></column>
+            <column name="sort" value="2"></column>
+            <column name="icon" value="fa fa-circle"></column>
+            <column name="parentId" value="17"></column>
+            <column name="parentIds" value=""></column>
+            <column name="shown" value="1"></column>
+            <column name="permission" value=""></column>
+            <column name="remarks" value=""></column>
+            <column name="creatorUserId" value="0"></column>
+            <column name="creationTime" value="now()"></column>
+            <column name="LastModifierUserId" value="0"></column>
+            <column name="LastModificationTime" value="now()"></column>
+            <column name="deleted" value="0"></column>
+        </insert>
+        <insert tableName="up_menu">
+            <column name="id" value="20"></column>
+            <column name="code" value="parkingSetting"></column>
+            <column name="name" value="设备管理"></column>
+            <column name="type" value="menu"></column>
+            <column name="url" value="/parkingSetting/deviceManage"></column>
+            <column name="sort" value="3"></column>
+            <column name="icon" value="fa fa-circle"></column>
+            <column name="parentId" value="17"></column>
+            <column name="parentIds" value=""></column>
+            <column name="shown" value="1"></column>
+            <column name="permission" value=""></column>
+            <column name="remarks" value=""></column>
+            <column name="creatorUserId" value="0"></column>
+            <column name="creationTime" value="now()"></column>
+            <column name="LastModifierUserId" value="0"></column>
+            <column name="LastModificationTime" value="now()"></column>
+            <column name="deleted" value="0"></column>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet author="walkman" id="up_user_organization_table">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="up_user_organization"/>
+            </not>
+        </preConditions>
+        <createTable tableName="up_user_organization">
+            <column autoIncrement="true" name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_up_user_organization"/>
+            </column>
+            <column name="userId" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="organizationId" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creatorUserId" type="bigint"></column>
+            <column name="creationTime" type="DATETIME"></column>
+        </createTable>
+        <addUniqueConstraint tableName="up_user_organization"
+                             columnNames="userId,organizationId" constraintName="uk_user_organization"
+                             deferrable="false" disabled="false" initiallyDeferred="false"/>
+        <rollback>drop table up_user_organization</rollback>
+    </changeSet>
+</databaseChangeLog>

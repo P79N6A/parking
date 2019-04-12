@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet author="walkman" id="up_car_brand_table">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="up_car_brand"/>
+            </not>
+        </preConditions>
+        <createTable tableName="up_car_brand" remarks="车型大全表">
+            <column autoIncrement="true" name="id" type="bigint" remarks="ID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_car_brand"/>
+            </column>
+            <column name="name" type="VARCHAR(255)" remarks="名称">
+                <constraints nullable="false"/>
+            </column>
+            <column name="fullName" type="VARCHAR(255)" remarks="全称">
+            </column>
+            <column name="initial" type="VARCHAR(10)" remarks="首字母">
+            </column>
+            <column name="parentId" type="bigint" remarks="父节点"></column>
+            <column name="parentIds" type="VARCHAR(2000)" remarks="父节点路径"/>
+            <column name="logo" type="VARCHAR(2000)" remarks="图标"></column>
+            <column name="depth" type="int(5)" remarks="深度 1品牌 2子公司 3车型 4具体车型"/>
+            <column name="price" type="VARCHAR(255)" remarks="价格字符"/>
+            <column name="yearType" type="VARCHAR(255)" remarks="年款"/>
+            <column name="sizeType" type="VARCHAR(255)" remarks="车辆等级"/>
+            <column name="saleState" type="VARCHAR(200)" remarks="销售状态"/>
+            <column name="productionState" type="VARCHAR(255)" remarks="生产状态"/>
+            <column name="creatorUserId" type="bigint" remarks="创建者"/>
+            <column name="creationTime" type="DATETIME" remarks="创建时间"/>
+            <column name="LastModifierUserId" type="bigint" remarks="更新者"/>
+            <column name="LastModificationTime" type="DATETIME" remarks="更新时间"/>
+            <column name="deleterUserId" type="bigint" remarks="删除者"/>
+            <column name="deletionTime" type="DATETIME" remarks="删除时间"/>
+            <column name="deleted" type="CHAR(1)" remarks="删除标记"/>
+        </createTable>
+        <createIndex tableName="up_car_brand" indexName="idx_name">
+            <column name="name"></column>
+        </createIndex>
+        <createIndex tableName="up_car_brand" indexName="idx_parent">
+            <column name="parentId"></column>
+        </createIndex>
+        <createIndex tableName="up_car_brand" indexName="idx_parents">
+            <column name="parentIds"></column>
+        </createIndex>
+        <rollback>drop table up_car_brand</rollback>
+    </changeSet>
+</databaseChangeLog>

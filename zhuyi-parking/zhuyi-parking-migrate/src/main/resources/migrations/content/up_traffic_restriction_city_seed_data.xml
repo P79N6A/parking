@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet author="walkman" id="up_traffic_restriction_city_seed_data">
+        <preConditions onFail="MARK_RAN">
+            <tableExists tableName="up_traffic_restriction_city"/>
+        </preConditions>
+        <sql>
+            INSERT INTO up_traffic_restriction_city
+            (id, cityName, adCode, pinyinName, initial, trafficRestriction, cityPrefix, limitPattern, carType,
+            creatorUserId, creationTime, lastModifierUserId, lastModificationTime, deleterUserId, deletionTime, deleted)
+            VALUES
+            (1, '北京市', '110000', 'beijing', 'B', '1', '京A,京C,京E,京F', 0, '0', NULL, '2018-05-18 09:29:23.000',
+            NULL, '2018-05-28 11:05:31.000', NULL, NULL, '0'),
+            (2, '天津市', '120000', 'tianjin', 'T', '1', '津A,津B,津C', 0, '0', NULL, '2018-05-18 09:29:27.000', NULL,
+            '2018-05-28 11:05:31.000', NULL, NULL, '0'),
+            (3, '唐山市', '130200', 'tangshan', 'T', '0', '冀B', -1, '0', NULL, '2018-05-18 09:29:27.000', NULL, NULL,
+            NULL, NULL, '0'),
+            (4, '邯郸市', '130400', 'handan', 'H', '0', '冀D', -1, '0', NULL, '2018-05-18 09:29:27.000', NULL, NULL,
+            NULL, NULL, '0'),
+            (5, '邢台市', '130500', 'xingtai', 'X', '0', '冀E', -1, '0', NULL, '2018-05-18 09:29:27.000', NULL, NULL,
+            NULL, NULL, '0'),
+            (6, '保定市', '130600', 'baoding', 'B', '0', '冀F', -1, '0', NULL, '2018-05-18 09:29:27.000', NULL, NULL,
+            NULL, NULL, '0'),
+            (7, '沧州市', '130900', 'cangzhou', 'C', '0', '冀J', -1, '0', NULL, '2018-05-18 09:29:27.000', NULL, NULL,
+            NULL, NULL, '0'),
+            (8, '廊坊市', '131000', 'langfang', 'L', '0', '冀R', 0, '0', NULL, '2018-05-18 09:29:27.000', NULL, NULL,
+            NULL, NULL, '0'),
+            (9, '长春市', '220100', 'changchun', 'H', '1', '吉A', 4, '0', NULL, '2018-05-18 09:29:27.000', NULL,
+            '2018-05-28 11:05:31.000', NULL, NULL, '0'),
+            (10, '哈尔滨市', '230100', 'haerbin', 'H', '0', '黑A', -1, '0', NULL, '2018-05-18 09:29:27.000', NULL,
+            NULL, NULL, NULL, '0'),
+            (11, '上海市', '310000', 'shanghai', 'S', '0', '沪A,沪B,沪D', -1, '0', NULL, '2018-05-18 09:29:27.000',
+            NULL, NULL, NULL, NULL, '0'),
+            (12, '南京市', '320100', 'nanjing', 'N', '0', '苏A', -1, '0', NULL, '2018-05-18 09:29:27.000', NULL, NULL,
+            NULL, NULL, '0'),
+            (13, '徐州市', '320300', 'xuzhou', 'X', '0', '苏C', -1, '0', NULL, '2018-05-18 09:29:27.000', NULL, NULL,
+            NULL, NULL, '0'),
+            (14, '杭州市', '330100', 'hangzhou', 'H', '1', '浙A', -1, '0,1', NULL, '2018-05-18 09:29:27.000', NULL,
+            '2018-05-28 11:05:31.000', NULL, NULL, '0'),
+            (15, '宁波市', '330200', 'ningbo', 'N', '0', '浙B', -1, '0', NULL, '2018-05-18 09:29:27.000', NULL, NULL,
+            NULL, NULL, '0'),
+            (16, '漳州市', '350600', 'zhangzhou', 'Z', '0', '闽E', -1, '0', NULL, '2018-05-18 09:29:27.000', NULL,
+            NULL, NULL, NULL, '0'),
+            (17, '南昌市', '360100', 'nanchang', 'N', '1', '赣A', -1, '0', NULL, '2018-05-18 09:29:27.000', NULL,
+            '2018-05-28 11:05:31.000', NULL, NULL, '0'),
+            (18, '潍坊市', '370700', 'youfang', 'Y', '0', '鲁G', -1, '0', NULL, '2018-05-18 09:29:27.000', NULL, NULL,
+            NULL, NULL, '0'),
+            (19, '泰安市', '370900', 'taian', 'T', '0', '鲁J', -1, '0', NULL, '2018-05-18 09:29:27.000', NULL, NULL,
+            NULL, NULL, '0'),
+            (20, '聊城市', '371500', 'liaocheng', 'L', '0', '鲁P', -1, '0', NULL, '2018-05-18 09:29:27.000', NULL,
+            NULL, NULL, NULL, '0'),
+            (21, '郑州市', '410100', 'zhengzhou', 'Z', '0', '豫A', -1, '0', NULL, '2018-05-18 09:29:27.000', NULL,
+            NULL, NULL, NULL, '0'),
+            (22, '开封市', '410200', 'kaifeng', 'K', '0', '豫B', -1, '0', NULL, '2018-05-18 09:29:27.000', NULL, NULL,
+            NULL, NULL, '0'),
+            (23, '武汉市', '420100', 'wuhan', 'W', '0', '鄂A', -1, '0', NULL, '2018-05-18 09:29:27.000', NULL, NULL,
+            NULL, NULL, '0'),
+            (24, '黄石市', '420200', 'huangshi', 'H', '0', '鄂B', -1, '0', NULL, '2018-05-18 09:29:27.000', NULL,
+            NULL, NULL, NULL, '0'),
+            (25, '荆州市', '421000', 'jingzhou', 'J', '0', '鄂D', -1, '0', NULL, '2018-05-18 09:29:27.000', NULL,
+            NULL, NULL, NULL, '0'),
+            (26, '深圳市', '440300', 'shenzhen', 'S', '0', '粤B', -1, '0', NULL, '2018-05-18 09:29:27.000', NULL,
+            NULL, NULL, NULL, '0'),
+            (27, '柳州市', '450200', 'liuzhou', 'L', '0', '桂B', -1, '0', NULL, '2018-05-18 09:29:27.000', NULL, NULL,
+            NULL, NULL, '0'),
+            (28, '重庆市', '500000', 'chongqing', 'C', '0', '渝A,渝B', -1, '0', NULL, '2018-05-18 09:29:27.000', NULL,
+            NULL, NULL, NULL, '0'),
+            (29, '成都市', '510100', 'chengdu', 'C', '1', '川A', -1, '0', NULL, '2018-05-18 09:29:27.000', NULL,
+            '2018-05-28 11:05:31.000', NULL, NULL, '0'),
+            (30, '达州市', '511700', 'dazhou', 'D', '0', '川S', -1, '0', NULL, '2018-05-18 09:29:27.000', NULL, NULL,
+            NULL, NULL, '0'),
+            (31, '贵阳市', '520100', 'guiyang', 'G', '1', '贵A', -1, '0', NULL, '2018-05-18 09:29:27.000', NULL,
+            '2018-05-28 11:05:31.000', NULL, NULL, '0'),
+            (32, '西安市', '610100', 'xi''an', 'X', '0', '陕A', -1, '0', NULL, '2018-05-18 09:29:27.000', NULL, NULL,
+            NULL, NULL, '0'),
+            (33, '咸阳市', '610400', 'xianyang', 'X', '0', '陕D', -1, '0', NULL, '2018-05-18 09:29:27.000', NULL,
+            NULL, NULL, NULL, '0'),
+            (34, '渭南市', '610500', 'weinan', 'W', '0', '陕E', -1, '0', NULL, '2018-05-18 09:29:27.000', NULL, NULL,
+            NULL, NULL, '0'),
+            (35, '安康市', '610900', 'ankang', 'A', '0', '陕G', -1, '0', NULL, '2018-05-18 09:29:27.000', NULL, NULL,
+            NULL, NULL, '0'),
+            (36, '兰州市', '620100', 'lanzhou', 'L', '1', '甘A', -1, '0', NULL, '2018-05-18 09:29:27.000', NULL,
+            '2018-05-28 11:05:31.000', NULL, NULL, '0'),
+            (37, '乌鲁木齐市', '650100', 'wulumuqi', 'W', '0', '新A', -1, '0', NULL, '2018-05-18 09:29:27.000', NULL,
+            NULL, NULL, NULL, '0'),
+            (38, '伊宁市', '654000', 'yining', 'Y', '0', '新F', -1, '0', NULL, '2018-05-18 09:29:27.000', NULL, NULL,
+            NULL, NULL, '0');
+        </sql>
+    </changeSet>
+</databaseChangeLog>

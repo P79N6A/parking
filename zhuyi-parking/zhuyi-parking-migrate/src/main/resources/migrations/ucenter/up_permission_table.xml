@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet author="walkman" id="up_permission_table">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="up_permission"/>
+            </not>
+        </preConditions>
+        <createTable tableName="up_permission" remarks="权限表">
+            <column autoIncrement="true" name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_up_permission"/>
+            </column>
+            <column name="code" type="VARCHAR(64)" remarks="权限编码">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" type="VARCHAR(255)" remarks="权限名称">
+                <constraints nullable="false"/>
+            </column>
+            <column name="sort" type="int(5)" remarks="排序"/>
+            <column name="status" type="CHAR(1)" remarks="状态 0、正常 1、禁用"/>
+            <column name="parentId" type="bigint" remarks="父节点"></column>
+            <column name="parentIds" type="VARCHAR(2000)" remarks="父节点路径"/>
+            <column name="description" type="VARCHAR(255)" remarks="描述"/>
+            <column name="creatorUserId" type="bigint" remarks="创建者"/>
+            <column name="creationTime" type="DATETIME" remarks="创建时间"/>
+            <column name="LastModifierUserId" type="bigint" remarks="更新者"/>
+            <column name="LastModificationTime" type="DATETIME" remarks="更新时间"/>
+            <column name="deleterUserId" type="bigint" remarks="删除者"/>
+            <column name="deletionTime" type="DATETIME" remarks="删除时间"/>
+            <column name="deleted" type="CHAR(1)" remarks="删除标记"/>
+        </createTable>
+        <addUniqueConstraint tableName="up_permission" columnNames="code" constraintName="uq_up_permission_code"
+                             deferrable="false" disabled="false" initiallyDeferred="false"/>
+        <createIndex tableName="up_permission" indexName="idx_permission_code">
+            <column name="code"></column>
+        </createIndex>
+        <rollback>drop table up_permission</rollback>
+    </changeSet>
+</databaseChangeLog>

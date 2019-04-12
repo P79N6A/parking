@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet author="walkman" id="up_notification_template_seed_data_20180628">
+        <insert tableName="up_notification_template">
+            <column name="templateId" value="PUSH_20180628"/>
+            <column name="templateName" value="停车入场推送模板"/>
+            <column name="type" value="2"/>
+            <column name="content" value="尊敬的用户您好，欢迎驶入${parkingName}，请保管好重要物品，祝您出行愉快"/>
+            <column name="status" value="1"/>
+            <column name="description" value="停车入场推送模板"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="LastModifierUserId" value="0"/>
+            <column name="LastModificationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>
+

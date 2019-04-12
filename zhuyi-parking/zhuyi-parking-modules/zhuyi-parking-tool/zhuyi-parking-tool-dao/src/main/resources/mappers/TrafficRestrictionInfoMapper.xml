@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhuyitech.parking.tool.mapper.TrafficRestrictionInfoMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.zhuyitech.parking.tool.domain.TrafficRestrictionInfo">
+        <id column="id" property="id"/>
+        <result property="info" column="info"/>
+        <result property="place" column="place"/>
+        <result property="time" column="time"/>
+        <result property="trafficRestrictionId" column="trafficRestrictionId"/>
+        <result column="creatorUserId" property="creatorUserId"/>
+        <result column="creationTime" property="creationTime"/>
+        <result column="lastModifierUserId" property="lastModifierUserId"/>
+        <result column="lastModificationTime" property="lastModificationTime"/>
+        <result column="deleterUserId" property="deleterUserId"/>
+        <result column="deletionTime" property="deletionTime"/>
+        <result column="deleted" property="deleted"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,info,place,time,trafficRestrictionId,
+        creatorUserId, creationTime, lastModifierUserId, lastModificationTime, deleterUserId, deletionTime, deleted
+    </sql>
+
+    <!-- 删除限行-->
+    <delete id="deleteTrafficInfo">
+        delete from up_traffic_restriction_info where creationTime &lt;  #{date}
+    </delete>
+
+</mapper>

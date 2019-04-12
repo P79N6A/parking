@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet author="walkman" id="up_hikvision_vehicle_record_table">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="up_hikvision_vehicle_record"/>
+            </not>
+        </preConditions>
+        <createTable tableName="up_hikvision_vehicle_record" remarks="海康平台过车记录">
+            <column autoIncrement="true" name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_hikvision_vehicle"/>
+            </column>
+            <column name="uuid" type="VARCHAR(100)" remarks="过车记录唯一ID"/>
+            <column name="plateNumber" type="VARCHAR(20)" remarks="车牌号"/>
+            <column name="plateColor" type="int(2)" remarks="车牌颜色"/>
+            <column name="carType" type="int(2)" remarks="车辆类型"/>
+            <column name="passDirect" type="int(2)" remarks="过车方向"/>
+            <column name="passTime" type="DATETIME" remarks="通过时间"/>
+            <column name="parkCode" type="VARCHAR(256)" remarks="停车场编号"/>
+            <column name="parkName" type="VARCHAR(256)" remarks="停车场名称"/>
+            <column name="gateCode" type="VARCHAR(256)" remarks="停车场出入口编号"/>
+            <column name="gateName" type="VARCHAR(256)" remarks="停车场出入口名称"/>
+            <column name="laneCode" type="VARCHAR(256)" remarks="车道编号"/>
+            <column name="laneName" type="VARCHAR(256)" remarks="车道名称"/>
+            <column name="berthCode" type="VARCHAR(256)" remarks="泊位编号"/>
+            <column name="startTime" type="DATETIME" remarks="查询开始的过车时间"/>
+            <column name="endTime" type="DATETIME" remarks="查询结束的过车时间"/>
+            <column name="creatorUserId" type="bigint" remarks="创建者"/>
+            <column name="creationTime" type="DATETIME" remarks="创建时间"/>
+        </createTable>
+        <rollback>drop table up_hikvision_vehicle_record</rollback>
+    </changeSet>
+</databaseChangeLog>

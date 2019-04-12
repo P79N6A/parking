@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zhuyitech.parking.ucc.mapper.UserInfoMapper">
+
+    <resultMap id="BaseResultMap" type="com.zhuyitech.parking.ucc.domain.UserInfo">
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <result column="userId" property="userId" jdbcType="BIGINT"/>
+        <result column="realName" property="realName" jdbcType="VARCHAR"/>
+        <result column="gender" property="gender" jdbcType="INTEGER"/>
+        <result column="birthday" property="birthday" jdbcType="TIMESTAMP"/>
+        <result column="cardNo" property="cardNo" jdbcType="VARCHAR"/>
+        <result column="certificateStatus" property="certificateStatus" jdbcType="INTEGER"/>
+        <result column="certificatedDate" property="certificatedDate" jdbcType="TIMESTAMP"/>
+        <result column="wxUuid" property="wxUuid" jdbcType="VARCHAR"/>
+        <result column="wxOpenId" property="wxOpenId" jdbcType="VARCHAR"/>
+        <result column="wxUnionId" property="wxUnionId" jdbcType="VARCHAR"/>
+        <result column="wxNickname" property="wxNickname" jdbcType="VARCHAR"/>
+        <result column="wxSex" property="wxSex" jdbcType="INTEGER"/>
+        <result column="wxCounty" property="wxCounty" jdbcType="VARCHAR"/>
+        <result column="wxProvince" property="wxProvince" jdbcType="VARCHAR"/>
+        <result column="wxCity" property="wxCity" jdbcType="VARCHAR"/>
+        <result column="wxPrivilege" property="wxPrivilege" jdbcType="VARCHAR"/>
+        <result column="wxAuthorized" property="wxAuthorized" jdbcType="CHAR"/>
+        <result column="qqNumber" property="qqNumber" jdbcType="VARCHAR"/>
+        <result column="qqAuthorized" property="qqAuthorized" jdbcType="CHAR"/>
+        <result column="level" property="level" jdbcType="INTEGER"/>
+        <result column="invitedUserId" property="invitedUserId" jdbcType="BIGINT"/>
+        <result column="creatorUserId" property="creatorUserId" jdbcType="BIGINT"/>
+        <result column="creationTime" property="creationTime" jdbcType="TIMESTAMP"/>
+        <result column="lastModifierUserId" property="lastModifierUserId" jdbcType="BIGINT"/>
+        <result column="lastModificationTime" property="lastModificationTime" jdbcType="TIMESTAMP"/>
+        <result column="deleterUserId" property="deleterUserId" jdbcType="BIGINT"/>
+        <result column="deletionTime" property="deletionTime" jdbcType="TIMESTAMP"/>
+        <result column="deleted" property="deleted" jdbcType="CHAR"/>
+        <result column="version" property="version" jdbcType="BIGINT"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        t.id,
+        t.userId,
+        t.realName,
+        t.gender,
+        t.birthday,
+        t.cardNo,
+        t.certificateStatus,
+        t.certificatedDate,
+        t.wxUuid,
+        t.wxOpenId,
+        t.wxUnionId,
+        t.wxNickname,
+        t.wxSex,
+        t.wxProvince,
+        t.wxCounty,
+        t.wxCity,
+        t.wxPrivilege,
+        t.wxAuthorized,
+        t.qqNumber,
+        t.qqAuthorized,
+        t.level,
+        t.invitedUserId,
+        t.creatorUserId,
+        t.creationTime,
+        t.lastModifierUserId,
+        t.lastModificationTime,
+        t.deleterUserId,
+        t.deletionTime,
+        t.deleted
+        t.version
+    </sql>
+
+</mapper>

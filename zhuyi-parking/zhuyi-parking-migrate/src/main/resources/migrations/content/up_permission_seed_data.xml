@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet author="walkman" id="up_permission_seed_data">
+        <!-- up_permission -->
+        <insert tableName="up_permission">
+            <column name="id" value="21"/>
+            <column name="code" value="user:create"/>
+            <column name="name" value="user:create"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <insert tableName="up_permission">
+            <column name="id" value="22"/>
+            <column name="code" value="user:edit"/>
+            <column name="name" value="user:edit"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <insert tableName="up_permission">
+            <column name="id" value="23"/>
+            <column name="code" value="user:list"/>
+            <column name="name" value="user:list"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+        <insert tableName="up_permission">
+            <column name="id" value="24"/>
+            <column name="code" value="user:delete"/>
+            <column name="name" value="user:delete"/>
+            <column name="creatorUserId" value="0"/>
+            <column name="creationTime" value="now()"/>
+            <column name="deleted" value="0"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

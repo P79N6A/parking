@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet author="AkeemSuper" id="up_traffic_restriction_info_table">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="up_traffic_restriction_info"/>
+            </not>
+        </preConditions>
+        <createTable tableName="up_traffic_restriction_info" remarks="限行信息表">
+            <column autoIncrement="true" name="id" type="bigint" remarks="ID">
+                <constraints nullable="false" primaryKey="true"
+                             primaryKeyName="pk_up_organization"/>
+            </column>
+            <column name="trafficRestrictionId" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="time" type="VARCHAR(2000)" remarks="限行时间"/>
+            <column name="place" type="VARCHAR(2000)" remarks="限行地段"/>
+            <column name="info" type="VARCHAR(2000)" remarks="其他说明"/>
+            <column name="creatorUserId" type="bigint" remarks="创建者"/>
+            <column name="creationTime" type="DATETIME" remarks="创建时间"/>
+            <column name="lastModifierUserId" type="bigint" remarks="更新者"/>
+            <column name="lastModificationTime" type="DATETIME" remarks="更新时间"/>
+            <column name="deleterUserId" type="bigint" remarks="删除者"/>
+            <column name="deletionTime" type="DATETIME" remarks="删除时间"/>
+            <column name="deleted" type="CHAR(1)" defaultValue="0" remarks="删除标记"/>
+        </createTable>
+        <createIndex tableName="up_traffic_restriction_info"
+                     indexName="up_traffic_restriction_info_trafficRestrictionId">
+            <column name="trafficRestrictionId"></column>
+        </createIndex>
+        <rollback>drop table up_traffic_restriction</rollback>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet author="walkman" id="up_user_table_add_columns_20180516">
+        <preConditions onFail="MARK_RAN">
+            <tableExists tableName="up_user"/>
+        </preConditions>
+        <addColumn tableName="up_user">
+            <column name="alias" type="VARCHAR(255)" afterColumn="tradeAttemptCount" defaultValue=""
+                    remarks="别名(用于推送)"/>
+        </addColumn>
+        <sql>
+            update up_user set alias =uuid;
+        </sql>
+    </changeSet>
+</databaseChangeLog>

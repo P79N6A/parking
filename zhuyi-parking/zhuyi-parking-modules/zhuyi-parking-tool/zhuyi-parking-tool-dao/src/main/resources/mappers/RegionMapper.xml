@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhuyitech.parking.tool.mapper.RegionMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.zhuyitech.parking.tool.domain.Region">
+        <id column="id" property="id"/>
+        <result column="code" property="code"/>
+        <result column="name" property="name"/>
+        <result column="parentId" property="parentId"/>
+        <result column="level" property="level"/>
+        <result column="order" property="order"/>
+        <result column="nameEn" property="nameEn"/>
+        <result column="shortNameEn" property="shortNameEn"/>
+        <result column="areaCode" property="areaCode"/>
+        <result column="zipCode" property="zipCode"/>
+        <result property="adCode" column="adCode"/>
+        <result column="creatorUserId" property="creatorUserId"/>
+        <result column="creationTime" property="creationTime"/>
+        <result column="lastModifierUserId" property="lastModifierUserId"/>
+        <result column="lastModificationTime" property="lastModificationTime"/>
+        <result column="deleterUserId" property="deleterUserId"/>
+        <result column="deletionTime" property="deletionTime"/>
+        <result column="deleted" property="deleted"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, code,name,parentId,level,order,nameEn,shortNameEn,areaCode,zipCode,adCode,
+        creatorUserId,creationTime,lastModifierUserId,lastModificationTime,deleterUserId,deletionTime,deleted
+    </sql>
+
+</mapper>

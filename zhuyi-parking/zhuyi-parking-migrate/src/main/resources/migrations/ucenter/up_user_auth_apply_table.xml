@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet author="yuzhicheng" id="up_user_auth_apply_table">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="up_user_auth_apply"/>
+            </not>
+        </preConditions>
+        <createTable tableName="up_user_auth_apply" remarks="用户申请认证信息">
+            <column autoIncrement="true" name="id" type="bigint" remarks="主键">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_user_auth_apply"/>
+            </column>
+            <column name="userId" type="bigint(20)" remarks="用户主键">
+                <constraints nullable="false"></constraints>
+            </column>
+            <column name="realName" type="VARCHAR(255)" remarks="真实姓名">
+                <constraints nullable="false"></constraints>
+            </column>
+            <column name="gender" type="int(2)" remarks="性别"></column>
+            <column name="cardNo" type="VARCHAR(32)" remarks="身份证号">
+                <constraints nullable="false"></constraints>
+            </column>
+            <column name="authStatus" type="int(2)" remarks="处理状态:1待认证  2已认证 3认证不通过"></column>
+            <column name="cardFront" type="VARCHAR(2000)" remarks="身份证正面照"></column>
+            <column name="cardContrary" type="VARCHAR(2000)" remarks="身份证反面照"></column>
+            <column name="cardInHand" type="VARCHAR(2000)" remarks="身份证手持照"></column>
+            <column name="remark" type="VARCHAR(2000)" remarks="备注"></column>
+            <column name="applyTime" type="DATETIME" remarks="申请时间"/>
+            <column name="authUserId" type="bigint(20)" remarks="审核用户ID"></column>
+            <column name="authTime" type="DATETIME" remarks="审核时间"/>
+            <column name="creatorUserId" type="bigint"/>
+            <column name="creationTime" type="DATETIME"/>
+            <column name="LastModifierUserId" type="bigint"/>
+            <column name="LastModificationTime" type="DATETIME"/>
+            <column name="deleterUserId" type="bigint"/>
+            <column name="deletionTime" type="DATETIME"/>
+            <column name="deleted" type="CHAR(1)"/>
+            <column name="version" type="bigint"/>
+        </createTable>
+        <createIndex tableName="up_user_auth_apply" indexName="idx_realName">
+            <column name="realName"></column>
+        </createIndex>
+        <createIndex tableName="up_user_auth_apply" indexName="idx_cardNo">
+            <column name="cardNo"></column>
+        </createIndex>
+        <addDefaultValue tableName="up_user_auth_apply" columnName="deleted" defaultValue="0"/>
+        <addDefaultValue tableName="up_user_auth_apply" columnName="version" defaultValue="1"/>
+        <rollback>drop table up_user_auth_apply</rollback>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet author="walkman" id="up_rpc_record_table">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="up_rpc_record"/>
+            </not>
+        </preConditions>
+        <createTable tableName="up_rpc_record" remarks="RPC调用记录">
+            <column autoIncrement="true" name="id" type="bigint" remarks="ID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_rpc_record"/>
+            </column>
+            <column name="uuid" type="VARCHAR(255)" remarks="uuid"/>
+            <column name="interfaceName" type="VARCHAR(2000)" remarks="接口名称"/>
+            <column name="methodName" type="VARCHAR(100)" remarks="方法名称"/>
+            <column name="provider" type="VARCHAR(100)" remarks="provider"/>
+            <column name="consumer" type="VARCHAR(100)" remarks="consumer"/>
+            <column name="parameter" type="VARCHAR(2000)" remarks="请求参数"/>
+            <column name="requestTime" type="DATETIME" remarks="请求时间"/>
+            <column name="responseTime" type="DATETIME" remarks="响应时间"/>
+            <column name="result" type="text" remarks="响应内容"/>
+            <column name="status" type="INTEGER" remarks="请求状态"/>
+            <column name="creatorUserId" type="bigint" remarks="创建者"/>
+            <column name="creationTime" type="DATETIME" remarks="创建时间"/>
+        </createTable>
+        <rollback>drop table up_rpc_record</rollback>
+    </changeSet>
+</databaseChangeLog>

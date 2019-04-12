@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet author="zwq" id="up_appointment_rule_table_modify_columns_20180625">
+        <preConditions onFail="MARK_RAN">
+            <tableExists tableName="up_appointment_rule"/>
+        </preConditions>
+        <addColumn tableName="up_appointment_rule">
+            <column name="flexTime" type="int" remarks="预约弹性入场时间" defaultValue="0" afterColumn="description"/>
+        </addColumn>
+        <addColumn tableName="up_appointment_rule">
+            <column name="refundLimit" type="int" remarks="已支付可退款时长" defaultValue="0" afterColumn="flexTime"/>
+        </addColumn>
+        <addColumn tableName="up_appointment_rule">
+            <column name="canRefund" type="char(1)" remarks="是否退款" defaultValue="1" afterColumn="refundLimit"/>
+        </addColumn>
+        <addColumn tableName="up_appointment_rule">
+            <column name="chargeType" type="int" remarks="收费类型" defaultValue="1" afterColumn="canRefund"/>
+        </addColumn>
+    </changeSet>
+</databaseChangeLog>

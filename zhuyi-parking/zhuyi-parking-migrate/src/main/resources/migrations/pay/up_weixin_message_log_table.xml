@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet author="walkman" id="up_weixin_message_log_table">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="up_weixin_message_log"/>
+            </not>
+        </preConditions>
+        <createTable tableName="up_weixin_message_log" remarks="微信支付异步通知表">
+            <column autoIncrement="true" name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_weixin_message"/>
+            </column>
+            <column name="ip" type="VARCHAR(2000)" remarks="ip"/>
+            <column name="url" type="VARCHAR(2000)" remarks="url"/>
+            <column name="messageType" type="VARCHAR(255)" remarks="通知的类型"/>
+            <column name="outTradeNo" type="VARCHAR(255)" remarks="通知校验ID"/>
+            <column name="outRefundNo" type="VARCHAR(255)" remarks="支付宝分配给开发者的应用Id"/>
+            <column name="transactionId" type="VARCHAR(255)" remarks="支付宝交易号"/>
+            <column name="refundId" type="VARCHAR(255)" remarks="商户订单号"/>
+            <column name="content" type="text" remarks="消息内容"/>
+            <column name="status" type="int(2)" remarks="消息处理状态"/>
+            <column name="result" type="VARCHAR(2000)" remarks="消息处理结果说明"/>
+            <column name="creatorUserId" type="bigint" remarks="创建者"/>
+            <column name="creationTime" type="DATETIME" remarks="创建时间"/>
+        </createTable>
+        <rollback>drop table up_weixin_message_log</rollback>
+    </changeSet>
+</databaseChangeLog>

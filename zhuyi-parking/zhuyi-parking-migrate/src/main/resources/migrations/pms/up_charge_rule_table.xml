@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet author="AkeemSuper" id="up_charge_rule_table">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="up_charge_rule"/>
+            </not>
+        </preConditions>
+        <createTable tableName="up_charge_rule" remarks="收费规则信息表">
+            <column name="id" type="bigint" remarks="id" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_charge_rule"/>
+            </column>
+            <column name="ruleCode" type="VARCHAR(255)" remarks="收费规则编号">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ruleName" type="VARCHAR(255)" remarks="收费规则名称">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ruleType" type="INT(2)" remarks="规则类型 1 不收费,2 按时计费 3,按次计费 4,日夜分时分次计费">
+                <constraints nullable="false"/>
+            </column>
+            <column name="carType" type="INT(2)" remarks="车辆类型">
+                <constraints nullable="false"/>
+            </column>
+            <column name="plateNumberType" type="CHAR(2)" remarks="车牌类型">
+            </column>
+            <column name="parkingLevel" type="INT(2)" remarks="停车点等级 1,不区分 ,2 一级,3 二级, 4三级">
+                <constraints nullable="false"/>
+            </column>
+            <column name="holidayType" type="INT(2)" remarks="假期类型：  1 工作日，2 双休 3 小长假 4长假">
+                <constraints nullable="false"/>
+            </column>
+            <column name="timesStartTime" type="VARCHAR(255)" remarks="计时开始时间"/>
+            <column name="timesEndTime" type="VARCHAR(255)" remarks="计时结束时间"/>
+            <column name="perStartTime" type="VARCHAR(255)" remarks="计次开始时间"/>
+            <column name="perEndTime" type="VARCHAR(255)" remarks="计次结束时间"/>
+            <column name="perPrice" type="DECIMAL(12,2)" remarks="按次收费金额"/>
+            <column name="topStatus" type="CHAR(1)" remarks="是否启用封顶金额：0,不启用1,启用"/>
+            <column name="freeTime" type="INT" remarks="免费时长"/>
+            <column name="overFreeTime" type="CHAR(1)" remarks="超出免费时长时免费时长是否收费 0,不收费 1,收费"/>
+            <column name="existPartTime" type="CHAR(1)" remarks="24小时内存在按时段收费则全按时段收费 0, 否 1是,"/>
+            <column name="inTimeTop" type="CHAR(1)" remarks="24小时内是否启用封顶金额 0,不启用1,启用"/>
+            <column name="topAmount" type="DECIMAL(12,2)" remarks="封顶金额"/>
+            <column name="dayTopAmount" type="DECIMAL(12,2)" remarks="24小时封顶金额"/>
+            <column name="description" type="VARCHAR(255)" remarks="描述"/>
+            <column name="creatorUserId" type="bigint" remarks="创建者"/>
+            <column name="creationTime" type="DATETIME" remarks="创建时间"/>
+            <column name="LastModifierUserId" type="bigint" remarks="更新者"/>
+            <column name="LastModificationTime" type="DATETIME" remarks="更新时间"/>
+            <column name="deleterUserId" type="bigint" remarks="删除者"/>
+            <column name="deletionTime" type="DATETIME" remarks="删除时间"/>
+            <column name="deleted" type="CHAR(1)" remarks="删除标记"/>
+            <column name="version" type="bigint" remarks="版本号"/>
+        </createTable>
+        <addUniqueConstraint tableName="up_charge_rule" columnNames="ruleCode"
+                             constraintName="up_charge_rule_ruleCode"
+                             deferrable="false" disabled="false" initiallyDeferred="false"/>
+        <addDefaultValue tableName="up_charge_rule" columnName="topStatus" defaultValue="0"/>
+        <addDefaultValue tableName="up_charge_rule" columnName="overFreeTime" defaultValue="0"/>
+        <addDefaultValue tableName="up_charge_rule" columnName="existPartTime" defaultValue="0"/>
+        <addDefaultValue tableName="up_charge_rule" columnName="inTimeTop" defaultValue="0"/>
+        <addDefaultValue tableName="up_charge_rule" columnName="deleted" defaultValue="0"/>
+        <addDefaultValue tableName="up_charge_rule" columnName="freeTIme" defaultValue="0"/>
+        <addDefaultValue tableName="up_charge_rule" columnName="version" defaultValue="1"/>
+        <rollback>drop table up_charge_rule</rollback>
+    </changeSet>
+</databaseChangeLog>

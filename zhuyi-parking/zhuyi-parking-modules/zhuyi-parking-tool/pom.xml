@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.zhuyitech</groupId>
+        <artifactId>zhuyi-parking-modules</artifactId>
+        <version>1.1.0-SNAPSHOT</version>
+    </parent>
+    <packaging>pom</packaging>
+    <artifactId>zhuyi-parking-tool</artifactId>
+    <name>Zhuyi Parking Platform :: Zhuyi Parking Tool</name>
+    <version>1.1.0-SNAPSHOT</version>
+    <modules>
+        <module>zhuyi-parking-tool-api</module>
+        <module>zhuyi-parking-tool-api-java</module>
+        <module>zhuyi-parking-tool-dao</module>
+        <module>zhuyi-parking-tool-server</module>
+    </modules>
+    <properties>
+        <jpush.version>3.3.4</jpush.version>
+        <baidu-aip.version>4.3.1</baidu-aip.version>
+        <getui.version>4.0.1.17</getui.version>
+    </properties>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>cn.jpush.api</groupId>
+                <artifactId>jpush-client</artifactId>
+                <version>${jpush.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.baidu.aip</groupId>
+                <artifactId>java-sdk</artifactId>
+                <version>${baidu-aip.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.gexin.platform</groupId>
+                <artifactId>gexin-rp-sdk-http</artifactId>
+                <version>${getui.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+    <repositories>
+        <repository>
+            <id>getui-nexus</id>
+            <url>http://mvn.gt.igexin.com/nexus/content/repositories/releases/</url>
+        </repository>
+    </repositories>
+</project>

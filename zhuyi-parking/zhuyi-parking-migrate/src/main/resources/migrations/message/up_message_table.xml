@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet author="walkman" id="up_message_table">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="up_message"/>
+            </not>
+        </preConditions>
+        <createTable tableName="up_message">
+            <column autoIncrement="true" name="id" type="bigint" remarks="ID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_message"/>
+            </column>
+            <column name="messageId" type="VARCHAR(255)" remarks="消息ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="traceId" type="VARCHAR(255)" remarks="traceId"></column>
+            <column name="sender" type="VARCHAR(255)" remarks="消息发送方"></column>
+            <column name="exchange" type="VARCHAR(255)" remarks="消息交换器"></column>
+            <column name="routingKey" type="VARCHAR(255)" remarks="路由键"></column>
+            <column name="consumerQueue" type="VARCHAR(255)" remarks="消息队列"></column>
+            <column name="payload" type="text" remarks="消息内容"></column>
+            <column name="messageType" type="VARCHAR(255)" remarks="消息类型"></column>
+            <column name="sendTimes" type="INTEGER" remarks="发送次数"></column>
+            <column name="sendStatus" type="INTEGER" remarks="发送状态"></column>
+            <column name="alreadyDead" type="INTEGER" remarks="是否死信"></column>
+            <column name="creatorUserId" type="bigint" remarks="创建者"/>
+            <column name="creationTime" type="DATETIME" remarks="创建时间"/>
+            <column name="LastModifierUserId" type="bigint" remarks="更新者"/>
+            <column name="LastModificationTime" type="DATETIME" remarks="更新时间"/>
+            <column name="deleterUserId" type="bigint" remarks="删除者"/>
+            <column name="deletionTime" type="DATETIME" remarks="删除时间"/>
+            <column name="deleted" type="CHAR(1)" remarks="删除标记"/>
+        </createTable>
+        <createIndex tableName="up_message" indexName="idx_messageId">
+            <column name="messageId"></column>
+        </createIndex>
+        <rollback>drop table up_message</rollback>
+    </changeSet>
+</databaseChangeLog>

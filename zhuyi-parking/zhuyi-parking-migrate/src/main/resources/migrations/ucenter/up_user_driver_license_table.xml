@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet author="walkman" id="up_user_driver_license_table">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="up_user_driver_license"/>
+            </not>
+        </preConditions>
+        <createTable tableName="up_user_driver_license" remarks="用户驾驶证表">
+            <column autoIncrement="true" name="id" type="bigint" remarks="主键">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_driver_license"/>
+            </column>
+            <column name="userId" type="bigint" remarks="用户主键">
+                <constraints nullable="false"/>
+            </column>
+            <column name="cardNumber" type="VARCHAR(32)" remarks="证号">
+                <constraints nullable="false"/>
+            </column>
+            <column name="archiveNumber" type="VARCHAR(64)" remarks="档案编号"/>
+            <column name="firstIssueDate" type="DATETIME" remarks="初次领证日期"/>
+            <column name="driveClass" type="VARCHAR(10)" remarks="准驾车型"/>
+            <column name="validateDateStart" type="DATETIME" remarks="有效期开始"></column>
+            <column name="validateDateEnd" type="DATETIME" remarks="有效期结束"/>
+            <column name="remarks" type="VARCHAR(2000)" remarks="备注"></column>
+            <column name="creatorUserId" type="bigint"/>
+            <column name="creationTime" type="DATETIME"/>
+            <column name="LastModifierUserId" type="bigint"/>
+            <column name="LastModificationTime" type="DATETIME"/>
+            <column name="deleterUserId" type="bigint"/>
+            <column name="deletionTime" type="DATETIME"/>
+            <column name="deleted" type="CHAR(1)"/>
+        </createTable>
+        <createIndex tableName="up_user_driver_license" indexName="idx_userId">
+            <column name="userId"></column>
+        </createIndex>
+        <createIndex tableName="up_user_driver_license" indexName="idx_cardNumber">
+            <column name="cardNumber"></column>
+        </createIndex>
+        <createIndex tableName="up_user_driver_license" indexName="idx_archiveNumber">
+            <column name="archiveNumber"></column>
+        </createIndex>
+        <addDefaultValue tableName="up_user_driver_license" columnName="deleted" defaultValue="0"/>
+        <rollback>drop table up_user_driver_license</rollback>
+    </changeSet>
+</databaseChangeLog>

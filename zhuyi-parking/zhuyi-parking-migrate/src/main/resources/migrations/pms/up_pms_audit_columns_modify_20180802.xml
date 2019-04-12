@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet author="walkman" id="up_pms_audit_columns_modify_20180802">
+        <preConditions onFail="MARK_RAN">
+            <tableExists tableName="up_passing_vehicle_record"/>
+            <tableExists tableName="up_passing_vehicle_exception_record"/>
+        </preConditions>
+        <!-- up_car_brand -->
+        <renameColumn tableName="up_car_brand" oldColumnName="LastModifierUserId"
+                      newColumnName="lastModifierUserId" columnDataType="bigint"/>
+        <renameColumn tableName="up_car_brand" oldColumnName="LastModificationTime"
+                      newColumnName="lastModificationTime" columnDataType="DATETIME"/>
+        <!-- up_charge_rule -->
+        <renameColumn tableName="up_charge_rule" oldColumnName="LastModifierUserId"
+                      newColumnName="lastModifierUserId" columnDataType="bigint"/>
+        <renameColumn tableName="up_charge_rule" oldColumnName="LastModificationTime"
+                      newColumnName="lastModificationTime" columnDataType="DATETIME"/>
+        <!-- up_hikvision_parking_order -->
+        <renameColumn tableName="up_hikvision_parking_order" oldColumnName="LastModifierUserId"
+                      newColumnName="lastModifierUserId" columnDataType="bigint"/>
+        <renameColumn tableName="up_hikvision_parking_order" oldColumnName="LastModificationTime"
+                      newColumnName="lastModificationTime" columnDataType="DATETIME"/>
+        <!-- up_holiday_schedule -->
+        <renameColumn tableName="up_holiday_schedule" oldColumnName="LastModifierUserId"
+                      newColumnName="lastModifierUserId" columnDataType="bigint"/>
+        <renameColumn tableName="up_holiday_schedule" oldColumnName="LastModificationTime"
+                      newColumnName="lastModificationTime" columnDataType="DATETIME"/>
+        <!-- up_parking_appointment_order -->
+        <renameColumn tableName="up_parking_appointment_order" oldColumnName="LastModifierUserId"
+                      newColumnName="lastModifierUserId" columnDataType="bigint"/>
+        <renameColumn tableName="up_parking_appointment_order" oldColumnName="LastModificationTime"
+                      newColumnName="lastModificationTime" columnDataType="DATETIME"/>
+        <!-- up_parking_appointment_rule -->
+        <renameColumn tableName="up_parking_appointment_rule" oldColumnName="LastModifierUserId"
+                      newColumnName="lastModifierUserId" columnDataType="bigint"/>
+        <renameColumn tableName="up_parking_appointment_rule" oldColumnName="LastModificationTime"
+                      newColumnName="lastModificationTime" columnDataType="DATETIME"/>
+        <!-- up_parking_charge_rule -->
+        <renameColumn tableName="up_parking_charge_rule" oldColumnName="LastModifierUserId"
+                      newColumnName="lastModifierUserId" columnDataType="bigint"/>
+        <renameColumn tableName="up_parking_charge_rule" oldColumnName="LastModificationTime"
+                      newColumnName="lastModificationTime" columnDataType="DATETIME"/>
+        <!-- up_parking_image -->
+        <renameColumn tableName="up_parking_image" oldColumnName="LastModifierUserId"
+                      newColumnName="lastModifierUserId" columnDataType="bigint"/>
+        <renameColumn tableName="up_parking_image" oldColumnName="LastModificationTime"
+                      newColumnName="lastModificationTime" columnDataType="DATETIME"/>
+        <!-- up_parking_info -->
+        <renameColumn tableName="up_parking_info" oldColumnName="LastModifierUserId"
+                      newColumnName="lastModifierUserId" columnDataType="bigint"/>
+        <renameColumn tableName="up_parking_info" oldColumnName="LastModificationTime"
+                      newColumnName="lastModificationTime" columnDataType="DATETIME"/>
+        <!-- up_parking_lot_info -->
+        <renameColumn tableName="up_parking_lot_info" oldColumnName="LastModifierUserId"
+                      newColumnName="lastModifierUserId" columnDataType="bigint"/>
+        <renameColumn tableName="up_parking_lot_info" oldColumnName="LastModificationTime"
+                      newColumnName="lastModificationTime" columnDataType="DATETIME"/>
+        <!-- up_parking_order -->
+        <renameColumn tableName="up_parking_order" oldColumnName="LastModifierUserId"
+                      newColumnName="lastModifierUserId" columnDataType="bigint"/>
+        <renameColumn tableName="up_parking_order" oldColumnName="LastModificationTime"
+                      newColumnName="lastModificationTime" columnDataType="DATETIME"/>
+        <!-- up_parking_record -->
+        <renameColumn tableName="up_parking_record" oldColumnName="LastModifierUserId"
+                      newColumnName="lastModifierUserId" columnDataType="bigint"/>
+        <renameColumn tableName="up_parking_record" oldColumnName="LastModificationTime"
+                      newColumnName="lastModificationTime" columnDataType="DATETIME"/>
+        <!-- up_license_prefix -->
+        <renameColumn tableName="up_license_prefix" oldColumnName="LastModifierUserId"
+                      newColumnName="lastModifierUserId" columnDataType="bigint"/>
+        <renameColumn tableName="up_license_prefix" oldColumnName="LastModificationTime"
+                      newColumnName="lastModificationTime" columnDataType="DATETIME"/>
+        <!-- up_passing_vehicle_record -->
+        <renameColumn tableName="up_passing_vehicle_record" oldColumnName="LastModifierUserId"
+                      newColumnName="lastModifierUserId" columnDataType="bigint"/>
+        <renameColumn tableName="up_passing_vehicle_record" oldColumnName="LastModificationTime"
+                      newColumnName="lastModificationTime" columnDataType="DATETIME"/>
+        <!-- up_passing_vehicle_exception_record -->
+        <renameColumn tableName="up_passing_vehicle_exception_record" oldColumnName="LastModifierUserId"
+                      newColumnName="lastModifierUserId" columnDataType="bigint"/>
+        <renameColumn tableName="up_passing_vehicle_exception_record" oldColumnName="LastModificationTime"
+                      newColumnName="lastModificationTime" columnDataType="DATETIME"/>
+    </changeSet>
+</databaseChangeLog>

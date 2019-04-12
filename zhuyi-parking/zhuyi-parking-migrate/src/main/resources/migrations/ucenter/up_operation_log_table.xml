@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet author="walkman" id="up_operation_log_table">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="up_operation_log"/>
+            </not>
+        </preConditions>
+        <createTable tableName="up_operation_log" remarks="操作日志表">
+            <column autoIncrement="true" name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_up_role_menu"/>
+            </column>
+            <column name="type" type="CHAR(1)" remarks="日志类型"/>
+            <column name="title" type="VARCHAR(255)" remarks="日志标题"/>
+            <column name="content" type="VARCHAR(1000)" remarks="日志内容"/>
+            <column name="logType" type="VARCHAR(4)" remarks="操作方式"/>
+            <column name="remoteAddress" type="VARCHAR(255)" remarks="操作IP地址"/>
+            <column name="userAgent" type="VARCHAR(255)" remarks="用户代理"/>
+            <column name="requestUrl" type="VARCHAR(255)" remarks="请求URI"/>
+            <column name="method" type="VARCHAR(255)" remarks="操作方式"/>
+            <column name="params" type="TEXT" remarks="操作提交的数据"/>
+            <column name="exception" type="TEXT" remarks="异常信息"/>
+            <column name="creatorUserId" type="bigint" remarks="创建者"/>
+            <column name="creationTime" type="DATETIME" remarks="创建时间"/>
+        </createTable>
+        <rollback>drop table up_operation_log</rollback>
+    </changeSet>
+</databaseChangeLog>

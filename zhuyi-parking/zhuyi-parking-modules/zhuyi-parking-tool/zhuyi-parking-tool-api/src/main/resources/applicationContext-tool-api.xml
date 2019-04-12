@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://code.alibabatech.com/schema/dubbo
+        http://code.alibabatech.com/schema/dubbo/dubbo.xsd
+        ">
+
+    <dubbo:reference id="amapService"
+                     interface="com.zhuyitech.parking.tool.service.api.AmapService"
+                     check="false"
+                     timeout="180000" retries="0" registry="fundamentalRegistry" version="1.0.0"/>
+    <dubbo:reference id="identityCardService"
+                     interface="com.zhuyitech.parking.tool.service.api.IdentityCardService"
+                     check="false"
+                     timeout="180000" retries="0" registry="fundamentalRegistry" version="1.0.0"/>
+    <dubbo:reference id="ossService"
+                     interface="com.zhuyitech.parking.tool.service.api.OssService"
+                     check="false"
+                     timeout="180000" retries="0" registry="fundamentalRegistry" version="1.0.0"/>
+    <dubbo:reference id="vehicleVerifyService"
+                     interface="com.zhuyitech.parking.tool.service.api.VehicleVerifyService"
+                     check="false"
+                     timeout="180000" retries="0" registry="fundamentalRegistry" version="1.0.0"/>
+    <dubbo:reference id="messageLogService" version="1.0.0"
+                     interface="com.zhuyitech.parking.tool.service.api.MessageLogService" check="false"
+                     timeout="180000" retries="0" registry="fundamentalRegistry"/>
+    <dubbo:reference id="licenseRecognitionService"
+                     interface="com.zhuyitech.parking.tool.service.api.LicenseRecognitionService"
+                     check="false"
+                     timeout="180000" retries="0" registry="fundamentalRegistry" version="1.0.0"/>
+    <dubbo:reference id="weatherService"
+                     interface="com.zhuyitech.parking.tool.service.api.WeatherService"
+                     check="false"
+                     timeout="180000" retries="0" registry="fundamentalRegistry" version="1.0.0"/>
+    <dubbo:reference id="oilPriceService"
+                     interface="com.zhuyitech.parking.tool.service.api.OilPriceService"
+                     check="false"
+                     timeout="180000" retries="0" registry="fundamentalRegistry" version="1.0.0"/>
+    <dubbo:reference id="trafficRestrictionService"
+                     interface="com.zhuyitech.parking.tool.service.api.TrafficRestrictionService"
+                     check="false"
+                     timeout="180000" retries="0" registry="fundamentalRegistry" version="1.0.0"/>
+    <dubbo:reference id="regionService" version="1.0.0"
+                     interface="com.zhuyitech.parking.tool.service.api.RegionService" check="false"
+                     timeout="180000" retries="0" registry="fundamentalRegistry"/>
+    <dubbo:reference id="licenseOrganizationService" version="1.0.0"
+                     interface="com.zhuyitech.parking.tool.service.api.LicenseOrganizationService" check="false"
+                     timeout="180000" retries="0" registry="fundamentalRegistry"/>
+    <dubbo:reference id="vehicleViolationService" version="1.0.0"
+                     interface="com.zhuyitech.parking.tool.service.api.VehicleViolationService" check="false"
+                     timeout="180000" retries="0" registry="fundamentalRegistry"/>
+    <dubbo:reference id="versionService" version="1.0.0"
+                     interface="com.zhuyitech.parking.tool.service.api.VersionService" check="false"
+                     timeout="180000" retries="0" registry="fundamentalRegistry"/>
+    <dubbo:reference id="miscService" version="1.0.0"
+                     interface="com.zhuyitech.parking.tool.service.api.MiscService" check="false"
+                     timeout="180000" retries="0" registry="fundamentalRegistry"/>
+    <dubbo:reference id="pushDeviceService" version="1.0.0"
+                     interface="com.zhuyitech.parking.tool.service.api.PushDeviceService" check="false"
+                     timeout="180000" retries="0" registry="fundamentalRegistry"/>
+    <dubbo:reference id="pushNotificationService" version="1.0.0"
+                     interface="com.zhuyitech.parking.tool.service.api.PushNotificationService" check="false"
+                     timeout="180000" retries="0" registry="fundamentalRegistry" mock="true"/>
+    <dubbo:reference id="notificationService" version="1.0.0"
+                     interface="com.zhuyitech.parking.tool.service.api.NotificationService" check="false"
+                     timeout="180000" retries="0" registry="fundamentalRegistry"/>
+    <dubbo:reference id="trafficRestrictionCityService" version="1.0.0"
+                     interface="com.zhuyitech.parking.tool.service.api.TrafficRestrictionCityService" check="false"
+                     timeout="180000" retries="0" registry="fundamentalRegistry"/>
+    <dubbo:reference id="shareService" version="1.0.0"
+                     interface="com.zhuyitech.parking.tool.service.api.ShareService" check="false"
+                     timeout="180000" retries="0" registry="fundamentalRegistry"/>
+    <dubbo:reference id="baiduService"
+                     interface="com.zhuyitech.parking.tool.service.api.BaiduService"
+                     check="false"
+                     timeout="180000" retries="0" registry="fundamentalRegistry" version="1.0.0"/>
+    <dubbo:reference id="gasService"
+                     interface="com.zhuyitech.parking.tool.service.api.GasService"
+                     check="false"
+                     timeout="180000" retries="0" registry="fundamentalRegistry" version="1.0.0"/>
+    <dubbo:reference id="inParkIntegrationService"
+                     interface="com.zhuyitech.parking.tool.service.api.InParkIntegrationService"
+                     check="false"
+                     timeout="180000" retries="0" registry="fundamentalRegistry" version="1.0.0"/>
+</beans>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet author="yuzhicheng" id="up_user_car_info_table">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="up_user_car_info"/>
+            </not>
+        </preConditions>
+        <createTable tableName="up_user_car_info" remarks="用户车辆信息">
+            <column name="id" type="bigint" autoIncrement="true" startWith="1" remarks="ID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_user_car_info"/>
+            </column>
+            <column name="userId" type="bigint" remarks="用户ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="carBrand" type="VARCHAR(255)" remarks="车辆品牌"/>
+            <column name="carType" type="VARCHAR(255)" remarks="车辆型号"/>
+            <column name="carColor" type="int(2)" remarks="车辆颜色"/>
+            <column name="carLevel" type="int(2)" remarks="车辆等级"/>
+            <column name="plateType" type="VARCHAR(2)" remarks="车牌类型"></column>
+            <column name="plateColor" type="int(2)" remarks="车牌颜色"></column>
+            <column name="platePrefix" type="VARCHAR(32)" remarks="车牌第一个中文"></column>
+            <column name="plateInitial" type="VARCHAR(32)" remarks="车牌首字母"></column>
+            <column name="plateNumber" type="VARCHAR(32)" remarks="车牌号(后几位字母)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="plateLastNumber" type="VARCHAR(2)" remarks="车牌最后一位数字"></column>
+            <column name="vehicleNumber" type="VARCHAR(255)" remarks="车架号">
+                <constraints nullable="false"/>
+            </column>
+            <column name="engineNumber" type="VARCHAR(255)" remarks="发动机号">
+                <constraints nullable="false"/>
+            </column>
+            <column name="carImageUrl" type="VARCHAR(2000)" remarks="车辆图片URL"/>
+            <column name="licensePhotoFront" type="VARCHAR(2000)" remarks="行驶证正面图片">
+            </column>
+            <column name="licensePhotoContrary" type="VARCHAR(2000)" remarks="行驶证反面图片">
+            </column>
+            <column name="registerDate" type="DATETIME" remarks="注册日期"/>
+            <column name="hintTrafficLimit" type="CHAR(1)" remarks="是否提醒限行"></column>
+            <column name="hintViolation" type="CHAR(1)" remarks="是否提醒违章"></column>
+            <column name="hintYearCheck" type="CHAR(1)" remarks="是否提醒年检"></column>
+            <column name="remark" type="VARCHAR(2000)" remarks="备注"></column>
+            <column name="status" type="CHAR(1)" remarks="处理状态  1: 已认证  2:待认证 3:认证不通过"></column>
+            <column name="applyTime" type="DATETIME" remarks="申请时间"/>
+            <column name="authUserId" type="bigint(20)" remarks="审核用户ID"></column>
+            <column name="authTime" type="DATETIME" remarks="审核时间"/>
+            <column name="creatorUserId" type="bigint" remarks="创建者"/>
+            <column name="creationTime" type="DATETIME" remarks="创建时间"/>
+            <column name="LastModifierUserId" type="bigint" remarks="更新者"/>
+            <column name="LastModificationTime" type="DATETIME" remarks="更新时间"/>
+            <column name="deleterUserId" type="bigint" remarks="删除者"/>
+            <column name="deletionTime" type="DATETIME" remarks="删除时间"/>
+            <column name="deleted" type="CHAR(1)" remarks="删除标记"/>
+            <column name="version" type="bigint" remarks="版本号"/>
+        </createTable>
+        <createIndex tableName="up_user_car_info" indexName="idx_userId">
+            <column name="userId"></column>
+        </createIndex>
+        <addDefaultValue tableName="up_user_car_info" columnName="hintTrafficLimit" defaultValue="0"/>
+        <addDefaultValue tableName="up_user_car_info" columnName="hintViolation" defaultValue="0"/>
+        <addDefaultValue tableName="up_user_car_info" columnName="hintYearCheck" defaultValue="0"/>
+        <addDefaultValue tableName="up_user_car_info" columnName="deleted" defaultValue="0"/>
+        <addDefaultValue tableName="up_user_car_info" columnName="version" defaultValue="1"/>
+        <rollback>drop table up_user_car_info</rollback>
+    </changeSet>
+</databaseChangeLog>

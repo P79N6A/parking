@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet author="walkman" id="up_user_push_tag_table">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="up_user_push_tag"/>
+            </not>
+        </preConditions>
+        <createTable tableName="up_user_push_tag" remarks="用户标签表">
+            <column autoIncrement="true" name="id" type="bigint" remarks="主键">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_up_role_permission"/>
+            </column>
+            <column name="userId" type="bigint" remarks="用户ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="tagId" type="bigint" remarks="标签ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creatorUserId" type="bigint" remarks="创建者"></column>
+            <column name="creationTime" type="DATETIME" remarks="创建时间"></column>
+        </createTable>
+        <createIndex tableName="up_user_push_tag" indexName="idx_user_tag">
+            <column name="userId"></column>
+            <column name="tagId"></column>
+        </createIndex>
+        <addUniqueConstraint tableName="up_user_push_tag" columnNames="userId,tagId"
+                             constraintName="uq_up_user_tag"
+                             deferrable="false" disabled="false" initiallyDeferred="false"/>
+        <rollback>drop table up_user_push_tag</rollback>
+    </changeSet>
+</databaseChangeLog>

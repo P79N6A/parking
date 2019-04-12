@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet author="walkman" id="up_weixin_access_token_table">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="up_weixin_access_token"/>
+            </not>
+        </preConditions>
+        <createTable tableName="up_weixin_access_token" remarks="微信访问令牌">
+            <column autoIncrement="true" name="id" type="bigint" remarks="ID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_access_token"/>
+            </column>
+            <column name="openid" type="VARCHAR(255)" remarks="openid">
+            </column>
+            <column name="unionid" type="VARCHAR(255)" remarks="unionid">
+            </column>
+            <column name="accessToken" type="VARCHAR(255)" remarks="访问令牌">
+                <constraints nullable="false"/>
+            </column>
+            <column name="tokenExpiredSeconds" type="INTEGER" remarks="令牌有效期"/>
+            <column name="refreshToken" type="VARCHAR(255)" remarks="刷新令牌"/>
+            <column name="refreshTokenExpiredSeconds" type="INTEGER" remarks="刷新令牌有效期"/>
+            <column name="scope" type="VARCHAR(32)" remarks="scope"/>
+            <column name="creatorUserId" type="bigint" remarks="创建者"/>
+            <column name="creationTime" type="DATETIME" remarks="创建时间"/>
+            <column name="LastModifierUserId" type="bigint" remarks="更新者"/>
+            <column name="LastModificationTime" type="DATETIME" remarks="更新时间"/>
+            <column name="deleterUserId" type="bigint" remarks="删除者"/>
+            <column name="deletionTime" type="DATETIME" remarks="删除时间"/>
+            <column name="deleted" type="CHAR(1)" remarks="删除标记"/>
+        </createTable>
+        <createIndex tableName="up_weixin_access_token" indexName="idx_accessToken">
+            <column name="accessToken"></column>
+        </createIndex>
+        <addDefaultValue tableName="up_weixin_access_token" columnName="tokenExpiredSeconds"
+                         defaultValueNumeric="0"/>
+        <addDefaultValue tableName="up_weixin_access_token" columnName="refreshTokenExpiredSeconds"
+                         defaultValueNumeric="0"/>
+        <addDefaultValue tableName="up_weixin_access_token" columnName="deleted"
+                         defaultValue="0"/>
+        <rollback>drop table up_weixin_access_token</rollback>
+    </changeSet>
+</databaseChangeLog>

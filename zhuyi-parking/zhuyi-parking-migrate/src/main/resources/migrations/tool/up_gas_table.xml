@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet author="zwq" id="up_gas_table">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="up_gas"/>
+            </not>
+        </preConditions>
+        <createTable tableName="up_gas" remarks="充电桩信息表">
+            <column autoIncrement="true" name="id" type="bigint" remarks="ID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_gas"/>
+            </column>
+            <column name="longitude" type="double" remarks="经度">
+                <constraints nullable="false"/>
+            </column>
+            <column name="latitude" type="double" remarks="维度">
+                <constraints nullable="false"/>
+            </column>
+            <column name="gasType" type="CHAR(1)" remarks="类型">
+                <constraints nullable="false"/>
+            </column>
+            <column name="address" type="VARCHAR(128)" remarks="地址"  defaultValue=""></column>
+            <column name="name" type="VARCHAR(128)" remarks="名称" defaultValue=""></column>
+            <column name="telephone" type="VARCHAR(30)" remarks="电话" defaultValue=""></column>
+            <column name="creatorUserId" type="bigint"/>
+            <column name="creationTime" type="DATETIME"/>
+        </createTable>
+        <addUniqueConstraint tableName="up_gas" columnNames="longitude,latitude"
+                             constraintName="uq_up_gas"
+                             deferrable="false" disabled="false" initiallyDeferred="false"/>
+        <rollback>drop table up_gas</rollback>
+    </changeSet>
+</databaseChangeLog>

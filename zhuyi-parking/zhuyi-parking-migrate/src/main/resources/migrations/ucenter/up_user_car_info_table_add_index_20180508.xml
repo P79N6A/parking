@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet author="walkman" id="up_user_car_info_table_add_index_20180508">
+        <preConditions onFail="MARK_RAN">
+            <tableExists tableName="up_user_car_info"/>
+        </preConditions>
+        <createIndex tableName="up_user_car_info" indexName="idx_plateNumber">
+            <column name="platePrefix"></column>
+            <column name="plateInitial"></column>
+            <column name="plateNumber"></column>
+        </createIndex>
+        <createIndex tableName="up_user_car_info" indexName="idx_plateColor">
+            <column name="plateColor"></column>
+        </createIndex>
+    </changeSet>
+</databaseChangeLog>

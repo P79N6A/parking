@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhuyitech.parking.ucc.mapper.UserDriverLicenseMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.zhuyitech.parking.ucc.domain.UserDriverLicense">
+        <id column="id" property="id"/>
+        <result column="userId" property="userId"/>
+        <result property="cardNumber" column="cardNumber"/>
+        <result property="archiveNumber" column="archiveNumber"/>
+        <result property="firstIssueDate" column="firstIssueDate"/>
+        <result property="driveClass" column="driveClass"/>
+        <result property="score" column="score"/>
+        <result property="validateDateStart" column="validateDateStart"/>
+        <result property="validateDateEnd" column="validateDateEnd"/>
+        <result property="remarks" column="remarks"/>
+        <result column="creatorUserId" property="creatorUserId" jdbcType="BIGINT"/>
+        <result column="creationTime" property="creationTime" jdbcType="TIMESTAMP"/>
+        <result column="lastModifierUserId" property="lastModifierUserId" jdbcType="BIGINT"/>
+        <result column="lastModificationTime" property="lastModificationTime" jdbcType="TIMESTAMP"/>
+        <result column="deleterUserId" property="deleterUserId" jdbcType="BIGINT"/>
+        <result column="deletionTime" property="deletionTime" jdbcType="TIMESTAMP"/>
+        <result column="deleted" property="deleted" jdbcType="CHAR"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,userId,cardNumber,archiveNumber,firstIssueDate,driveClass,score,validateDateStart,validateDateEnd,remarks,
+        creatorUserId,creationTime,lastModifierUserId,lastModificationTime,deleterUserId,
+        deletionTime,deleted
+    </sql>
+
+</mapper>

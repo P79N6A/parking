@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet author="walkman" id="up_parking_lot_info_table">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="up_parking_lot_info"/>
+            </not>
+        </preConditions>
+        <createTable tableName="up_parking_lot_info" remarks="停车场车位表">
+            <column autoIncrement="true" name="id" type="bigint" remarks="ID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_parking_lot"/>
+            </column>
+            <column name="parkingId" type="bigint" remarks="停车场ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="hikParkingLotId" type="VARCHAR(255)" remarks="海康平台泊位ID"></column>
+            <column name="aliParkingLotId" type="VARCHAR(255)" remarks="支付宝平台泊位ID"></column>
+            <column name="code" type="VARCHAR(255)" remarks="编号"></column>
+            <column name="name" type="VARCHAR(255)" remarks="简称"></column>
+            <column name="status" type="INT(2)" remarks="状态"></column>
+            <column name="description" type="VARCHAR(255)" remarks="描述"/>
+            <column name="creatorUserId" type="bigint" remarks="创建者"/>
+            <column name="creationTime" type="DATETIME" remarks="创建时间"/>
+            <column name="LastModifierUserId" type="bigint" remarks="更新者"/>
+            <column name="LastModificationTime" type="DATETIME" remarks="更新时间"/>
+            <column name="deleterUserId" type="bigint" remarks="删除者"/>
+            <column name="deletionTime" type="DATETIME" remarks="删除时间"/>
+            <column name="deleted" type="CHAR(1)" remarks="删除标记"/>
+            <column name="version" type="bigint" remarks="版本号"/>
+        </createTable>
+        <createIndex tableName="up_parking_lot_info" indexName="idx_code">
+            <column name="code"></column>
+        </createIndex>
+        <addDefaultValue tableName="up_parking_lot_info" columnName="deleted" defaultValue="0"/>
+        <addDefaultValue tableName="up_parking_lot_info" columnName="version" defaultValue="1"/>
+        <rollback>drop table up_parking_lot_info</rollback>
+    </changeSet>
+</databaseChangeLog>

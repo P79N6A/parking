@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://code.alibabatech.com/schema/dubbo
+        http://code.alibabatech.com/schema/dubbo/dubbo.xsd
+        ">
+
+    <dubbo:service interface="com.zhuyitech.parking.integration.appointment.AppointmentIntegrationService"
+                   ref="appointmentIntegrationService"
+                   timeout="30000" registry="fundamentalRegistry" version="1.0.0"/>
+    <dubbo:service interface="com.zhuyitech.parking.integration.service.api.TrafficIntegrationService"
+                   ref="trafficIntegrationService"
+                   timeout="30000" registry="fundamentalRegistry" version="1.0.0"/>
+    <dubbo:service interface="com.zhuyitech.parking.integration.order.UserParkingOrderIntegrationService"
+                   ref="userParkingOrderIntegrationService"
+                   timeout="30000" registry="fundamentalRegistry" version="1.0.0"/>
+    <dubbo:service interface="com.zhuyitech.parking.integration.trade.TradeIntegrationService"
+                   ref="tradeIntegrationService"
+                   timeout="30000" registry="fundamentalRegistry" version="1.0.0"/>
+    <dubbo:service interface="com.zhuyitech.parking.integration.service.api.PushIntegrationService"
+                   ref="pushIntegrationService"
+                   timeout="30000" registry="fundamentalRegistry" version="1.0.0"/>
+    <dubbo:service interface="com.zhuyitech.parking.integration.service.api.RealNameIntegrationService"
+                   ref="realNameIntegrationService"
+                   timeout="30000" registry="fundamentalRegistry" version="1.0.0"/>
+
+    <!-- tool -->
+    <dubbo:reference id="pushNotificationService" version="1.0.0"
+                     interface="com.zhuyitech.parking.tool.service.api.PushNotificationService" check="false"
+                     timeout="180000" retries="0" registry="fundamentalRegistry"/>
+    <dubbo:reference id="notificationService" version="1.0.0"
+                     interface="com.zhuyitech.parking.tool.service.api.NotificationService" check="false"
+                     timeout="180000" retries="0" registry="fundamentalRegistry"/>
+    <dubbo:reference id="identityCardService" version="1.0.0"
+                     interface="com.zhuyitech.parking.tool.service.api.IdentityCardService"
+                     check="false" timeout="180000" retries="0" registry="fundamentalRegistry"/>
+
+    <!-- ucc -->
+    <dubbo:reference id="userCarInfoService" version="1.0.0"
+                     interface="com.zhuyitech.parking.ucc.car.UserCarInfoService" check="false"
+                     timeout="180000" retries="0" registry="fundamentalRegistry"/>
+    <dubbo:reference id="accountTransactionService" version="1.0.0"
+                     interface="com.zhuyitech.parking.ucc.service.api.AccountTransactionService" check="false"
+                     timeout="180000" retries="0" registry="fundamentalRegistry"/>
+    <dubbo:reference id="userService" version="1.0.0"
+                     interface="com.zhuyitech.parking.ucc.service.api.UserService" check="false"
+                     timeout="180000" retries="0" registry="fundamentalRegistry"/>
+    <dubbo:reference id="userAssetLogService" version="1.0.0"
+                     interface="com.zhuyitech.parking.ucc.service.api.UserAssetLogService" check="false"
+                     timeout="180000" retries="0" registry="fundamentalRegistry"/>
+    <dubbo:reference id="userAuthenticationApplyService" version="1.0.0"
+                     interface="com.zhuyitech.parking.ucc.service.api.UserAuthenticationApplyService" check="false"
+                     timeout="180000" retries="0" registry="fundamentalRegistry"/>
+    <dubbo:reference id="userPayOrderService" version="1.0.0"
+                     interface="com.zhuyitech.parking.ucc.service.api.UserPayOrderService" check="false"
+                     timeout="180000" retries="0" registry="fundamentalRegistry"/>
+
+    <!-- cloud -->
+    <dubbo:reference id="platformParkingInfoService" version="1.0.0"
+                     interface="com.zoeeasy.cloud.pms.platform.PlatformParkingInfoService" check="false"
+                     timeout="180000" retries="0" registry="fundamentalRegistry"/>
+    <dubbo:reference id="appointIntegrationService" version="1.0.0"
+                     interface="com.zoeeasy.cloud.integration.appoint.AppointOrderPlatformIntegrationService"
+                     check="false"
+                     timeout="180000" retries="0" registry="fundamentalRegistry"/>
+    <dubbo:reference id="tradePaymentManagerService" version="1.0.0"
+                     interface="com.zoeeasy.cloud.pay.trade.TradePaymentManagerService" check="false"
+                     timeout="180000" retries="0" registry="fundamentalRegistry"/>
+    <dubbo:reference id="platformParkingOrderService" version="1.0.0"
+                     interface="com.zoeeasy.cloud.order.parking.PlatformParkingOrderService" check="false"
+                     timeout="180000" retries="0" registry="fundamentalRegistry"/>
+    <dubbo:reference id="parkingOrderTransactionService" version="1.0.0"
+                     interface="com.zoeeasy.cloud.order.transaction.ParkingOrderTransactionService"
+                     check="false"
+                     timeout="180000" retries="0" registry="fundamentalRegistry"/>
+    <dubbo:reference id="parkingOrderIntegrationService" version="1.0.0"
+                     interface="com.zoeeasy.cloud.integration.order.ParkingOrderIntegrationService" check="false"
+                     timeout="180000" retries="0" registry="fundamentalRegistry"/>
+    <dubbo:reference id="customerParkOrderIntegrationService" version="1.0.0"
+                     interface="com.zoeeasy.cloud.integration.order.CustomerParkingOrderIntegrationService"
+                     check="false"
+                     timeout="180000" retries="0" registry="fundamentalRegistry"/>
+    <dubbo:reference id="messageSendService" version="1.0.0"
+                     interface="com.zoeeasy.cloud.message.MessageSendService" check="false"
+                     timeout="180000" retries="0" registry="fundamentalRegistry"/>
+    <dubbo:reference id="thirdParkingOrderService" version="1.0.0"
+                     interface="com.zoeeasy.cloud.order.hikvision.ThirdParkingOrderService" check="false"
+                     timeout="180000" retries="0" registry="fundamentalRegistry"/>
+</beans>

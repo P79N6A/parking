@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zhuyitech.parking.ucc.mapper.UserCarAuthMapper">
+
+    <resultMap id="BaseResultMap" type="com.zhuyitech.parking.ucc.domain.UserCarAuth">
+        <id column="id" property="id"/>
+        <result property="userId" column="userId"/>
+        <result property="carBrand" column="carBrand"/>
+        <result property="carId" column="carId"/>
+        <result property="carType" column="carType"/>
+        <result property="carColor" column="carColor"/>
+        <result property="carLevel" column="carLevel"/>
+        <result property="plateType" column="plateType"/>
+        <result property="plateColor" column="plateColor"/>
+        <result property="plateNumber" column="plateNumber"/>
+        <result property="vehicleNumber" column="vehicleNumber"/>
+        <result property="engineNumber" column="engineNumber"/>
+        <result property="licensePhotoFront" column="licensePhotoFront"/>
+        <result property="licensePhotoContrary" column="licensePhotoContrary"/>
+        <result property="registerDate" column="registerDate"/>
+        <result property="status" column="status"/>
+        <result property="remark" column="remark"/>
+        <result property="applyTime" column="applyTime"/>
+        <result property="authUserId" column="authUserId"/>
+        <result property="authTime" column="authTime"/>
+        <result column="creatorUserId" property="creatorUserId" jdbcType="BIGINT"/>
+        <result column="creationTime" property="creationTime" jdbcType="TIMESTAMP"/>
+        <result column="lastModifierUserId" property="lastModifierUserId" jdbcType="BIGINT"/>
+        <result column="lastModificationTime" property="lastModificationTime" jdbcType="TIMESTAMP"/>
+        <result column="deleterUserId" property="deleterUserId" jdbcType="BIGINT"/>
+        <result column="deletionTime" property="deletionTime" jdbcType="TIMESTAMP"/>
+        <result column="deleted" property="deleted" jdbcType="CHAR"/>
+        <result property="version" column="version"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+       id,
+       userId,
+       carId,
+       carBrand,
+       carType,
+       carColor,
+       carLevel,
+       plateType,
+       plateColor,
+       plateNumber,
+       vehicleNumber,
+       engineNumber,
+       licensePhotoFront,
+       licensePhotoContrary,
+       registerDate,
+       status,
+       remark,
+       applyTime,
+       authUserId,
+       authTime,
+       creatorUserId,
+       creationTime,
+       lastModifierUserId,
+       lastModificationTime,
+       deleterUserId,
+       deletionTime,
+       deleted,
+       version
+    </sql>
+
+</mapper>

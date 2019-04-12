@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet author="walkman" id="up_region_table_add_column_20180704">
+        <preConditions onFail="MARK_RAN">
+            <tableExists tableName="up_region"/>
+        </preConditions>
+        <addColumn tableName="up_region">
+            <column name="fullName" type="VARCHAR(2000)" afterColumn="name" remarks="全称"/>
+            <column name="pinyinName" type="VARCHAR(2000)" afterColumn="fullName" remarks="拼音名称"/>
+        </addColumn>
+        <sql>
+            update up_region set fullName = name;
+        </sql>
+    </changeSet>
+</databaseChangeLog>

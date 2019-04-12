@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet author="walkman" id="up_parking_info_table_add_columns">
+        <preConditions onFail="MARK_RAN">
+            <tableExists tableName="up_parking_info"/>
+        </preConditions>
+        <addColumn tableName="up_parking_info">
+            <column name="chargeMode" type="INT(11)" afterColumn="payType" remarks="缴费模式 1: 离场后缴费 2: 缴费后离场"
+                    defaultValue="2">
+            </column>
+            <column name="chargeRule" type="VARCHAR(2000)" afterColumn="chargeMode" remarks="收费规则"></column>
+            <column name="supportAppointment" type="CHAR(1)" afterColumn="chargeDescription" remarks="是否支持预约"
+                    defaultValue="0"/>
+            <column name="appointmentRule" type="text" afterColumn="supportAppointment"
+                    remarks="预约规则"></column>
+            <column name="lotAppointmentTotal " type="INT(11)" afterColumn="appointmentRule" remarks="支持预约车位总数"
+                    defaultValue="0"/>
+            <column name="lotAppointmentAvailable " type="INT(11)" afterColumn="lotAppointmentTotal" remarks="可预约车位数"
+                    defaultValue="0"/>
+        </addColumn>
+    </changeSet>
+</databaseChangeLog>

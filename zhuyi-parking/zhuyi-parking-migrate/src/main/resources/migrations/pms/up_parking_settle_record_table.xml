@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet author="walkman" id="up_parking_settle_record_table">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="up_parking_settle_record"/>
+            </not>
+        </preConditions>
+        <createTable tableName="up_parking_settle_record" remarks="停车订单结算记录">
+            <column autoIncrement="true" name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_parking_record"/>
+            </column>
+            <column name="recordNo" type="VARCHAR(64)" remarks="停车记录单号">
+                <constraints nullable="false"/>
+            </column>
+            <column name="orderNo" type="VARCHAR(64)" remarks="结算订单号"/>
+            <column name="startTime" type="DATETIME" remarks="结算开始时间"/>
+            <column name="endTime" type="DATETIME" remarks="结算结束时间"/>
+            <column name="status" type="int(2)" remarks="结算状态" defaultValueNumeric="0"/>
+            <column name="settleMode" type="int(2)" remarks="结算模式(1 离场前结算 2 离场后结算 )" defaultValueNumeric="0"/>
+            <column name="settleTime" type="DATETIME" remarks="结算时间"/>
+            <column name="settleAmount" type="DECIMAL(12,2)" remarks="结算金额(元)" defaultValue="0.00"/>
+            <column name="creatorUserId" type="bigint" remarks="创建者"/>
+            <column name="creationTime" type="DATETIME" remarks="创建时间"/>
+        </createTable>
+        <rollback>drop table up_parking_settle_record</rollback>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.zhuyitech</groupId>
+        <artifactId>zhuyi-parking-pms</artifactId>
+        <version>1.1.0-SNAPSHOT</version>
+    </parent>
+    <artifactId>zhuyi-parking-pms-api-java</artifactId>
+    <version>1.1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+    <name>Zhuyi Parking Platform :: Zhuyi Parking Api Java</name>
+    <properties>
+        <scapegoat.infrastructure.version>1.1.0-SNAPSHOT</scapegoat.infrastructure.version>
+        <joda-time.version>2.9.9</joda-time.version>
+    </properties>
+    <dependencies>
+        <dependency>
+            <groupId>com.scapegoat</groupId>
+            <artifactId>scapegoat-infrastructure-core</artifactId>
+            <version>${scapegoat.infrastructure.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.scapegoat</groupId>
+            <artifactId>scapegoat-infrastructure-api</artifactId>
+            <version>${scapegoat.infrastructure.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.scapegoat</groupId>
+            <artifactId>scapegoat-infrastructure-message</artifactId>
+            <version>${scapegoat.infrastructure.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.scapegoat</groupId>
+            <artifactId>scapegoat-infrastructure-jackson</artifactId>
+            <version>${scapegoat.infrastructure.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.scapegoat</groupId>
+            <artifactId>scapegoat-infrastructure-validate</artifactId>
+            <version>${scapegoat.infrastructure.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.zhuyitech</groupId>
+            <artifactId>zhuyi-parking-core</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>joda-time</groupId>
+            <artifactId>joda-time</artifactId>
+            <version>${joda-time.version}</version>
+        </dependency>
+    </dependencies>
+</project>

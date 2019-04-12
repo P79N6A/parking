@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet author="walkman" id="up_parking_info_table_modify_column_20180504">
+        <preConditions onFail="MARK_RAN">
+            <tableExists tableName="up_parking_info"/>
+        </preConditions>
+        <addDefaultValue tableName="up_parking_info" columnName="aliParkId" defaultValue=""/>
+        <addDefaultValue tableName="up_parking_info" columnName="hikParkId" defaultValue=""/>
+        <addDefaultValue tableName="up_parking_info" columnName="code" defaultValue=""/>
+        <addDefaultValue tableName="up_parking_info" columnName="name" defaultValue=""/>
+        <addDefaultValue tableName="up_parking_info" columnName="fullName" defaultValue=""/>
+        <addDefaultValue tableName="up_parking_info" columnName="type" defaultValue=""/>
+        <addDefaultValue tableName="up_parking_info" columnName="lotType" defaultValue=""/>
+        <addDefaultValue tableName="up_parking_info" columnName="logo" defaultValue=""/>
+        <addDefaultValue tableName="up_parking_info" columnName="openStartTime" defaultValue=""/>
+        <addDefaultValue tableName="up_parking_info" columnName="openEndTime" defaultValue=""/>
+        <addDefaultValue tableName="up_parking_info" columnName="payMode" defaultValue=""/>
+        <addDefaultValue tableName="up_parking_info" columnName="payType" defaultValue=""/>
+        <addDefaultValue tableName="up_parking_info" columnName="chargeRule" defaultValue=""/>
+        <addDefaultValue tableName="up_parking_info" columnName="provinceCode" defaultValue=""/>
+        <addDefaultValue tableName="up_parking_info" columnName="cityCode" defaultValue=""/>
+        <addDefaultValue tableName="up_parking_info" columnName="countyCode" defaultValue=""/>
+        <addDefaultValue tableName="up_parking_info" columnName="address" defaultValue=""/>
+        <addDefaultValue tableName="up_parking_info" columnName="zipCode" defaultValue=""/>
+        <addDefaultValue tableName="up_parking_info" columnName="managerUnit" defaultValue=""/>
+        <addDefaultValue tableName="up_parking_info" columnName="ownerName" defaultValue=""/>
+        <addDefaultValue tableName="up_parking_info" columnName="operatorUnit" defaultValue=""/>
+        <addDefaultValue tableName="up_parking_info" columnName="chargerUnit" defaultValue=""/>
+        <addDefaultValue tableName="up_parking_info" columnName="contactName" defaultValue=""/>
+        <addDefaultValue tableName="up_parking_info" columnName="contactTel" defaultValue=""/>
+        <addDefaultValue tableName="up_parking_info" columnName="contactPhone" defaultValue=""/>
+        <addDefaultValue tableName="up_parking_info" columnName="contactEmail" defaultValue=""/>
+        <addDefaultValue tableName="up_parking_info" columnName="contactQQ" defaultValue=""/>
+        <addDefaultValue tableName="up_parking_info" columnName="contactWeixin" defaultValue=""/>
+        <addDefaultValue tableName="up_parking_info" columnName="contactAlipay" defaultValue=""/>
+        <createIndex tableName="up_parking_info" indexName="idx_latitude">
+            <column name="latitude"></column>
+        </createIndex>
+        <createIndex tableName="up_parking_info" indexName="idx_longitude">
+            <column name="longitude"></column>
+        </createIndex>
+        <createIndex tableName="up_parking_info" indexName="idx_aliParkId">
+            <column name="aliParkId"></column>
+        </createIndex>
+        <createIndex tableName="up_parking_info" indexName="idx_hikParkId">
+            <column name="hikParkId"></column>
+        </createIndex>
+    </changeSet>
+</databaseChangeLog>

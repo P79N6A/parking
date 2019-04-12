@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhuyitech.parking.tool.mapper.OilPriceMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.zhuyitech.parking.tool.domain.OilPrice">
+        <id column="id" property="id"/>
+        <result column="province" property="province"/>
+        <result column="b90" property="b90"/>
+        <result column="b93" property="b93"/>
+        <result column="b97" property="b97"/>
+        <result column="b0" property="b0"/>
+        <result property="priceType" column="priceType"/>
+        <result property="code" column="code"/>
+        <result column="oilDate" property="oilDate"/>
+        <result property="creatorUserId" column="creatorUserId"/>
+        <result property="creationTime" column="creationTime"/>
+        <result property="lastModifierUserId" column="LastModifierUserId"/>
+        <result property="lastModificationTime" column="LastModificationTime"/>
+        <result property="deleterUserId" column="deleterUserId"/>
+        <result property="deletionTime" column="deletionTime"/>
+        <result property="deleted" column="deleted"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,province,code,b90,b93,b97,b0,oilDate,priceType,
+        creatorUserId,creationTime,lastModifierUserId,lastModificationTime,deleterUserId,deletionTime,deleted
+    </sql>
+
+</mapper>

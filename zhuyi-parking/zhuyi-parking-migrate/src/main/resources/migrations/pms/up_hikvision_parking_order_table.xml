@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet author="walkman" id="up_hikvision_parking_order_table">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="up_hikvision_parking_order"/>
+            </not>
+        </preConditions>
+        <createTable tableName="up_hikvision_parking_order" remarks="海康停车账单">
+            <column autoIncrement="true" name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_hikvision_vehicle"/>
+            </column>
+            <column name="recordNo" type="VARCHAR(64)" remarks="平台停车记录编号"/>
+            <column name="orderNo" type="VARCHAR(64)" remarks="平台停车账单编号"/>
+            <column name="billNo" type="VARCHAR(100)" remarks="账单编号"/>
+            <column name="parkingId" type="bigint" remarks="平台停车场ID"/>
+            <column name="plateNumber" type="VARCHAR(20)" remarks="车牌号"/>
+            <column name="plateColor" type="int(2)" remarks="车牌颜色"/>
+            <column name="carType" type="int(2)" remarks="车辆类型"/>
+            <column name="parkCode" type="VARCHAR(256)" remarks="停车场编号"/>
+            <column name="enterTime" type="DATETIME" remarks="车辆进场时间"/>
+            <column name="costTime" type="DATETIME" remarks="结算时间"/>
+            <column name="parkPeriodTime" type="int" remarks="停车时长(分钟)"/>
+            <column name="totalCost" type="int" remarks="总收费金额(单位：分)"/>
+            <column name="payTime" type="DATETIME" remarks="支付时间"/>
+            <column name="payAmount" type="int" remarks="总收费金额(单位：分)"/>
+            <column name="payType" type="int" remarks="支付方式 4支付宝5	微信11账户余额（云平台的账户）"/>
+            <column name="creatorUserId" type="bigint" remarks="创建者"/>
+            <column name="creationTime" type="DATETIME" remarks="创建时间"/>
+            <column name="LastModifierUserId" type="bigint" remarks="更新者"/>
+            <column name="LastModificationTime" type="DATETIME" remarks="更新时间"/>
+            <column name="deleterUserId" type="bigint" remarks="删除者"/>
+            <column name="deletionTime" type="DATETIME" remarks="删除时间"/>
+            <column name="deleted" type="CHAR(1)" remarks="删除标记"/>
+            <column name="version" type="bigint" remarks="版本号"/>
+        </createTable>
+        <rollback>drop table up_hikvision_parking_order</rollback>
+    </changeSet>
+</databaseChangeLog>

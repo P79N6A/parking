@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zhuyitech.parking.ucc.mapper.UserMapper">
+
+    <resultMap id="BaseResultMap" type="com.zhuyitech.parking.ucc.domain.User">
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <result column="uuid" property="uuid" jdbcType="VARCHAR"/>
+        <result column="username" property="username" jdbcType="VARCHAR"/>
+        <result column="password" property="password" jdbcType="VARCHAR"/>
+        <result column="salt" property="salt" jdbcType="VARCHAR"/>
+        <result column="portrait" property="portrait" jdbcType="VARCHAR"/>
+        <result column="nickname" property="nickname" jdbcType="VARCHAR"/>
+        <result column="phoneNumber" property="phoneNumber" jdbcType="VARCHAR"/>
+        <result column="phoneNumberConfirmed" property="phoneNumberConfirmed" jdbcType="CHAR"/>
+        <result column="emailAddress" property="emailAddress" jdbcType="VARCHAR"/>
+        <result column="emailAddressConfirmed" property="emailAddressConfirmed" jdbcType="CHAR"/>
+        <result column="accessAttemptCount" property="accessAttemptCount" jdbcType="INTEGER"/>
+        <result column="lastLoginTime" property="lastLoginTime" jdbcType="TIMESTAMP"/>
+        <result column="status" property="status" jdbcType="CHAR"/>
+        <result column="defaultUser" property="defaultUser" jdbcType="CHAR"/>
+        <result column="isAdministrator" property="isAdministrator" jdbcType="CHAR"/>
+        <result column="userType" property="userType" jdbcType="CHAR"/>
+        <result column="tradeSalt" property="tradeSalt" jdbcType="CHAR"/>
+        <result column="tradePassword" property="tradePassword" jdbcType="CHAR"/>
+        <result column="tradeAttemptCount" property="tradeAttemptCount" jdbcType="INTEGER"/>
+        <result column="creatorUserId" property="creatorUserId" jdbcType="BIGINT"/>
+        <result column="creationTime" property="creationTime" jdbcType="TIMESTAMP"/>
+        <result column="lastModifierUserId" property="lastModifierUserId" jdbcType="BIGINT"/>
+        <result column="lastModificationTime" property="lastModificationTime" jdbcType="TIMESTAMP"/>
+        <result column="deleterUserId" property="deleterUserId" jdbcType="BIGINT"/>
+        <result column="deletionTime" property="deletionTime" jdbcType="TIMESTAMP"/>
+        <result column="deleted" property="deleted" jdbcType="CHAR"/>
+        <result column="version" property="version" jdbcType="BIGINT"/>
+        <association property="userInfo" resultMap="userInfoResult"/>
+    </resultMap>
+
+    <!-- 查询用户信息 -->
+    <resultMap id="userInfoResult" type="com.zhuyitech.parking.ucc.domain.UserInfo">
+        <id column="userInfoId" property="id"/>
+        <result column="id" property="userId"/>
+        <result column="realName" property="realName"/>
+        <result column="gender" property="gender"/>
+        <result column="birthday" property="birthday"/>
+        <result column="cardNo" property="cardNo"/>
+        <result column="certificated" property="certificated"/>
+        <result column="certificatedDate" property="certificatedDate"/>
+        <result column="wxUuid" property="wxUuid"/>
+        <result column="wxOpenId" property="wxOpenId"/>
+        <result column="wxUnionId" property="wxUnionId"/>
+        <result column="wxNickname" property="wxNickname"/>
+        <result column="wxSex" property="wxSex"/>
+        <result column="wxCounty" property="wxCounty"/>
+        <result column="wxProvince" property="wxProvince"/>
+        <result column="wxCity" property="wxCity"/>
+        <result column="wxPrivilege" property="wxPrivilege"/>
+        <result column="wxAuthorized" property="wxAuthorized"/>
+        <result column="qqNumber" property="qqNumber"/>
+        <result column="qqAuthorized" property="qqAuthorized"/>
+        <result column="level" property="level"/>
+        <result column="invitedUserId" property="invitedUserId"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+    t.id,
+    t.uuid,
+    t.username,
+    t.password,
+    t.salt,
+    t.portrait,
+    t.nickname,
+    t.phoneNumber,
+    t.phoneNumberConfirmed,
+    t.emailAddress,
+    t.emailAddressConfirmed,
+    t.accessAttemptCount,
+    t.lastLoginTime,
+    t.status,
+    t.defaultUser,
+    t.isAdministrator,
+    t.userType,
+    t.tradeSalt,
+    t.tradePassword,
+    t.tradeAttemptCount,
+    t.creatorUserId,
+    t.creationTime,
+    t.lastModifierUserId,
+    t.lastModificationTime,
+    t.lastModificationTime,
+    t.deleterUserId,
+    t.deletionTime,
+    t.deleted,
+    t.version
+  </sql>
+
+    <sql id="userInfoJoins">
+        LEFT JOIN up_user_info u ON t.id= u.userId
+    </sql>
+
+    <sql id="userInfo_Column_List">
+        u.id as userInfoId,
+        u.realName,
+        u.gender,
+        u.birthday,
+        u.cardNo,
+        u.certificateStatus,
+        u.certificatedDate,
+        u.wxUuid,
+        u.wxOpenId,
+        u.wxUnionId,
+        u.wxNickname,
+        u.wxSex,
+        u.wxProvince,
+        u.wxCounty,
+        u.wxCity,
+        u.wxPrivilege,
+        u.wxAuthorized,
+        u.qqNumber,
+        u.qqAuthorized,
+        u.level,
+        u.invitedUserId
+    </sql>
+
+    <!-- 通过ID关联停车场查询 -->
+    <select id="selectByIdWithUserInfo" resultMap="BaseResultMap" parameterType="java.lang.Long">
+        select
+        <include refid="Base_Column_List"/>
+        from up_user t
+        <include refid="userInfoJoins"/>
+        where t.id = #{id}
+    </select>
+
+    <!-- 关联停车场查询列表 -->
+    <select id="selectListWithUserInfo" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="userInfo_Column_List"/>
+        from up_user t
+        <include refid="userInfoJoins"/>
+        <where>
+            ${ew.sqlSegment}
+        </where>
+    </select>
+
+    <!-- 关联停车场分页查询 -->
+    <select id="selectPageWithUserInfo" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="userInfo_Column_List"/>
+        FROM up_user t
+        <include refid="userInfoJoins"/>
+        <where>
+            ${ew.sqlSegment}
+        </where>
+    </select>
+
+</mapper>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://code.alibabatech.com/schema/dubbo
+        http://code.alibabatech.com/schema/dubbo/dubbo.xsd
+        ">
+
+    <!-- SMS DUBBO 调用 BEGIN - -->
+    <dubbo:registry id="smsRegistry" address="${dubbo.sms.registry.address}"
+                    protocol="${dubbo.sms.registry.protocol}"/>
+    <dubbo:reference id="apiSmsClientService" interface="com.zhuyitech.sms.service.api.SmsClientService"
+                     check="false" timeout="60000" retries="0" registry="smsRegistry" version="1.0.0"/>
+    <dubbo:reference id="apiSmsContentService" interface="com.zhuyitech.sms.service.api.SmsContentService"
+                     check="false" timeout="60000" retries="0" registry="smsRegistry" version="1.0.0"/>
+    <dubbo:reference id="apiSmsSendService" interface="com.zhuyitech.sms.service.api.SmsSendService"
+                     check="false" timeout="60000" retries="0" registry="smsRegistry" version="1.0.0"/>
+    <dubbo:reference id="apiSmsTemplateService" interface="com.zhuyitech.sms.service.api.SmsTemplateService"
+                     check="false" timeout="60000" retries="0" registry="smsRegistry" version="1.0.0"/>
+    <dubbo:reference id="apiSmsVerifyCodeService" interface="com.zhuyitech.sms.service.api.SmsVerifyCodeService"
+                     check="false" timeout="60000" retries="0" registry="smsRegistry" version="1.0.0"/>
+    <dubbo:reference id="apiSmsLookupService" interface="com.zhuyitech.sms.service.api.SmsLookupService"
+                     check="false" timeout="60000" retries="0" registry="smsRegistry" version="1.0.0"/>
+    <!-- SMS DUBBO 调用 END - -->
+    <!-- cloud - -->
+    <dubbo:registry id="cloudRegistry" address="${dubbo.cloud.registry.address}"
+                    protocol="${dubbo.cloud.registry.protocol}"/>
+    <dubbo:reference id="platformParkingInfoIntegrationService"
+                     interface="com.zoeeasy.cloud.integration.platform.PlatformParkingInfoIntegrationService"
+                     check="false" timeout="60000" retries="0" registry="cloudRegistry" version="1.0.0"/>
+    <dubbo:reference id="calculateIntegrationService"
+                     interface="com.zoeeasy.cloud.integration.park.CalculateIntegrationService"
+                     check="false" timeout="60000" retries="0" registry="cloudRegistry" version="1.0.0"/>
+    <dubbo:reference id="payService"
+                     interface="com.zoeeasy.cloud.pay.trade.PayService"
+                     check="false" timeout="60000" retries="0" registry="cloudRegistry" version="1.0.0"/>
+    <dubbo:reference id="payConfigIntegrationService"
+                     interface="com.zoeeasy.cloud.integration.pay.PayConfigIntegrationService"
+                     check="false" timeout="60000" retries="0" registry="cloudRegistry" version="1.0.0"/>
+    <dubbo:reference id="mockService"
+                     interface="com.zoeeasy.cloud.integration.mock.MockService"
+                     check="false" timeout="18000000" retries="0" registry="cloudRegistry" version="1.0.0"/>
+    <dubbo:reference id="parkingQrcodeService" version="1.0.0"
+                     interface="com.zoeeasy.cloud.pms.park.ParkingQrcodeService"
+                     check="false"
+                     timeout="180000" retries="0" registry="fundamentalRegistry"/>
+    <dubbo:reference id="parkingVehicleRecordService"
+                     interface="com.zoeeasy.cloud.pms.park.ParkingVehicleRecordService"
+                     check="false" timeout="60000" retries="0" registry="cloudRegistry" version="1.0.0"/>
+</beans>

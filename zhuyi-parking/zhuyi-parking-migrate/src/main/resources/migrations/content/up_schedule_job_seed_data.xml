@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet author="walkman" id="up_schedule_job_seed_data">
+        <comment>定时任务作业定义</comment>
+        <insert tableName="up_schedule_job">
+            <column name="jobId" value="JOB_HIK_PASSING_VEHICLE_MOCK"/>
+            <column name="jobName" value="海康过车数据模拟任务"/>
+            <column name="jobType" value="3"/>
+            <column name="priority" value="0"/>
+            <column name="maxRetryTimes" value="3"/>
+            <column name="relyOnPrevCycle" value="1"/>
+            <column name="submitNodeGroup" value=""/>
+            <column name="taskTrackerNodeGroup" value="zhuyi_parking_task_tracker"/>
+            <column name="extParams" value=""/>
+            <column name="internalExtParams" value=""/>
+            <column name="needFeedback" value="1"/>
+            <column name="cronExpression" value="0 0 * * *  ?"/>
+            <column name="triggerTime" value="NULL"/>
+            <column name="repeatCount" value="NULL"/>
+            <column name="repeatInterval" value="NULL"/>
+            <column name="jobStatus" value="1"/>
+            <column name="description" value="海康过车数据模拟任务"/>
+            <column name="deleted" value="0"/>
+            <column name="version" value="1"/>
+        </insert>
+        <insert tableName="up_schedule_job">
+            <column name="jobId" value="JOB_HIK_PASSING_VEHICLE"/>
+            <column name="jobName" value="海康过车数据同步任务"/>
+            <column name="jobType" value="3"/>
+            <column name="priority" value="0"/>
+            <column name="maxRetryTimes" value="3"/>
+            <column name="relyOnPrevCycle" value="1"/>
+            <column name="submitNodeGroup" value=""/>
+            <column name="taskTrackerNodeGroup" value="zhuyi_parking_task_tracker"/>
+            <column name="extParams" value=""/>
+            <column name="internalExtParams" value=""/>
+            <column name="needFeedback" value="1"/>
+            <column name="cronExpression" value="*/5 * * * * ?"/>
+            <column name="triggerTime" value="NULL"/>
+            <column name="repeatCount" value="NULL"/>
+            <column name="repeatInterval" value="NULL"/>
+            <column name="jobStatus" value="1"/>
+            <column name="description" value="海康过车数据同步任务"/>
+            <column name="deleted" value="0"/>
+            <column name="version" value="1"/>
+        </insert>
+        <insert tableName="up_schedule_job">
+            <column name="jobId" value="JOB_PARKING_RECORD_SEND"/>
+            <column name="jobName" value="停车记录同步任务"/>
+            <column name="jobType" value="3"/>
+            <column name="priority" value="0"/>
+            <column name="maxRetryTimes" value="5"/>
+            <column name="relyOnPrevCycle" value="1"/>
+            <column name="submitNodeGroup" value=""/>
+            <column name="taskTrackerNodeGroup" value="zhuyi_parking_task_tracker"/>
+            <column name="extParams" value=""/>
+            <column name="internalExtParams" value=""/>
+            <column name="needFeedback" value="1"/>
+            <column name="cronExpression" value="*/5 * * * * ?"/>
+            <column name="triggerTime" value="NULL"/>
+            <column name="repeatCount" value="NULL"/>
+            <column name="repeatInterval" value="NULL"/>
+            <column name="jobStatus" value="1"/>
+            <column name="description" value="停车记录同步任务"/>
+            <column name="deleted" value="0"/>
+            <column name="version" value="1"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

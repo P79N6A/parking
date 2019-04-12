@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet author="zwq" id="up_alipay_bill_table">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="up_alipay_bill"/>
+            </not>
+        </preConditions>
+        <createTable tableName="up_alipay_bill" remarks="支付宝对账单表">
+            <column autoIncrement="true" name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_alipay_bill"/>
+            </column>
+            <column name="payType" type="VARCHAR(255)" remarks="业务类型"/>
+            <column name="orderNo" type="VARCHAR(255)" remarks="订单号"/>
+            <column name="outTradeNo" type="VARCHAR(255)" remarks="外部订单号"/>
+            <column name="subject" type="VARCHAR(255)" remarks="商品名称"/>
+            <column name="amount" type="DECIMAL(12,2)" remarks="订单金额"/>
+            <column name="receiptAmount" type="DECIMAL(12,2)" remarks="实收金额"/>
+            <column name="storeId" type="VARCHAR(255)" remarks="商户的门店编号"/>
+            <column name="storeName" type="VARCHAR(255)" remarks="商户的门店名称"/>
+            <column name="operatorId" type="VARCHAR(255)" remarks="商户的操作员编号"/>
+            <column name="terminalId" type="VARCHAR(255)" remarks="商户的终端编号"/>
+            <column name="zfbPacket" type="DECIMAL(12,2)" remarks="支付宝红包"/>
+            <column name="setPointTreasure" type="DECIMAL(12,2)" remarks="集分宝"/>
+            <column name="zfbDiscount" type="DECIMAL(12,2)" remarks="支付宝优惠"/>
+            <column name="storeDiscount" type="DECIMAL(12,2)" remarks="商家优惠"/>
+            <column name="ticketDiscount" type="DECIMAL(12,2)" remarks="券优惠"/>
+            <column name="ticketName" type="VARCHAR(255)" remarks="券名称"/>
+            <column name="storePacketAmount" type="DECIMAL(12,2)" remarks="商家红包消费金额"/>
+            <column name="cardPacketAmount" type="DECIMAL(12,2)" remarks="卡消费金额"/>
+            <column name="serviceCharge" type="DECIMAL(12,2)" remarks="服务费"/>
+            <column name="feeSplitting" type="DECIMAL(12,2)" remarks="分润"/>
+            <column name="remark" type="VARCHAR(255)" remarks="备注"/>
+            <column name="outRequestNo" type="VARCHAR(255)" remarks="退款批次号/请求号"/>
+            <column name="startTime" type="DATETIME" remarks="订单开始时间"/>
+            <column name="endTime" type="DATETIME" remarks="订单结束时间"/>
+            <column name="buyerLogonId" type="VARCHAR(255)" remarks="买家支付宝账号"/>
+            <column name="creatorUserId" type="bigint" remarks="创建者"/>
+            <column name="creationTime" type="DATETIME" remarks="创建时间"/>
+            <column name="LastModifierUserId" type="bigint" remarks="更新者"/>
+            <column name="LastModificationTime" type="DATETIME" remarks="更新时间"/>
+            <column name="deleterUserId" type="bigint" remarks="删除者"/>
+            <column name="deletionTime" type="DATETIME" remarks="删除时间"/>
+            <column name="deleted" type="CHAR(1)" remarks="删除标记" defaultValue="0"/>
+        </createTable>
+        <rollback>drop table up_alipay_bill</rollback>
+    </changeSet>
+</databaseChangeLog>

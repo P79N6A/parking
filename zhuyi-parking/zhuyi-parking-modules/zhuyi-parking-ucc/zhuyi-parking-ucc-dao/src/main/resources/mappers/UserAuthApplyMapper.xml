@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zhuyitech.parking.ucc.mapper.UserAuthApplyMapper">
+
+    <resultMap id="BaseResultMap" type="com.zhuyitech.parking.ucc.domain.UserAuthApply">
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <result column="userId" property="userId" jdbcType="VARCHAR"/>
+        <result column="realName" property="realName" jdbcType="VARCHAR"/>
+        <result column="gender" property="gender" jdbcType="INTEGER"/>
+        <result column="cardNo" property="cardNo" jdbcType="VARCHAR"/>
+        <result column="authStatus" property="authStatus" jdbcType="INTEGER"/>
+        <result column="cardFront" property="cardFront" jdbcType="VARCHAR"/>
+        <result column="cardContrary" property="cardContrary" jdbcType="VARCHAR"/>
+        <result column="facePhotos" property="facePhotos" jdbcType="VARCHAR"/>
+        <result column="remark" property="remark" jdbcType="CHAR"/>
+        <result column="authUserId" property="authUserId" jdbcType="CHAR"/>
+        <result column="authTime" property="authTime" jdbcType="TIMESTAMP"/>
+        <result column="creatorUserId" property="creatorUserId" jdbcType="BIGINT"/>
+        <result column="creationTime" property="creationTime" jdbcType="TIMESTAMP"/>
+        <result column="lastModifierUserId" property="lastModifierUserId" jdbcType="BIGINT"/>
+        <result column="lastModificationTime" property="lastModificationTime" jdbcType="TIMESTAMP"/>
+        <result column="deleterUserId" property="deleterUserId" jdbcType="BIGINT"/>
+        <result column="deletionTime" property="deletionTime" jdbcType="TIMESTAMP"/>
+        <result column="deleted" property="deleted" jdbcType="CHAR"/>
+        <result column="version" property="version" jdbcType="BIGINT"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id ,userId,realName,gender,cardNo,authStatus,cardFront,cardContrary,facePhotos,
+        remark,authUserId,authTime,creatorUserId,creationTime,lastModifierUserId,lastModificationTime,
+        deleterUserId,deletionTime,deleted,version
+    </sql>
+
+</mapper>

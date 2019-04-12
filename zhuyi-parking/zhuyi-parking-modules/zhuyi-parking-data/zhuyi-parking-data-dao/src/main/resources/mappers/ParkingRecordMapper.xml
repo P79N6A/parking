@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhuyitech.parking.data.mapper.ParkingRecordMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.zhuyitech.parking.data.domain.ParkingRecord">
+        <id column="id" property="id"/>
+        <result column="recordNo" property="recordNo"/>
+        <result column="hikParkingRecordId" property="hikParkingRecordId"/>
+        <result column="aliParkingRecordId" property="aliParkingRecordId"/>
+        <result column="parkingId" property="parkingId"/>
+        <result column="hikParkingId" property="hikParkingId"/>
+        <result column="aliParkingId" property="aliParkingId"/>
+        <result column="parkingLotId" property="parkingLotId"/>
+        <result column="hikParkingLotId" property="hikParkingLotId"/>
+        <result column="aliParkingLotId" property="aliParkingLotId"/>
+        <result column="intoRecordId" property="intoRecordId"/>
+        <result column="outRecordId" property="outRecordId"/>
+        <result column="plateNumber" property="plateNumber"/>
+        <result column="plateColor" property="plateColor"/>
+        <result column="carStyle" property="carStyle"/>
+        <result column="startTime" property="startTime"/>
+        <result column="endTime" property="endTime"/>
+        <result column="status" property="status"/>
+        <result column="creatorUserId" property="creatorUserId"/>
+        <result column="creationTime" property="creationTime"/>
+        <result column="lastModifierUserId" property="lastModifierUserId"/>
+        <result column="lastModificationTime" property="lastModificationTime"/>
+        <result column="deleterUserId" property="deleterUserId"/>
+        <result column="deletionTime" property="deletionTime"/>
+        <result column="deleted" property="deleted"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,recordNo ,hikParkingRecordId,aliParkingRecordId,parkingId,hikParkingId,aliParkingId,parkingLotId,
+        hikParkingLotId,aliParkingLotId,intoRecordId,outRecordId,plateNumber,plateColor,carStyle,startTime,
+        endTime,status,creatorUserId, creationTime, lastModifierUserId, lastModificationTime, deleterUserId, deletionTime, deleted,version
+    </sql>
+
+</mapper>

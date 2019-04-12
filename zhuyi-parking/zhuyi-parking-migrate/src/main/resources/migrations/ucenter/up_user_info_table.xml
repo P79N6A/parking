@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet author="walkman" id="up_user_info_table">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="up_user_info"/>
+            </not>
+        </preConditions>
+        <createTable tableName="up_user_info" remarks="用户信息">
+            <column autoIncrement="true" name="id" type="bigint" remarks="主键">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_user_info"/>
+            </column>
+            <column name="userId" type="bigint" remarks="用户主键">
+                <constraints nullable="false"/>
+            </column>
+            <column name="realName" type="VARCHAR(255)" remarks="真实姓名">
+            </column>
+            <column name="gender" type="int(2)" remarks="性别"/>
+            <column name="birthday" type="DATETIME" remarks="出生日期"/>
+            <column name="cardNo" type="VARCHAR(32)" remarks="身份证号"/>
+            <column name="certificated" type="CHAR(1)" remarks="是否实名认证"></column>
+            <column name="certificatedDate" type="DATETIME" remarks="实名认证时间"/>
+            <column name="wxUuid" type="VARCHAR(255)" remarks="微信Uuid"/>
+            <column name="wxOpenId" type="VARCHAR(255)" remarks="微信OpenId"/>
+            <column name="wxUnionId" type="varchar(255)" remarks="用户统一标识"/>
+            <column name="wxNickname" type="varchar(255)" remarks="普通用户昵称"/>
+            <column name="wxSex" type="Integer" remarks="普通用户性别，1为男性，2为女性"/>
+            <column name="wxCounty" type="varchar(255)" remarks="国家，如中国为CN"/>
+            <column name="wxProvince" type="varchar(255)" remarks="普通用户个人资料填写的城市"/>
+            <column name="wxCity" type="varchar(255)" remarks="普通用户个人资料填写的城市"/>
+            <column name="wxPrivilege" type="varchar(2000)" remarks="用户特权信息"/>
+            <column name="wxAuthorized" type="CHAR(1)" remarks="是否微信认证"/>
+            <column name="aliUserId" type="varchar(16)" remarks="支付宝用户的唯一userId"/>
+            <column name="aliNickname" type="varchar(50)" remarks="支付宝用户昵称"/>
+            <column name="aliAvatar" type="varchar(400)" remarks="支付宝用户头像地址"/>
+            <column name="aliProvince" type="varchar(20)" remarks="省份名称"/>
+            <column name="aliCity" type="varchar(20)" remarks="市名称"/>
+            <column name="aliIsStudentCertified" type="char(1)" remarks="是否是学生"/>
+            <column name="aliUserType" type="char(2)" remarks="支付宝用户类型1代表公司账户2代表个人账户"/>
+            <column name="aliUserStatus" type="char(2)" remarks="用户状态Q代表快速注册用户 T代表已认证用户 B代表被冻结账户 W代表已注册，未激活的账户"/>
+            <column name="aliIsCertified" type="char(1)" remarks="是否通过实名认证。T是通过 F是没有实名认证"/>
+            <column name="aliGender" type="varchar(10)" remarks="性别（F：女性；M：男性"/>
+            <column name="aliAuthorized" type="char(1)" remarks="是否支付宝认证" defaultValue="0"/>
+            <column name="qqNumber" type="VARCHAR(255)" remarks="QQ号码"/>
+            <column name="qqAuthorized" type="CHAR(1)" remarks="是否QQ认证"/>
+            <column name="level" type="int(2)" remarks="用户等级"></column>
+            <column name="invitedUserId" type="CHAR(1)" remarks="邀请用户ID"></column>
+            <column name="creatorUserId" type="bigint"/>
+            <column name="creationTime" type="DATETIME"/>
+            <column name="LastModifierUserId" type="bigint"/>
+            <column name="LastModificationTime" type="DATETIME"/>
+            <column name="deleterUserId" type="bigint"/>
+            <column name="deletionTime" type="DATETIME"/>
+            <column name="deleted" type="CHAR(1)"/>
+            <column name="version" type="bigint"/>
+        </createTable>
+        <createIndex tableName="up_user_info" indexName="idx_userId">
+            <column name="userId"></column>
+        </createIndex>
+        <createIndex tableName="up_user_info" indexName="idx_OpenId">
+            <column name="wxOpenId"></column>
+        </createIndex>
+        <createIndex tableName="up_user_info" indexName="idx_UnionId">
+            <column name="wxUnionId"></column>
+        </createIndex>
+        <addDefaultValue tableName="up_user_info" columnName="certificated" defaultValue="0"/>
+        <addDefaultValue tableName="up_user_info" columnName="wxAuthorized" defaultValue="0"/>
+        <addDefaultValue tableName="up_user_info" columnName="qqAuthorized" defaultValue="0"/>
+        <addDefaultValue tableName="up_user_info" columnName="deleted" defaultValue="0"/>
+        <addDefaultValue tableName="up_user_info" columnName="version" defaultValue="1"/>
+        <rollback>drop table up_user_info</rollback>
+    </changeSet>
+</databaseChangeLog>

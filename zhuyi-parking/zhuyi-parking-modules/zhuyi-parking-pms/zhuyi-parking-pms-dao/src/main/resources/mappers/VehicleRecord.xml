@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhuyitech.parking.pms.mapper.VehicleRecordMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.zhuyitech.parking.pms.domain.VehicleRecord">
+        <id column="id" property="id"/>
+        <result property="carStyle" column="carStyle"/>
+        <result property="carBrand" column="carBrand"/>
+        <result property="carType" column="carType"/>
+        <result property="carColor" column="carColor"/>
+        <result property="carLevel" column="carLevel"/>
+        <result property="plateType" column="plateType"/>
+        <result property="plateColor" column="plateColor"/>
+        <result property="ownerName" column="ownerName"/>
+        <result property="plateNumber" column="plateNumber"/>
+        <result property="vehicleNumber" column="vehicleNumber"/>
+        <result property="engineNumber" column="engineNumber"/>
+        <result property="dataSource" column="dataSource"/>
+        <result property="proofStatus" column="proofStatus"/>
+        <result property="creatorUserId" column="creatorUserId"/>
+        <result property="creationTime" column="creationTime"/>
+        <result property="lastModifierUserId" column="lastModifierUserId"/>
+        <result property="lastModificationTime" column="lastModificationTime"/>
+        <result property="deleterUserId" column="deleterUserId"/>
+        <result property="deletionTime" column="deletionTime"/>
+        <result property="deleted" column="deleted"/>
+        <result column="version" property="version"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+     id,
+     carStyle,
+     carBrand,
+     carType,
+     carColor,
+     carLevel,
+     plateType,
+     plateColor,
+     ownerName,
+     plateNumber,
+     vehicleNumber,
+     engineNumber,
+     dataSource,
+     proofStatus,
+     creatorUserId,
+     creationTime,
+     lastModifierUserId,
+     lastModificationTime,
+     deleterUserId,
+     deletionTime,
+     deleted,
+     version
+    </sql>
+</mapper>

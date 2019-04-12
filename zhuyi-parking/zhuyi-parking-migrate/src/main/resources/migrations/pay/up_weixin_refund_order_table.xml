@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet author="walkman" id="up_weixin_refund_order_table">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="up_weixin_refund_order"/>
+            </not>
+        </preConditions>
+        <createTable tableName="up_weixin_refund_order" remarks="微信退款订单表">
+            <column autoIncrement="true" name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_weixin_pay_order"/>
+            </column>
+            <column name="userId" type="bigint" remarks="用户ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="outTradeNo" type="VARCHAR(255)" remarks="商户订单号">
+                <constraints nullable="false"/>
+            </column>
+            <column name="transactionId" type="VARCHAR(255)" remarks="微信支付订单号"/>
+            <column name="outRefundNo" type="VARCHAR(255)" remarks="商户退款单号"/>
+            <column name="refundId" type="VARCHAR(255)" remarks="微信退款单号"/>
+            <column name="offset" type="INTEGER(11)" remarks="偏移量"/>
+            <column name="refundFee" type="DECIMAL(12,2)" remarks="退款金额"/>
+            <column name="refundFeeType" type="VARCHAR(8)" remarks="货币种类"/>
+            <column name="refundDesc" type="VARCHAR(80)" remarks="退款原因"/>
+            <column name="settlementRefundFee" type="DECIMAL(12,2)" remarks="应结退款金额"/>
+            <column name="totalFee" type="DECIMAL(12,2)" remarks="标价金额 "/>
+            <column name="settlementTotalFee" type="DECIMAL(12,2)" remarks="应结订单金额"/>
+            <column name="feeType" type="VARCHAR(30)" remarks="标价币种"/>
+            <column name="cashFee" type="DECIMAL(12,2)" remarks="现金支付金额"/>
+            <column name="cashFeeType" type="VARCHAR(16)" remarks="现金支付币种"/>
+            <column name="cashRefundFee" type="DECIMAL(12,2)" remarks="现金退款金额"/>
+            <column name="refundStatus" type="int(2)" remarks="退款状态"/>
+            <column name="refundStatusDesc" type="VARCHAR(20)" remarks="退款状态"/>
+            <column name="refundAccount" type="VARCHAR(255)" remarks="退款资金来源"/>
+            <column name="refundReceiveAccount" type="VARCHAR(255)" remarks="退款入账账户"/>
+            <column name="refundSuccessTime" type="DATETIME" remarks="退款成功时间"/>
+            <column name="remark" type="VARCHAR(255)" remarks="备注"/>
+            <column name="creatorUserId" type="bigint" remarks="创建者"/>
+            <column name="creationTime" type="DATETIME" remarks="创建时间"/>
+            <column name="LastModifierUserId" type="bigint" remarks="更新者"/>
+            <column name="LastModificationTime" type="DATETIME" remarks="更新时间"/>
+            <column name="deleterUserId" type="bigint" remarks="删除者"/>
+            <column name="deletionTime" type="DATETIME" remarks="删除时间"/>
+            <column name="deleted" type="CHAR(1)" remarks="删除标记" defaultValue="0"/>
+            <column name="version" type="bigint" remarks=" 版本号" defaultValue="1"/>
+        </createTable>
+        <rollback>drop table up_weixin_refund_order</rollback>
+    </changeSet>
+</databaseChangeLog>

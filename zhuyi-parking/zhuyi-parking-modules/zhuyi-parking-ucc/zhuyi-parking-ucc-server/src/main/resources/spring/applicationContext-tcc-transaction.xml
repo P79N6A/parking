@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+		http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+    <!--======= TCC Transaction Begin ================= -->
+    <!-- 设置恢复策略(可选），V1.1.0 新增定时任务配置 -->
+    <bean class="org.mengyun.tcctransaction.spring.recover.DefaultRecoverConfig">
+        <!-- maxRetryCount表示一个事务最多尝试恢复次数，超过将不在自动恢复，需要人工干预，默认是30次 -->
+        <property name="maxRetryCount" value="30"/>
+        <!-- recoverDuration表示一个事务日志当超过一定时间间隔后没有更新就会被认为是发生了异常，需要恢复，
+            恢复Job将扫描超过这个时间间隔依旧没有更新的事务日志，并对这些事务进行恢复，时间单位是秒，默认是120秒 -->
+        <property name="recoverDuration" value="120"/>
+        <!-- cronExpression表示恢复Job触发间隔配置，默认是(每分钟)0 */1 * * * ? -->
+        <property name="cronExpression" value="0 */1 * * * ?"/>
+    </bean>
+
+    <bean id="transactionRepository" class="org.mengyun.tcctransaction.repository.RedisTransactionRepository">
+        <property name="jedisPool" ref="jedisPool"/>
+        <property name="keyPrefix" value="TCC:UCE:"/>
+    </bean>
+
+    <bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
+        <property name="maxTotal" value="${tcc.redis.pool.maxTotal}"/>
+        <property name="maxIdle" value="${tcc.redis.pool.maxIdle}"/>
+        <property name="maxWaitMillis" value="${tcc.redis.pool.maxWaitMillis}"/>
+        <property name="testOnBorrow" value="${tcc.redis.pool.testOnBorrow}"/>
+        <property name="testOnReturn" value="${tcc.redis.pool.testOnReturn}"/>
+        <property name="testWhileIdle" value="${tcc.redis.pool.testWhileIdle}"/>
+    </bean>
+
+    <bean id="jedisPool" class="redis.clients.jedis.JedisPool">
+        <constructor-arg name="poolConfig" ref="jedisPoolConfig"/>
+        <constructor-arg name="host" value="${tcc.redis.host}"/>
+        <constructor-arg name="port" value="${tcc.redis.port}" type="int"/>
+        <constructor-arg name="timeout" value="${tcc.redis.timeout}" type="int"/>
+        <constructor-arg name="password" value="${tcc.redis.password}" type="java.lang.String"/>
+        <constructor-arg name="database" value="${tcc.redis.database}" type="int"/>
+    </bean>
+    <!--======= TCC Transaction End ================= -->
+</beans>

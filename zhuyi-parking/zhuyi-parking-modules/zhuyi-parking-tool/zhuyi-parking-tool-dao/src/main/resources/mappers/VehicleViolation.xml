@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhuyitech.parking.tool.mapper.VehicleViolationMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.zhuyitech.parking.tool.domain.VehicleViolation">
+        <id column="id" property="id"/>
+        <result property="carId" column="carId"/>
+        <result property="code" column="code"/>
+        <result property="time" column="time"/>
+        <result property="fine" column="fine"/>
+        <result property="address" column="address"/>
+        <result property="reason" column="reason"/>
+        <result property="point" column="point"/>
+        <result property="violationCity" column="violationCity"/>
+        <result property="province" column="province"/>
+        <result property="city" column="city"/>
+        <result property="serviceFee" column="serviceFee"/>
+        <result property="markFee" column="markFee"/>
+        <result property="canSelect" column="canSelect"/>
+        <result property="processStatus" column="processStatus"/>
+        <result property="violationNum" column="violationNum"/>
+        <result property="organName" column="organName"/>
+        <result property="paymentStatus" column="paymentStatus"/>
+        <result property="creatorUserId" column="creatorUserId"/>
+        <result property="creationTime" column="creationTime"/>
+        <result property="lastModifierUserId" column="LastModifierUserId"/>
+        <result property="lastModificationTime" column="LastModificationTime"/>
+        <result property="deleterUserId" column="deleterUserId"/>
+        <result property="deletionTime" column="deletionTime"/>
+        <result property="deleted" column="deleted"/>
+    </resultMap>
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,carId,code,time,fine,address,reason,point,violationCity,province,city,serviceFee,markFee,
+        canSelect,processStatus,violationNum,organName,paymentStatus,lastModifierUserId,lastModificationTime
+        ,creatorUserId,creationTime,deleterUserId,deletionTime,deleted
+    </sql>
+
+</mapper>

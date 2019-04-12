@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet author="walkman" id="up_icon_table">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="up_icon"/>
+            </not>
+        </preConditions>
+        <createTable tableName="up_icon">
+            <column autoIncrement="true" name="id" type="bigint" remarks="ID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_icon"/>
+            </column>
+            <column name="sourceType" type="VARCHAR(255)" remarks="资源类型">
+                <constraints nullable="false"/>
+            </column>
+            <column name="displayName" type="VARCHAR(255)" remarks="显示名称">
+                <constraints nullable="false"/>
+            </column>
+            <column name="className" type="VARCHAR(255)" remarks="类名">
+                <constraints nullable="false"/>
+            </column>
+            <column name="order" type="int(6)" remarks="排序"/>
+            <column name="creatorUserId" type="bigint" remarks="创建者"/>
+            <column name="creationTime" type="DATETIME" remarks="创建时间"/>
+            <column name="LastModifierUserId" type="bigint" remarks="更新者"/>
+            <column name="LastModificationTime" type="DATETIME" remarks="更新时间"/>
+            <column name="deleterUserId" type="bigint" remarks="删除者"/>
+            <column name="deletionTime" type="DATETIME" remarks="删除时间"/>
+            <column name="deleted" type="CHAR(1)" remarks="删除标记"/>
+        </createTable>
+        <createIndex tableName="up_icon" indexName="idx_displayName">
+            <column name="displayName"></column>
+        </createIndex>
+        <rollback>drop table up_icon</rollback>
+    </changeSet>
+</databaseChangeLog>

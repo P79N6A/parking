@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet author="zwq" id="up_appointment_rule_table_modify_columns_20180628">
+        <preConditions onFail="MARK_RAN">
+            <tableExists tableName="up_appointment_rule"/>
+        </preConditions>
+        <modifyDataType tableName="up_appointment_rule" columnName="description" newDataType="varchar(1000)"/>
+        <addDefaultValue tableName="up_appointment_rule" columnName="description" defaultValue=""/>
+        <addColumn tableName="up_appointment_rule">
+            <column name="used" type="char(1)" remarks="是否关联" defaultValue="0" afterColumn="chargeType"/>
+        </addColumn>
+    </changeSet>
+</databaseChangeLog>

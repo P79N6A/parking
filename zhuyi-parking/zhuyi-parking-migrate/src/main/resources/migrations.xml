@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <!--Oauth2 -->
+    <include file="migrations/oauth/oauth_access_token_table.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/oauth/oauth_client_detail_table.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/oauth/oauth_code_table.xml" relativeToChangelogFile="true"/>
+    <!-- common -->
+    <include file="migrations/common/up_icon_table.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/common/up_region_table.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/common/up_message_log_table.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/common/up_region_table_add_column_20180412.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/common/up_region_table_drop_column_20180517.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/common/up_region_table_add_column_20180704.xml" relativeToChangelogFile="true"/>
+    <!-- message -->
+    <include file="migrations/message/up_message_table.xml" relativeToChangelogFile="true"/>
+    <!---ucenter -->
+    <include file="migrations/ucenter/up_menu_table.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/ucenter/up_organization_table.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/ucenter/up_permission_table.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/ucenter/up_role_menu_table.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/ucenter/up_role_permission_table.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/ucenter/up_role_table.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/ucenter/up_user_organization_table.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/ucenter/up_user_role_table.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/ucenter/up_user_table.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/ucenter/up_user_table_add_columns_20180516.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/ucenter/up_user_table_add_constraint_20180507.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/ucenter/up_user_table_modify_column_20180814.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/ucenter/up_user_password_log_table.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/ucenter/up_operation_log_table.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/ucenter/up_visit_log_table.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/ucenter/up_visit_log_table_modify_column_20180807.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/ucenter/up_user_info_table.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/ucenter/up_user_info_table_add_index_20180508.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/ucenter/up_user_info_table_modify_columns_20180525.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/ucenter/up_user_info_table_modify_columns_20180713.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/ucenter/up_user_asset_table.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/ucenter/up_user_asset_log_table.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/ucenter/up_user_level_log_table.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/ucenter/up_user_point_log_table.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/ucenter/up_user_push_tag_table.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/ucenter/up_user_auth_apply_table.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/ucenter/up_user_auth_apply_table_add_columns_20180709.xml"
+             relativeToChangelogFile="true"/>
+    <include file="migrations/ucenter/up_user_auth_apply_table_modify_columns_20180807.xml"
+             relativeToChangelogFile="true"/>
+    <include file="migrations/ucenter/up_user_car_info_table.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/ucenter/up_user_car_info_table_add_columns_20180416.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/ucenter/up_user_car_info_table_modify_columns_20180420.xml"
+             relativeToChangelogFile="true"/>
+    <include file="migrations/ucenter/up_user_car_info_table_add_index_20180508.xml"
+             relativeToChangelogFile="true"/>
+    <include file="migrations/ucenter/up_user_driver_license_table.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/ucenter/up_user_driver_license_table_add_columns_20180420.xml"
+             relativeToChangelogFile="true"/>
+    <include file="migrations/ucenter/up_user_parking_record_table.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/ucenter/up_weixin_access_token_table.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/ucenter/up_alipay_access_token_table.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/ucenter/up_user_pay_order_table.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/ucenter/up_user_recharge_table.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/ucenter/up_user_appointment_table.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/ucenter/up_user_car_auth_table.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/ucenter/up_user_car_auth_table_modify_columns_20180510.xml"
+             relativeToChangelogFile="true"/>
+    <include file="migrations/ucenter/up_user_car_auth_table_modify_columns_20180807.xml"
+             relativeToChangelogFile="true"/>
+    <include file="migrations/ucenter/up_user_table_modify_column_20181223.xml"
+             relativeToChangelogFile="true"/>
+    <!-- pms -->
+    <include file="migrations/pms/up_appointment_rule_table.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/pms/up_appointment_rule_table_modify_columns_20180504.xml"
+             relativeToChangelogFile="true"/>
+    <include file="migrations/pms/up_appointment_rule_table_modify_columns_20180625.xml"
+             relativeToChangelogFile="true"/>
+    <include file="migrations/pms/up_appointment_rule_table_modify_columns_20180628.xml"
+             relativeToChangelogFile="true"/>
+    <include file="migrations/pms/up_car_brand_table.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/pms/up_charge_rule_table.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/pms/up_charge_rule_table_modify_columns_20180504.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/pms/up_charge_rule_table_modify_columns_20180628.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/pms/up_charge_rule_time_table.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/pms/up_charge_rule_time_table_modify_columns_20180504.xml"
+             relativeToChangelogFile="true"/>
+    <include file="migrations/pms/up_parking_info_table.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/pms/up_parking_info_table_add_columns.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/pms/up_parking_info_table_add_columns_20180415.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/pms/up_parking_info_table_add_columns_20180504.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/pms/up_parking_info_table_modify_column_20180504.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/pms/up_parking_info_table_add_index_20180508.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/pms/up_parking_info_table_add_index_20180510.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/pms/up_parking_lot_info_table.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/pms/up_parking_lot_info_table_add_columns.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/pms/up_parking_lot_info_table_modify_columns_20180504.xml"
+             relativeToChangelogFile="true"/>
+    <include file="migrations/pms/up_parking_lot_info_table_modify_columns_20180808.xml"
+             relativeToChangelogFile="true"/>
+    <include file="migrations/pms/up_license_prefix_table.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/pms/up_passing_vehicle_record_table.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/pms/up_passing_vehicle_record_table_modify_columns_20180601.xml"
+             relativeToChangelogFile="true"/>
+    <include file="migrations/pms/up_passing_vehicle_record_table_modify_columns_20180801.xml"
+             relativeToChangelogFile="true"/>
+    <include file="migrations/pms/up_passing_vehicle_record_table_modify_columns_20180808.xml"
+             relativeToChangelogFile="true"/>
+    <include file="migrations/pms/up_passing_vehicle_exception_record_table.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/pms/up_passing_vehicle_exception_record_table_add_columns_20180728.xml"
+             relativeToChangelogFile="true"/>
+    <include file="migrations/pms/up_passing_vehicle_exception_record_table_drop_columns_20180802.xml"
+             relativeToChangelogFile="true"/>
+    <include file="migrations/pms/up_parking_image_table.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/pms/up_parking_record_table.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/pms/up_parking_record_table_delete_columns_20180614.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/pms/up_parking_record_table_add_columns_20180615.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/pms/up_parking_settle_record_table.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/pms/up_parking_order_table.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/pms/up_parking_order_table_add_columns_20180613.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/pms/up_parking_order_table_add_columns_20180725.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/pms/up_parking_order_table_add_columns_20180802.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/pms/up_parking_order_table_add_index_20180806.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/pms/up_parking_vehicle_history_table.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/pms/up_parking_vehicle_history_table_drop_20180614.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/pms/up_parking_vehicle_record_table.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/pms/up_parking_vehicle_record_table_add_index_20180626.xml"
+             relativeToChangelogFile="true"/>
+    <include file="migrations/pms/up_vehicle_record_table.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/pms/up_vehicle_record_table_modify_columns_20180613.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/pms/up_vehicle_record_table_modify_columns_20180614.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/pms/up_work_calendar_table.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/pms/up_holiday_schedule_table.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/pms/up_parking_charge_rule_table.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/pms/up_parking_charge_rule_table_modify_columns_20180504.xml"
+             relativeToChangelogFile="true"/>
+    <include file="migrations/pms/up_hikvision_vehicle_log_table.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/pms/up_hikvision_vehicle_log_table_add_index_20180815.xml"
+             relativeToChangelogFile="true"/>
+    <include file="migrations/pms/up_hikvision_vehicle_record_table.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/pms/up_hikvision_vehicle_record_table_delete_columns_20180601.xml"
+             relativeToChangelogFile="true"/>
+    <include file="migrations/pms/up_hikvision_vehicle_record_table_modify_column_20180802.xml"
+             relativeToChangelogFile="true"/>
+    <include file="migrations/pms/up_hikvision_vehicle_record_table_add_index_20180626.xml"
+             relativeToChangelogFile="true"/>
+    <include file="migrations/pms/up_hikvision_parking_order_table.xml"
+             relativeToChangelogFile="true"/>
+    <include file="migrations/pms/up_hikvision_parking_order_table_add_columns_20180802.xml"
+             relativeToChangelogFile="true"/>
+    <include file="migrations/pms/up_hikvision_parking_order_add_index_20180806.xml"
+             relativeToChangelogFile="true"/>
+    <include file="migrations/pms/up_parking_appointment_rule_table.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/pms/up_parking_appointment_rule_table_modify_columns_20180504.xml"
+             relativeToChangelogFile="true"/>
+    <include file="migrations/pms/up_parking_appointment_table.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/pms/up_parking_appointment_table_drop_20180614.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/pms/up_user_appointment_table_rename_20180614.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/pms/up_work_calendar_table_add_columns_20180508.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/pms/up_holiday_schedule_table_add_columns_20180508.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/pms/up_parking_appointment_order_columns_20180627.xml"
+             relativeToChangelogFile="true"/>
+    <include file="migrations/pms/up_pms_audit_columns_modify_20180802.xml"
+             relativeToChangelogFile="true"/>
+    <!-- pay -->
+    <include file="migrations/pay/up_trade_payment_order_table.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/pay/up_trade_payment_record_table.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/pay/up_alipay_order_table.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/pay/up_alipay_message_log_table.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/pay/up_alipay_bill_table.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/pay/up_weixin_pay_order_table.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/pay/up_weixin_refund_order_table.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/pay/up_weixin_pay_bill_table.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/pay/up_weixin_message_log_table.xml" relativeToChangelogFile="true"/>
+    <!--tool-->
+    <include file="migrations/tool/up_license_organization_table.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/tool/up_vehicle_violation_table.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/tool/up_traffic_restriction_info_table.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/tool/up_traffic_restriction_table.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/tool/up_weather_info_table.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/tool/up_app_version_table.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/tool/up_weather_info_table_add_columns_20180521.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/tool/up_weather_info_table_add_index_20180626.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/tool/up_traffic_restriction_city_table.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/tool/up_traffic_restriction_policy_table.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/tool/up_gas_station_table.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/tool/up_traffic_restriction_city_table_add_columns_20180521.xml"
+             relativeToChangelogFile="true"/>
+    <include file="migrations/tool/up_app_version_table_add_columns_20180524.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/tool/up_traffic_restriction_city_table_add_columns_20180525.xml"
+             relativeToChangelogFile="true"/>
+    <include file="migrations/tool/up_traffic_restriction_policy_table_add_columns_20180525.xml"
+             relativeToChangelogFile="true"/>
+    <include file="migrations/tool/up_traffic_restriction_city_table_modify_columns_20180530.xml"
+             relativeToChangelogFile="true"/>
+    <include file="migrations/tool/up_traffic_restriction_city_table_modify_columns_20180604.xml"
+             relativeToChangelogFile="true"/>
+    <include file="migrations/tool/up_traffic_restriction_policy_table_modify_columns_20180604.xml"
+             relativeToChangelogFile="true"/>
+    <include file="migrations/tool/notification/up_notification_modify_columns_20181218.xml"
+             relativeToChangelogFile="true"/>
+    <!-- push -->
+    <include file="migrations/tool/push/up_push_device_table.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/tool/push/up_push_tag_table.xml" relativeToChangelogFile="true"/>
+    <!-- notification -->
+    <include file="migrations/tool/notification/up_notification_table.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/tool/notification/up_notification_template_table.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/tool/up_oil_price_table.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/tool/up_oil_price_table_modify_columns_20180806.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/tool/up_oil_price_table_add_index_20180815.xml" relativeToChangelogFile="true"/>
+    <!-- integration -->
+    <include file="migrations/integration/up_rpc_record_table.xml" relativeToChangelogFile="true"/>
+    <!-- seed data -->
+    <include file="migrations/content/up_menu_seed_data.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/content/up_permission_seed_data.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/content/up_role_seed_data.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/content/ucenter_seed_data.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/content/oauth_seed_data.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/content/up_region_seed_data.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/content/up_icon_seed_data.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/content/up_license_prefix_data.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/content/up_schedule_job_seed_data.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/content/up_schedule_job_seed_data.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/content/up_schedule_job_seed_data_20180420.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/content/up_schedule_job_seed_data_20180810.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/content/up_calendar_seed_data_2018.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/content/up_license_organization_seed_data.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/content/up_notification_template_seed_data.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/content/up_notification_template_seed_data_20180628.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/content/up_traffic_restriction_city_seed_data.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/content/up_traffic_restriction_policy_seed_data.xml" relativeToChangelogFile="true"/>
+</databaseChangeLog>

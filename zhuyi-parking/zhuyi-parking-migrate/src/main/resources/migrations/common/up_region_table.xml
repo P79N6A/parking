@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet author="walkman" id="up_region_table">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="up_region"/>
+            </not>
+        </preConditions>
+        <createTable tableName="up_region">
+            <column autoIncrement="true" name="id" type="bigint" remarks="ID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_region"/>
+            </column>
+            <column name="code" type="VARCHAR(255)" remarks="地区代码">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" type="VARCHAR(255)" remarks="地区名称">
+                <constraints nullable="false"/>
+            </column>
+            <column name="parentId" type="bigint" remarks="上级ID"/>
+            <column name="level" type="int(2)" remarks="层级"/>
+            <column name="order" type="int(6)" remarks="排序"/>
+            <column name="nameEn" type="varchar(1000)" remarks="英语名称"/>
+            <column name="shortNameEn" type="varchar(200)" remarks="英语简称"/>
+            <column name="areaCode" type="varchar(32)" remarks="区号"/>
+            <column name="zipCode" type="varchar(32)" remarks="邮编"/>
+            <column name="creatorUserId" type="bigint" remarks="创建者"/>
+            <column name="creationTime" type="DATETIME" remarks="创建时间"/>
+            <column name="LastModifierUserId" type="bigint" remarks="更新者"/>
+            <column name="LastModificationTime" type="DATETIME" remarks="更新时间"/>
+            <column name="deleterUserId" type="bigint" remarks="删除者"/>
+            <column name="deletionTime" type="DATETIME" remarks="删除时间"/>
+            <column name="deleted" type="CHAR(1)" remarks="删除标记"/>
+        </createTable>
+        <createIndex tableName="up_region" indexName="idx_regionCode">
+            <column name="code"></column>
+        </createIndex>
+        <createIndex tableName="up_region" indexName="idx_regionName">
+            <column name="name"></column>
+        </createIndex>
+        <rollback>drop table up_region</rollback>
+    </changeSet>
+</databaseChangeLog>

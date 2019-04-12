@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://code.alibabatech.com/schema/dubbo
+        http://code.alibabatech.com/schema/dubbo/dubbo.xsd
+        ">
+
+    <dubbo:service ref="parkingInfoService"
+                   interface="com.zhuyitech.parking.data.service.api.ParkingInfoService"
+                   version="1.0.0" timeout="18000000" registry="fundamentalRegistry"/>
+    <dubbo:service ref="passingVehicleRecordService"
+                   interface="com.zhuyitech.parking.data.service.api.PassingVehicleRecordService"
+                   version="1.0.0" timeout="18000000" registry="fundamentalRegistry"/>
+    <dubbo:service ref="parkingRecordService"
+                   interface="com.zhuyitech.parking.data.service.api.ParkingRecordService"
+                   version="1.0.0" timeout="18000000" registry="fundamentalRegistry"/>
+    <dubbo:service ref="parkingOrderService"
+                   interface="com.zhuyitech.parking.data.service.api.ParkingOrderService"
+                   version="1.0.0" timeout="18000000" registry="fundamentalRegistry"/>
+    <dubbo:service ref="parkingInfoService"
+                   interface="com.zhuyitech.parking.data.service.api.ParkingInfoService"
+                   version="1.0.0" timeout="18000000" registry="fundamentalRegistry"/>
+
+</beans>

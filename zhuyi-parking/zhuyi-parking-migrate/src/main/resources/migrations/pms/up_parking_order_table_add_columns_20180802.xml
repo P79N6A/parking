@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet author="walkman" id="up_parking_order_table_add_columns_20180802">
+        <preConditions onFail="MARK_RAN">
+            <tableExists tableName="up_parking_order"/>
+        </preConditions>
+        <addColumn tableName="up_parking_order">
+            <column name="hikBillNo" type="VARCHAR(64)" remarks="海康平台账单编号" defaultValue=""
+                    afterColumn="orderNo"/>
+            <column name="hikSyncStatus" type="int" remarks="海康平台账单同步状态(0 未创建 1 已创建 2 已支付确认)" defaultValue="0"
+                    afterColumn="status"/>
+        </addColumn>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet author="walkman" id="up_parking_lot_info_table_modify_columns_20180808">
+        <preConditions onFail="MARK_RAN">
+            <tableExists tableName="up_parking_lot_info"/>
+        </preConditions>
+        <renameColumn tableName="up_parking_lot_info" oldColumnName="hikBerthCode" newColumnName="hikBerthNumber"
+                      remarks="海康平台泊位号(停车场唯一)" columnDataType="VARCHAR(64)"/>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet author="walkman" id="up_parking_info_table">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="up_parking_info"/>
+            </not>
+        </preConditions>
+        <createTable tableName="up_parking_info" remarks="停车场信息表">
+            <column autoIncrement="true" name="id" type="bigint" remarks="主键">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_parking_info"/>
+            </column>
+            <column name="aliParkId" type="VARCHAR(255)" remarks="支付宝平台停车场ID"></column>
+            <column name="hikParkId" type="VARCHAR(255)" remarks="海康平台停车场ID"></column>
+            <column name="code" type="VARCHAR(255)" remarks="编号"></column>
+            <column name="name" type="VARCHAR(255)" remarks="简称"></column>
+            <column name="fullName" type="VARCHAR(2000)" remarks="全称"></column>
+            <column name="status" type="INT(2)" remarks="状态" defaultValue="1"></column>
+            <column name="outTime" type="INT(2)" remarks="用户支付未离场的超时时间(以分钟为单位)" defaultValue="0"></column>
+            <column name="type" type="VARCHAR(32)" remarks="停车场类型((1为地面，2为地下，3为路边)（多个类型，中间用,隔开)"></column>
+            <column name="lotType" type="VARCHAR(32)"
+                    remarks="停车场类型，1为小区停车场、2为商圈停车场、3为路面停车场、4为园区停车场、5为写字楼停车场、6为私人停车场">
+            </column>
+            <column name="logo" type="VARCHAR(2000)" remarks="LOGO"></column>
+            <column name="openStartTime" type="VARCHAR(255)" remarks="开始营业时间，格式HH:mm:ss"></column>
+            <column name="openEndTime" type="VARCHAR(255)" remarks="结束营业时间，格式HH:mm:ss"></column>
+            <column name="payMode" type="VARCHAR(64)" remarks="收费方式（1为停车卡缴费，2为物料缴费，3为中央缴费机）"></column>
+            <column name="payType" type="VARCHAR(64)" remarks="支付方式（1为支付宝在线缴费，2为支付宝代扣缴费，3当面付)，如支持多种方式以','进行间隔"></column>
+            <column name="chargeDescription" type="text" remarks="收费描述信息"></column>
+            <column name="longitude" type="double" remarks="经度" defaultValue="0.0"></column>
+            <column name="latitude" type="double" remarks="纬度" defaultValue="0.0"></column>
+            <column name="provinceCode" type="VARCHAR(64)" remarks="省编码"></column>
+            <column name="cityCode" type="VARCHAR(64)" remarks="市编码"></column>
+            <column name="countyCode" type="VARCHAR(64)" remarks="区县编码"></column>
+            <column name="address" type="VARCHAR(2000)" remarks="地址"></column>
+            <column name="zipCode" type="VARCHAR(64)" remarks="邮编"></column>
+            <column name="managerUnit" type="VARCHAR(2000)" remarks="管理单位"></column>
+            <column name="ownerName" type="VARCHAR(2000)" remarks="所有人单位"></column>
+            <column name="operatorUnit" type="VARCHAR(2000)" remarks="运营人单位"></column>
+            <column name="chargerUnit" type="VARCHAR(2000)" remarks="收费单位"></column>
+            <column name="contactName" type="VARCHAR(256)" remarks="联系人"></column>
+            <column name="contactTel" type="VARCHAR(64)" remarks="联系电话"></column>
+            <column name="contactPhone" type="VARCHAR(64)" remarks="联系手机"></column>
+            <column name="contactEmail" type="VARCHAR(64)" remarks="联系人邮箱"></column>
+            <column name="contactQQ" type="VARCHAR(64)" remarks="联系人QQ"></column>
+            <column name="contactWeixin" type="VARCHAR(64)" remarks="联系人微信"></column>
+            <column name="contactAlipay" type="VARCHAR(64)" remarks="联系人支付宝"></column>
+            <column name="lotTotal" type="INT(11)" remarks="车位总数" defaultValue="0"></column>
+            <column name="lotFixed" type="INT(11)" remarks="固定车总数" defaultValue="0"></column>
+            <column name="lotAvailable" type="INT(11)" remarks="可用车位数" defaultValue="0"></column>
+            <column name="description" type="text" remarks="描述信息"></column>
+            <column name="creatorUserId" type="bigint" remarks="创建者"/>
+            <column name="creationTime" type="DATETIME" remarks="创建时间"/>
+            <column name="LastModifierUserId" type="bigint" remarks="更新者"/>
+            <column name="LastModificationTime" type="DATETIME" remarks="更新时间"/>
+            <column name="deleterUserId" type="bigint" remarks="删除者"/>
+            <column name="deletionTime" type="DATETIME" remarks="删除时间"/>
+            <column name="deleted" type="CHAR(1)" remarks="删除标记"/>
+            <column name="version" type="bigint" remarks="版本号"/>
+        </createTable>
+        <addUniqueConstraint tableName="up_parking_info" columnNames="code" constraintName="uq_code"
+                             deferrable="false" disabled="false" initiallyDeferred="false"/>
+        <createIndex tableName="up_parking_info" indexName="idx_code">
+            <column name="code"></column>
+        </createIndex>
+        <addDefaultValue tableName="up_parking_info" columnName="version" defaultValue="1"/>
+        <rollback>drop table up_parking_info</rollback>
+    </changeSet>
+</databaseChangeLog>

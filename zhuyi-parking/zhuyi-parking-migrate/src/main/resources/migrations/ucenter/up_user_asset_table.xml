@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet author="walkman" id="up_user_asset_table">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="up_user_asset"/>
+            </not>
+        </preConditions>
+        <createTable tableName="up_user_asset" remarks="用户账户信息">
+            <column autoIncrement="true" name="id" type="bigint" remarks="主键">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_user_asset"/>
+            </column>
+            <column name="userId" type="bigint" remarks="用户主键">
+                <constraints nullable="false"/>
+            </column>
+            <column name="balance" type="double(16,8)" remarks="账户余额"/>
+            <column name="point" type="int(11)" remarks="用户积分"></column>
+            <column name="couponCount" type="integer(12)" remarks="可用优惠券数量"/>
+            <column name="couponBalance" type="double(16,8)" remarks="可用优惠券金额"/>
+            <column name="packetCount" type="integer(12)" remarks="红包数量"/>
+            <column name="packetBalance" type="double(16,8)" remarks="红包金额"/>
+            <column name="unPaidCount" type="integer(12)" remarks="未支付订单数"/>
+            <column name="unPaidBalance" type="double(16,8)" remarks="未支付金额"/>
+            <column name="violationCount" type="integer(12)" remarks="违章停车数"/>
+            <column name="violationBalance" type="integer(16,8)" remarks="违章停车金额"/>
+            <column name="creatorUserId" type="bigint"/>
+            <column name="creationTime" type="DATETIME"/>
+            <column name="LastModifierUserId" type="bigint"/>
+            <column name="LastModificationTime" type="DATETIME"/>
+            <column name="deleterUserId" type="bigint"/>
+            <column name="deletionTime" type="DATETIME"/>
+            <column name="deleted" type="CHAR(1)"/>
+            <column name="version" type="bigint"/>
+        </createTable>
+        <createIndex tableName="up_user_asset" indexName="idx_userId">
+            <column name="userId"></column>
+        </createIndex>
+        <addDefaultValue tableName="up_user_asset" columnName="balance" defaultValue="0"/>
+        <addDefaultValue tableName="up_user_asset" columnName="couponCount" defaultValue="0"/>
+        <addDefaultValue tableName="up_user_asset" columnName="couponBalance" defaultValue="0"/>
+        <addDefaultValue tableName="up_user_asset" columnName="packetCount" defaultValue="0"/>
+        <addDefaultValue tableName="up_user_asset" columnName="packetBalance" defaultValue="0"/>
+        <addDefaultValue tableName="up_user_asset" columnName="unPaidCount" defaultValue="0"/>
+        <addDefaultValue tableName="up_user_asset" columnName="unPaidBalance" defaultValue="0"/>
+        <addDefaultValue tableName="up_user_asset" columnName="violationCount" defaultValue="0"/>
+        <addDefaultValue tableName="up_user_asset" columnName="violationBalance" defaultValue="0"/>
+        <addDefaultValue tableName="up_user_asset" columnName="deleted" defaultValue="0"/>
+        <addDefaultValue tableName="up_user_asset" columnName="version" defaultValue="1"/>
+        <rollback>drop table up_user_asset</rollback>
+    </changeSet>
+</databaseChangeLog>

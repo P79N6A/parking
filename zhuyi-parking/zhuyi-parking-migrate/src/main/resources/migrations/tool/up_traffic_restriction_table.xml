@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet author="AkeemSuper" id="up_traffic_restriction_table">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="up_traffic_restriction"/>
+            </not>
+        </preConditions>
+        <createTable tableName="up_traffic_restriction" remarks="限行表">
+            <column autoIncrement="true" name="id" type="bigint" remarks="ID">
+                <constraints nullable="false" primaryKey="true"
+                             primaryKeyName="pk_up_organization"/>
+            </column>
+            <column name="date" type="DATE" remarks="日期"/>
+            <column name="week" type="VARCHAR(255)" remarks="星期"/>
+            <column name="city" type="VARCHAR(255)" remarks="城市拼音"/>
+            <column name="cityName" type="VARCHAR(255)" remarks="城市名称"/>
+            <column name="fine" type="VARCHAR(255)" remarks="罚款描述"/>
+            <column name="remarks" type="VARCHAR(255)" remarks="特殊描述"/>
+            <column name="trafficRestriction" type="char(1)" remarks="是否限行 1:是 0否"/>
+            <column name="holiday" type="VARCHAR(255)" remarks="节假日"/>
+            <column name="tailNumber" type="VARCHAR(255)" remarks="限行尾号"/>
+            <column name="creatorUserId" type="bigint" remarks="创建者"/>
+            <column name="creationTime" type="DATETIME" remarks="创建时间"/>
+            <column name="lastModifierUserId" type="bigint" remarks="更新者"/>
+            <column name="lastModificationTime" type="DATETIME" remarks="更新时间"/>
+            <column name="deleterUserId" type="bigint" remarks="删除者"/>
+            <column name="deletionTime" type="DATETIME" remarks="删除时间"/>
+            <column name="deleted" type="CHAR(1)" defaultValue="0" remarks="删除标记"/>
+        </createTable>
+        <createIndex tableName="up_traffic_restriction" indexName="up_traffic_restriction_city">
+            <column name="city"></column>
+        </createIndex>
+        <rollback>drop table up_traffic_restriction</rollback>
+    </changeSet>
+</databaseChangeLog>
