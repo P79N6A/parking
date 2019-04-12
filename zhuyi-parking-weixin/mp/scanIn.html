@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimal-ui, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>任意停车</title>
+  <style>
+    html {
+      width: 100%;
+      height: 100%;
+      font-size: 100px;
+      font-size: calc(100vw / 3.75);
+      font-family: "PingFang SC", "Microsoft YaHei", 'Avenir', Helvetica, Arial, sans-serif;
+      -webkit-overflow-scrolling: touch;
+    }
+    body {
+      margin: 0;
+    }
+    ul,
+    li,
+    dl,
+    dd,
+    dt {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .scan-query-box {
+      background: #fafafa;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+    }
+    .loading-el {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      color: #fff;
+      z-index: 66;
+      background: rgba(77, 77, 77, .8);
+    }
+    .loading-el::before {
+       content: '';
+       display: block;
+       width: .38rem;
+       height: .38rem;
+       position: absolute;
+       top: 50%;
+       left: 50%;
+       background: url("./mmp/loading.gif") no-repeat;
+       background-size: 100% 100%;
+       transform: translate(-50%,-50%);
+     }
+    .banner {
+      width: 100%;
+      height: 2.05rem;
+      background: url("./mmp/zdBanner.png") no-repeat;
+      background-size: 100% 100%;
+    }
+    .plate-number-box {
+      width: 3.4rem;
+      height: .63rem;
+      position: absolute;
+      top: 1.8rem;
+      left: .18rem;
+      font-size: .16rem;
+      background: #fff;
+      border-radius: .06rem;
+      box-shadow: .01rem .04rem .18rem rgba(55, 119, 215, .15),-.01rem -.04rem .18rem rgba(55, 119, 215, .15);
+    }
+    .plate-area {
+      text-align: center;
+      width: .8rem;
+      height: 100%;
+      line-height: .63rem;
+      float: left;
+      letter-spacing: .08rem;
+    }
+    .plate-area::before {
+      content: '';
+      display: block;
+      width: .1rem;
+      height: .1rem;
+      position: absolute;
+      top: .27rem;
+      left: .65rem;
+      background: url("./mmp/icon_triangle.png") no-repeat;
+      background-size: 100% 100%;
+    }
+    .plate-number {
+      width: 1.6rem;
+      height: 100%;
+      line-height: .63rem;
+      font-size: .16rem;
+      float: left;
+      padding-left: .2rem;
+      box-sizing: border-box;
+      text-align: left;
+    }
+    .plate-number .input {
+      outline: none;
+      border: none;
+      height: 80%;
+      width: 1.4rem;
+      font-size: .16rem;
+    }
+    .plate-number .input.placehold {
+      color: #b4b4b4;
+    }
+    .plate-type {
+      text-align: center;
+      width: 1rem;
+      height: 100%;
+      line-height: .63rem;
+      float: left;
+      letter-spacing: .04rem;
+    }
+    .plate-type::before {
+      content: '';
+      display: block;
+      width: .1rem;
+      height: .1rem;
+      position: absolute;
+      top: .27rem;
+      left: 3.22rem;
+      background: url("./mmp/icon_triangle.png") no-repeat;
+      background-size: 100% 100%;
+    }
+    .keyboard {
+      position: fixed;
+      z-index: 10;
+      bottom: 0;
+      width: 100%;
+      height: 2.45rem;
+    }
+    .keyboard .cancel {
+      width: 100%;
+      height: .5rem;
+      line-height: .5rem;
+      background: #fff;
+      text-align: left;
+      padding-left: .2rem;
+      box-sizing: border-box;
+      color: #222;
+      font-size: .16rem;
+      box-shadow: .01rem .04rem .06rem rgba(55, 119, 215, .15),-.01rem -.04rem .06rem rgba(55, 119, 215, .15);
+    }
+    .lookup-btn {
+      width: 3.4rem;
+      height: .5rem;
+      line-height: .5rem;
+      color: #fff;
+      font-size: .16rem;
+      text-align: center;
+      background: #3296FA;
+      border-radius: .25rem;
+      margin: .97rem .18rem 0;
+    }
+    .plate-type-box {
+      text-align: center;
+      position: absolute;
+      z-index: 20;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+    }
+    .plate-type-box ul {
+      width: 3.55rem;
+      height: 1.82rem;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      -webkit-transform: translate(-50%, -50%);
+      background: #fff;
+      border-radius: .06rem;
+    }
+    .plate-type-box ul .item0 {
+      border-radius: .06rem .06rem 0 0;
+    }
+    .plate-type-box ul .item1 {
+      border-bottom: .01rem solid #eee;
+      border-top: .01rem solid #eee;
+    }
+    .plate-type-box ul .item2 {
+      border-radius: 0 0 .06rem .06rem;
+    }
+    .plate-type-box ul li {
+      height: .6rem;
+      line-height: .6rem;
+      font-size: .16rem;
+      letter-spacing: .04rem;
+    }
+    .plate-type-box ul li.active {
+      background: #3296FA;
+      color: #fff;
+    }
+    .keyboard-list {
+      width: 100%;
+      height: 1.95rem;
+      background: #EAF7FD;
+      padding: .05rem .04rem 0 .1rem;
+      box-sizing: border-box;
+    }
+    .keyboard-list li {
+      height: .39rem;
+      line-height: .39rem;
+      text-align: center;
+      float: left;
+      background: #fff;
+      margin-top: .06rem;
+      margin-right: .06rem;
+      border-radius: .02rem;
+      color: #222;
+      font-size: .16rem;
+    }
+    .keyboard-list li.step1 {
+      width: .39rem;
+    }
+    .keyboard-list li.step2,
+    .keyboard-list li.step3 {
+      margin-right: .04rem;
+      width: .32rem;
+    }
+    .keyboard-list .delete {
+      position: relative;
+    }
+    .keyboard-list .delete::before {
+      content: '';
+      display: block;
+      position: absolute;
+      width: .21rem;
+      height: .21rem;
+      background: url("./mmp/icon_delete.png") no-repeat;
+      background-size: 100% 100%;
+      top: .09rem;
+      left: .06rem;
+    }
+    .hide {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+<div class="scan-query-box">
+  <div class="loading-el" id="loading-el"></div>
+  <div class="banner"></div>
+
+  <div class="plate-number-box fx">
+    <div id="plateArea" class="plate-area"></div>
+    <div class="plate-number">
+      <div class="input placehold"  id="plateNumber"></div>
+    </div>
+    <div id="plateType" class="plate-type"></div>
+  </div>
+
+  <div class="lookup-btn" id="lookup-btn">查 询</div>
+
+  <div id="plate-type-box" class="plate-type-box hide">
+    <ul></ul>
+  </div>
+
+  <div class="keyboard hide" id="keyboard">
+    <div class="cancel" id="cancel">关闭</div>
+    <ul class="keyboard-list" id="keyboard-list"></ul>
+  </div>
+</div>
+</body>
+<script src="./mmp_js/jq.js"></script>
+<script>
+(function () {
+  var ProvincesStatus = false; // 省份接口加载完成
+  var PlateColorStatus = false; // 车牌颜色加载完成
+  var code = getUrlQuery('code', location.href);
+  var state = getUrlQuery('state', location.href);
+  var plateArea = localStorage.getItem('v2_plateArea') || '浙A'; // 默认
+  var plateNumber = localStorage.getItem('v2_plateNumber') || ''; // 默认车牌后缀
+  var plateType =  localStorage.getItem('queryPlateColor') || ''; // 默认车牌颜色
+  var plateTypeOptions = undefined; // 车牌颜色对象
+  var cacheFont = ''; // 车牌前缀-省份
+  var keyboardStep = 1; // 键盘默认步骤
+  var keyboard_1_Str = ''; // 缓存键盘默认步骤1内容
+  var keyboard_3_arr = [
+    '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
+    'Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P',
+    'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', '学',
+    'Z', 'X', 'C', 'V', 'B', 'N', 'M', '港', '澳'
+  ];
+  var _baseURL = 'http://192.168.0.243:12306'; // test
+//  var _baseURL = 'http://api.zhuyitech.com'; // prod
+//  var _baseURL = 'http://192.168.0.246:8088'; // uat
+//  var _baseURL = 'http://192.168.0.245:10086'; // dev
+
+  window.onload = function () {
+    $('#plateArea').html(plateArea);
+    $('#plateNumber').html(plateNumber);
+    if (!plateNumber.length) {
+      $('#plateNumber').addClass('placehold').html('请输入车牌号');
+    } else {
+      $('#plateNumber').removeClass('placehold');
+    }
+    if (localStorage.getItem('v2_userInfo')) {
+      getProvincesList();
+      getPlateTypeList();
+    } else {
+      getWechatInfoJsapi(); // 获取用户信息的接口 - 1
+      checkLoading();
+    }
+  };
+
+  $('#keyboard-list').on('click', '.step1', function () {
+    cacheFont = $(this).html();
+    getFirstLetter($(this).data('id'))
+  });
+
+  $('#keyboard-list').on('click', '.step2', function () {
+    plateArea = cacheFont + $(this).html();
+    $('#plateArea').html(plateArea);
+    cacheFont = '';
+    keyboardStep = 3;
+    keyboard_3();
+    if ($('#plateNumber').html() === '请输入车牌号') {
+      $('#plateNumber').html('').removeClass('placehold');
+    } else if ($('#plateNumber').html() === '') {
+      $('#plateNumber').addClass('placehold').html('请输入车牌号');
+    } else {
+      $('#plateNumber').removeClass('placehold');
+    }
+  });
+
+  $('#keyboard-list').on('click', '.step3-li', function () {
+    if (plateType === '6' && plateNumber.length < 6) {
+      $('#plateNumber').removeClass('placehold');
+      plateNumber += $(this).html();
+    } else if (plateType !== '6' && plateNumber.length < 5) {
+      $('#plateNumber').removeClass('placehold');
+      plateNumber += $(this).html();
+    } else {
+      // 车牌长度溢出
+    }
+    $('#plateNumber').html(plateNumber);
+  });
+
+  $('#keyboard-list').on('click', '.step3-del', function () {
+    plateNumber = plateNumber.slice(0, -1);
+    $('#plateNumber').html(plateNumber);
+    if ($('#plateNumber').html().length <= 0) {
+      $('#plateNumber').addClass('placehold').html('请输入车牌号');
+    }
+  });
+
+  $('#plateArea').click(function () {
+    $('#keyboard').show();
+    keyboardStep = 1;
+    $('#keyboard-list').html(keyboard_1_Str);
+  });
+
+  $('#plateType').click(function () {
+    $('#plate-type-box').show();
+  });
+
+  $('#plate-type-box').on('click', 'li', function () {
+    $(this).addClass('active').siblings('.active').removeClass('active');
+    plateType = $(this).data('id') + '';
+    filterPlateType(plateType);
+    $('#plate-type-box').hide();
+    if (plateType !== '6' && plateNumber.length > 5) {
+      plateNumber = plateNumber.slice(0, 5);
+      $('#plateNumber').html(plateNumber);
+    }
+  });
+
+  $('#plateNumber').click(function () {
+    if ($(this).html() === '请输入车牌号') {
+      $(this).html('')
+    }
+    $('#keyboard').show();
+    keyboardStep = 3;
+    keyboard_3();
+  });
+
+  $('#lookup-btn').click(function () {
+    if ((plateType === '6' && plateNumber.length === 6) || (plateType !== '6' && plateNumber.length === 5)) {
+      localStorage.setItem('v2_plateArea', plateArea);
+      localStorage.setItem('v2_plateNumber', plateNumber);
+      localStorage.setItem('plateNumber', plateArea + plateNumber);
+      localStorage.setItem('userState', state);
+      localStorage.setItem('queryPlateColor', plateType + '');
+      window.open('/mp/scanQueryList', '_self');
+    } else {
+      alert('车牌号不完整')
+    }
+  });
+
+  $('#cancel').click(function () {
+    $('#keyboard').hide();
+    keyboardStep = 1;
+  })
+  function filterPlateType(type) {
+    plateTypeOptions.forEach(item => {
+      if (item.value === type) {
+        $('#plateType').html(item.displayText);
+        return true;
+      }
+    })
+
+  }
+
+  // 加载页面即检测loading状态
+  function checkLoading() {
+    if (ProvincesStatus && PlateColorStatus) {
+      $('#loading-el').hide();
+    } else {
+      $('#loading-el').show();
+    }
+  }
+
+  function getProvincesList() {
+    $.ajax({
+      type: 'POST',
+      url: _baseURL + '/platform/mycar/getPrefixList',
+      dataType: 'json',
+      headers: {Authorization: 'Bearer ' + JSON.parse(localStorage.getItem('v2_userInfo')).accessToken},
+      success: function (res) {
+        if (res.code === 1) {
+          ProvincesStatus = true;
+          checkLoading();
+          var str = '';
+          res.items.forEach(item => {
+            str += '<li class="step1" data-id="' + item.id + '">'
+              + item.name + '</li>';
+          });
+          keyboard_1_Str = str;
+          $('#keyboard-list').html(str)
+        } else {
+          alert('获取省份简称失败');
+        }
+      }
+    })
+  }
+
+  function getFirstLetter(id) {
+    keyboardStep = 2;
+    $.ajax({
+      type: 'POST',
+      url: _baseURL + '/platform/mycar/getPrefixLetter',
+      dataType: 'json',
+      data: {parentId: id},
+      headers: {Authorization: 'Bearer ' + JSON.parse(localStorage.getItem('v2_userInfo')).accessToken},
+      success: function (res) {
+        if (res.code === 1) {
+          var str = '';
+          res.items.forEach(item => {
+            str += '<li class="step2" data-id="' + item.id + '">'
+              + item.name + '</li>';
+          });
+          $('#keyboard-list').html(str);
+        } else {
+          alert('获取车牌首字母列表失败');
+        }
+      }
+    })
+  }
+
+  function keyboard_3() {
+    var str = '';
+    keyboard_3_arr.forEach(item => {
+      str += '<li class="step3 step3-li">' + item + '</li>';
+    });
+    str += '<li class="step3 step3-del delete"></li>';
+    $('#keyboard-list').html(str);
+  }
+
+  function getPlateTypeList() {
+    $.ajax({
+      type: 'POST',
+      url: _baseURL + '/platform/mycar/userPlateColor',
+      dataType: 'json',
+      headers: {Authorization: 'Bearer ' + JSON.parse(localStorage.getItem('v2_userInfo')).accessToken},
+      success: function (res) {
+        if (res.code === 1) {
+          PlateColorStatus = true;
+          checkLoading();
+          plateTypeOptions = res.items;
+          var str = ''
+          res.items.forEach((item, idx) => {
+            if (idx === 0) {
+              plateType = localStorage.getItem('queryPlateColor') ? localStorage.getItem('queryPlateColor') : item.value
+            }
+            str += '<li data-id="' + item.value + '" class="item'+ idx
+              + (plateType === item.value ? ' active' : '') +'">'
+              + item.displayText + '</li>';
+          })
+          $('#plate-type-box').find('ul').html(str);
+          filterPlateType(plateType);
+        } else {
+          alert('获取车牌颜色列表失败');
+        }
+      }
+    })
+  }
+
+  function getWechatInfoJsapi() {
+    $.post(_baseURL+'/platform/security/getWechatInfoJsapi', {code: code}, function (data) {
+      if (data.code === 1) {
+        var data = data.data;
+        localStorage.setItem('userId', data.openId); // 组件/账单 中使用
+        var tpl2 = {
+          openId: data.openId,
+          nickName: data.nickName,
+          sex: data.sex,
+          province: data.province,
+          city: data.city,
+          country: data.country,
+          headImgUrl: data.headimgurl,
+          unionid: data.unionid
+        };
+        $.post(_baseURL+'/platform/security/jsapiRegisterByScanQR', tpl2, function (res) {
+          if (res.code === 1 || res.code === 10810) {
+            var tpl3 = {account: data.unionid, terminateType: 3, loginType: 3};
+            $.post(_baseURL+'/v2/platform/security/login', tpl3, function (res) {
+              if (res.code === 1) {
+                var user = data;
+                Object.assign(user, res.data);
+                localStorage.setItem('v2_userInfo', JSON.stringify(user));
+                getProvincesList();
+                getPlateTypeList();
+              } else {
+                alert(res.message);
+              }
+            }, 'json')
+          } else {
+            alert(res.message);
+          }
+        }, 'json')
+      } else {
+        alert(res.message);
+      }
+    }, 'json')
+  }
+
+  function getUrlQuery(name, url) {
+    const pattern = new RegExp(`[\\?&#]${name}=([^&#]+)`, 'gi');
+    const ma = (url || location.search).match(pattern);
+    var strArr;
+
+    if (ma && ma.length > 0) {
+      strArr = (ma[ma.length - 1]).split('=');
+      if (strArr && strArr.length > 1) {
+        return strArr[1];
+      }
+      return '';
+    }
+    return '';
+  }
+})();
+</script>
+</html>
