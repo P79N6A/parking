@@ -1,0 +1,120 @@
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,dl,dt,dd,ol,nav ul,nav li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline;}
+article, aside, details, figcaption, figure,footer, header, hgroup, menu, nav, section {display: block;}
+ol,ul{list-style:none;margin:0px;padding:0px;}
+blockquote,q{quotes:none;}
+blockquote:before,blockquote:after,q:before,q:after{content:'';content:none;}
+table{border-collapse:collapse;border-spacing:0;}
+/*-- start editing from here --*/
+a{text-decoration:none;}
+.txt-rt{text-align:right;}/* text align right */
+.txt-lt{text-align:left;}/* text align left */
+.txt-center{text-align:center;}/* text align center */
+.float-rt{float:right;}/* float right */
+.float-lt{float:left;}/* float left */
+.clear{clear:both;}/* clear float */
+.pos-relative{position:relative;}/* Position Relative */
+.pos-absolute{position:absolute;}/* Position Absolute */
+.vertical-base{	vertical-align:baseline;}/* vertical align baseline */
+.vertical-top{	vertical-align:top;}/* vertical align top */
+nav.vertical ul li{	display:block;}/* vertical menu */
+nav.horizontal ul li{	display: inline-block;}/* horizontal menu */
+img{max-width:100%;}
+/*-- end reset --*/
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    background: url(../img/bg.png)repeat center 0px;
+    background-attachment: fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+}
+.mainContent{
+    width: 1080px;
+    height: auto;
+    margin: auto 0;
+    margin-right:auto;
+    margin-left: auto;
+}
+.header{
+    width:1080px;
+    height:80px;
+}
+.leftLogo{
+    width: 540px;
+    height: 80px;
+    line-height: 80px;
+    float: left;
+}
+.leftLogo img{
+    width: 160px;
+    vertical-align: middle;
+}
+.rtTel{
+    width: 540px;
+    height: 80px;
+    text-align: right;
+    float: right;
+    line-height: 80px;
+}
+.rtTel span{
+    font-size: 18px;
+    color: #010c25;
+    margin-left: 10px;
+    background: url("../img/tel.png");
+    background-repeat: no-repeat;
+    background-position: left;
+    background-size: 20px;
+    padding-left: 30px;
+}
+.mainBody{
+    margin-top:100px;
+    height: 700px;
+}
+.leDiv{
+    float: left;
+    width: 380px;
+}
+.rtDiv{
+    float: right;
+    width: 700px;
+    text-align: center;
+    padding-top:80px;
+}
+.imgTwo{
+    margin-left: 40px;
+}
+.rtDiv p{
+    color: #ffffff;
+    margin-top: 30px;
+}
+.adWord{
+    font-size: 40px;
+    font-weight: bold;
+}
+.rtDiv span{
+    margin-left: 30px;
+}
+.btnDiv{
+    width: 280px;
+    height: 60px;
+    margin: 0 auto;
+}
+.btnDiv p{
+    line-height: 60px;
+    border-radius: 6px;
+    background-color: rgba(0,14,44,0.5);
+    font-weight: lighter;
+    font-size: 26px;
+    text-align: center;
+}
+.footer{
+    width: 1080px;
+    height: auto;
+    margin: auto 0;
+    margin-right:auto;
+    margin-left: auto;
+    text-align: center;
+    font-size: 20px;
+    color: #000b24;
+}
